@@ -22,8 +22,8 @@
         <div id="banner">
             <img alt="re.factored" src="/images/logo.png" />
             <span id ="banner_right">
-                <input type="text" value="Username" />
-                <input type="text" value="Password" />
+                <input type="text" value="Username" onfocus="this.value= this.value == 'Username' ? '' : this.value; this.style.color='gray'; this.style.fontStyle='normal'" />
+                <input type="text" value="Password" onfocus="this.type='password'; this.value= this.value == 'Password' ? '' : this.value; this.style.color='gray'; this.style.fontStyle='normal'" />
                 <input type="checkbox" style="vertical-align: -6%" />
                 <a class="login_button_load"> </a>
                 <a class="login_button" onclick="this.blur()" href="login"><span></span></a>
