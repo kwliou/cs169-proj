@@ -33,7 +33,7 @@ a {
     float: right;
 }
 #banner_right {
-    margin: 46px 10px 0 0;
+    margin: 4% 10px 0 0;
     float: right;
 }
 #banner_right input {
@@ -46,24 +46,24 @@ a {
     margin-left: 3px;
     width: 72px;
     height: 28px;
-    background-image: url("/images/button.png");
+    background-image: url("button.png");
 }
 #banner_right a:active {
     float: right;
     margin-top: 0;
-    background-image: url("/images/button_hover.png");
+    background-image: url("button_hover.png");
 }*/
 a.login_button:focus { outline: 0; }
 a.login_button:focus { outline: none; }
 a.login_button:-moz-focus-inner { border: none;}
 
 a.login_button_load  {
-    background: url("/images/button_pressed.png");
+    background: url("button_pressed.png");
     visibility: hidden;
 }
 
 a.login_button, a.login_button:link  {
-    background: transparent url("/images/button.png") no-repeat scroll top right;
+    background: transparent url("button.png") no-repeat scroll top right;
     display: block;
     float: right;
     width: 72px;
@@ -71,7 +71,7 @@ a.login_button, a.login_button:link  {
     margin-left: 4px;
 }
 a.login_button span {
-    background: transparent url("/images/button.png") no-repeat scroll top right;
+    background: transparent url("button.png") no-repeat scroll top right;
     /*width: 72px;
     height: 28px;*/
     display: block;
@@ -79,7 +79,7 @@ a.login_button span {
 a.login_button:focus, a.login_button:active {
     float: right;
     margin-top: 0;
-    background-image: url("/images/button_pressed.png");
+    background-image: url("button_pressed.png");
 }
 
 #breadcrumbs {
@@ -124,10 +124,11 @@ a.login_button:focus, a.login_button:active {
 }
 #courses {
     float: left;
-    width: 60%;
+    width: 65%;
+}
+#courses span {
 }
 .course {
-    width: 22%;
     display: inline-block;
     line-height: 30pt;
     font-weight: bold;
@@ -141,7 +142,7 @@ a.login_button:focus, a.login_button:active {
     font-size: 14pt;
 }
 .course_info {
-    padding: 0 0 0 4px;
+    padding: 0 0 0 2%;
     vertical-align: text-bottom;
     font-family: StRyde, "edelsans", "Tahoma", sans-serif;
     font-size: 14pt;
@@ -153,10 +154,8 @@ a.login_button:focus, a.login_button:active {
     font-size: 14pt;
 }
 #calendar {
-    margin-right: 10%;
-    padding-left: 3%;
     float: right;
-    width: 25%;
+    width: 35%;
     font-weight: bold;
 }
 #calendar ul {
