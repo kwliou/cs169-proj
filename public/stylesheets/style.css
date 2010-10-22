@@ -58,12 +58,12 @@ a.login_button:focus { outline: none; }
 a.login_button:-moz-focus-inner { border: none;}
 
 a.login_button_load  {
-    background: url("button_pressed.png");
+    background: url("/images/button_pressed.png");
     visibility: hidden;
 }
 
 a.login_button, a.login_button:link  {
-    background: transparent url("button.png") no-repeat scroll top right;
+    background: transparent url("/images/button.png") no-repeat scroll top right;
     display: block;
     float: right;
     width: 72px;
@@ -71,7 +71,7 @@ a.login_button, a.login_button:link  {
     margin-left: 4px;
 }
 a.login_button span {
-    background: transparent url("button.png") no-repeat scroll top right;
+    background: transparent url("/images/button.png") no-repeat scroll top right;
     /*width: 72px;
     height: 28px;*/
     display: block;
@@ -79,7 +79,7 @@ a.login_button span {
 a.login_button:focus, a.login_button:active {
     float: right;
     margin-top: 0;
-    background-image: url("button_pressed.png");
+    background-image: url("/images/button_pressed.png");
 }
 
 #breadcrumbs {
@@ -186,7 +186,7 @@ a.login_button:focus, a.login_button:active {
     float: right;
     margin-right: 26%;
     padding: 0 2px 0 3px;
-    background-image: url("round.png");
+    background-image: url("/images/round.png");
 }
 
 /* Forums CSS */
