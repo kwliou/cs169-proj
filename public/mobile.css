@@ -1,15 +1,6 @@
-@font-face
-{
-    font-family: StRyde;
-    font-style: normal;
-    font-weight: normal;
-    src: url('StRyde-Regular.eot');
-    src: local('St Ryde Regular'), url('StRyde-Regular.otf') format('opentype');
-}
-
 body {
     background-color: #d1e751;
-    margin: 0;
+    margin: auto;
     font-family: "Tahoma", "Verdana", san-serif;
     color: #979899;
 }
@@ -30,6 +21,7 @@ a {
 #banner {
     padding: 2px 0 5px 0;
     background-color: #d1e751;
+    /*min-height: 480px;*/
 }
 #college_logo {
     float: right;
@@ -124,7 +116,8 @@ a.login_button:focus, a.login_button:active {
     padding: 3px;
 }
 #content {
-    clear: left;
+    /*clear: left;*/
+    background-color: pink;
     padding: 20px 3% 0 3%;
 }
 #courses {
