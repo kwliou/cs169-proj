@@ -4,10 +4,10 @@
     <head>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
         <title>re.factored with Ruby on Rails</title>
-        <link rel="stylesheet" type="text/css" href="stylesheets/style.css" />
-        <link rel="shortcut icon" href="images/favicon.ico" />
-        <script type="text/javascript" src="cufon-yui.js"></script>
-        <script type="text/javascript" src="St_Ryde_Regular_400.font.js"></script>
+        <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+        <link rel="shortcut icon" href="/images/favicon.ico" />
+        <script type="text/javascript" src="/javascripts/cufon-yui.js"></script>
+        <script type="text/javascript" src="/javascripts/St_Ryde_Regular_400.font.js"></script>
         <script type="text/javascript">
 		Cufon.replace(".course_info");
 	</script>
@@ -20,10 +20,15 @@
             </span>
         </div>
         <div id="banner">
-            <img alt="re.factored" src="logo.png" />
-            <span id ="college_logo">
-                <img alt="Berkeley" src="school_logo.png" />
+            <img alt="re.factored" src="/images/logo.png" />
+            <span id ="banner_right">
+                <input type="text" value="Username" onfocus="this.value= this.value == 'Username' ? '' : this.value; this.style.color='gray'; this.style.fontStyle='normal'" />
+                <input type="text" value="Password" onfocus="this.type='password'; this.value= this.value == 'Password' ? '' : this.value; this.style.color='gray'; this.style.fontStyle='normal'" />
+                <input type="checkbox" style="vertical-align: -6%" />
+                <a class="login_button_load"> </a>
+                <a class="login_button" onclick="this.blur()" href="login"><span></span></a>
             </span>
+
         </div>
         <div>
         <ul id ="breadcrumbs">

@@ -1,32 +1,46 @@
-<h1>Listing courses</h1>
+<% content_for :title, "re.factored | Subscribed Courses" %>
 
-<table>
-  <tr>
-    <th>Department</th>
-    <th>Number</th>
-    <th>Days</th>
-    <th>Term</th>
-    <th>Year</th>
-    <th>Description</th>
-    <th>Name</th>
-  </tr>
+<div id ="header">
+  Welcome, Armando Fox! Want to <a href="sign_out">sign out?</a>
+  <span id="school">
+    You are in <a href="switch_school">UC Berkeley</a>
+  </span>
+</div>
+<div id="banner">
+  <img alt="re.factored" src="/images/logo.png" />
+  <span id ="college_logo">
+    <img alt="Berkeley" src="/images/school_logo.png" />
+  </span>
+</div>
+<div>
+  <ul id ="breadcrumbs">
+    <li class="breadcrumbs_a"><a href="home">Home</a></li>
+  </ul>
+</div>
 
-<% @courses.each do |course| %>
-  <tr>
-    <td><%=h course.department %></td>
-    <td><%=h course.number %></td>
-    <td><%=h course.days %></td>
-    <td><%=h course.term %></td>
-    <td><%=h course.year %></td>
-    <td><%=h course.description %></td>
-    <td><%=h course.name %></td>
-    <td><%= link_to 'Show', course %></td>
-    <td><%= link_to 'Edit', edit_course_path(course) %></td>
-    <td><%= link_to 'Destroy', course, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+<div id="content">
+  <div id="courses">
+    <% @courses.each do |course| %>
+        <% link_to course, :class => "name" do %>
+          <span class="course"><%= course.department%> <%=  course.number %></span>
+          <span class="course_info"><%=h course.name %></span>
+        <% end %>
+      <%= link_to 'Edit', edit_course_path(course) %>
+      <br />
+    <% end %>
+    <br />
+    <%= link_to 'Edit Subscriptions', "edit" %>
+    <%= link_to "New course", new_course_path %>
+  </div>
+</div>
+
+<div id="calendar">
+  <a id="calendar_title" href="calendar">Upcoming Events</a>
+  <ul>
+    <li class="calendar_entry">Oct 11 <a href="item1">CS 169 Midterm 1</a></li>
+    <li class="calendar_entry">Oct 11 <a href="item1">CS 188 Midterm 2</a></li>
+    <li class="calendar_entry">Oct 12 <a href="item1">CS 188 Project 2</a></li>
+  </ul>
+</div>
 
 <br />
-
-<%= link_to 'New course', new_course_path %>

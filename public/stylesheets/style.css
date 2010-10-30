@@ -8,6 +8,7 @@
 }
 
 body {
+    margin: auto;
     font-family: "Tahoma", "Verdana", san-serif;
     color: #979899;
 }
@@ -125,7 +126,8 @@ a.login_button:focus, a.login_button:active {
     float: left;
     width: 65%;
 }
-#courses span {
+#courses .name {
+    text-decoration: none;
 }
 .course {
     display: inline-block;
