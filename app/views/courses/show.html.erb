@@ -1,0 +1,38 @@
+<p>
+  <b>Department:</b>
+  <%=h @course.department %>
+</p>
+
+<p>
+  <b>Number:</b>
+  <%=h @course.number %>
+</p>
+
+<p>
+  <b>Days:</b>
+  <%=h @course.days %>
+</p>
+
+<p>
+  <b>Term:</b>
+  <%=h @course.term %>
+</p>
+
+<p>
+  <b>Year:</b>
+  <%=h @course.year %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @course.description %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%=h @course.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_course_path(@course) %> |
+<%= link_to 'Back', courses_path %>

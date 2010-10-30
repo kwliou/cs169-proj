@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  type: MyString
+  due_date: 2010-10-29 20:45:06
+  points: 1
+  weight: 1.5
+
+two:
+  type: MyString
+  due_date: 2010-10-29 20:45:06
+  points: 1
+  weight: 1.5

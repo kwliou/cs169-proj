@@ -1,0 +1,23 @@
+<p>
+  <b>Type:</b>
+  <%=h @item.type %>
+</p>
+
+<p>
+  <b>Due date:</b>
+  <%=h @item.due_date %>
+</p>
+
+<p>
+  <b>Points:</b>
+  <%=h @item.points %>
+</p>
+
+<p>
+  <b>Weight:</b>
+  <%=h @item.weight %>
+</p>
+
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>

@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  department: MyString
+  number: MyString
+  days: MyString
+  term: MyString
+  year: 1
+  description: MyText
+  name: MyString
+
+two:
+  department: MyString
+  number: MyString
+  days: MyString
+  term: MyString
+  year: 1
+  description: MyText
+  name: MyString
