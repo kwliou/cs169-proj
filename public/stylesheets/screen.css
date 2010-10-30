@@ -50,11 +50,6 @@ a.login_button:focus { outline: 0; }
 a.login_button:focus { outline: none; }
 a.login_button:-moz-focus-inner { border: none;}
 
-a.login_button_load  {
-    background: url("/images/button_pressed.png");
-    visibility: hidden;
-}
-
 a.login_button, a.login_button:link  {
     border: none;
     background: transparent url("/images/button.png") no-repeat scroll top right;
@@ -73,6 +68,12 @@ a.login_button:active {
     margin-top: 0;
     background-image: url("/images/button_pressed.png");
 }*/
+
+a.login_button_load  {
+    background: url("/images/button_pressed.png");
+    visibility: hidden;
+}
+
 .login_button {
     border: none;
     padding-left: 0px;
