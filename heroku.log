@@ -1,98 +1,98 @@
 ==> dyno-2544109.log <==
-/home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/authlogic-2.1.6/lib/authlogic/controller_adapters/rails_adapter.rb:33:in `included': Authlogic is trying to prepend a before_filter in ActionController::Base to active itself, the problem is that ApplicationController has already been loaded meaning the before_filter won't get copied into your application. Generally this is due to another gem or plugin requiring your ApplicationController prematurely, such as the resource_controller plugin. The solution is to require Authlogic before these other gems / plugins. Please require authlogic first to get rid of this error. (Authlogic::ControllerAdapters::RailsAdapter::AuthlogicLoadedTooLateError)
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/authlogic-2.1.6/lib/authlogic/controller_adapters/rails_adapter.rb:48:in `include'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/authlogic-2.1.6/lib/authlogic/controller_adapters/rails_adapter.rb:48:in `send'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/authlogic-2.1.6/lib/authlogic/controller_adapters/rails_adapter.rb:48
+/home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/authlogic-2.1.6/lib/authlogic/controller_adapters/rails_adapter.rb:33:in `included': Authlogic is trying to prepend a before_filter in ActionController::Base to active itself, the problem is that ApplicationController has already been loaded meaning the before_filter won't get copied into your application. Generally this is due to another gem or plugin requiring your ApplicationController prematurely, such as the resource_controller plugin. The solution is to require Authlogic before these other gems / plugins. Please require authlogic first to get rid of this error. (Authlogic::ControllerAdapters::RailsAdapter::AuthlogicLoadedTooLateError)
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/authlogic-2.1.6/lib/authlogic/controller_adapters/rails_adapter.rb:48:in `include'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/authlogic-2.1.6/lib/authlogic/controller_adapters/rails_adapter.rb:48:in `send'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/authlogic-2.1.6/lib/authlogic/controller_adapters/rails_adapter.rb:48
 	from /usr/ruby1.8.7/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
 	from /usr/ruby1.8.7/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:158:in `require'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/authlogic-2.1.6/lib/authlogic.rb:62
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:158:in `require'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/authlogic-2.1.6/lib/authlogic.rb:62
 	from /usr/ruby1.8.7/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:36:in `gem_original_require'
 	from /usr/ruby1.8.7/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:36:in `require'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:158:in `require'
-	from /disk1/home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/app/controllers/usersessions_controller.rb:2
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:158:in `require'
+	from /disk1/home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/app/controllers/usersessions_controller.rb:1
 	from /usr/ruby1.8.7/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
 	from /usr/ruby1.8.7/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:158:in `require'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:265:in `require_or_load'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:224:in `depend_on'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:136:in `require_dependency'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/rails-2.3.8/lib/initializer.rb:414:in `load_application_classes'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/rails-2.3.8/lib/initializer.rb:413:in `each'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/rails-2.3.8/lib/initializer.rb:413:in `load_application_classes'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/rails-2.3.8/lib/initializer.rb:411:in `each'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/rails-2.3.8/lib/initializer.rb:411:in `load_application_classes'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/rails-2.3.8/lib/initializer.rb:197:in `process'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/rails-2.3.8/lib/initializer.rb:113:in `send'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/rails-2.3.8/lib/initializer.rb:113:in `run'
-	from /disk1/home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/config/environment.rb:9
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:158:in `require'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:265:in `require_or_load'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:224:in `depend_on'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:136:in `require_dependency'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/rails-2.3.8/lib/initializer.rb:414:in `load_application_classes'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/rails-2.3.8/lib/initializer.rb:413:in `each'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/rails-2.3.8/lib/initializer.rb:413:in `load_application_classes'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/rails-2.3.8/lib/initializer.rb:411:in `each'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/rails-2.3.8/lib/initializer.rb:411:in `load_application_classes'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/rails-2.3.8/lib/initializer.rb:197:in `process'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/rails-2.3.8/lib/initializer.rb:113:in `send'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/rails-2.3.8/lib/initializer.rb:113:in `run'
+	from /disk1/home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/config/environment.rb:9
 	from /usr/ruby1.8.7/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
 	from /usr/ruby1.8.7/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
 	from /usr/ruby1.8.7/lib/ruby/gems/1.8/gems/thin-1.2.6/lib/rack/adapter/rails.rb:42:in `load_application'
 	from /usr/ruby1.8.7/lib/ruby/gems/1.8/gems/thin-1.2.6/lib/rack/adapter/rails.rb:23:in `initialize'
 	from /home/heroku_rack/heroku.ru:29:in `new'
 	from /home/heroku_rack/heroku.ru:29
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/rack-1.1.0/lib/rack/builder.rb:46:in `instance_eval'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/rack-1.1.0/lib/rack/builder.rb:46:in `initialize'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/rack-1.1.0/lib/rack/builder.rb:63:in `new'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/rack-1.1.0/lib/rack/builder.rb:63:in `map'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/rack-1.1.0/lib/rack/builder.rb:46:in `instance_eval'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/rack-1.1.0/lib/rack/builder.rb:46:in `initialize'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/rack-1.1.0/lib/rack/builder.rb:63:in `new'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/rack-1.1.0/lib/rack/builder.rb:63:in `map'
 	from /home/heroku_rack/heroku.ru:18
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/rack-1.1.0/lib/rack/builder.rb:46:in `instance_eval'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/rack-1.1.0/lib/rack/builder.rb:46:in `initialize'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/rack-1.1.0/lib/rack/builder.rb:46:in `instance_eval'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/rack-1.1.0/lib/rack/builder.rb:46:in `initialize'
 	from /home/heroku_rack/heroku.ru:11:in `new'
 	from /home/heroku_rack/heroku.ru:11
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/rack-1.1.0/lib/rack/builder.rb:46:in `instance_eval'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/rack-1.1.0/lib/rack/builder.rb:46:in `initialize'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/rack-1.1.0/lib/rack/builder.rb:46:in `instance_eval'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/rack-1.1.0/lib/rack/builder.rb:46:in `initialize'
 	from /home/heroku_rack/heroku.ru:1:in `new'
 	from /home/heroku_rack/heroku.ru:1
 
 ==> production.log <==
-# Logfile created on Sat Oct 30 02:08:48 -0700 2010
+# Logfile created on Sat Oct 30 02:18:34 -0700 2010
 ==> dyno-2544109.log (crash) <==
-/home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/authlogic-2.1.6/lib/authlogic/controller_adapters/rails_adapter.rb:33:in `included': Authlogic is trying to prepend a before_filter in ActionController::Base to active itself, the problem is that ApplicationController has already been loaded meaning the before_filter won't get copied into your application. Generally this is due to another gem or plugin requiring your ApplicationController prematurely, such as the resource_controller plugin. The solution is to require Authlogic before these other gems / plugins. Please require authlogic first to get rid of this error. (Authlogic::ControllerAdapters::RailsAdapter::AuthlogicLoadedTooLateError)
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/authlogic-2.1.6/lib/authlogic/controller_adapters/rails_adapter.rb:48:in `include'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/authlogic-2.1.6/lib/authlogic/controller_adapters/rails_adapter.rb:48:in `send'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/authlogic-2.1.6/lib/authlogic/controller_adapters/rails_adapter.rb:48
+/home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/authlogic-2.1.6/lib/authlogic/controller_adapters/rails_adapter.rb:33:in `included': Authlogic is trying to prepend a before_filter in ActionController::Base to active itself, the problem is that ApplicationController has already been loaded meaning the before_filter won't get copied into your application. Generally this is due to another gem or plugin requiring your ApplicationController prematurely, such as the resource_controller plugin. The solution is to require Authlogic before these other gems / plugins. Please require authlogic first to get rid of this error. (Authlogic::ControllerAdapters::RailsAdapter::AuthlogicLoadedTooLateError)
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/authlogic-2.1.6/lib/authlogic/controller_adapters/rails_adapter.rb:48:in `include'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/authlogic-2.1.6/lib/authlogic/controller_adapters/rails_adapter.rb:48:in `send'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/authlogic-2.1.6/lib/authlogic/controller_adapters/rails_adapter.rb:48
 	from /usr/ruby1.8.7/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
 	from /usr/ruby1.8.7/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:158:in `require'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/authlogic-2.1.6/lib/authlogic.rb:62
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:158:in `require'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/authlogic-2.1.6/lib/authlogic.rb:62
 	from /usr/ruby1.8.7/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:36:in `gem_original_require'
 	from /usr/ruby1.8.7/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:36:in `require'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:158:in `require'
-	from /disk1/home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/app/controllers/usersessions_controller.rb:2
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:158:in `require'
+	from /disk1/home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/app/controllers/usersessions_controller.rb:1
 	from /usr/ruby1.8.7/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
 	from /usr/ruby1.8.7/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:158:in `require'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:265:in `require_or_load'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:224:in `depend_on'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:136:in `require_dependency'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/rails-2.3.8/lib/initializer.rb:414:in `load_application_classes'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/rails-2.3.8/lib/initializer.rb:413:in `each'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/rails-2.3.8/lib/initializer.rb:413:in `load_application_classes'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/rails-2.3.8/lib/initializer.rb:411:in `each'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/rails-2.3.8/lib/initializer.rb:411:in `load_application_classes'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/rails-2.3.8/lib/initializer.rb:197:in `process'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/rails-2.3.8/lib/initializer.rb:113:in `send'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/rails-2.3.8/lib/initializer.rb:113:in `run'
-	from /disk1/home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/config/environment.rb:9
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:158:in `require'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:265:in `require_or_load'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:224:in `depend_on'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:136:in `require_dependency'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/rails-2.3.8/lib/initializer.rb:414:in `load_application_classes'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/rails-2.3.8/lib/initializer.rb:413:in `each'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/rails-2.3.8/lib/initializer.rb:413:in `load_application_classes'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/rails-2.3.8/lib/initializer.rb:411:in `each'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/rails-2.3.8/lib/initializer.rb:411:in `load_application_classes'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/rails-2.3.8/lib/initializer.rb:197:in `process'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/rails-2.3.8/lib/initializer.rb:113:in `send'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/rails-2.3.8/lib/initializer.rb:113:in `run'
+	from /disk1/home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/config/environment.rb:9
 	from /usr/ruby1.8.7/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
 	from /usr/ruby1.8.7/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
 	from /usr/ruby1.8.7/lib/ruby/gems/1.8/gems/thin-1.2.6/lib/rack/adapter/rails.rb:42:in `load_application'
 	from /usr/ruby1.8.7/lib/ruby/gems/1.8/gems/thin-1.2.6/lib/rack/adapter/rails.rb:23:in `initialize'
 	from /home/heroku_rack/heroku.ru:29:in `new'
 	from /home/heroku_rack/heroku.ru:29
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/rack-1.1.0/lib/rack/builder.rb:46:in `instance_eval'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/rack-1.1.0/lib/rack/builder.rb:46:in `initialize'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/rack-1.1.0/lib/rack/builder.rb:63:in `new'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/rack-1.1.0/lib/rack/builder.rb:63:in `map'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/rack-1.1.0/lib/rack/builder.rb:46:in `instance_eval'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/rack-1.1.0/lib/rack/builder.rb:46:in `initialize'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/rack-1.1.0/lib/rack/builder.rb:63:in `new'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/rack-1.1.0/lib/rack/builder.rb:63:in `map'
 	from /home/heroku_rack/heroku.ru:18
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/rack-1.1.0/lib/rack/builder.rb:46:in `instance_eval'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/rack-1.1.0/lib/rack/builder.rb:46:in `initialize'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/rack-1.1.0/lib/rack/builder.rb:46:in `instance_eval'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/rack-1.1.0/lib/rack/builder.rb:46:in `initialize'
 	from /home/heroku_rack/heroku.ru:11:in `new'
 	from /home/heroku_rack/heroku.ru:11
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/rack-1.1.0/lib/rack/builder.rb:46:in `instance_eval'
-	from /home/slugs/315695_efe0fbc_e9e0-63862b59-2f4a-4f18-8cda-e686d51020d8/mnt/.gems/gems/rack-1.1.0/lib/rack/builder.rb:46:in `initialize'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/rack-1.1.0/lib/rack/builder.rb:46:in `instance_eval'
+	from /home/slugs/315695_6241821_e9e0-71358f10-f638-4023-a718-230148ba34d4/mnt/.gems/gems/rack-1.1.0/lib/rack/builder.rb:46:in `initialize'
 	from /home/heroku_rack/heroku.ru:1:in `new'
 	from /home/heroku_rack/heroku.ru:1
 

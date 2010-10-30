@@ -1,16 +1,32 @@
 <% content_for :title, "re.factored | Subscribed Courses" %>
 
 <div id ="header">
-  Welcome, Armando Fox! Want to <a href="sign_out">sign out?</a>
+  <% if @current_user %>
+    Welcome, <%=h @current_user.first_name %> <%=h @current_user.last_name %>! Want to <%= link_to "sign out", logout_path %>?
+    <% else %>
+    Welcome! Want to <%= link_to "register", new_user_path %>?
+  <% end %>
   <span id="school">
     You are in <a href="switch_school">UC Berkeley</a>
   </span>
 </div>
 <div id="banner">
   <img alt="re.factored" src="/images/logo.png" />
-  <span id ="college_logo">
+  <% if @current_user %>
+    <span id ="college_logo">
     <img alt="Berkeley" src="/images/school_logo.png" />
   </span>
+  <% else %>
+    <span id ="banner_right">
+      <% form_for @user_session do |f| %>
+        <%= f.text_field :username, :size => 16, :value => "Username", :onfocus => "this.value= this.value == 'Username' ? '' : this.value; this.style.color='gray'; this.style.fontStyle='normal'" %>
+        <%= f.password_field :password, :size => 16, :value => "Password", :onfocus => "this.value= this.value == 'Password' ? '' : this.value; this.style.color='gray'; this.style.fontStyle='normal'" %>
+      <input type="checkbox" style="vertical-align: -10%" />
+      <%= f.submit "", :class => "login_button", :onfocus => "this.blur()" %>
+      <a class="login_button_load"> </a>
+      <% end %>
+    </span>
+  <% end %>
 </div>
 <div>
   <ul id ="breadcrumbs">

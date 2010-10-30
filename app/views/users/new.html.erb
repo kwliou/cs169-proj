@@ -1,5 +1,12 @@
+<style type="text/css">
+  /* This is temporary */
+  body {
+    font-family: "Tahoma", sans-serif;
+    font-size: 11.5pt;
+    color: #555555;
+  }
+</style>
 <h1>New user</h1>
-
 <% form_for(@user) do |f| %>
   <%= f.error_messages %>
 
@@ -12,8 +19,23 @@
     <%= f.text_field :last_name %>
   </p>
   <p>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+  </p>
+  <p>
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </p>
+  <p>
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
+  </p>
+  <p>
     <%= f.submit 'Create' %>
   </p>
 <% end %>
-
 <%= link_to 'Back', users_path %>
