@@ -14,7 +14,7 @@
 </div>
 <div>
   <ul id ="breadcrumbs">
-    <li class="breadcrumbs_a"><a href="home">Home</a></li>
+    <li class="breadcrumbs_a"><a href="">Home</a></li>
   </ul>
 </div>
 
@@ -22,7 +22,7 @@
   <div id="courses">
     <% @courses.each do |course| %>
         <% link_to course, :class => "name" do %>
-          <span class="course"><%= course.department%> <%=  course.number %></span>
+          <span class="course"><%=h course.department %> <%=h course.number %></span>
           <span class="course_info"><%=h course.name %></span>
         <% end %>
       <%= link_to 'Edit', edit_course_path(course) %>

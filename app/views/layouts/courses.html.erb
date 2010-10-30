@@ -16,6 +16,9 @@
 </head>
 <body>
 <%= yield %>
+<script type="text/javascript">
+  Cufon.now(); // to avoid font rendering delay in IE
+</script>
 <p style="color: green"><%= notice %></p>
 </body>
 </html>

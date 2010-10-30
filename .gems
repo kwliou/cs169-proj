@@ -1,1 +1,2 @@
 rails -v 2.3.8
+authlogic --version '>= 2.1'
