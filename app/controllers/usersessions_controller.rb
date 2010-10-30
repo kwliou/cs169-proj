@@ -1,3 +1,5 @@
+include 'authlogic'
+
 class UserSessionsController < ApplicationController
   logout_on_timeout true
   def new
