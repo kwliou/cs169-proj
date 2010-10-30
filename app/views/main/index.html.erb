@@ -16,15 +16,22 @@
     <img alt="Berkeley" src="/images/school_logo.png" />
   </span>
   <% else %>
-    <span id ="banner_right">
       <% form_for @user_session do |f| %>
-        <%= f.text_field :username, :size => 16 %>
-        <%= f.password_field :password, :size => 16 %>
-      <input type="checkbox" style="vertical-align: -10%" />
-      <%= f.submit "", :class => "login_button", :onfocus => "this.blur()", :tabindex => 1000 %>
-      <a class="login_button_load"></a>
+        <table id="banner_right">
+          <tr>
+            <td id="input_label"><%= f.label :username, "Username", :class => "input_label" %></td>
+            <td id="input_label"><%= f.label :password, "Password", :class => "input_label" %></td>
+          </tr>
+          <tr>
+            <td><%= f.text_field :username, :size => 16 %></td>
+            <td><%= f.password_field :password, :size => 16 %></td>
+        <td><input type="checkbox"  /></td>
+        <td><%= f.submit "", :class => "login_button", :onfocus => "this.blur()", :tabindex => 1000 %></td>
+        <a class="login_button_load"></a>
+        </tr>
+        </table>
       <% end %>
-    </span>
+    
   <% end %>
 </div>
 <div>

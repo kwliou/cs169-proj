@@ -26,13 +26,23 @@ a {
     float: right;
 }
 #banner_right {
-    margin: 3em 10px 0 0;
+    margin: 1.9em 0.2em 0 0;
     float: right;
 }
 #banner_right input {
     vertical-align: middle;
-    color: #cccccc;
+    color: #757575;
 }
+#banner_right tr, #banner_right td {
+    padding-bottom: 0;
+    padding-top: 0;
+}
+.input_label {
+    font-size: 10pt;
+    color: white;
+    padding-left: 1px;
+}
+
 /*#banner_right a {
     float: right;
     margin-left: 3px;
@@ -75,13 +85,13 @@ a.login_button_load  {
 }
 
 .login_button {
+    display: inline;
     border: none;
+    width: 72px;
+    height: 28px;
     padding-left: 0px;
     padding-right: 0px;
     background: transparent url("/images/button.png") no-repeat;
-    vertical-align: -7%;
-    width: 72px;
-    height: 28px;
 }
 .login_button:active {
     outline: 0;
