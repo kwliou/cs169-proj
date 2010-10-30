@@ -19,7 +19,7 @@ a {
 }
 #banner {
     padding: 2px 0 5px 0;
-    background: url("images/logo.png") #d1e751 no-repeat;
+    background: url("/images/logo.png") #d1e751 no-repeat;
     height: 81px;
 }
 #college_logo {
@@ -30,7 +30,7 @@ a {
     float: right;
 }
 #banner_right input {
-    margin-top: 3px;
+    vertical-align: middle;
     color: #cccccc;
 }
 /*#banner_right a {
@@ -88,9 +88,9 @@ a.login_button_load  {
     background-image: url("/images/button_pressed.png");
 }
 
-input.login_button:focus { outline: 0; }
-input.login_button:focus { outline: none; }
-input.login_button:-moz-focus-inner { border: none;}
+.login_button:focus { outline: 0; }
+.login_button:focus { outline: none; }
+/* Mozilla hack unnecessary => .login_button::-moz-focus-inner { border: none;} */
 
 #breadcrumbs {
     /*float: left;*/
@@ -102,7 +102,6 @@ input.login_button:-moz-focus-inner { border: none;}
 #breadcrumbs a {
     text-decoration: none;
     color: white;
-
 }
 .breadcrumbs_a {
     float: left;
@@ -132,15 +131,25 @@ input.login_button:-moz-focus-inner { border: none;}
     clear: left;
     padding: 20px 3% 0 3%;
 }
-#courses {
+.section_header {
+    display: block;
+    margin: 0 0 6px 0;
+    width: 85%;
+    font-size: 12pt;
+    font-family:  "Whitney HTF SC", "Century Gothic", "Verdana", "Lucida Sans Unicode", "Tahoma", sans-serif;
+    border-bottom: 1px #cccccc solid;
+    text-transform: uppercase;
+    letter-spacing: 0.5pt;
+}
+#content_left {
     float: left;
     width: 65%;
 }
 #courses .name {
     text-decoration: none;
+    margin-right: 10px;
 }
 .course {
-    display: inline-block;
     line-height: 30pt;
     font-weight: bold;
     font-size: 14pt;
@@ -154,7 +163,6 @@ input.login_button:-moz-focus-inner { border: none;}
 }
 .course_info {
     padding: 0 0 0 2%;
-    position: relative;
     vertical-align: text-bottom;
     font-family: StRyde, "edelsans", "Tahoma", sans-serif;
     font-size: 14pt;

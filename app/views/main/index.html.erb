@@ -18,10 +18,10 @@
   <% else %>
     <span id ="banner_right">
       <% form_for @user_session do |f| %>
-        <%= f.text_field :username, :size => 16, :value => "Username", :onfocus => "this.value= this.value == 'Username' ? '' : this.value; this.style.color='gray'; this.style.fontStyle='normal'" %>
-        <%= f.password_field :password, :size => 16, :value => "Password", :onfocus => "this.value= this.value == 'Password' ? '' : this.value; this.style.color='gray'; this.style.fontStyle='normal'" %>
+        <%= f.text_field :username, :size => 16 %>
+        <%= f.password_field :password, :size => 16 %>
       <input type="checkbox" style="vertical-align: -10%" />
-      <%= f.submit "", :class => "login_button" %>
+      <%= f.submit "", :class => "login_button", :onfocus => "this.blur()", :tabindex => 1000 %>
       <a class="login_button_load"></a>
       <% end %>
     </span>
@@ -34,19 +34,26 @@
 </div>
 
 <div id="content">
-  <div id="courses">
-    <% @courses.each do |course| %>
-        <% link_to course, :class => "name" do %>
-          <span class="course"><%=h course.department %> <%=h course.number %></span>
-          <span class="course_info"><%=h course.name %></span>
+    <div id="content_left">
+      <div id="courses">
+        <span class="section_header">Subscribed Courses</span>
+        <% @courses.each do |course| %>
+            <% link_to course, :class => "name" do %>
+              <span class="course"><%=h course.department %> <%=h course.number %></span>
+              <span class="course_info"><%=h course.name %></span>
+            <% end %>
+          <%= link_to 'Edit', edit_course_path(course) %>
+          <br />
         <% end %>
-      <%= link_to 'Edit', edit_course_path(course) %>
+        <br />
+        <%= link_to 'Edit Subscriptions', "edit" %>
+        <%= link_to "New course", new_course_path %>
+      </div>
       <br />
-    <% end %>
-    <br />
-    <%= link_to 'Edit Subscriptions', "edit" %>
-    <%= link_to "New course", new_course_path %>
-  </div>
+      <div id="otherstuff">
+        <span class="section_header">Latest Posts</span>
+      </div>
+    </div>
 </div>
 
 <div id="calendar">

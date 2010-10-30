@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%=h yield(:title) %></title>
+  <link rel="shortcut icon" href="/images/favicon.ico" />
+  <%= stylesheet_link_tag 'scaffold' %>
+  <%= stylesheet_link_tag 'style' %>
+  <script type="text/javascript" src="/javascripts/cufon-yui.js"></script>
+  <script type="text/javascript" src="/javascripts/St_Ryde_Regular_400.font.js"></script>
+  <script type="text/javascript">
+    Cufon.replace(".course_info");
+  </script>
+</head>
+<body>
+<%= yield %>
+<script type="text/javascript">
+  Cufon.now(); // to avoid font rendering delay in IE
+</script>
+<p style="color: green"><%= notice %></p>
+</body>
+</html>
