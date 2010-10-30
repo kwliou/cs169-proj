@@ -1,4 +1,3 @@
-require 'rubygems'
 require 'authlogic'
 
 class UserSessionsController < ApplicationController
