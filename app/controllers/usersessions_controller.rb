@@ -1,4 +1,5 @@
-include 'authlogic'
+require 'rubygems'
+require 'authlogic'
 
 class UserSessionsController < ApplicationController
   logout_on_timeout true
