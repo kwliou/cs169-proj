@@ -12,26 +12,21 @@
 </div>
 <div id="banner">
   <% if @current_user %>
-    <span id ="college_logo">
-    <img alt="Berkeley" src="/images/school_logo.png" />
-  </span>
+    <div id ="college_logo"></div>
   <% else %>
+    <div id="banner_right">
+      <!--span class="stryde" id="message">Remember my info, please.</span-->
+      <div id="login_form">
       <% form_for @user_session do |f| %>
-        <table id="banner_right">
-          <tr>
-            <td id="input_label"><%= f.label :username, "Username", :class => "input_label" %></td>
-            <td id="input_label"><%= f.label :password, "Password", :class => "input_label" %></td>
-          </tr>
-          <tr>
-            <td><%= f.text_field :username, :size => 16 %></td>
-            <td><%= f.password_field :password, :size => 16 %></td>
-        <td><input type="checkbox" style="margin-left: 5px" /></td>
-        <td><%= f.submit "", :class => "login_button", :onfocus => "this.blur()", :tabindex => 1000 %></td>
-        <a class="login_button_load"></a>
-        </tr>
-        </table>
+        <span id="input_label"><%= f.label :username, "Username", :class => "input_label" %></span>
+        <%= f.text_field :username, :size => 16 %>
+        <span id="input_label"><%= f.label :password, "Password", :class => "input_label" %></span>
+        <%= f.password_field :password, :size => 16 %>
+        <input type="checkbox" />
+        <%= f.submit "", :class => "login_button", :onfocus => "this.blur()", :tabindex => 1000 %>
+        <a class="login_button_load"></a>        
       <% end %>
-    
+    </div></div>
   <% end %>
 </div>
 <div>
@@ -47,7 +42,7 @@
         <% @courses.each do |course| %>
             <% link_to course, :class => "name" do %>
               <span class="course"><%=h course.department %> <%=h course.number %></span>
-              <span class="course_info"><%=h course.name %></span>
+              <span class="stryde course_info"><%=h course.name %></span>
             <% end %>
           <%= link_to 'Edit', edit_course_path(course) %>
           <br />
