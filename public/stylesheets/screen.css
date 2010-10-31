@@ -89,8 +89,8 @@ a.login_button_load  {
     border: none;
     width: 72px;
     height: 28px;
-    padding-left: 0px;
-    padding-right: 0px;
+    padding-left: 0;
+    padding-right: 0;
     background: transparent url("/images/button.png") no-repeat;
 }
 .login_button:active {

@@ -1,61 +1,32 @@
-<% content_for :title, "re.factored | Subscribed Courses" %>
+<h1>Listing courses</h1>
 
-<div id ="header">
-  <% if @current_user %>
-    Welcome, <%=h @current_user.first_name %> <%=h @current_user.last_name %>! Want to <%= link_to "sign out", logout_path %>?
-    <% else %>
-    Welcome! Want to <%= link_to "register", new_user_path %>?
-  <% end %>
-  <span id="school">
-    You are in <a href="switch_school">UC Berkeley</a>
-  </span>
-</div>
-<div id="banner">
-  <% if @current_user %>
-    <span id ="college_logo">
-    <img alt="Berkeley" src="/images/school_logo.png" />
-  </span>
-  <% else %>
-    <span id ="banner_right">
-      <% form_for @user_session do |f| %>
-        <%= f.text_field :username, :size => 16, :value => "Username", :onfocus => "this.value= this.value == 'Username' ? '' : this.value; this.style.color='gray'; this.style.fontStyle='normal'" %>
-        <%= f.password_field :password, :size => 16, :value => "Password", :onfocus => "this.value= this.value == 'Password' ? '' : this.value; this.style.color='gray'; this.style.fontStyle='normal'" %>
-      <input type="checkbox" style="vertical-align: -10%" />
-      <%= f.submit "", :class => "login_button" %>
-      <a class="login_button_load"></a>
-      <% end %>
-    </span>
-  <% end %>
-</div>
-<div>
-  <ul id ="breadcrumbs">
-    <li class="breadcrumbs_a"><a href="">Home</a></li>
-  </ul>
-</div>
+<table>
+  <tr>
+    <th>Department</th>
+    <th>Number</th>
+    <th>Days</th>
+    <th>Term</th>
+    <th>Year</th>
+    <th>Description</th>
+    <th>Name</th>
+  </tr>
 
-<div id="content">
-  <div id="courses">
-    <% @courses.each do |course| %>
-        <% link_to course, :class => "name" do %>
-          <span class="course"><%=h course.department %> <%=h course.number %></span>
-          <span class="course_info"><%=h course.name %></span>
-        <% end %>
-      <%= link_to 'Edit', edit_course_path(course) %>
-      <br />
-    <% end %>
-    <br />
-    <%= link_to 'Edit Subscriptions', "edit" %>
-    <%= link_to "New course", new_course_path %>
-  </div>
-</div>
-
-<div id="calendar">
-  <a id="calendar_title" href="calendar">Upcoming Events</a>
-  <ul>
-    <li class="calendar_entry">Oct 11 <a href="item1">CS 169 Midterm 1</a></li>
-    <li class="calendar_entry">Oct 11 <a href="item1">CS 188 Midterm 2</a></li>
-    <li class="calendar_entry">Oct 12 <a href="item1">CS 188 Project 2</a></li>
-  </ul>
-</div>
+<% @courses.each do |course| %>
+  <tr>
+    <td><%=h course.department %></td>
+    <td><%=h course.number %></td>
+    <td><%=h course.days %></td>
+    <td><%=h course.term %></td>
+    <td><%=h course.year %></td>
+    <td><%=h course.description %></td>
+    <td><%=h course.name %></td>
+    <td><%= link_to 'Show', course %></td>
+    <td><%= link_to 'Edit', edit_course_path(course) %></td>
+    <td><%= link_to 'Destroy', course, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
 
 <br />
+
+<%= link_to 'New course', new_course_path %>

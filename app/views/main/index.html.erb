@@ -1,4 +1,4 @@
-<% content_for :title, "re.factored | Subscribed Courses" %>
+<% content_for :title, "re.factored" %>
 
 <div id ="header">
   <% if @current_user %>
@@ -25,7 +25,7 @@
           <tr>
             <td><%= f.text_field :username, :size => 16 %></td>
             <td><%= f.password_field :password, :size => 16 %></td>
-        <td><input type="checkbox"  /></td>
+        <td><input type="checkbox" style="margin-left: 5px" /></td>
         <td><%= f.submit "", :class => "login_button", :onfocus => "this.blur()", :tabindex => 1000 %></td>
         <a class="login_button_load"></a>
         </tr>
