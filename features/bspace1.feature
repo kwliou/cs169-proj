@@ -14,7 +14,7 @@ Scenario: student clicks on the exams+quizzes link
 	Given I am a student of the CS169 course
 	When I click on the exams+quizzes link on the CS169 course page
 	Then I am directed to the Student's version of the CS169 exams+quizzes page
-	
+
 Scenario: student clicks on the forums link
 	Given I am a student of the CS169 course
 	When I click on the forums link on the CS169 course page

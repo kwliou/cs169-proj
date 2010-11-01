@@ -22,7 +22,7 @@ Scenario: Student submits assignments after due date
 	When I submit hw1 at 10:00pm 10-11-2010
 	Then I should see "late submission: +22:00"
 	And my hw1 should be sent to the Professor marked as "late submission: +22:00"
-	
+
 Scenario: Student observes details about his assignments
 	Given hw1's description is "read chapter 1"
 	When I click on the hw1 link on the assignments+projects page

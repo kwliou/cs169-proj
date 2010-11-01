@@ -1,70 +1,81 @@
 <% content_for :title, "re.factored" %>
-
-<div id ="header">
-  <% if @current_user %>
-    Welcome, <%=h @current_user.first_name %> <%=h @current_user.last_name %>! Want to <%= link_to "sign out", logout_path %>?
+<div id="main">
+  <div id ="header">
+    <% if @current_user %>
+      Welcome, <%=h @current_user.first_name %> <%=h @current_user.last_name %>! Want to <%= link_to "sign out", logout_path %>?
     <% else %>
-    Welcome! Want to <%= link_to "register", new_user_path %>?
-  <% end %>
-  <span id="school">
-    You are in <a href="switch_school">UC Berkeley</a>
-  </span>
-</div>
-<div id="banner">
-  <% if @current_user %>
-    <div id ="college_logo"></div>
-  <% else %>
-    <div id="banner_right">
-      <!--span class="stryde" id="message">Remember my info, please.</span-->
-      <div id="login_form">
-      <% form_for @user_session do |f| %>
-        <span id="input_label"><%= f.label :username, "Username", :class => "input_label" %></span>
-        <%= f.text_field :username, :size => 16 %>
-        <span id="input_label"><%= f.label :password, "Password", :class => "input_label" %></span>
-        <%= f.password_field :password, :size => 16 %>
-        <input type="checkbox" />
-        <%= f.submit "", :class => "login_button", :onfocus => "this.blur()", :tabindex => 1000 %>
-        <a class="login_button_load"></a>        
+      Welcome! Want to <%= link_to "register", new_user_path %>?
+    <% end %>
+    <span id="school">
+      You are in <a href="switch_school">UC Berkeley</a>
+    </span>
+  </div>
+  <div id="maincol">
+    <div id="banner">
+      <% if @current_user %>
+        <div id ="college_logo"></div>
+      <% else %>
+        <div id="banner_right">
+          <div id="login_form">
+            <!--span id="message" class="stryde">Remember my info, please.</span-->
+            <% form_for @user_session do |f| %>
+              <span id="input_label"><%= f.label :username, "Username", :class => "input_label" %></span>
+              <%= f.text_field :username, :size => 16 %>
+              <span id="input_label"><%= f.label :password, "Password", :class => "input_label" %></span>
+              <%= f.password_field :password, :size => 16 %>
+              <input type="checkbox" />
+              <%= f.submit "", :class => "login_button", :onfocus => "this.blur()", :tabindex => 1000 %>
+              <a class="login_button_load"></a>
+            <% end %>
+          </div></div>
       <% end %>
-    </div></div>
-  <% end %>
-</div>
-<div>
-  <ul id ="breadcrumbs">
-    <li class="breadcrumbs_a"><a href="">Home</a></li>
-  </ul>
-</div>
+    </div>
+    
+    <div>
+      <ul id ="breadcrumbs">
+        <li class="breadcrumbs_a"><a href="">Home</a></li>
+      </ul>
+    </div>
 
-<div id="content">
-    <div id="content_left">
-      <div id="courses">
-        <span class="section_header">Subscribed Courses</span>
-        <% @courses.each do |course| %>
+    <div id="content">
+      <div id="content_left">
+        <div id="courses">
+          <span class="section_header">Subscribed Courses</span>
+          <% @courses.each do |course| %>
             <% link_to course, :class => "name" do %>
               <span class="course"><%=h course.department %> <%=h course.number %></span>
               <span class="stryde course_info"><%=h course.name %></span>
             <% end %>
-          <%= link_to 'Edit', edit_course_path(course) %>
+            <%= link_to 'Edit', edit_course_path(course) %>
+            <br />
+          <% end %>
           <br />
-        <% end %>
+          <%= link_to 'Edit Subscriptions', "edit" %>
+          <%= link_to "New course", new_course_path %>
+        </div>
         <br />
-        <%= link_to 'Edit Subscriptions', "edit" %>
-        <%= link_to "New course", new_course_path %>
-      </div>
-      <br />
-      <div id="otherstuff">
-        <span class="section_header">Latest Posts</span>
+        <div id="otherstuff">
+          <span class="section_header">Latest Posts</span>
+        </div>
       </div>
     </div>
-</div>
 
-<div id="calendar">
-  <a id="calendar_title" href="calendar">Upcoming Events</a>
-  <ul>
-    <li class="calendar_entry">Oct 11 <a href="item1">CS 169 Midterm 1</a></li>
-    <li class="calendar_entry">Oct 11 <a href="item1">CS 188 Midterm 2</a></li>
-    <li class="calendar_entry">Oct 12 <a href="item1">CS 188 Project 2</a></li>
-  </ul>
-</div>
+    <div id="calendar">
+      <a id="calendar_title" href="calendar">Upcoming Events</a>
+      <ul>
+        <li class="calendar_entry">Oct 11 <a href="item1">CS 169 Midterm 1</a></li>
+        <li class="calendar_entry">Oct 11 <a href="item1">CS 188 Midterm 2</a></li>
+        <li class="calendar_entry">Oct 12 <a href="item1">CS 188 Project 2</a></li>
+      </ul>
+    </div>
+  </div>
 
-<br />
+  <div id="footer">
+    <span id="footer_links">
+      <a href="help">Help</a>
+      <a href="about">About</a>
+      <a href="feedback">Feedback</a>
+      <a href="contact">Contact</a>
+    </span>
+  </div>
+</div>
