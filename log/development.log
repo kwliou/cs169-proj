@@ -43043,3 +43043,336 @@ ActionController::RoutingError (No route matches "/stylesheets/mobile.css" with 
   C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
 
 Rendering rescues/layout (not_found)
+
+
+Processing MainController#index (for 127.0.0.1 at 2010-11-02 02:29:31) [GET]
+  [4;35;1mUser Load (1.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'aa1c4ca443e38ea9b8f7287a3fc5e406fce2037d7dc96651783b648d51e3e82587cee005f69fba203cd1ba8f41b0c3fc4ebc123ec3b3971725a364d145972361') LIMIT 1[0m
+  [4;36;1mCourse Load (1.0ms)[0m   [0;1mSELECT * FROM "courses" [0m
+Rendering template within layouts/main
+Rendering main/index
+Completed in 162ms (View: 24, DB: 2) | 200 OK [http://localhost/]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-11-02 02:29:34) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/mobile.css" with {:method=>:get}):
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing CoursesController#show (for 127.0.0.1 at 2010-11-02 02:53:57) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mCourse Load (1.0ms)[0m   [0mSELECT * FROM "courses" WHERE ("courses"."id" = 1) [0m
+  [4;36;1mUser Load (1.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'aa1c4ca443e38ea9b8f7287a3fc5e406fce2037d7dc96651783b648d51e3e82587cee005f69fba203cd1ba8f41b0c3fc4ebc123ec3b3971725a364d145972361') LIMIT 1[0m
+Rendering template within layouts/courses
+Rendering courses/show
+  [4;35;1mBlurb Load (1.0ms)[0m   [0mSELECT * FROM "blurbs" WHERE ("blurbs".course_id = 1) [0m
+Completed in 210ms (View: 71, DB: 3) | 200 OK [http://localhost/courses/1]
+
+
+Processing CoursesController#show to gif (for 127.0.0.1 at 2010-11-02 02:54:01) [GET]
+  Parameters: {"id"=>"flat_triangle"}
+  [4;36;1mCourse Load (1.0ms)[0m   [0;1mSELECT * FROM "courses" WHERE ("courses"."id" = 0) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find Course with ID=flat_triangle):
+  app/controllers/courses_controller.rb:17:in `show'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (279.0ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-11-02 02:54:02) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/mobile.css" with {:method=>:get}):
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing MainController#index (for 127.0.0.1 at 2010-11-02 02:54:14) [GET]
+  [4;35;1mUser Load (1.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'aa1c4ca443e38ea9b8f7287a3fc5e406fce2037d7dc96651783b648d51e3e82587cee005f69fba203cd1ba8f41b0c3fc4ebc123ec3b3971725a364d145972361') LIMIT 1[0m
+  [4;36;1mCourse Load (1.0ms)[0m   [0;1mSELECT * FROM "courses" [0m
+Rendering template within layouts/main
+Rendering main/index
+Completed in 267ms (View: 24, DB: 2) | 200 OK [http://localhost/]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-11-02 02:54:18) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/mobile.css" with {:method=>:get}):
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing CoursesController#show (for 127.0.0.1 at 2010-11-02 02:55:00) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mCourse Load (1.0ms)[0m   [0mSELECT * FROM "courses" WHERE ("courses"."id" = 1) [0m
+  [4;36;1mUser Load (1.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'aa1c4ca443e38ea9b8f7287a3fc5e406fce2037d7dc96651783b648d51e3e82587cee005f69fba203cd1ba8f41b0c3fc4ebc123ec3b3971725a364d145972361') LIMIT 1[0m
+Rendering template within layouts/courses
+Rendering courses/show
+  [4;35;1mBlurb Load (1.0ms)[0m   [0mSELECT * FROM "blurbs" WHERE ("blurbs".course_id = 1) [0m
+Completed in 219ms (View: 64, DB: 3) | 200 OK [http://localhost/courses/1]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-11-02 02:55:07) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/mobile.css" with {:method=>:get}):
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing CoursesController#show to gif (for 127.0.0.1 at 2010-11-02 02:55:13) [GET]
+  Parameters: {"id"=>"flat_triangle"}
+  [4;36;1mCourse Load (1.0ms)[0m   [0;1mSELECT * FROM "courses" WHERE ("courses"."id" = 0) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find Course with ID=flat_triangle):
+  app/controllers/courses_controller.rb:17:in `show'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (131.0ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (not_found)
+
+
+Processing CoursesController#show (for 127.0.0.1 at 2010-11-02 02:55:25) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mCourse Load (2.0ms)[0m   [0mSELECT * FROM "courses" WHERE ("courses"."id" = 1) [0m
+  [4;36;1mUser Load (1.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'aa1c4ca443e38ea9b8f7287a3fc5e406fce2037d7dc96651783b648d51e3e82587cee005f69fba203cd1ba8f41b0c3fc4ebc123ec3b3971725a364d145972361') LIMIT 1[0m
+Rendering template within layouts/courses
+Rendering courses/show
+  [4;35;1mBlurb Load (2.0ms)[0m   [0mSELECT * FROM "blurbs" WHERE ("blurbs".course_id = 1) [0m
+Completed in 380ms (View: 80, DB: 5) | 200 OK [http://localhost/courses/1]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-11-02 02:55:29) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/mobile.css" with {:method=>:get}):
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing CoursesController#show (for 127.0.0.1 at 2010-11-02 02:55:40) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mCourse Load (1.0ms)[0m   [0;1mSELECT * FROM "courses" WHERE ("courses"."id" = 1) [0m
+  [4;35;1mUser Load (1.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'aa1c4ca443e38ea9b8f7287a3fc5e406fce2037d7dc96651783b648d51e3e82587cee005f69fba203cd1ba8f41b0c3fc4ebc123ec3b3971725a364d145972361') LIMIT 1[0m
+Rendering template within layouts/courses
+Rendering courses/show
+  [4;36;1mBlurb Load (1.0ms)[0m   [0;1mSELECT * FROM "blurbs" WHERE ("blurbs".course_id = 1) [0m
+Completed in 483ms (View: 309, DB: 3) | 200 OK [http://localhost/courses/1]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-11-02 02:55:43) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/mobile.css" with {:method=>:get}):
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing CoursesController#show (for 127.0.0.1 at 2010-11-02 02:59:07) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mCourse Load (1.0ms)[0m   [0mSELECT * FROM "courses" WHERE ("courses"."id" = 1) [0m
+  [4;36;1mUser Load (2.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'aa1c4ca443e38ea9b8f7287a3fc5e406fce2037d7dc96651783b648d51e3e82587cee005f69fba203cd1ba8f41b0c3fc4ebc123ec3b3971725a364d145972361') LIMIT 1[0m
+Rendering template within layouts/courses
+Rendering courses/show
+  [4;35;1mBlurb Load (1.0ms)[0m   [0mSELECT * FROM "blurbs" WHERE ("blurbs".course_id = 1) [0m
+Completed in 206ms (View: 82, DB: 4) | 200 OK [http://localhost/courses/1]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-11-02 02:59:11) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/mobile.css" with {:method=>:get}):
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing MainController#index (for 127.0.0.1 at 2010-11-02 02:59:16) [GET]
+  [4;36;1mUser Load (2.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'aa1c4ca443e38ea9b8f7287a3fc5e406fce2037d7dc96651783b648d51e3e82587cee005f69fba203cd1ba8f41b0c3fc4ebc123ec3b3971725a364d145972361') LIMIT 1[0m
+  [4;35;1mCourse Load (1.0ms)[0m   [0mSELECT * FROM "courses" [0m
+Rendering template within layouts/main
+Rendering main/index
+Completed in 164ms (View: 25, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-11-02 02:59:18) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/mobile.css" with {:method=>:get}):
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing CoursesController#index (for 127.0.0.1 at 2010-11-02 02:59:22) [GET]
+  [4;36;1mUser Load (1.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'aa1c4ca443e38ea9b8f7287a3fc5e406fce2037d7dc96651783b648d51e3e82587cee005f69fba203cd1ba8f41b0c3fc4ebc123ec3b3971725a364d145972361') LIMIT 1[0m
+  [4;35;1mCourse Load (1.0ms)[0m   [0mSELECT * FROM "courses" [0m
+Rendering template within layouts/courses
+Rendering courses/index
+Completed in 331ms (View: 28, DB: 2) | 200 OK [http://localhost/courses]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-11-02 02:59:25) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/mobile.css" with {:method=>:get}):
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing CoursesController#show (for 127.0.0.1 at 2010-11-02 03:01:53) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mCourse Load (1.0ms)[0m   [0;1mSELECT * FROM "courses" WHERE ("courses"."id" = 1) [0m
+  [4;35;1mUser Load (1.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'aa1c4ca443e38ea9b8f7287a3fc5e406fce2037d7dc96651783b648d51e3e82587cee005f69fba203cd1ba8f41b0c3fc4ebc123ec3b3971725a364d145972361') LIMIT 1[0m
+Rendering template within layouts/courses
+Rendering courses/show
+  [4;36;1mBlurb Load (2.0ms)[0m   [0;1mSELECT * FROM "blurbs" WHERE ("blurbs".course_id = 1) [0m
+Completed in 331ms (View: 80, DB: 4) | 200 OK [http://localhost/courses/1]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-11-02 03:02:00) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/mobile.css" with {:method=>:get}):
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing CoursesController#show (for 127.0.0.1 at 2010-11-02 03:02:06) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mCourse Load (1.0ms)[0m   [0mSELECT * FROM "courses" WHERE ("courses"."id" = 1) [0m
+  [4;36;1mUser Load (1.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'aa1c4ca443e38ea9b8f7287a3fc5e406fce2037d7dc96651783b648d51e3e82587cee005f69fba203cd1ba8f41b0c3fc4ebc123ec3b3971725a364d145972361') LIMIT 1[0m
+Rendering template within layouts/courses
+Rendering courses/show
+  [4;35;1mBlurb Load (1.0ms)[0m   [0mSELECT * FROM "blurbs" WHERE ("blurbs".course_id = 1) [0m
+Completed in 220ms (View: 54, DB: 3) | 200 OK [http://localhost/courses/1]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-11-02 03:02:10) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/mobile.css" with {:method=>:get}):
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)

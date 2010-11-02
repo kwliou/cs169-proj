@@ -3,11 +3,21 @@
 	<div class="course-longname"><%= @course.title %></div>
 </div>
 
+<div>
+    <ul id ="breadcrumbs">
+        <li class="breadcrumbs_a"><%= link_to "Home", root_path %></li>
+        <li class="breadcrumbs_arrow">&#9654;</li>
+        <li class="breadcrumbs_a"><%= link_to "Courses", courses_path %></li>
+        <li class="breadcrumbs_arrow">&#9654;</li>
+        <li class="breadcrumbs_a"><%= link_to "#{@course.department} #{@course.number}", "" %></li>
+        <li class="breadcrumbs_semester">Fall '10
+            <img alt="&9662;" src="/images/flat_triangle.gif" /></li>
+    </ul>
+</div>
 <div class="nav-bar">
-	<a href="<%= url_for(:controller => "courses", :action => "index") %>" class="nav-link">Home</a> > 
 	<a href="<%= url_for(:controller => "courses", :action => "show", :id => @course.id) %>" class="nav-link"><%= @course.short_title %></a>
 </div>
-
+<br />
 <div class="course-links-container">
 	<a class="course-link" href="<%= url_for(:controller => "items", :action => "index", :id => @course.id) %>">Assignments/Projects</a><span class="course-link-sep">|</span>
 	<a class="course-link" href="<%= url_for(:controller => "items", :action => "index", :id => @course.id) %>">Exams/Quizzes</a><span class="course-link-sep">|</span>
