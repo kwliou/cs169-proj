@@ -8,7 +8,7 @@ Feature: assignments+projects page contains all information about the course's a
 
 Scenario: Student observes his past assignment scores
 	Given my grade for hw1 is 100/100
-	When I am on the assignments+projects page
+	When I visit the assignments+projects page
 	Then I will see my grade for hw1 is 100/100
 	
 Scenario: Student submits assignments before due date
@@ -25,5 +25,5 @@ Scenario: Student submits assignments after due date
 
 Scenario: Student observes details about his assignments
 	Given hw1's description is "read chapter 1"
-	When I click on the hw1 link on the assignments+projects page
+	When I click on the "Show" link on the assignments+projects page
 	Then I should see "read chapter 1" as the description
