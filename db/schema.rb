@@ -9,11 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(:version => 20101102044835) do
-=======
 ActiveRecord::Schema.define(:version => 20101102080132) do
->>>>>>> c2d2740c4b8952e111957aedca5c159edf4fc764
 
   create_table "blurbs", :force => true do |t|
     t.string   "text"
