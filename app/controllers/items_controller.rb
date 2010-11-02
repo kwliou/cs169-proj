@@ -1,9 +1,11 @@
 class ItemsController < ApplicationController
-  # GET /items
+  # GET /courses/:id/items
   # GET /items.xml
   def index
-    @items = Item.all
-
+    # find all items associated with the course id
+    @items = Item.all(:conditions => {:course_id => params[:id]})
+    @course = Course.find(params[:id])
+    @current_user = current_user
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @items }
@@ -11,7 +13,7 @@ class ItemsController < ApplicationController
   end
 
   # GET /items/1
-  # GET /items/1.xml
+  # GET/items/1.xml
   def show
     @item = Item.find(params[:id])
 
