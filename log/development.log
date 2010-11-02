@@ -42651,3 +42651,2118 @@ Completed in 141ms (View: 41, DB: 3) | 200 OK [http://localhost/users/1/posts]
   [4;36;1mSQL (227.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102015310')[0m
   [4;35;1mSQL (363.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102034712')[0m
   [4;36;1mSQL (241.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102034918')[0m
+
+
+Processing PostsController#index (for 127.0.0.1 at 2010-11-02 02:04:19) [GET]
+  Parameters: {"user_id"=>"1"}
+
+ActiveRecord::StatementInvalid (Could not find table 'users'):
+  app/controllers/posts_controller.rb:5:in `get_user'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (153.0ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainController#index (for 127.0.0.1 at 2010-11-02 02:04:24) [GET]
+
+ActiveRecord::StatementInvalid (Could not find table 'users'):
+  authlogic (2.1.6) lib/authlogic/session/scopes.rb:95:in `send'
+  authlogic (2.1.6) lib/authlogic/session/scopes.rb:95:in `search_for_record'
+  authlogic (2.1.6) lib/authlogic/session/scopes.rb:94:in `send'
+  authlogic (2.1.6) lib/authlogic/session/scopes.rb:94:in `search_for_record'
+  authlogic (2.1.6) lib/authlogic/session/cookies.rb:108:in `persist_by_cookie'
+  authlogic (2.1.6) lib/authlogic/session/callbacks.rb:90:in `persist'
+  authlogic (2.1.6) lib/authlogic/session/persistence.rb:55:in `persisting?'
+  authlogic (2.1.6) lib/authlogic/session/persistence.rb:39:in `find'
+  app/controllers/application_controller.rb:16:in `current_user_session'
+  app/controllers/application_controller.rb:20:in `current_user'
+  app/controllers/main_controller.rb:3:in `index'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (398.0ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (5.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (164.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (125.0ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20101030024857)
+  [4;35;1mSQL (6.0ms)[0m   [0mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar(255), "last_name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20101030024857')[0m
+Migrating to CreateCourses (20101030031611)
+  [4;35;1mSQL (47.0ms)[0m   [0mCREATE TABLE "courses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "department" varchar(255), "number" varchar(255), "days" varchar(255), "term" varchar(255), "year" integer, "description" text, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20101030031611')[0m
+Migrating to CreatePosts (20101030033007)
+  [4;35;1mSQL (5.0ms)[0m   [0mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "commented_at" datetime, "tags" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20101030033007')[0m
+Migrating to CreateItems (20101030034506)
+  [4;35;1mSQL (6.0ms)[0m   [0mCREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "type" varchar(255), "due_date" datetime, "points" integer, "weight" float, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20101030034506')[0m
+Migrating to AddAuthlogic (20101030092647)
+  [4;35;1mSQL (5.0ms)[0m   [0mALTER TABLE "users" ADD "username" varchar(255)[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mALTER TABLE "users" ADD "email" varchar(255)[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mALTER TABLE "users" ADD "crypted_password" varchar(255)[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mALTER TABLE "users" ADD "password_salt" varchar(255)[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mALTER TABLE "users" ADD "persistence_token" varchar(255)[0m
+  [4;36;1mSQL (4.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20101030092647')[0m
+Migrating to CreateGrades (20101102015016)
+  [4;35;1mSQL (17.0ms)[0m   [0mCREATE TABLE "grades" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "letter" varchar(255), "points_received" decimal, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20101102015016')[0m
+Migrating to CreateBlurbs (20101102015310)
+  [4;35;1mSQL (4.0ms)[0m   [0mCREATE TABLE "blurbs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar(255), "as_html" boolean, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20101102015310')[0m
+Migrating to AddFieldsToCourses (20101102034712)
+  [4;35;1mSQL (5.0ms)[0m   [0mALTER TABLE "courses" ADD "title" varchar(255)[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mALTER TABLE "courses" ADD "short_title" varchar(255)[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20101102034712')[0m
+Migrating to AddPointsToCourses (20101102034918)
+  [4;36;1mSQL (6.0ms)[0m   [0;1mALTER TABLE "courses" ADD "points_possible" decimal[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20101102034918')[0m
+Migrating to RemoveAssignment (20101102043223)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSQLite3::SQLException: no such table: assignments: DROP TABLE "assignments"[0m
+  [4;36;1mSQL (4.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20101030024857)
+Migrating to CreateCourses (20101030031611)
+Migrating to CreatePosts (20101030033007)
+Migrating to CreateItems (20101030034506)
+Migrating to AddAuthlogic (20101030092647)
+Migrating to CreateGrades (20101102015016)
+Migrating to CreateBlurbs (20101102015310)
+Migrating to AddFieldsToCourses (20101102034712)
+Migrating to AddPointsToCourses (20101102034918)
+Migrating to AddDescriptionToItem (20101102044510)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (5.0ms)[0m   [0mALTER TABLE "items" ADD "description" varchar(255)[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20101102044510')[0m
+Migrating to AddAssoc (20101102044835)
+  [4;35;1mSQL (25.0ms)[0m   [0mALTER TABLE "posts" ADD "user_id" integer[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20101102044835')[0m
+Migrating to CoursesToUsers (20101102050344)
+  [4;35;1mSQL (5.0ms)[0m   [0mCREATE TABLE "courses_users" ("user_id" integer NOT NULL, "course_id" integer NOT NULL) [0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20101102050344')[0m
+Migrating to AddForeignKeys (20101102051925)
+  [4;35;1mSQL (4.0ms)[0m   [0mALTER TABLE "items" ADD "course_id" integer[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mALTER TABLE "blurbs" ADD "course_id" integer[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mALTER TABLE "grades" ADD "user_id" integer[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20101102051925')[0m
+Migrating to AddFkToItems (20101102053120)
+  [4;35;1mSQL (4.0ms)[0m   [0mALTER TABLE "items" ADD "grade_id" integer[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20101102053120')[0m
+Migrating to AddTitleToBlurbs (20101102063617)
+  [4;35;1mSQL (4.0ms)[0m   [0mALTER TABLE "blurbs" ADD "title" text[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20101102063617')[0m
+Migrating to AddPositionToBlurbs (20101102070406)
+  [4;35;1mSQL (5.0ms)[0m   [0mALTER TABLE "blurbs" ADD "position" varchar(255)[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20101102070406')[0m
+Migrating to GradesToItem (20101102080132)
+  [4;35;1mSQL (11.0ms)[0m   [0mCREATE TEMPORARY TABLE "altered_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "type" varchar(255), "due_date" datetime, "points" integer, "weight" float, "created_at" datetime, "updated_at" datetime, "description" varchar(255), "course_id" integer, "grade_id" integer) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("items")[0m
+  [4;35;1mSQL (5.0ms)[0m   [0mDROP TABLE "items"[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mCREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "type" varchar(255), "due_date" datetime, "points" integer, "weight" float, "created_at" datetime, "updated_at" datetime, "description" varchar(255), "course_id" integer) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("altered_items")[0m
+  [4;36;1mSQL (3.0ms)[0m   [0;1mDROP TABLE "altered_items"[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mALTER TABLE "grades" ADD "item_id" integer[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20101102080132')[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (2.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("blurbs")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("courses")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("courses_users")[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mPRAGMA index_list("grades")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("items")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("posts")[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mPRAGMA index_list("users")[0m
+
+
+Processing MainController#index (for 127.0.0.1 at 2010-11-02 02:05:58) [GET]
+  [4;35;1mUser Load (1.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."persistence_token" = '2a39d07ab5a7493719828244126200719ba24241113fbbc50a42ae5dc9f151b451f417c50c640757a6f4e3dec237648b1b978335f17cfbd689bbe38907af159e') LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = '2a39d07ab5a7493719828244126200719ba24241113fbbc50a42ae5dc9f151b451f417c50c640757a6f4e3dec237648b1b978335f17cfbd689bbe38907af159e') LIMIT 1[0m
+  [4;35;1mCourse Load (1.0ms)[0m   [0mSELECT * FROM "courses" [0m
+Rendering template within layouts/main
+Rendering main/index
+Completed in 152ms (View: 19, DB: 2) | 200 OK [http://localhost/]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-11-02 02:06:01) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/mobile.css" with {:method=>:get}):
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing UserSessionsController#create (for 127.0.0.1 at 2010-11-02 02:06:05) [POST]
+  Parameters: {"commit"=>"", "user_session"=>{"username"=>"kwliou", "password"=>"hello"}, "authenticity_token"=>"/VKjLxcimHZV0W5RUOR1PYMd2DaKrRgkj5oyzGAbjBY="}
+  [4;36;1mUser Load (1.0ms)[0m   [0;1mSELECT * FROM "users" WHERE (LOWER("users".username) = 'kwliou') LIMIT 1[0m
+Rendering template within layouts/user_sessions
+Rendering user_sessions/new
+Completed in 128ms (View: 34, DB: 1) | 200 OK [http://localhost/user_sessions]
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-11-02 02:06:18) [GET]
+  [4;35;1mUser Load (1.0ms)[0m   [0mSELECT * FROM "users" [0m
+Rendering template within layouts/users
+Rendering users/index
+Completed in 94ms (View: 34, DB: 1) | 200 OK [http://localhost/users]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2010-11-02 02:06:24) [GET]
+Rendering template within layouts/users
+Rendering users/new
+Completed in 138ms (View: 39, DB: 0) | 200 OK [http://localhost/users/new]
+
+
+Processing UsersController#create (for 127.0.0.1 at 2010-11-02 02:06:35) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"/VKjLxcimHZV0W5RUOR1PYMd2DaKrRgkj5oyzGAbjBY=", "user"=>{"password_confirmation"=>"hello", "username"=>"kwliou", "last_name"=>"Liou", "password"=>"hello", "email"=>"kwliou@gmail.com", "first_name"=>"Kevin"}}
+  [4;36;1mUser Load (1.0ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE (LOWER("users"."email") = 'kwliou@gmail.com') LIMIT 1[0m
+  [4;35;1mUser Load (1.0ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."username") = 'kwliou') LIMIT 1[0m
+  [4;36;1mUser Load (1.0ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'aa1c4ca443e38ea9b8f7287a3fc5e406fce2037d7dc96651783b648d51e3e82587cee005f69fba203cd1ba8f41b0c3fc4ebc123ec3b3971725a364d145972361') LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."persistence_token" = '2a39d07ab5a7493719828244126200719ba24241113fbbc50a42ae5dc9f151b451f417c50c640757a6f4e3dec237648b1b978335f17cfbd689bbe38907af159e') LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = '2a39d07ab5a7493719828244126200719ba24241113fbbc50a42ae5dc9f151b451f417c50c640757a6f4e3dec237648b1b978335f17cfbd689bbe38907af159e') LIMIT 1[0m
+  [4;35;1mUser Create (6.0ms)[0m   [0mINSERT INTO "users" ("created_at", "crypted_password", "updated_at", "username", "password_salt", "last_name", "persistence_token", "first_name", "email") VALUES('2010-11-02 09:06:35', '787670d79a488179966faa870cfac48ecc9886f8ae0fe2ae819f200602e07335a2827714bda5961fb3fcd877360872b7988acede051286c1c4c168a7e4d82fa6', '2010-11-02 09:06:35', 'kwliou', 'yvlw3tvqo6XtNYBUpaY7', 'Liou', 'aa1c4ca443e38ea9b8f7287a3fc5e406fce2037d7dc96651783b648d51e3e82587cee005f69fba203cd1ba8f41b0c3fc4ebc123ec3b3971725a364d145972361', 'Kevin', 'kwliou@gmail.com')[0m
+Redirected to http://localhost:3000/users/1
+Completed in 282ms (DB: 9) | 302 Found [http://localhost/users]
+
+
+Processing UsersController#show (for 127.0.0.1 at 2010-11-02 02:06:36) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mUser Load (2.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering template within layouts/users
+Rendering users/show
+Completed in 123ms (View: 24, DB: 2) | 200 OK [http://localhost/users/1]
+
+
+Processing PostsController#index (for 127.0.0.1 at 2010-11-02 02:06:45) [GET]
+  Parameters: {"user_id"=>"1"}
+  [4;35;1mUser Load (1.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering template within layouts/posts
+Rendering posts/index
+  [4;36;1mPost Load (1.0ms)[0m   [0;1mSELECT * FROM "posts" WHERE ("posts".user_id = 1) [0m
+Completed in 164ms (View: 48, DB: 2) | 200 OK [http://localhost/users/1/posts]
+
+
+Processing MainController#index (for 127.0.0.1 at 2010-11-02 02:07:07) [GET]
+  [4;35;1mUser Load (1.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'aa1c4ca443e38ea9b8f7287a3fc5e406fce2037d7dc96651783b648d51e3e82587cee005f69fba203cd1ba8f41b0c3fc4ebc123ec3b3971725a364d145972361') LIMIT 1[0m
+  [4;36;1mCourse Load (1.0ms)[0m   [0;1mSELECT * FROM "courses" [0m
+Rendering template within layouts/main
+Rendering main/index
+Completed in 144ms (View: 15, DB: 2) | 200 OK [http://localhost/]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-11-02 02:07:13) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/mobile.css" with {:method=>:get}):
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing CoursesController#new (for 127.0.0.1 at 2010-11-02 02:07:15) [GET]
+Rendering template within layouts/courses
+Rendering courses/new
+Completed in 189ms (View: 139, DB: 0) | 200 OK [http://localhost/courses/new]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-11-02 02:07:19) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/mobile.css" with {:method=>:get}):
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-11-02 02:07:53) [GET]
+
+ActionController::RoutingError (No route matches "/edit" with {:method=>:get}):
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing CoursesController#new (for 127.0.0.1 at 2010-11-02 02:08:51) [GET]
+Rendering template within layouts/courses
+Rendering courses/new
+Completed in 86ms (View: 54, DB: 0) | 200 OK [http://localhost/courses/new]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-11-02 02:08:54) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/mobile.css" with {:method=>:get}):
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing CoursesController#create (for 127.0.0.1 at 2010-11-02 02:21:11) [POST]
+  Parameters: {"course"=>{"name"=>"Software Engineering", "number"=>"162", "term"=>"Fall", "days"=>"smTwRfs", "year"=>"2010", "description"=>"", "department"=>"COMPSCI"}, "commit"=>"Create", "authenticity_token"=>"/VKjLxcimHZV0W5RUOR1PYMd2DaKrRgkj5oyzGAbjBY="}
+  [4;35;1mCourse Create (3.0ms)[0m   [0mINSERT INTO "courses" ("number", "name", "created_at", "short_title", "title", "days", "term", "updated_at", "points_possible", "year", "description", "department") VALUES('162', 'Software Engineering', '2010-11-02 09:21:11', NULL, NULL, 'smTwRfs', 'Fall', '2010-11-02 09:21:11', NULL, 2010, '', 'COMPSCI')[0m
+Redirected to http://localhost:3000/courses/1
+Completed in 331ms (DB: 3) | 302 Found [http://localhost/courses]
+
+
+Processing CoursesController#show (for 127.0.0.1 at 2010-11-02 02:21:12) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mCourse Load (1.0ms)[0m   [0;1mSELECT * FROM "courses" WHERE ("courses"."id" = 1) [0m
+  [4;35;1mUser Load (1.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'aa1c4ca443e38ea9b8f7287a3fc5e406fce2037d7dc96651783b648d51e3e82587cee005f69fba203cd1ba8f41b0c3fc4ebc123ec3b3971725a364d145972361') LIMIT 1[0m
+Rendering template within layouts/courses
+Rendering courses/show
+  [4;36;1mBlurb Load (1.0ms)[0m   [0;1mSELECT * FROM "blurbs" WHERE ("blurbs".course_id = 1) [0m
+Completed in 265ms (View: 79, DB: 3) | 200 OK [http://localhost/courses/1]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-11-02 02:21:16) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/mobile.css" with {:method=>:get}):
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing CoursesController#index (for 127.0.0.1 at 2010-11-02 02:22:10) [GET]
+  [4;35;1mUser Load (2.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'aa1c4ca443e38ea9b8f7287a3fc5e406fce2037d7dc96651783b648d51e3e82587cee005f69fba203cd1ba8f41b0c3fc4ebc123ec3b3971725a364d145972361') LIMIT 1[0m
+  [4;36;1mCourse Load (2.0ms)[0m   [0;1mSELECT * FROM "courses" [0m
+Rendering template within layouts/courses
+Rendering courses/index
+Completed in 214ms (View: 40, DB: 4) | 200 OK [http://localhost/courses]
+
+
+Processing MainController#index (for 127.0.0.1 at 2010-11-02 02:22:16) [GET]
+  [4;35;1mUser Load (2.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'aa1c4ca443e38ea9b8f7287a3fc5e406fce2037d7dc96651783b648d51e3e82587cee005f69fba203cd1ba8f41b0c3fc4ebc123ec3b3971725a364d145972361') LIMIT 1[0m
+  [4;36;1mCourse Load (2.0ms)[0m   [0;1mSELECT * FROM "courses" [0m
+Rendering template within layouts/main
+Rendering main/index
+Completed in 200ms (View: 32, DB: 4) | 200 OK [http://localhost/]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-11-02 02:22:20) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/mobile.css" with {:method=>:get}):
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing MainController#index (for 127.0.0.1 at 2010-11-02 02:29:31) [GET]
+  [4;35;1mUser Load (1.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'aa1c4ca443e38ea9b8f7287a3fc5e406fce2037d7dc96651783b648d51e3e82587cee005f69fba203cd1ba8f41b0c3fc4ebc123ec3b3971725a364d145972361') LIMIT 1[0m
+  [4;36;1mCourse Load (1.0ms)[0m   [0;1mSELECT * FROM "courses" [0m
+Rendering template within layouts/main
+Rendering main/index
+Completed in 162ms (View: 24, DB: 2) | 200 OK [http://localhost/]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-11-02 02:29:34) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/mobile.css" with {:method=>:get}):
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing CoursesController#show (for 127.0.0.1 at 2010-11-02 02:53:57) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mCourse Load (1.0ms)[0m   [0mSELECT * FROM "courses" WHERE ("courses"."id" = 1) [0m
+  [4;36;1mUser Load (1.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'aa1c4ca443e38ea9b8f7287a3fc5e406fce2037d7dc96651783b648d51e3e82587cee005f69fba203cd1ba8f41b0c3fc4ebc123ec3b3971725a364d145972361') LIMIT 1[0m
+Rendering template within layouts/courses
+Rendering courses/show
+  [4;35;1mBlurb Load (1.0ms)[0m   [0mSELECT * FROM "blurbs" WHERE ("blurbs".course_id = 1) [0m
+Completed in 210ms (View: 71, DB: 3) | 200 OK [http://localhost/courses/1]
+
+
+Processing CoursesController#show to gif (for 127.0.0.1 at 2010-11-02 02:54:01) [GET]
+  Parameters: {"id"=>"flat_triangle"}
+  [4;36;1mCourse Load (1.0ms)[0m   [0;1mSELECT * FROM "courses" WHERE ("courses"."id" = 0) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find Course with ID=flat_triangle):
+  app/controllers/courses_controller.rb:17:in `show'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (279.0ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-11-02 02:54:02) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/mobile.css" with {:method=>:get}):
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing MainController#index (for 127.0.0.1 at 2010-11-02 02:54:14) [GET]
+  [4;35;1mUser Load (1.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'aa1c4ca443e38ea9b8f7287a3fc5e406fce2037d7dc96651783b648d51e3e82587cee005f69fba203cd1ba8f41b0c3fc4ebc123ec3b3971725a364d145972361') LIMIT 1[0m
+  [4;36;1mCourse Load (1.0ms)[0m   [0;1mSELECT * FROM "courses" [0m
+Rendering template within layouts/main
+Rendering main/index
+Completed in 267ms (View: 24, DB: 2) | 200 OK [http://localhost/]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-11-02 02:54:18) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/mobile.css" with {:method=>:get}):
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing CoursesController#show (for 127.0.0.1 at 2010-11-02 02:55:00) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mCourse Load (1.0ms)[0m   [0mSELECT * FROM "courses" WHERE ("courses"."id" = 1) [0m
+  [4;36;1mUser Load (1.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'aa1c4ca443e38ea9b8f7287a3fc5e406fce2037d7dc96651783b648d51e3e82587cee005f69fba203cd1ba8f41b0c3fc4ebc123ec3b3971725a364d145972361') LIMIT 1[0m
+Rendering template within layouts/courses
+Rendering courses/show
+  [4;35;1mBlurb Load (1.0ms)[0m   [0mSELECT * FROM "blurbs" WHERE ("blurbs".course_id = 1) [0m
+Completed in 219ms (View: 64, DB: 3) | 200 OK [http://localhost/courses/1]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-11-02 02:55:07) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/mobile.css" with {:method=>:get}):
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing CoursesController#show to gif (for 127.0.0.1 at 2010-11-02 02:55:13) [GET]
+  Parameters: {"id"=>"flat_triangle"}
+  [4;36;1mCourse Load (1.0ms)[0m   [0;1mSELECT * FROM "courses" WHERE ("courses"."id" = 0) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find Course with ID=flat_triangle):
+  app/controllers/courses_controller.rb:17:in `show'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (131.0ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (not_found)
+
+
+Processing CoursesController#show (for 127.0.0.1 at 2010-11-02 02:55:25) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mCourse Load (2.0ms)[0m   [0mSELECT * FROM "courses" WHERE ("courses"."id" = 1) [0m
+  [4;36;1mUser Load (1.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'aa1c4ca443e38ea9b8f7287a3fc5e406fce2037d7dc96651783b648d51e3e82587cee005f69fba203cd1ba8f41b0c3fc4ebc123ec3b3971725a364d145972361') LIMIT 1[0m
+Rendering template within layouts/courses
+Rendering courses/show
+  [4;35;1mBlurb Load (2.0ms)[0m   [0mSELECT * FROM "blurbs" WHERE ("blurbs".course_id = 1) [0m
+Completed in 380ms (View: 80, DB: 5) | 200 OK [http://localhost/courses/1]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-11-02 02:55:29) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/mobile.css" with {:method=>:get}):
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing CoursesController#show (for 127.0.0.1 at 2010-11-02 02:55:40) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mCourse Load (1.0ms)[0m   [0;1mSELECT * FROM "courses" WHERE ("courses"."id" = 1) [0m
+  [4;35;1mUser Load (1.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'aa1c4ca443e38ea9b8f7287a3fc5e406fce2037d7dc96651783b648d51e3e82587cee005f69fba203cd1ba8f41b0c3fc4ebc123ec3b3971725a364d145972361') LIMIT 1[0m
+Rendering template within layouts/courses
+Rendering courses/show
+  [4;36;1mBlurb Load (1.0ms)[0m   [0;1mSELECT * FROM "blurbs" WHERE ("blurbs".course_id = 1) [0m
+Completed in 483ms (View: 309, DB: 3) | 200 OK [http://localhost/courses/1]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-11-02 02:55:43) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/mobile.css" with {:method=>:get}):
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing CoursesController#show (for 127.0.0.1 at 2010-11-02 02:59:07) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mCourse Load (1.0ms)[0m   [0mSELECT * FROM "courses" WHERE ("courses"."id" = 1) [0m
+  [4;36;1mUser Load (2.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'aa1c4ca443e38ea9b8f7287a3fc5e406fce2037d7dc96651783b648d51e3e82587cee005f69fba203cd1ba8f41b0c3fc4ebc123ec3b3971725a364d145972361') LIMIT 1[0m
+Rendering template within layouts/courses
+Rendering courses/show
+  [4;35;1mBlurb Load (1.0ms)[0m   [0mSELECT * FROM "blurbs" WHERE ("blurbs".course_id = 1) [0m
+Completed in 206ms (View: 82, DB: 4) | 200 OK [http://localhost/courses/1]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-11-02 02:59:11) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/mobile.css" with {:method=>:get}):
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing MainController#index (for 127.0.0.1 at 2010-11-02 02:59:16) [GET]
+  [4;36;1mUser Load (2.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'aa1c4ca443e38ea9b8f7287a3fc5e406fce2037d7dc96651783b648d51e3e82587cee005f69fba203cd1ba8f41b0c3fc4ebc123ec3b3971725a364d145972361') LIMIT 1[0m
+  [4;35;1mCourse Load (1.0ms)[0m   [0mSELECT * FROM "courses" [0m
+Rendering template within layouts/main
+Rendering main/index
+Completed in 164ms (View: 25, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-11-02 02:59:18) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/mobile.css" with {:method=>:get}):
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing CoursesController#index (for 127.0.0.1 at 2010-11-02 02:59:22) [GET]
+  [4;36;1mUser Load (1.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'aa1c4ca443e38ea9b8f7287a3fc5e406fce2037d7dc96651783b648d51e3e82587cee005f69fba203cd1ba8f41b0c3fc4ebc123ec3b3971725a364d145972361') LIMIT 1[0m
+  [4;35;1mCourse Load (1.0ms)[0m   [0mSELECT * FROM "courses" [0m
+Rendering template within layouts/courses
+Rendering courses/index
+Completed in 331ms (View: 28, DB: 2) | 200 OK [http://localhost/courses]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-11-02 02:59:25) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/mobile.css" with {:method=>:get}):
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing CoursesController#show (for 127.0.0.1 at 2010-11-02 03:01:53) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mCourse Load (1.0ms)[0m   [0;1mSELECT * FROM "courses" WHERE ("courses"."id" = 1) [0m
+  [4;35;1mUser Load (1.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'aa1c4ca443e38ea9b8f7287a3fc5e406fce2037d7dc96651783b648d51e3e82587cee005f69fba203cd1ba8f41b0c3fc4ebc123ec3b3971725a364d145972361') LIMIT 1[0m
+Rendering template within layouts/courses
+Rendering courses/show
+  [4;36;1mBlurb Load (2.0ms)[0m   [0;1mSELECT * FROM "blurbs" WHERE ("blurbs".course_id = 1) [0m
+Completed in 331ms (View: 80, DB: 4) | 200 OK [http://localhost/courses/1]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-11-02 03:02:00) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/mobile.css" with {:method=>:get}):
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing CoursesController#show (for 127.0.0.1 at 2010-11-02 03:02:06) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mCourse Load (1.0ms)[0m   [0mSELECT * FROM "courses" WHERE ("courses"."id" = 1) [0m
+  [4;36;1mUser Load (1.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'aa1c4ca443e38ea9b8f7287a3fc5e406fce2037d7dc96651783b648d51e3e82587cee005f69fba203cd1ba8f41b0c3fc4ebc123ec3b3971725a364d145972361') LIMIT 1[0m
+Rendering template within layouts/courses
+Rendering courses/show
+  [4;35;1mBlurb Load (1.0ms)[0m   [0mSELECT * FROM "blurbs" WHERE ("blurbs".course_id = 1) [0m
+Completed in 220ms (View: 54, DB: 3) | 200 OK [http://localhost/courses/1]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-11-02 03:02:10) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/mobile.css" with {:method=>:get}):
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing MainController#index (for 127.0.0.1 at 2010-11-02 03:05:02) [GET]
+  [4;36;1mUser Load (3.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'aa1c4ca443e38ea9b8f7287a3fc5e406fce2037d7dc96651783b648d51e3e82587cee005f69fba203cd1ba8f41b0c3fc4ebc123ec3b3971725a364d145972361') LIMIT 1[0m
+  [4;35;1mCourse Load (1.0ms)[0m   [0mSELECT * FROM "courses" [0m
+Rendering template within layouts/main
+Rendering main/index
+Completed in 190ms (View: 27, DB: 4) | 200 OK [http://localhost/]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-11-02 03:05:07) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/mobile.css" with {:method=>:get}):
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing MainController#index (for 127.0.0.1 at 2010-11-02 03:15:48) [GET]
+  [4;36;1mUser Load (1.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'aa1c4ca443e38ea9b8f7287a3fc5e406fce2037d7dc96651783b648d51e3e82587cee005f69fba203cd1ba8f41b0c3fc4ebc123ec3b3971725a364d145972361') LIMIT 1[0m
+  [4;35;1mCourse Load (1.0ms)[0m   [0mSELECT * FROM "courses" [0m
+Rendering template within layouts/main
+Rendering main/index
+Completed in 151ms (View: 21, DB: 2) | 200 OK [http://localhost/]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-11-02 03:15:51) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/mobile.css" with {:method=>:get}):
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing MainController#index (for 127.0.0.1 at 2010-11-02 03:16:16) [GET]
+  [4;36;1mUser Load (1.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'aa1c4ca443e38ea9b8f7287a3fc5e406fce2037d7dc96651783b648d51e3e82587cee005f69fba203cd1ba8f41b0c3fc4ebc123ec3b3971725a364d145972361') LIMIT 1[0m
+  [4;35;1mCourse Load (1.0ms)[0m   [0mSELECT * FROM "courses" [0m
+Rendering template within layouts/main
+Rendering main/index
+Completed in 159ms (View: 28, DB: 2) | 200 OK [http://localhost/]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-11-02 03:16:19) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/mobile.css" with {:method=>:get}):
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing MainController#index (for 127.0.0.1 at 2010-11-02 03:16:27) [GET]
+  [4;36;1mUser Load (1.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'aa1c4ca443e38ea9b8f7287a3fc5e406fce2037d7dc96651783b648d51e3e82587cee005f69fba203cd1ba8f41b0c3fc4ebc123ec3b3971725a364d145972361') LIMIT 1[0m
+  [4;35;1mCourse Load (1.0ms)[0m   [0mSELECT * FROM "courses" [0m
+Rendering template within layouts/main
+Rendering main/index
+Completed in 193ms (View: 23, DB: 2) | 200 OK [http://localhost/]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-11-02 03:16:31) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/mobile.css" with {:method=>:get}):
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing MainController#index (for 127.0.0.1 at 2010-11-02 03:16:41) [GET]
+  [4;36;1mUser Load (2.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'aa1c4ca443e38ea9b8f7287a3fc5e406fce2037d7dc96651783b648d51e3e82587cee005f69fba203cd1ba8f41b0c3fc4ebc123ec3b3971725a364d145972361') LIMIT 1[0m
+  [4;35;1mCourse Load (2.0ms)[0m   [0mSELECT * FROM "courses" [0m
+Rendering template within layouts/main
+Rendering main/index
+Completed in 232ms (View: 27, DB: 4) | 200 OK [http://localhost/]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-11-02 03:16:45) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/mobile.css" with {:method=>:get}):
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (3.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (3.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (141.0ms)[0m   [0;1mCREATE TABLE "blurbs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar(255), "as_html" boolean, "created_at" datetime, "updated_at" datetime, "course_id" integer, "title" text, "position" varchar(255)) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (126.0ms)[0m   [0;1mCREATE TABLE "courses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "department" varchar(255), "number" varchar(255), "days" varchar(255), "term" varchar(255), "year" integer, "description" text, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "title" varchar(255), "short_title" varchar(255), "points_possible" decimal) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (107.0ms)[0m   [0;1mCREATE TABLE "courses_users" ("user_id" integer NOT NULL, "course_id" integer NOT NULL) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (299.0ms)[0m   [0;1mCREATE TABLE "grades" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "letter" varchar(255), "points_received" decimal, "created_at" datetime, "updated_at" datetime, "user_id" integer, "item_id" integer) [0m
+  [4;35;1mSQL (2.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (436.0ms)[0m   [0;1mCREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "type" varchar(255), "due_date" datetime, "points" integer, "weight" float, "created_at" datetime, "updated_at" datetime, "description" varchar(255), "course_id" integer) [0m
+  [4;35;1mSQL (2.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (334.0ms)[0m   [0;1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "commented_at" datetime, "tags" varchar(255), "created_at" datetime, "updated_at" datetime, "user_id" integer) [0m
+  [4;35;1mSQL (2.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (426.0ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar(255), "last_name" varchar(255), "created_at" datetime, "updated_at" datetime, "username" varchar(255), "email" varchar(255), "crypted_password" varchar(255), "password_salt" varchar(255), "persistence_token" varchar(255)) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (225.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (202.0ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (2.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (136.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102080132')[0m
+  [4;36;1mSQL (212.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030024857')[0m
+  [4;35;1mSQL (205.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101030031611')[0m
+  [4;36;1mSQL (147.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030033007')[0m
+  [4;35;1mSQL (295.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101030034506')[0m
+  [4;36;1mSQL (372.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030092647')[0m
+  [4;35;1mSQL (155.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102015016')[0m
+  [4;36;1mSQL (153.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102015310')[0m
+  [4;35;1mSQL (145.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102034712')[0m
+  [4;36;1mSQL (186.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102034918')[0m
+  [4;35;1mSQL (148.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102044510')[0m
+  [4;36;1mSQL (151.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102044835')[0m
+  [4;35;1mSQL (142.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102050344')[0m
+  [4;36;1mSQL (155.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102051925')[0m
+  [4;35;1mSQL (182.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102053120')[0m
+  [4;36;1mSQL (170.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102063617')[0m
+  [4;35;1mSQL (156.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102070406')[0m
+  [4;36;1mSQL (6.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (3.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (147.0ms)[0m   [0;1mCREATE TABLE "blurbs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar(255), "as_html" boolean, "created_at" datetime, "updated_at" datetime, "course_id" integer, "title" text, "position" varchar(255)) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (159.0ms)[0m   [0;1mCREATE TABLE "courses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "department" varchar(255), "number" varchar(255), "days" varchar(255), "term" varchar(255), "year" integer, "description" text, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "title" varchar(255), "short_title" varchar(255), "points_possible" decimal) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (262.0ms)[0m   [0;1mCREATE TABLE "courses_users" ("user_id" integer NOT NULL, "course_id" integer NOT NULL) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (193.0ms)[0m   [0;1mCREATE TABLE "grades" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "letter" varchar(255), "points_received" decimal, "created_at" datetime, "updated_at" datetime, "user_id" integer, "item_id" integer) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (246.0ms)[0m   [0;1mCREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "type" varchar(255), "due_date" datetime, "points" integer, "weight" float, "created_at" datetime, "updated_at" datetime, "description" varchar(255), "course_id" integer) [0m
+  [4;35;1mSQL (2.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (148.0ms)[0m   [0;1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "commented_at" datetime, "tags" varchar(255), "created_at" datetime, "updated_at" datetime, "user_id" integer) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (166.0ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar(255), "last_name" varchar(255), "created_at" datetime, "updated_at" datetime, "username" varchar(255), "email" varchar(255), "crypted_password" varchar(255), "password_salt" varchar(255), "persistence_token" varchar(255)) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (143.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (152.0ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (2.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (205.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102080132')[0m
+  [4;36;1mSQL (162.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030024857')[0m
+  [4;35;1mSQL (120.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101030031611')[0m
+  [4;36;1mSQL (133.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030033007')[0m
+  [4;35;1mSQL (130.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101030034506')[0m
+  [4;36;1mSQL (234.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030092647')[0m
+  [4;35;1mSQL (166.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102015016')[0m
+  [4;36;1mSQL (167.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102015310')[0m
+  [4;35;1mSQL (128.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102034712')[0m
+  [4;36;1mSQL (143.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102034918')[0m
+  [4;35;1mSQL (303.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102044510')[0m
+  [4;36;1mSQL (207.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102044835')[0m
+  [4;35;1mSQL (143.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102050344')[0m
+  [4;36;1mSQL (111.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102051925')[0m
+  [4;35;1mSQL (132.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102053120')[0m
+  [4;36;1mSQL (171.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102063617')[0m
+  [4;35;1mSQL (148.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102070406')[0m
+  [4;36;1mSQL (3.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (3.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (140.0ms)[0m   [0;1mCREATE TABLE "blurbs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar(255), "as_html" boolean, "created_at" datetime, "updated_at" datetime, "course_id" integer, "title" text, "position" varchar(255)) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (115.0ms)[0m   [0;1mCREATE TABLE "courses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "department" varchar(255), "number" varchar(255), "days" varchar(255), "term" varchar(255), "year" integer, "description" text, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "title" varchar(255), "short_title" varchar(255), "points_possible" decimal) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (118.0ms)[0m   [0;1mCREATE TABLE "courses_users" ("user_id" integer NOT NULL, "course_id" integer NOT NULL) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (188.0ms)[0m   [0;1mCREATE TABLE "grades" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "letter" varchar(255), "points_received" decimal, "created_at" datetime, "updated_at" datetime, "user_id" integer, "item_id" integer) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (145.0ms)[0m   [0;1mCREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "type" varchar(255), "due_date" datetime, "points" integer, "weight" float, "created_at" datetime, "updated_at" datetime, "description" varchar(255), "course_id" integer) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (204.0ms)[0m   [0;1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "commented_at" datetime, "tags" varchar(255), "created_at" datetime, "updated_at" datetime, "user_id" integer) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (260.0ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar(255), "last_name" varchar(255), "created_at" datetime, "updated_at" datetime, "username" varchar(255), "email" varchar(255), "crypted_password" varchar(255), "password_salt" varchar(255), "persistence_token" varchar(255)) [0m
+  [4;35;1mSQL (2.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (327.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (194.0ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (4.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (131.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102080132')[0m
+  [4;36;1mSQL (494.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030024857')[0m
+  [4;35;1mSQL (209.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101030031611')[0m
+  [4;36;1mSQL (133.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030033007')[0m
+  [4;35;1mSQL (140.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101030034506')[0m
+  [4;36;1mSQL (134.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030092647')[0m
+  [4;35;1mSQL (157.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102015016')[0m
+  [4;36;1mSQL (151.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102015310')[0m
+  [4;35;1mSQL (206.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102034712')[0m
+  [4;36;1mSQL (245.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102034918')[0m
+  [4;35;1mSQL (131.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102044510')[0m
+  [4;36;1mSQL (131.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102044835')[0m
+  [4;35;1mSQL (186.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102050344')[0m
+  [4;36;1mSQL (227.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102051925')[0m
+  [4;35;1mSQL (181.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102053120')[0m
+  [4;36;1mSQL (168.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102063617')[0m
+  [4;35;1mSQL (172.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102070406')[0m
+  [4;36;1mSQL (3.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (3.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (3.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (202.0ms)[0m   [0;1mCREATE TABLE "blurbs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar(255), "as_html" boolean, "created_at" datetime, "updated_at" datetime, "course_id" integer, "title" text, "position" varchar(255)) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (114.0ms)[0m   [0;1mCREATE TABLE "courses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "department" varchar(255), "number" varchar(255), "days" varchar(255), "term" varchar(255), "year" integer, "description" text, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "title" varchar(255), "short_title" varchar(255), "points_possible" decimal) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (130.0ms)[0m   [0;1mCREATE TABLE "courses_users" ("user_id" integer NOT NULL, "course_id" integer NOT NULL) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (157.0ms)[0m   [0;1mCREATE TABLE "grades" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "letter" varchar(255), "points_received" decimal, "created_at" datetime, "updated_at" datetime, "user_id" integer, "item_id" integer) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (183.0ms)[0m   [0;1mCREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "type" varchar(255), "due_date" datetime, "points" integer, "weight" float, "created_at" datetime, "updated_at" datetime, "description" varchar(255), "course_id" integer) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (180.0ms)[0m   [0;1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "commented_at" datetime, "tags" varchar(255), "created_at" datetime, "updated_at" datetime, "user_id" integer) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (192.0ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar(255), "last_name" varchar(255), "created_at" datetime, "updated_at" datetime, "username" varchar(255), "email" varchar(255), "crypted_password" varchar(255), "password_salt" varchar(255), "persistence_token" varchar(255)) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (181.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (198.0ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (212.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102080132')[0m
+  [4;36;1mSQL (153.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030024857')[0m
+  [4;35;1mSQL (227.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101030031611')[0m
+  [4;36;1mSQL (149.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030033007')[0m
+  [4;35;1mSQL (141.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101030034506')[0m
+  [4;36;1mSQL (144.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030092647')[0m
+  [4;35;1mSQL (161.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102015016')[0m
+  [4;36;1mSQL (201.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102015310')[0m
+  [4;35;1mSQL (204.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102034712')[0m
+  [4;36;1mSQL (189.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102034918')[0m
+  [4;35;1mSQL (174.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102044510')[0m
+  [4;36;1mSQL (174.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102044835')[0m
+  [4;35;1mSQL (150.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102050344')[0m
+  [4;36;1mSQL (196.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102051925')[0m
+  [4;35;1mSQL (153.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102053120')[0m
+  [4;36;1mSQL (155.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102063617')[0m
+  [4;35;1mSQL (155.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102070406')[0m
+
+
+Processing CoursesController#show (for 127.0.0.1 at 2010-11-02 03:52:00) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mCourse Load (2.0ms)[0m   [0;1mSELECT * FROM "courses" WHERE ("courses"."id" = 1) [0m
+  [4;35;1mUser Load (1.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'aa1c4ca443e38ea9b8f7287a3fc5e406fce2037d7dc96651783b648d51e3e82587cee005f69fba203cd1ba8f41b0c3fc4ebc123ec3b3971725a364d145972361') LIMIT 1[0m
+Rendering template within layouts/courses
+Rendering courses/show
+  [4;36;1mBlurb Load (0.0ms)[0m   [0;1mSELECT * FROM "blurbs" WHERE ("blurbs".course_id = 1) [0m
+Completed in 407ms (View: 68, DB: 3) | 200 OK [http://localhost/courses/1]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-11-02 03:52:05) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/mobile.css" with {:method=>:get}):
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (3.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (3.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (194.0ms)[0m   [0;1mCREATE TABLE "blurbs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar(255), "as_html" boolean, "created_at" datetime, "updated_at" datetime, "course_id" integer, "title" text, "position" varchar(255)) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (172.0ms)[0m   [0;1mCREATE TABLE "courses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "department" varchar(255), "number" varchar(255), "days" varchar(255), "term" varchar(255), "year" integer, "description" text, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "title" varchar(255), "short_title" varchar(255), "points_possible" decimal) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (131.0ms)[0m   [0;1mCREATE TABLE "courses_users" ("user_id" integer NOT NULL, "course_id" integer NOT NULL) [0m
+  [4;35;1mSQL (2.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (90.0ms)[0m   [0;1mCREATE TABLE "grades" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "letter" varchar(255), "points_received" decimal, "created_at" datetime, "updated_at" datetime, "user_id" integer, "item_id" integer) [0m
+  [4;35;1mSQL (2.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (115.0ms)[0m   [0;1mCREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "type" varchar(255), "due_date" datetime, "points" integer, "weight" float, "created_at" datetime, "updated_at" datetime, "description" varchar(255), "course_id" integer) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (117.0ms)[0m   [0;1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "commented_at" datetime, "tags" varchar(255), "created_at" datetime, "updated_at" datetime, "user_id" integer) [0m
+  [4;35;1mSQL (2.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (160.0ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar(255), "last_name" varchar(255), "created_at" datetime, "updated_at" datetime, "username" varchar(255), "email" varchar(255), "crypted_password" varchar(255), "password_salt" varchar(255), "persistence_token" varchar(255)) [0m
+  [4;35;1mSQL (2.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (142.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (208.0ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (133.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102080132')[0m
+  [4;36;1mSQL (133.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030024857')[0m
+  [4;35;1mSQL (143.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101030031611')[0m
+  [4;36;1mSQL (198.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030033007')[0m
+  [4;35;1mSQL (130.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101030034506')[0m
+  [4;36;1mSQL (154.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030092647')[0m
+  [4;35;1mSQL (132.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102015016')[0m
+  [4;36;1mSQL (132.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102015310')[0m
+  [4;35;1mSQL (144.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102034712')[0m
+  [4;36;1mSQL (121.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102034918')[0m
+  [4;35;1mSQL (231.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102044510')[0m
+  [4;36;1mSQL (120.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102044835')[0m
+  [4;35;1mSQL (197.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102050344')[0m
+  [4;36;1mSQL (122.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102051925')[0m
+  [4;35;1mSQL (198.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102053120')[0m
+  [4;36;1mSQL (168.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102063617')[0m
+  [4;35;1mSQL (141.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102070406')[0m
+  [4;36;1mSQL (5.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (3.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (157.0ms)[0m   [0;1mCREATE TABLE "blurbs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar(255), "as_html" boolean, "created_at" datetime, "updated_at" datetime, "course_id" integer, "title" text, "position" varchar(255)) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (111.0ms)[0m   [0;1mCREATE TABLE "courses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "department" varchar(255), "number" varchar(255), "days" varchar(255), "term" varchar(255), "year" integer, "description" text, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "title" varchar(255), "short_title" varchar(255), "points_possible" decimal) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (140.0ms)[0m   [0;1mCREATE TABLE "courses_users" ("user_id" integer NOT NULL, "course_id" integer NOT NULL) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (171.0ms)[0m   [0;1mCREATE TABLE "grades" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "letter" varchar(255), "points_received" decimal, "created_at" datetime, "updated_at" datetime, "user_id" integer, "item_id" integer) [0m
+  [4;35;1mSQL (2.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (200.0ms)[0m   [0;1mCREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "type" varchar(255), "due_date" datetime, "points" integer, "weight" float, "created_at" datetime, "updated_at" datetime, "description" varchar(255), "course_id" integer) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (258.0ms)[0m   [0;1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "commented_at" datetime, "tags" varchar(255), "created_at" datetime, "updated_at" datetime, "user_id" integer) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (185.0ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar(255), "last_name" varchar(255), "created_at" datetime, "updated_at" datetime, "username" varchar(255), "email" varchar(255), "crypted_password" varchar(255), "password_salt" varchar(255), "persistence_token" varchar(255)) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (185.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (166.0ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (179.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102080132')[0m
+  [4;36;1mSQL (153.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030024857')[0m
+  [4;35;1mSQL (165.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101030031611')[0m
+  [4;36;1mSQL (174.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030033007')[0m
+  [4;35;1mSQL (163.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101030034506')[0m
+  [4;36;1mSQL (187.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030092647')[0m
+  [4;35;1mSQL (188.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102015016')[0m
+  [4;36;1mSQL (265.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102015310')[0m
+  [4;35;1mSQL (253.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102034712')[0m
+  [4;36;1mSQL (189.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102034918')[0m
+  [4;35;1mSQL (121.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102044510')[0m
+  [4;36;1mSQL (133.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102044835')[0m
+  [4;35;1mSQL (122.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102050344')[0m
+  [4;36;1mSQL (152.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102051925')[0m
+  [4;35;1mSQL (171.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102053120')[0m
+  [4;36;1mSQL (138.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102063617')[0m
+  [4;35;1mSQL (168.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102070406')[0m
+  [4;36;1mSQL (3.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (3.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (270.0ms)[0m   [0;1mCREATE TABLE "blurbs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar(255), "as_html" boolean, "created_at" datetime, "updated_at" datetime, "course_id" integer, "title" text, "position" varchar(255)) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (176.0ms)[0m   [0;1mCREATE TABLE "courses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "department" varchar(255), "number" varchar(255), "days" varchar(255), "term" varchar(255), "year" integer, "description" text, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "title" varchar(255), "short_title" varchar(255), "points_possible" decimal) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (169.0ms)[0m   [0;1mCREATE TABLE "courses_users" ("user_id" integer NOT NULL, "course_id" integer NOT NULL) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (134.0ms)[0m   [0;1mCREATE TABLE "grades" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "letter" varchar(255), "points_received" decimal, "created_at" datetime, "updated_at" datetime, "user_id" integer, "item_id" integer) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (351.0ms)[0m   [0;1mCREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "type" varchar(255), "due_date" datetime, "points" integer, "weight" float, "created_at" datetime, "updated_at" datetime, "description" varchar(255), "course_id" integer) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (233.0ms)[0m   [0;1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "commented_at" datetime, "tags" varchar(255), "created_at" datetime, "updated_at" datetime, "user_id" integer) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (216.0ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar(255), "last_name" varchar(255), "created_at" datetime, "updated_at" datetime, "username" varchar(255), "email" varchar(255), "crypted_password" varchar(255), "password_salt" varchar(255), "persistence_token" varchar(255)) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (175.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (2.0ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (289.0ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (139.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102080132')[0m
+  [4;36;1mSQL (134.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030024857')[0m
+  [4;35;1mSQL (124.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101030031611')[0m
+  [4;36;1mSQL (115.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030033007')[0m
+  [4;35;1mSQL (566.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101030034506')[0m
+  [4;36;1mSQL (720.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030092647')[0m
+  [4;35;1mSQL (159.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102015016')[0m
+  [4;36;1mSQL (137.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102015310')[0m
+  [4;35;1mSQL (109.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102034712')[0m
+  [4;36;1mSQL (109.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102034918')[0m
+  [4;35;1mSQL (116.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102044510')[0m
+  [4;36;1mSQL (122.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102044835')[0m
+  [4;35;1mSQL (101.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102050344')[0m
+  [4;36;1mSQL (179.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102051925')[0m
+  [4;35;1mSQL (242.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102053120')[0m
+  [4;36;1mSQL (116.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102063617')[0m
+  [4;35;1mSQL (204.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102070406')[0m
+  [4;36;1mSQL (3.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (4.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (171.0ms)[0m   [0;1mCREATE TABLE "blurbs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar(255), "as_html" boolean, "created_at" datetime, "updated_at" datetime, "course_id" integer, "title" text, "position" varchar(255)) [0m
+  [4;35;1mSQL (2.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (126.0ms)[0m   [0;1mCREATE TABLE "courses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "department" varchar(255), "number" varchar(255), "days" varchar(255), "term" varchar(255), "year" integer, "description" text, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "title" varchar(255), "short_title" varchar(255), "points_possible" decimal) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (110.0ms)[0m   [0;1mCREATE TABLE "courses_users" ("user_id" integer NOT NULL, "course_id" integer NOT NULL) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (139.0ms)[0m   [0;1mCREATE TABLE "grades" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "letter" varchar(255), "points_received" decimal, "created_at" datetime, "updated_at" datetime, "user_id" integer, "item_id" integer) [0m
+  [4;35;1mSQL (2.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (144.0ms)[0m   [0;1mCREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "type" varchar(255), "due_date" datetime, "points" integer, "weight" float, "created_at" datetime, "updated_at" datetime, "description" varchar(255), "course_id" integer) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (135.0ms)[0m   [0;1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "commented_at" datetime, "tags" varchar(255), "created_at" datetime, "updated_at" datetime, "user_id" integer) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (183.0ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar(255), "last_name" varchar(255), "created_at" datetime, "updated_at" datetime, "username" varchar(255), "email" varchar(255), "crypted_password" varchar(255), "password_salt" varchar(255), "persistence_token" varchar(255)) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (180.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (198.0ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (161.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102080132')[0m
+  [4;36;1mSQL (151.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030024857')[0m
+  [4;35;1mSQL (174.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101030031611')[0m
+  [4;36;1mSQL (154.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030033007')[0m
+  [4;35;1mSQL (447.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101030034506')[0m
+  [4;36;1mSQL (211.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030092647')[0m
+  [4;35;1mSQL (241.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102015016')[0m
+  [4;36;1mSQL (207.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102015310')[0m
+  [4;35;1mSQL (143.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102034712')[0m
+  [4;36;1mSQL (157.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102034918')[0m
+  [4;35;1mSQL (132.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102044510')[0m
+  [4;36;1mSQL (140.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102044835')[0m
+  [4;35;1mSQL (171.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102050344')[0m
+  [4;36;1mSQL (132.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102051925')[0m
+  [4;35;1mSQL (216.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102053120')[0m
+  [4;36;1mSQL (133.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102063617')[0m
+  [4;35;1mSQL (155.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102070406')[0m
+  [4;36;1mSQL (5.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (6.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (7.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (246.0ms)[0m   [0;1mCREATE TABLE "blurbs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar(255), "as_html" boolean, "created_at" datetime, "updated_at" datetime, "course_id" integer, "title" text, "position" varchar(255)) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (168.0ms)[0m   [0;1mCREATE TABLE "courses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "department" varchar(255), "number" varchar(255), "days" varchar(255), "term" varchar(255), "year" integer, "description" text, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "title" varchar(255), "short_title" varchar(255), "points_possible" decimal) [0m
+  [4;35;1mSQL (2.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (155.0ms)[0m   [0;1mCREATE TABLE "courses_users" ("user_id" integer NOT NULL, "course_id" integer NOT NULL) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (141.0ms)[0m   [0;1mCREATE TABLE "grades" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "letter" varchar(255), "points_received" decimal, "created_at" datetime, "updated_at" datetime, "user_id" integer, "item_id" integer) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (412.0ms)[0m   [0;1mCREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "type" varchar(255), "due_date" datetime, "points" integer, "weight" float, "created_at" datetime, "updated_at" datetime, "description" varchar(255), "course_id" integer) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (312.0ms)[0m   [0;1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "commented_at" datetime, "tags" varchar(255), "created_at" datetime, "updated_at" datetime, "user_id" integer) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (179.0ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar(255), "last_name" varchar(255), "created_at" datetime, "updated_at" datetime, "username" varchar(255), "email" varchar(255), "crypted_password" varchar(255), "password_salt" varchar(255), "persistence_token" varchar(255)) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (155.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (171.0ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (2.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (140.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102080132')[0m
+  [4;36;1mSQL (120.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030024857')[0m
+  [4;35;1mSQL (121.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101030031611')[0m
+  [4;36;1mSQL (153.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030033007')[0m
+  [4;35;1mSQL (161.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101030034506')[0m
+  [4;36;1mSQL (103.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030092647')[0m
+  [4;35;1mSQL (129.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102015016')[0m
+  [4;36;1mSQL (766.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102015310')[0m
+  [4;35;1mSQL (294.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102034712')[0m
+  [4;36;1mSQL (178.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102034918')[0m
+  [4;35;1mSQL (345.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102044510')[0m
+  [4;36;1mSQL (178.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102044835')[0m
+  [4;35;1mSQL (159.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102050344')[0m
+  [4;36;1mSQL (245.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102051925')[0m
+  [4;35;1mSQL (355.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102053120')[0m
+  [4;36;1mSQL (152.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102063617')[0m
+  [4;35;1mSQL (536.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102070406')[0m
+  [4;36;1mSQL (4.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (2.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (260.0ms)[0m   [0;1mCREATE TABLE "blurbs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar(255), "as_html" boolean, "created_at" datetime, "updated_at" datetime, "course_id" integer, "title" text, "position" varchar(255)) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (125.0ms)[0m   [0;1mCREATE TABLE "courses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "department" varchar(255), "number" varchar(255), "days" varchar(255), "term" varchar(255), "year" integer, "description" text, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "title" varchar(255), "short_title" varchar(255), "points_possible" decimal) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (146.0ms)[0m   [0;1mCREATE TABLE "courses_users" ("user_id" integer NOT NULL, "course_id" integer NOT NULL) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (124.0ms)[0m   [0;1mCREATE TABLE "grades" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "letter" varchar(255), "points_received" decimal, "created_at" datetime, "updated_at" datetime, "user_id" integer, "item_id" integer) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (267.0ms)[0m   [0;1mCREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "type" varchar(255), "due_date" datetime, "points" integer, "weight" float, "created_at" datetime, "updated_at" datetime, "description" varchar(255), "course_id" integer) [0m
+  [4;35;1mSQL (2.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (224.0ms)[0m   [0;1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "commented_at" datetime, "tags" varchar(255), "created_at" datetime, "updated_at" datetime, "user_id" integer) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (189.0ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar(255), "last_name" varchar(255), "created_at" datetime, "updated_at" datetime, "username" varchar(255), "email" varchar(255), "crypted_password" varchar(255), "password_salt" varchar(255), "persistence_token" varchar(255)) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (233.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (213.0ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (123.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102080132')[0m
+  [4;36;1mSQL (131.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030024857')[0m
+  [4;35;1mSQL (133.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101030031611')[0m
+  [4;36;1mSQL (128.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030033007')[0m
+  [4;35;1mSQL (121.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101030034506')[0m
+  [4;36;1mSQL (120.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030092647')[0m
+  [4;35;1mSQL (126.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102015016')[0m
+  [4;36;1mSQL (225.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102015310')[0m
+  [4;35;1mSQL (166.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102034712')[0m
+  [4;36;1mSQL (134.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102034918')[0m
+  [4;35;1mSQL (145.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102044510')[0m
+  [4;36;1mSQL (140.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102044835')[0m
+  [4;35;1mSQL (142.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102050344')[0m
+  [4;36;1mSQL (210.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102051925')[0m
+  [4;35;1mSQL (121.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102053120')[0m
+  [4;36;1mSQL (121.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102063617')[0m
+  [4;35;1mSQL (324.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102070406')[0m
+  [4;36;1mSQL (3.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (3.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (179.0ms)[0m   [0;1mCREATE TABLE "blurbs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar(255), "as_html" boolean, "created_at" datetime, "updated_at" datetime, "course_id" integer, "title" text, "position" varchar(255)) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (150.0ms)[0m   [0;1mCREATE TABLE "courses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "department" varchar(255), "number" varchar(255), "days" varchar(255), "term" varchar(255), "year" integer, "description" text, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "title" varchar(255), "short_title" varchar(255), "points_possible" decimal) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (125.0ms)[0m   [0;1mCREATE TABLE "courses_users" ("user_id" integer NOT NULL, "course_id" integer NOT NULL) [0m
+  [4;35;1mSQL (2.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (136.0ms)[0m   [0;1mCREATE TABLE "grades" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "letter" varchar(255), "points_received" decimal, "created_at" datetime, "updated_at" datetime, "user_id" integer, "item_id" integer) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (149.0ms)[0m   [0;1mCREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "type" varchar(255), "due_date" datetime, "points" integer, "weight" float, "created_at" datetime, "updated_at" datetime, "description" varchar(255), "course_id" integer) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (160.0ms)[0m   [0;1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "commented_at" datetime, "tags" varchar(255), "created_at" datetime, "updated_at" datetime, "user_id" integer) [0m
+  [4;35;1mSQL (2.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (175.0ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar(255), "last_name" varchar(255), "created_at" datetime, "updated_at" datetime, "username" varchar(255), "email" varchar(255), "crypted_password" varchar(255), "password_salt" varchar(255), "persistence_token" varchar(255)) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (146.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (128.0ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (109.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102080132')[0m
+  [4;36;1mSQL (210.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030024857')[0m
+  [4;35;1mSQL (134.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101030031611')[0m
+  [4;36;1mSQL (124.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030033007')[0m
+  [4;35;1mSQL (118.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101030034506')[0m
+  [4;36;1mSQL (204.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030092647')[0m
+  [4;35;1mSQL (181.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102015016')[0m
+  [4;36;1mSQL (109.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102015310')[0m
+  [4;35;1mSQL (129.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102034712')[0m
+  [4;36;1mSQL (119.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102034918')[0m
+  [4;35;1mSQL (129.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102044510')[0m
+  [4;36;1mSQL (153.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102044835')[0m
+  [4;35;1mSQL (131.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102050344')[0m
+  [4;36;1mSQL (132.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102051925')[0m
+  [4;35;1mSQL (138.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102053120')[0m
+  [4;36;1mSQL (219.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102063617')[0m
+  [4;35;1mSQL (141.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102070406')[0m
+  [4;36;1mSQL (3.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (3.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (166.0ms)[0m   [0;1mCREATE TABLE "blurbs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar(255), "as_html" boolean, "created_at" datetime, "updated_at" datetime, "course_id" integer, "title" text, "position" varchar(255)) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (175.0ms)[0m   [0;1mCREATE TABLE "courses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "department" varchar(255), "number" varchar(255), "days" varchar(255), "term" varchar(255), "year" integer, "description" text, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "title" varchar(255), "short_title" varchar(255), "points_possible" decimal) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (315.0ms)[0m   [0;1mCREATE TABLE "courses_users" ("user_id" integer NOT NULL, "course_id" integer NOT NULL) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (152.0ms)[0m   [0;1mCREATE TABLE "grades" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "letter" varchar(255), "points_received" decimal, "created_at" datetime, "updated_at" datetime, "user_id" integer, "item_id" integer) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (254.0ms)[0m   [0;1mCREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "type" varchar(255), "due_date" datetime, "points" integer, "weight" float, "created_at" datetime, "updated_at" datetime, "description" varchar(255), "course_id" integer) [0m
+  [4;35;1mSQL (2.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (135.0ms)[0m   [0;1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "commented_at" datetime, "tags" varchar(255), "created_at" datetime, "updated_at" datetime, "user_id" integer) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (158.0ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar(255), "last_name" varchar(255), "created_at" datetime, "updated_at" datetime, "username" varchar(255), "email" varchar(255), "crypted_password" varchar(255), "password_salt" varchar(255), "persistence_token" varchar(255)) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (145.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (143.0ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (123.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102080132')[0m
+  [4;36;1mSQL (134.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030024857')[0m
+  [4;35;1mSQL (122.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101030031611')[0m
+  [4;36;1mSQL (118.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030033007')[0m
+  [4;35;1mSQL (143.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101030034506')[0m
+  [4;36;1mSQL (144.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030092647')[0m
+  [4;35;1mSQL (142.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102015016')[0m
+  [4;36;1mSQL (144.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102015310')[0m
+  [4;35;1mSQL (102.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102034712')[0m
+  [4;36;1mSQL (151.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102034918')[0m
+  [4;35;1mSQL (102.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102044510')[0m
+  [4;36;1mSQL (120.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102044835')[0m
+  [4;35;1mSQL (110.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102050344')[0m
+  [4;36;1mSQL (121.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102051925')[0m
+  [4;35;1mSQL (120.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102053120')[0m
+  [4;36;1mSQL (109.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102063617')[0m
+  [4;35;1mSQL (121.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102070406')[0m
+  [4;36;1mSQL (3.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (3.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (227.0ms)[0m   [0;1mCREATE TABLE "blurbs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar(255), "as_html" boolean, "created_at" datetime, "updated_at" datetime, "course_id" integer, "title" text, "position" varchar(255)) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (106.0ms)[0m   [0;1mCREATE TABLE "courses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "department" varchar(255), "number" varchar(255), "days" varchar(255), "term" varchar(255), "year" integer, "description" text, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "title" varchar(255), "short_title" varchar(255), "points_possible" decimal) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (253.0ms)[0m   [0;1mCREATE TABLE "courses_users" ("user_id" integer NOT NULL, "course_id" integer NOT NULL) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (159.0ms)[0m   [0;1mCREATE TABLE "grades" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "letter" varchar(255), "points_received" decimal, "created_at" datetime, "updated_at" datetime, "user_id" integer, "item_id" integer) [0m
+  [4;35;1mSQL (2.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (227.0ms)[0m   [0;1mCREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "type" varchar(255), "due_date" datetime, "points" integer, "weight" float, "created_at" datetime, "updated_at" datetime, "description" varchar(255), "course_id" integer) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (217.0ms)[0m   [0;1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "commented_at" datetime, "tags" varchar(255), "created_at" datetime, "updated_at" datetime, "user_id" integer) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (173.0ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar(255), "last_name" varchar(255), "created_at" datetime, "updated_at" datetime, "username" varchar(255), "email" varchar(255), "crypted_password" varchar(255), "password_salt" varchar(255), "persistence_token" varchar(255)) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (252.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (268.0ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (145.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102080132')[0m
+  [4;36;1mSQL (118.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030024857')[0m
+  [4;35;1mSQL (116.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101030031611')[0m
+  [4;36;1mSQL (107.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030033007')[0m
+  [4;35;1mSQL (119.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101030034506')[0m
+  [4;36;1mSQL (122.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030092647')[0m
+  [4;35;1mSQL (124.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102015016')[0m
+  [4;36;1mSQL (117.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102015310')[0m
+  [4;35;1mSQL (123.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102034712')[0m
+  [4;36;1mSQL (128.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102034918')[0m
+  [4;35;1mSQL (133.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102044510')[0m
+  [4;36;1mSQL (132.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102044835')[0m
+  [4;35;1mSQL (132.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102050344')[0m
+  [4;36;1mSQL (119.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102051925')[0m
+  [4;35;1mSQL (224.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102053120')[0m
+  [4;36;1mSQL (175.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102063617')[0m
+  [4;35;1mSQL (218.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102070406')[0m
+  [4;36;1mSQL (4.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (3.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (169.0ms)[0m   [0;1mCREATE TABLE "blurbs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar(255), "as_html" boolean, "created_at" datetime, "updated_at" datetime, "course_id" integer, "title" text, "position" varchar(255)) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (106.0ms)[0m   [0;1mCREATE TABLE "courses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "department" varchar(255), "number" varchar(255), "days" varchar(255), "term" varchar(255), "year" integer, "description" text, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "title" varchar(255), "short_title" varchar(255), "points_possible" decimal) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (100.0ms)[0m   [0;1mCREATE TABLE "courses_users" ("user_id" integer NOT NULL, "course_id" integer NOT NULL) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (162.0ms)[0m   [0;1mCREATE TABLE "grades" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "letter" varchar(255), "points_received" decimal, "created_at" datetime, "updated_at" datetime, "user_id" integer, "item_id" integer) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (156.0ms)[0m   [0;1mCREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "type" varchar(255), "due_date" datetime, "points" integer, "weight" float, "created_at" datetime, "updated_at" datetime, "description" varchar(255), "course_id" integer) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (230.0ms)[0m   [0;1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "commented_at" datetime, "tags" varchar(255), "created_at" datetime, "updated_at" datetime, "user_id" integer) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (404.0ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar(255), "last_name" varchar(255), "created_at" datetime, "updated_at" datetime, "username" varchar(255), "email" varchar(255), "crypted_password" varchar(255), "password_salt" varchar(255), "persistence_token" varchar(255)) [0m
+  [4;35;1mSQL (2.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (222.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (296.0ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (199.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102080132')[0m
+  [4;36;1mSQL (254.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030024857')[0m
+  [4;35;1mSQL (250.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101030031611')[0m
+  [4;36;1mSQL (100.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030033007')[0m
+  [4;35;1mSQL (131.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101030034506')[0m
+  [4;36;1mSQL (300.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030092647')[0m
+  [4;35;1mSQL (479.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102015016')[0m
+  [4;36;1mSQL (105.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102015310')[0m
+  [4;35;1mSQL (109.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102034712')[0m
+  [4;36;1mSQL (121.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102034918')[0m
+  [4;35;1mSQL (127.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102044510')[0m
+  [4;36;1mSQL (125.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102044835')[0m
+  [4;35;1mSQL (162.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102050344')[0m
+  [4;36;1mSQL (280.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102051925')[0m
+  [4;35;1mSQL (224.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102053120')[0m
+  [4;36;1mSQL (215.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102063617')[0m
+  [4;35;1mSQL (145.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102070406')[0m
+  [4;36;1mSQL (3.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (3.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (160.0ms)[0m   [0;1mCREATE TABLE "blurbs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar(255), "as_html" boolean, "created_at" datetime, "updated_at" datetime, "course_id" integer, "title" text, "position" varchar(255)) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (131.0ms)[0m   [0;1mCREATE TABLE "courses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "department" varchar(255), "number" varchar(255), "days" varchar(255), "term" varchar(255), "year" integer, "description" text, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "title" varchar(255), "short_title" varchar(255), "points_possible" decimal) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (281.0ms)[0m   [0;1mCREATE TABLE "courses_users" ("user_id" integer NOT NULL, "course_id" integer NOT NULL) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (262.0ms)[0m   [0;1mCREATE TABLE "grades" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "letter" varchar(255), "points_received" decimal, "created_at" datetime, "updated_at" datetime, "user_id" integer, "item_id" integer) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (468.0ms)[0m   [0;1mCREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "type" varchar(255), "due_date" datetime, "points" integer, "weight" float, "created_at" datetime, "updated_at" datetime, "description" varchar(255), "course_id" integer) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (183.0ms)[0m   [0;1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "commented_at" datetime, "tags" varchar(255), "created_at" datetime, "updated_at" datetime, "user_id" integer) [0m
+  [4;35;1mSQL (2.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (607.0ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar(255), "last_name" varchar(255), "created_at" datetime, "updated_at" datetime, "username" varchar(255), "email" varchar(255), "crypted_password" varchar(255), "password_salt" varchar(255), "persistence_token" varchar(255)) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (443.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (210.0ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (15.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (440.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102080132')[0m
+  [4;36;1mSQL (268.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030024857')[0m
+  [4;35;1mSQL (320.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101030031611')[0m
+  [4;36;1mSQL (166.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030033007')[0m
+  [4;35;1mSQL (189.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101030034506')[0m
+  [4;36;1mSQL (264.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030092647')[0m
+  [4;35;1mSQL (217.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102015016')[0m
+  [4;36;1mSQL (132.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102015310')[0m
+  [4;35;1mSQL (344.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102034712')[0m
+  [4;36;1mSQL (115.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102034918')[0m
+  [4;35;1mSQL (108.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102044510')[0m
+  [4;36;1mSQL (86.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102044835')[0m
+  [4;35;1mSQL (99.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102050344')[0m
+  [4;36;1mSQL (178.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102051925')[0m
+  [4;35;1mSQL (129.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102053120')[0m
+  [4;36;1mSQL (523.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102063617')[0m
+  [4;35;1mSQL (198.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102070406')[0m
+  [4;36;1mSQL (8.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (3.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (328.0ms)[0m   [0;1mCREATE TABLE "blurbs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar(255), "as_html" boolean, "created_at" datetime, "updated_at" datetime, "course_id" integer, "title" text, "position" varchar(255)) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (183.0ms)[0m   [0;1mCREATE TABLE "courses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "department" varchar(255), "number" varchar(255), "days" varchar(255), "term" varchar(255), "year" integer, "description" text, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "title" varchar(255), "short_title" varchar(255), "points_possible" decimal) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (384.0ms)[0m   [0;1mCREATE TABLE "courses_users" ("user_id" integer NOT NULL, "course_id" integer NOT NULL) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (258.0ms)[0m   [0;1mCREATE TABLE "grades" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "letter" varchar(255), "points_received" decimal, "created_at" datetime, "updated_at" datetime, "user_id" integer, "item_id" integer) [0m
+  [4;35;1mSQL (15.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (337.0ms)[0m   [0;1mCREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "type" varchar(255), "due_date" datetime, "points" integer, "weight" float, "created_at" datetime, "updated_at" datetime, "description" varchar(255), "course_id" integer) [0m
+  [4;35;1mSQL (3.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (411.0ms)[0m   [0;1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "commented_at" datetime, "tags" varchar(255), "created_at" datetime, "updated_at" datetime, "user_id" integer) [0m
+  [4;35;1mSQL (2.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (1098.1ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar(255), "last_name" varchar(255), "created_at" datetime, "updated_at" datetime, "username" varchar(255), "email" varchar(255), "crypted_password" varchar(255), "password_salt" varchar(255), "persistence_token" varchar(255)) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (288.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (232.0ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (4.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (264.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102080132')[0m
+  [4;36;1mSQL (306.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030024857')[0m
+  [4;35;1mSQL (127.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101030031611')[0m
+  [4;36;1mSQL (130.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030033007')[0m
+  [4;35;1mSQL (177.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101030034506')[0m
+  [4;36;1mSQL (234.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030092647')[0m
+  [4;35;1mSQL (107.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102015016')[0m
+  [4;36;1mSQL (127.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102015310')[0m
+  [4;35;1mSQL (245.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102034712')[0m
+  [4;36;1mSQL (647.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102034918')[0m
+  [4;35;1mSQL (266.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102044510')[0m
+  [4;36;1mSQL (294.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102044835')[0m
+  [4;35;1mSQL (709.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102050344')[0m
+  [4;36;1mSQL (133.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102051925')[0m
+  [4;35;1mSQL (150.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102053120')[0m
+  [4;36;1mSQL (321.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102063617')[0m
+  [4;35;1mSQL (422.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102070406')[0m
+  [4;36;1mSQL (12.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (3.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (217.0ms)[0m   [0;1mCREATE TABLE "blurbs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar(255), "as_html" boolean, "created_at" datetime, "updated_at" datetime, "course_id" integer, "title" text, "position" varchar(255)) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (125.0ms)[0m   [0;1mCREATE TABLE "courses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "department" varchar(255), "number" varchar(255), "days" varchar(255), "term" varchar(255), "year" integer, "description" text, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "title" varchar(255), "short_title" varchar(255), "points_possible" decimal) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (329.0ms)[0m   [0;1mCREATE TABLE "courses_users" ("user_id" integer NOT NULL, "course_id" integer NOT NULL) [0m
+  [4;35;1mSQL (7.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (124.0ms)[0m   [0;1mCREATE TABLE "grades" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "letter" varchar(255), "points_received" decimal, "created_at" datetime, "updated_at" datetime, "user_id" integer, "item_id" integer) [0m
+  [4;35;1mSQL (2.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (255.0ms)[0m   [0;1mCREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "type" varchar(255), "due_date" datetime, "points" integer, "weight" float, "created_at" datetime, "updated_at" datetime, "description" varchar(255), "course_id" integer) [0m
+  [4;35;1mSQL (2.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (185.0ms)[0m   [0;1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "commented_at" datetime, "tags" varchar(255), "created_at" datetime, "updated_at" datetime, "user_id" integer) [0m
+  [4;35;1mSQL (2.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (300.0ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar(255), "last_name" varchar(255), "created_at" datetime, "updated_at" datetime, "username" varchar(255), "email" varchar(255), "crypted_password" varchar(255), "password_salt" varchar(255), "persistence_token" varchar(255)) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (158.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (152.0ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (2.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (160.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102080132')[0m
+  [4;36;1mSQL (145.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030024857')[0m
+  [4;35;1mSQL (127.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101030031611')[0m
+  [4;36;1mSQL (334.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030033007')[0m
+  [4;35;1mSQL (114.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101030034506')[0m
+  [4;36;1mSQL (274.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101030092647')[0m
+  [4;35;1mSQL (193.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102015016')[0m
+  [4;36;1mSQL (593.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102015310')[0m
+  [4;35;1mSQL (149.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102034712')[0m
+  [4;36;1mSQL (137.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102034918')[0m
+  [4;35;1mSQL (202.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102044510')[0m
+  [4;36;1mSQL (137.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102044835')[0m
+  [4;35;1mSQL (117.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102050344')[0m
+  [4;36;1mSQL (154.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102051925')[0m
+  [4;35;1mSQL (132.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102053120')[0m
+  [4;36;1mSQL (189.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20101102063617')[0m
+  [4;35;1mSQL (289.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20101102070406')[0m
+  [4;36;1mSQL (4.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (18.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (180.0ms)[0m   [0;1mCREATE TABLE "blurbs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar(255), "as_html" boolean, "created_at" datetime, "updated_at" datetime, "course_id" integer, "title" text, "position" varchar(255)) [0m
+  [4;35;1mSQL (6.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (100.0ms)[0m   [0;1mCREATE TABLE "courses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "department" varchar(255), "number" varchar(255), "days" varchar(255), "term" varchar(255), "year" integer, "description" text, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "title" varchar(255), "short_title" varchar(255), "points_possible" decimal) [0m
+  [4;35;1mSQL (32.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (449.0ms)[0m   [0;1mCREATE TABLE "courses_users" ("user_id" integer NOT NULL, "course_id" integer NOT NULL) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (169.0ms)[0m   [0;1mCREATE TABLE "grades" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "letter" varchar(255), "points_received" decimal, "created_at" datetime, "updated_at" datetime, "user_id" integer, "item_id" integer) [0m
+  [4;35;1mSQL (3.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (154.0ms)[0m   [0;1mCREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "type" varchar(255), "due_date" datetime, "points" integer, "weight" float, "created_at" datetime, "updated_at" datetime, "description" varchar(255), "course_id" integer) [0m
+  [4;35;1mSQL (4.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (191.0ms)[0m   [0;1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "commented_at" datetime, "tags" varchar(255), "created_at" datetime, "updated_at" datetime, "user_id" integer) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (179.0ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar(255), "last_name" varchar(255), "created_at" datetime, "updated_at" datetime, "username" varchar(255), "email" varchar(255), "crypted_password" varchar(255), "password_salt" varchar(255), "persistence_token" varchar(255)) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (126.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSQLite3::IOException: disk I/O error: CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m

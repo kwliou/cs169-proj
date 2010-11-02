@@ -297,11 +297,11 @@ a.login_button_load {
     text-align: center;
     margin: auto;
     background-color: #ffffff;
-    /*
+    
     width:100%;
     clear:both;
     float:left;
-    */
+    
 }
 #footer_links a:first-child {
     border: none;
