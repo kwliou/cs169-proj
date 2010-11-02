@@ -1,0 +1,7 @@
+(in C:/Users/Kevin/My Documents/CS 169/cs169-proj)
+rm -r coverage
+.............................................................................................................
+
+Finished in 43.480487 seconds
+
+109 examples, 0 failures

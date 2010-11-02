@@ -1,0 +1,105 @@
+Using the default profile...
+UUUUUUUUUUUUU-UUU-UUU-UUUUU-U......UUUU
+
+12 scenarios (10 undefined, 2 passed)
+39 steps (4 skipped, 29 undefined, 6 passed)
+0m38.668s
+
+You can implement step definitions for undefined steps with these snippets:
+
+Given /^I am a student of the CS(\d+) course$/ do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
+When /^I click on the CS(\d+) link$/ do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
+Then /^I am directed to the CS(\d+) page$/ do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
+When /^I click on the assignments\+projects link on the CS(\d+) course page$/ do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
+Then /^I am directed to the Student's version of the CS(\d+) assignemnts\+projects page$/ do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
+When /^I click on the exams\+quizzes link on the CS(\d+) course page$/ do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
+Then /^I am directed to the Student's version of the CS(\d+) exams\+quizzes page$/ do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
+When /^I click on the forums link on the CS(\d+) course page$/ do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
+Then /^I am directed to the Student's version of the CS(\d+) forums page$/ do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
+Given /^my grade for hw(\d+) is (\d+)\/(\d+)$/ do |arg1, arg2, arg3|
+  pending # express the regexp above with the code you wish you had
+end
+
+Then /^I will see my grade for hw(\d+) is (\d+)\/(\d+)$/ do |arg1, arg2, arg3|
+  pending # express the regexp above with the code you wish you had
+end
+
+Given /^the due date for hw(\d+) is (\d+):(\d+)am (\d+)\-(\d+)\-(\d+)$/ do |arg1, arg2, arg3, arg4, arg5, arg6|
+  pending # express the regexp above with the code you wish you had
+end
+
+When /^I submit hw(\d+) at (\d+):(\d+)pm (\d+)\-(\d+)\-(\d+)$/ do |arg1, arg2, arg3, arg4, arg5, arg6|
+  pending # express the regexp above with the code you wish you had
+end
+
+Then /^my hw(\d+) should be sent to the Professor$/ do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
+Then /^my hw(\d+) should be sent to the Professor marked as "([^"]*)"$/ do |arg1, arg2|
+  pending # express the regexp above with the code you wish you had
+end
+
+Given /^hw(\d+)'s description is "([^"]*)"$/ do |arg1, arg2|
+  pending # express the regexp above with the code you wish you had
+end
+
+When /^I click on the hw(\d+) link on the assignments\+projects page$/ do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
+Then /^I should see "([^"]*)" as the description$/ do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
+Given /^my score for exam(\d+) is (\d+)\/(\d+)$/ do |arg1, arg2, arg3|
+  pending # express the regexp above with the code you wish you had
+end
+
+Then /^I should see (\d+)\/(\d+) as my exam(\d+) score$/ do |arg1, arg2, arg3|
+  pending # express the regexp above with the code you wish you had
+end
+
+Given /^I am the creator of the "([^"]*)" post$/ do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
+Given /^the post has "([^"]*)"$/ do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
+When /^I edit the message with "([^"]*)"$/ do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
+Then /^the "([^"]*)" post should contain "([^"]*)"$/ do |arg1, arg2|
+  pending # express the regexp above with the code you wish you had
+end
+

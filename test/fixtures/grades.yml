@@ -5,7 +5,12 @@
 # below each fixture, per the syntax in the comments below
 #
 one: {}
-# column: value
-#
+  id: 1
+  letter: "A"
+  points_received: 100
+  item_id: 1
 two: {}
-#  column: value
+  id: 2
+  letter: "B"
+  points_received: 85
+  item_id: 2

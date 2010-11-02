@@ -9,8 +9,8 @@ Feature: user can manipulate his/her own posts
     When I visit the posts page
     Then I should see "Listing posts from John Doe"
 
-  Scenario: Student edits his/her own post
-    Given I am the creator of the "How to get started" post
-    And the post has "Just click post you guys!"
-    When I edit the message with "P.S. Stanford sucks"
-    Then the "How to get started" post should contain "Edit[timestamp]:"
+#  Scenario: Student edits his/her own post
+#    Given I am the creator of the "How to get started" post
+#    And the post has "Just click post you guys!"
+#    When I edit the message with "P.S. Stanford sucks"
+#    Then the "How to get started" post should contain "Edit[timestamp]:"

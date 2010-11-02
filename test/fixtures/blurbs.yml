@@ -5,7 +5,13 @@
 # below each fixture, per the syntax in the comments below
 #
 one: {}
-# column: value
-#
+  id: 1
+  title: "blah1"
+  text: "text1"
+  as_html: false
+
 two: {}
-#  column: value
+  id: 2
+  title: "blah2"
+  text: "text2"
+  as_html: false
