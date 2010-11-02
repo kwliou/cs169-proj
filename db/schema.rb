@@ -9,7 +9,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101030092647) do
+ActiveRecord::Schema.define(:version => 20101102034918) do
+
+  create_table "assignments", :force => true do |t|
+    t.string   "name"
+    t.decimal  "points_possible"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "blurbs", :force => true do |t|
+    t.string   "text"
+    t.boolean  "as_html"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "courses", :force => true do |t|
     t.string   "department"
@@ -19,6 +34,16 @@ ActiveRecord::Schema.define(:version => 20101030092647) do
     t.integer  "year"
     t.text     "description"
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
+    t.string   "short_title"
+    t.decimal  "points_possible"
+  end
+
+  create_table "grades", :force => true do |t|
+    t.string   "letter"
+    t.decimal  "points_received"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
