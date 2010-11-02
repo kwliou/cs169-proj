@@ -10,6 +10,14 @@ module NavigationHelpers
 
     when /the home\s?page/
       '/'
+	when /the home page/
+		main_path
+	when /^(.*)'s page$/i
+		course_path(Course.find_by_name($1))
+	when /^(.*)'s assignments+projects page$/i
+		course_items_path(Course.find_by_name($1))
+	when /^(.*)'s exams+quizzes page$/i
+		course_items_path(Course.find_by_name($1))
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

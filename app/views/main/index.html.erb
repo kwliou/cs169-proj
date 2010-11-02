@@ -2,7 +2,7 @@
 <div id="main">
   <div id ="header">
     <% if @current_user %>
-      Welcome, <%= link_to  "#{@current_user.first_name} #{@current_user.last_name}", user_path(@current_user) %>! Want to <%= link_to "sign out", logout_path %>?
+      Welcome, <%=h @current_user.first_name %> <%=h @current_user.last_name %>! Want to <%= link_to "sign out", logout_path %>?
     <% else %>
       Welcome! Want to <%= link_to "register", new_user_path %>?
     <% end %>
@@ -41,7 +41,7 @@
       <div id="content_left">
         <div id="courses">
           <span class="section_header">Subscribed Courses</span>
-          <% @courses.each do |course| %>
+          <% @current_user.courses.each do |course| %>
             <% link_to course, :class => "name" do %>
               <span class="course"><%=h course.department %> <%=h course.number %></span>
               <span class="stryde course_info"><%=h course.name %></span>

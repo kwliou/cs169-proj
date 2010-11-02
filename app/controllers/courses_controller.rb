@@ -3,8 +3,8 @@ class CoursesController < ApplicationController
   # GET /courses.xml
   def index
     @current_user = current_user
-    @courses = Course.all
-    @user_session = UserSession.new
+    @courses = @current_user.courses
+    #@user_session = UserSession.new
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @courses }
@@ -41,7 +41,9 @@ class CoursesController < ApplicationController
   # POST /courses
   # POST /courses.xml
   def create
-    @course = Course.new(params[:course])
+	@user=current_user
+	@user_course=@user.courses.create!(params[:course])
+	@course=@user_course
 
     respond_to do |format|
       if @course.save
