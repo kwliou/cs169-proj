@@ -1,4 +1,13 @@
-<h1>Listing grades</h1>
+<div class="course-heading">
+	<div class="course-shortname"><%= @course.short_title %></div>
+	<div class="course-longname"><%= @course.title %></div>
+</div>
+
+<div class="nav-bar">
+	<a href="<%= url_for(:controller => "courses", :action => "index") %>" class="nav-link">Home</a> > 
+	<a href="<%= url_for(:controller => "courses", :action => "show", :id => @course.id) %>" class="nav-link"><%= @course.short_title %></a> > 
+	<a href="<%= url_for(:controller => "grades", :action => "index", :id => @course.id) %>" class="nav-link">Grades</a>
+</div>
 
 <table>
   <tr>
@@ -7,12 +16,6 @@
 <% @grades.each do |grade| %>
   <tr>
     <td><%= link_to 'Show', grade %></td>
-    <td><%= link_to 'Edit', edit_grade_path(grade) %></td>
-    <td><%= link_to 'Destroy', grade, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New grade', new_grade_path %>
