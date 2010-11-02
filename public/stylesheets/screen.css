@@ -292,6 +292,12 @@ a.login_button_load {
     float:right!important;
 }
 
+#welcome {
+    text-align: justify;
+    line-height: 300%;
+    padding: 0 2% 0 2%;
+}
+
 #footer {
     height: 6%;
     text-align: center;

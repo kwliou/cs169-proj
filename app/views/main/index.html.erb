@@ -38,10 +38,11 @@
     </div>
 
     <div id="content">
+      <% if @current_user %>
       <div id="content_left">
         <div id="courses">
           <span class="section_header">Subscribed Courses</span>
-          <% if @current_user %>
+          
             <% @current_user.courses.each do |course| %>
               <% link_to course, :class => "name", :id => "#{course.department} #{course.number}" do %>
                 <span class="course"><%=h course.department %> <%=h course.number %></span>
@@ -50,7 +51,7 @@
               <%= link_to 'Edit', edit_course_path(course) %>
               <br />
             <% end %>
-          <% end %>
+          
           <br />
           <%= link_to 'Edit Subscriptions', "edit" %>
           <%= link_to "New course", new_course_path %>
@@ -60,8 +61,23 @@
           <span class="section_header">Latest Posts</span>
         </div>
       </div>
+      <% else %>
+        <div id="welcome">
+          <p class="stryde" style="font-size: 18pt">What are we about?</p>
+          <p>
+            <strong>re.factored</strong> is a project by students for students. We're sick of
+            old <acronym title="Course Management System">CMS</acronym>s that are hard to
+            navigate and highly restricted. Because this is meant to a invaluable utility used
+            everyday, this site needs to be highly accessible and quickly bring users to what
+            they need. However, that doesn't mean we need to sacrifice looks. We still believe
+            in a modern, clean, yet usable design that makes school life a little bit easier.
+            We want to give you, the student, the initiative.
+          </p>
+        </div>
+      <% end %>
     </div>
 
+    <% if @current_user %>
     <div id="calendar">
       <a id="calendar_title" href="calendar">Upcoming Events</a>
       <ul>
@@ -70,6 +86,7 @@
         <li class="calendar_entry">Oct 12 <a href="item1">CS 188 Project 2</a></li>
       </ul>
     </div>
+    <% end %>
   </div>
 
   <div id="footer">
