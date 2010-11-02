@@ -9,13 +9,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20101102044835) do
+=======
+ActiveRecord::Schema.define(:version => 20101102080132) do
+>>>>>>> c2d2740c4b8952e111957aedca5c159edf4fc764
 
   create_table "blurbs", :force => true do |t|
     t.string   "text"
     t.boolean  "as_html"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "course_id"
+    t.text     "title"
+    t.string   "position"
   end
 
   create_table "courses", :force => true do |t|
@@ -33,11 +40,18 @@ ActiveRecord::Schema.define(:version => 20101102044835) do
     t.decimal  "points_possible"
   end
 
+  create_table "courses_users", :id => false, :force => true do |t|
+    t.integer "user_id",   :null => false
+    t.integer "course_id", :null => false
+  end
+
   create_table "grades", :force => true do |t|
     t.string   "letter"
     t.decimal  "points_received"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "item_id"
   end
 
   create_table "items", :force => true do |t|
@@ -47,6 +61,8 @@ ActiveRecord::Schema.define(:version => 20101102044835) do
     t.float    "weight"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "description"
+    t.integer  "course_id"
   end
 
   create_table "posts", :force => true do |t|

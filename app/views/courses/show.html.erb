@@ -1,38 +1,50 @@
-<p>
-  <b>Department:</b>
-  <%=h @course.department %>
-</p>
+<div class="course-heading">
+	<div class="course-shortname"><%= @course.short_title %></div>
+	<div class="course-longname"><%= @course.title %></div>
+</div>
 
-<p>
-  <b>Number:</b>
-  <%=h @course.number %>
-</p>
+<div class="nav-bar">
+	<a href="<%= url_for(:controller => "courses", :action => "index") %>" class="nav-link">Home</a> > 
+	<a href="<%= url_for(:controller => "courses", :action => "show", :id => @course.id) %>" class="nav-link"><%= @course.short_title %></a>
+</div>
 
-<p>
-  <b>Days:</b>
-  <%=h @course.days %>
-</p>
+<div class="course-links-container">
+	<a class="course-link" href="<%= url_for(:controller => "items", :action => "index", :id => @course.id) %>">Assignments/Projects</a><span class="course-link-sep">|</span>
+	<a class="course-link" href="<%= url_for(:controller => "items", :action => "index", :id => @course.id) %>">Exams/Quizzes</a><span class="course-link-sep">|</span>
+	<a class="course-link" href="<%= url_for(:controller => "grades", :action => "index", :id => @course.id) %>">Grades</a>
+</div>
 
-<p>
-  <b>Term:</b>
-  <%=h @course.term %>
-</p>
-
-<p>
-  <b>Year:</b>
-  <%=h @course.year %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%=h @course.description %>
-</p>
-
-<p>
-  <b>Name:</b>
-  <%=h @course.name %>
-</p>
-
-
+<div class="course-body-container">
+	<div class="course-blurbs-container">
+	<% for blurb in @course.blurbs do %>
+		<% if blurb.position == "center" %>
+			<div class="blurb">
+				<h2><%= blurb.title %></h2>
+				<% if blurb.as_html %>
+					<%= blurb.text %>
+				<% else %>
+					<%= h blurb.text %>
+				<% end %>
+			</div>
+		<% end %>
+	<% end %>
+	</div>
+	
+	<div class="course-announcements-container">
+		<% for blurb in @course.blurbs do %>
+			<% if blurb.position == "right" %>
+				<div class="announcement">
+					<a class="announcement-link" href="#"><h2><%= blurb.title %></h2></a>
+					
+					<% if blurb.as_html %>
+						<%= blurb.text %>
+					<% else %>
+						<%= h blurb.text %>
+					<% end %>
+				</div>
+			<% end %>
+		<% end %>
+	</div>
+</div>
 <%= link_to 'Edit', edit_course_path(@course) %> |
 <%= link_to 'Back', courses_path %>

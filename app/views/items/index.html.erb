@@ -1,4 +1,14 @@
-<h1>Listing items</h1>
+<div class="course-heading">
+	<div class="course-shortname"><%= @course.short_title %></div>
+	<div class="course-longname"><%= @course.title %></div>
+</div>
+
+<div class="nav-bar">
+	<a href="<%= url_for(:controller => "courses", :action => "index") %>" class="nav-link">Home</a> > 
+	<a href="<%= url_for(:controller => "courses", :action => "show", :id => @course.id) %>" class="nav-link"><%= @course.short_title %></a> > 
+	<a href="<%= url_for(:controller => "items", :action => "index", :id => @course.id) %>" class="nav-link">Assignments/Projects</a>
+</div>
+
 
 <table>
   <tr>
@@ -15,12 +25,8 @@
     <td><%=h item.points %></td>
     <td><%=h item.weight %></td>
     <td><%= link_to 'Show', item %></td>
-    <td><%= link_to 'Edit', edit_item_path(item) %></td>
-    <td><%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
-
-<%= link_to 'New item', new_item_path %>

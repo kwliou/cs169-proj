@@ -12,6 +12,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :courses
   map.resources :users, :has_many => [ :posts ]
   map.resources :user_sessions
+  
+  map.connect '/courses/:id/items', :controller => :items, :action => :index
+  map.connect '/courses/:id/grades', :controller => :grades, :action => :index
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
