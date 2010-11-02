@@ -1,9 +1,9 @@
 Using the default profile...
-UUU......UUU...UU-UUU-U...U-UUUUUU-UUUUUUUUUU-UUU-U...
+UUU......UUU...UU-UUU-U...U-UUUUUU-UUUUUUUUUU-UUU-U........
 
-15 scenarios (10 undefined, 5 passed)
-54 steps (6 skipped, 33 undefined, 15 passed)
-0m25.706s
+16 scenarios (10 undefined, 6 passed)
+59 steps (6 skipped, 33 undefined, 20 passed)
+0m13.315s
 
 You can implement step definitions for undefined steps with these snippets:
 

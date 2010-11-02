@@ -15,7 +15,7 @@ Before do
 end
 
 Given /^I am a student of the "([A-Za-z ]*) (\d+)" course$/ do |course_name, course_number|
-  @new_course = Course.create!(
+  @new_course = @current_user.courses.create!(
 		:department => course_name,
 		:number => course_number)
 end

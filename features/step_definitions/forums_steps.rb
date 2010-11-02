@@ -13,8 +13,8 @@ Given  /^I am "([^"]*)" logged in with "([^"]*)" and "([^"]*)"$/ do |name, usern
     :password_confirmation => "password",
     :email => "dummy@berkeley.edu")
   visit "login"
-  fill_in "user_session[username]", :with => "username"
-  fill_in "user_session[password]", :with => "password"
+  fill_in "user_session[username]", :with => username
+  fill_in "user_session[password]", :with => password
   click_button "Login"
 end
 

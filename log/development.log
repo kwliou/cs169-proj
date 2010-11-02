@@ -45776,3 +45776,29 @@ Processing UsersController#show (for 127.0.0.1 at 2010-11-02 09:44:31) [GET]
 Rendering template within layouts/users
 Rendering users/show
 Completed in 32ms (View: 7, DB: 0) | 200 OK [http://localhost/users/2]
+
+
+Processing MainController#index (for 127.0.0.1 at 2010-11-02 12:30:20) [GET]
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '2') LIMIT 1[0m
+  [4;36;1mCourse Load (0.0ms)[0m   [0;1mSELECT * FROM "courses" [0m
+Rendering template within layouts/main
+Rendering main/index
+  [4;35;1mCourse Load (0.0ms)[0m   [0mSELECT * FROM "courses" INNER JOIN "courses_users" ON "courses".id = "courses_users".course_id WHERE ("courses_users".user_id = 2 ) [0m
+Completed in 65ms (View: 20, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-11-02 12:30:23) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/mobile.css" with {:method=>:get}):
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
