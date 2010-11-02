@@ -1,0 +1,12 @@
+<h1>Editing grade</h1>
+
+<% form_for(@grade) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @grade %> |
+<%= link_to 'Back', grades_path %>

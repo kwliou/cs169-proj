@@ -8,7 +8,7 @@ class CreateCourses < ActiveRecord::Migration
       t.integer :year
       t.text :description
       t.string :name
-
+ 
       t.timestamps
     end
   end
