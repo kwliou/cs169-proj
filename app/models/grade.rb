@@ -1,3 +1,4 @@
 class Grade < ActiveRecord::Base
-  has_one :assignment
+  has_one :item
+  belongs_to :user
 end
