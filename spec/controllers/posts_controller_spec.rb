@@ -7,7 +7,7 @@ describe PostsController do
   end
 
   describe "GET index" do
-    it "assigns all posts as @posts" do
+    it "assigns current user's posts as @posts" do
       Post.stub(:find).with(:all).and_return([mock_post])
       get :index
       assigns[:posts].should == [mock_post]
