@@ -1,9 +1,17 @@
 class PostsController < ApplicationController
+  before_filter :get_user
+
+  def get_user
+    #@user = User.find(params[:user_id])
+  end
+
+  
   # GET /posts
   # GET /posts.xml
   def index
+    @user = current_user
     @posts = Post.all
-
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @posts }
@@ -24,8 +32,8 @@ class PostsController < ApplicationController
   # GET /posts/new
   # GET /posts/new.xml
   def new
-    @post = Post.new
-
+    @post = Post.new #@user.posts.build
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @post }

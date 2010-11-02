@@ -20,6 +20,12 @@
     <%= f.text_field :tags %>
   </p>
   <p>
+    <%= f.label :user_id %><br />
+    <%= f.select :user_id, User.find(:all , :order => "id").collect {|s|
+					      [(s.first_name + " " + s.last_name), s.id]} %>
+
+  </p>
+  <p>
     <%= f.submit 'Create' %>
   </p>
 <% end %>

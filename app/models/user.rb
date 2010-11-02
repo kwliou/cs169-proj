@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   acts_as_authentic
-  has_many :courses
-  has_many :posts
+  #set_primary_key :username
+  has_many :posts #, :foreign_key => 'username'
+  #has_many :courses
 end
