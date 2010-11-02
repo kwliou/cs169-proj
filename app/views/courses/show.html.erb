@@ -14,9 +14,6 @@
             <img alt="&9662;" src="/images/flat_triangle.gif" /></li>
     </ul>
 </div>
-<div class="nav-bar">
-	<a href="<%= url_for(:controller => "courses", :action => "show", :id => @course.id) %>" class="nav-link"><%= @course.short_title %></a>
-</div>
 <br />
 <div class="course-links-container">
 	<a class="course-link" href="<%= url_for(:controller => "items", :action => "index", :id => @course.id) %>">Assignments/Projects</a><span class="course-link-sep">|</span>
