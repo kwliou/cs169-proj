@@ -2,7 +2,7 @@
 <div id="main">
   <div id ="header">
     <% if @current_user %>
-      Welcome, <%=h @current_user.first_name %> <%=h @current_user.last_name %>! Want to <%= link_to "sign out", logout_path %>?
+      Welcome, <%= link_to  "#{@current_user.first_name} #{@current_user.last_name}", user_path(@current_user) %>! Want to <%= link_to "sign out", logout_path %>?
     <% else %>
       Welcome! Want to <%= link_to "register", new_user_path %>?
     <% end %>

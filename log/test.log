@@ -3824,3 +3824,432 @@ Processing ItemsController#show (for 0.0.0.0 at 2010-11-02 07:22:11) [GET]
 Rendering template within layouts/items
 Rendering items/show
 Completed in 5ms (View: 2, DB: 0) | 200 OK [http://test.host/items/37]
+Rendering users/show.html.erb
+Rendering users/new.html.erb
+Rendering users/index.html.erb
+Rendering users/edit.html.erb
+  [4;36;1mCourse Create (5.0ms)[0m   [0;1mINSERT INTO "courses" ("number", "name", "created_at", "short_title", "title", "days", "term", "updated_at", "points_possible", "year", "description", "department") VALUES('value for number', 'value for name', '2010-11-02 14:26:10', NULL, NULL, 'value for days', 'value for term', '2010-11-02 14:26:10', NULL, 1, 'value for description', 'value for department')[0m
+Rendering courses/index.html.erb
+Rendering courses/edit.html.erb
+Rendering courses/new.html.erb
+
+
+Processing CoursesController#destroy (for 0.0.0.0 at 2010-11-02 07:26:11) [DELETE]
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/courses
+Completed in 8ms (DB: 0) | 302 Found [http://test.host/courses/37]
+
+
+Processing CoursesController#destroy (for 0.0.0.0 at 2010-11-02 07:26:11) [DELETE]
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/courses
+Completed in 3ms (DB: 0) | 302 Found [http://test.host/courses/1]
+
+
+Processing CoursesController#update (for 0.0.0.0 at 2010-11-02 07:26:11) [PUT]
+  Parameters: {"course"=>{"these"=>"params"}, "id"=>"37"}
+Rendering template within layouts/courses
+Rendering courses/edit
+Completed in 14ms (View: 12, DB: 0) | 200 OK [http://test.host/courses/37?course%5Bthese%5D=params]
+
+
+Processing CoursesController#update (for 0.0.0.0 at 2010-11-02 07:26:11) [PUT]
+  Parameters: {"id"=>"1"}
+Rendering template within layouts/courses
+Rendering courses/edit
+Completed in 5ms (View: 2, DB: 0) | 200 OK [http://test.host/courses/1]
+
+
+Processing CoursesController#update (for 0.0.0.0 at 2010-11-02 07:26:11) [PUT]
+  Parameters: {"id"=>"1"}
+Rendering template within layouts/courses
+Rendering courses/edit
+Completed in 4ms (View: 2, DB: 0) | 200 OK [http://test.host/courses/1]
+
+
+Processing CoursesController#update (for 0.0.0.0 at 2010-11-02 07:26:11) [PUT]
+  Parameters: {"course"=>{"these"=>"params"}, "id"=>"37"}
+Rendering template within layouts/courses
+Rendering courses/edit
+Completed in 5ms (View: 3, DB: 0) | 200 OK [http://test.host/courses/37?course%5Bthese%5D=params]
+
+
+Processing CoursesController#update (for 0.0.0.0 at 2010-11-02 07:26:11) [PUT]
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/courses/1016
+Completed in 5ms (DB: 0) | 302 Found [http://test.host/courses/1]
+
+
+Processing CoursesController#update (for 0.0.0.0 at 2010-11-02 07:26:11) [PUT]
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/courses/1017
+Completed in 4ms (DB: 0) | 302 Found [http://test.host/courses/1]
+
+
+Processing CoursesController#create (for 0.0.0.0 at 2010-11-02 07:26:11) [POST]
+  Parameters: {"course"=>{"these"=>"params"}}
+Rendering template within layouts/courses
+Rendering courses/new
+Completed in 22ms (View: 21, DB: 0) | 200 OK [http://test.host/courses?course%5Bthese%5D=params]
+
+
+Processing CoursesController#create (for 0.0.0.0 at 2010-11-02 07:26:11) [POST]
+  Parameters: {"course"=>{}}
+Rendering template within layouts/courses
+Rendering courses/new
+Completed in 5ms (View: 2, DB: 0) | 200 OK [http://test.host/courses?]
+
+
+Processing CoursesController#create (for 0.0.0.0 at 2010-11-02 07:26:11) [POST]
+  Parameters: {"course"=>{"these"=>"params"}}
+Redirected to http://test.host/courses/1020
+Completed in 3ms (DB: 0) | 302 Found [http://test.host/courses?course%5Bthese%5D=params]
+
+
+Processing CoursesController#create (for 0.0.0.0 at 2010-11-02 07:26:11) [POST]
+  Parameters: {"course"=>{}}
+Redirected to http://test.host/courses/1021
+Completed in 4ms (DB: 0) | 302 Found [http://test.host/courses?]
+
+
+Processing CoursesController#edit (for 0.0.0.0 at 2010-11-02 07:26:11) [GET]
+  Parameters: {"id"=>"37"}
+Rendering template within layouts/courses
+Rendering courses/edit
+Completed in 3ms (View: 2, DB: 0) | 200 OK [http://test.host/courses/37/edit]
+
+
+Processing CoursesController#new (for 0.0.0.0 at 2010-11-02 07:26:11) [GET]
+Rendering template within layouts/courses
+Rendering courses/new
+Completed in 5ms (View: 3, DB: 0) | 200 OK [http://test.host/courses/new]
+
+
+Processing CoursesController#show (for 0.0.0.0 at 2010-11-02 07:26:11) [GET]
+  Parameters: {"id"=>"37"}
+Rendering template within layouts/courses
+Rendering courses/show
+Completed in 8ms (View: 2, DB: 0) | 200 OK [http://test.host/courses/37]
+
+
+Processing CoursesController#index (for 0.0.0.0 at 2010-11-02 07:26:11) [GET]
+Rendering template within layouts/courses
+Rendering courses/index
+Completed in 7ms (View: 3, DB: 0) | 200 OK [http://test.host/courses]
+  [4;35;1mPost Create (5.0ms)[0m   [0mINSERT INTO "posts" ("created_at", "title", "body", "updated_at", "commented_at", "tags", "user_id") VALUES('2010-11-02 14:26:11', 'value for title', 'value for body', '2010-11-02 14:26:11', '2010-11-02 14:26:11', 'value for tags', NULL)[0m
+Rendering items/new.html.erb
+Rendering items/edit.html.erb
+WARNING: Can't mass-assign these protected attributes: type
+  [4;36;1mItem Create (4.0ms)[0m   [0;1mINSERT INTO "items" ("created_at", "updated_at", "weight", "points", "type", "due_date", "description", "course_id") VALUES('2010-11-02 14:26:12', '2010-11-02 14:26:12', 1.5, 1, NULL, '2010-11-02 14:26:12', NULL, NULL)[0m
+  [4;35;1mUser Load (2.0ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."email") = 'email@email.com') LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE (LOWER("users"."username") = 'value for username') LIMIT 1[0m
+  [4;35;1mUser Load (1.0ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '4c602ba64431bdf60be018c6463a58bdd71111146c3220ec9f3d7ee31a7ef14d3e5d0f50a66d531cbd1a51efab43973ad5dd436bee6c7bd3a12990b4ec27ad33') LIMIT 1[0m
+  [4;36;1mUser Create (3.0ms)[0m   [0;1mINSERT INTO "users" ("created_at", "crypted_password", "updated_at", "username", "password_salt", "last_name", "persistence_token", "first_name", "email") VALUES('2010-11-02 14:26:34', '1cf70ff711de98e103e1c3ea72572f557a9a7181ea7db900e662febf0e52eda0551873f05dff70c5ee8e26e4adcf256507cc9567572abc0f28a5f422c59f6226', '2010-11-02 14:26:34', 'value for username', 'C3qtvbbODeZstOaO9wan', 'value for last_name', '4c602ba64431bdf60be018c6463a58bdd71111146c3220ec9f3d7ee31a7ef14d3e5d0f50a66d531cbd1a51efab43973ad5dd436bee6c7bd3a12990b4ec27ad33', 'value for first_name', 'email@email.com')[0m
+
+
+Processing UsersController#destroy (for 0.0.0.0 at 2010-11-02 07:26:34) [DELETE]
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/users
+Completed in 8ms (DB: 10) | 302 Found [http://test.host/users/37]
+
+
+Processing UsersController#destroy (for 0.0.0.0 at 2010-11-02 07:26:34) [DELETE]
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/users
+Completed in 2ms (DB: 0) | 302 Found [http://test.host/users/1]
+
+
+Processing UsersController#update (for 0.0.0.0 at 2010-11-02 07:26:34) [PUT]
+  Parameters: {"id"=>"37", "user"=>{"these"=>"params"}}
+Rendering template within layouts/users
+Rendering users/edit
+Completed in 4ms (View: 3, DB: 0) | 200 OK [http://test.host/users/37?user%5Bthese%5D=params]
+
+
+Processing UsersController#update (for 0.0.0.0 at 2010-11-02 07:26:34) [PUT]
+  Parameters: {"id"=>"1"}
+Rendering template within layouts/users
+Rendering users/edit
+Completed in 4ms (View: 3, DB: 0) | 200 OK [http://test.host/users/1]
+
+
+Processing UsersController#update (for 0.0.0.0 at 2010-11-02 07:26:34) [PUT]
+  Parameters: {"id"=>"1"}
+Rendering template within layouts/users
+Rendering users/edit
+Completed in 4ms (View: 2, DB: 0) | 200 OK [http://test.host/users/1]
+
+
+Processing UsersController#update (for 0.0.0.0 at 2010-11-02 07:26:34) [PUT]
+  Parameters: {"id"=>"37", "user"=>{"these"=>"params"}}
+Rendering template within layouts/users
+Rendering users/edit
+Completed in 4ms (View: 2, DB: 0) | 200 OK [http://test.host/users/37?user%5Bthese%5D=params]
+
+
+Processing UsersController#update (for 0.0.0.0 at 2010-11-02 07:26:34) [PUT]
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/users/1034
+Completed in 5ms (DB: 0) | 302 Found [http://test.host/users/1]
+
+
+Processing UsersController#update (for 0.0.0.0 at 2010-11-02 07:26:34) [PUT]
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/users/1035
+Completed in 4ms (DB: 0) | 302 Found [http://test.host/users/1]
+
+
+Processing UsersController#create (for 0.0.0.0 at 2010-11-02 07:26:35) [POST]
+  Parameters: {"user"=>{"these"=>"params"}}
+Rendering template within layouts/users
+Rendering users/new
+Completed in 4ms (View: 3, DB: 0) | 200 OK [http://test.host/users?user%5Bthese%5D=params]
+
+
+Processing UsersController#create (for 0.0.0.0 at 2010-11-02 07:26:35) [POST]
+  Parameters: {"user"=>{}}
+Rendering template within layouts/users
+Rendering users/new
+Completed in 4ms (View: 2, DB: 0) | 200 OK [http://test.host/users?]
+
+
+Processing UsersController#create (for 0.0.0.0 at 2010-11-02 07:26:35) [POST]
+  Parameters: {"user"=>{"these"=>"params"}}
+Redirected to http://test.host/users/1038
+Completed in 4ms (DB: 0) | 302 Found [http://test.host/users?user%5Bthese%5D=params]
+
+
+Processing UsersController#create (for 0.0.0.0 at 2010-11-02 07:26:35) [POST]
+  Parameters: {"user"=>{}}
+Redirected to http://test.host/users/1039
+Completed in 3ms (DB: 0) | 302 Found [http://test.host/users?]
+
+
+Processing UsersController#edit (for 0.0.0.0 at 2010-11-02 07:26:35) [GET]
+  Parameters: {"id"=>"37"}
+Rendering template within layouts/users
+Rendering users/edit
+Completed in 3ms (View: 2, DB: 0) | 200 OK [http://test.host/users/37/edit]
+
+
+Processing UsersController#new (for 0.0.0.0 at 2010-11-02 07:26:35) [GET]
+Rendering template within layouts/users
+Rendering users/new
+Completed in 3ms (View: 2, DB: 0) | 200 OK [http://test.host/users/new]
+
+
+Processing UsersController#show (for 0.0.0.0 at 2010-11-02 07:26:35) [GET]
+  Parameters: {"id"=>"37"}
+Rendering template within layouts/users
+Rendering users/show
+Completed in 4ms (View: 2, DB: 0) | 200 OK [http://test.host/users/37]
+
+
+Processing UsersController#index (for 0.0.0.0 at 2010-11-02 07:26:35) [GET]
+Rendering template within layouts/users
+Rendering users/index
+Completed in 5ms (View: 3, DB: 0) | 200 OK [http://test.host/users]
+
+
+Processing PostsController#destroy (for 0.0.0.0 at 2010-11-02 07:26:35) [DELETE]
+  Parameters: {"id"=>"37", "user_id"=>"1"}
+Redirected to http://test.host/users/1044/posts
+Completed in 11ms (DB: 0) | 302 Found [http://test.host/users/1/posts/37]
+
+
+Processing PostsController#destroy (for 0.0.0.0 at 2010-11-02 07:26:35) [DELETE]
+  Parameters: {"id"=>"1", "user_id"=>"1"}
+Redirected to http://test.host/users/1046/posts
+Completed in 4ms (DB: 0) | 302 Found [http://test.host/users/1/posts/1]
+
+
+Processing PostsController#update (for 0.0.0.0 at 2010-11-02 07:26:35) [PUT]
+  Parameters: {"post"=>{"these"=>"params"}, "id"=>"37", "user_id"=>"1"}
+Rendering template within layouts/posts
+Rendering posts/edit
+Completed in 10ms (View: 8, DB: 0) | 200 OK [http://test.host/users/1/posts/37?post%5Bthese%5D=params]
+
+
+Processing PostsController#update (for 0.0.0.0 at 2010-11-02 07:26:35) [PUT]
+  Parameters: {"id"=>"1", "user_id"=>"1"}
+Rendering template within layouts/posts
+Rendering posts/edit
+Completed in 6ms (View: 4, DB: 0) | 200 OK [http://test.host/users/1/posts/1]
+
+
+Processing PostsController#update (for 0.0.0.0 at 2010-11-02 07:26:35) [PUT]
+  Parameters: {"id"=>"1", "user_id"=>"1"}
+Rendering template within layouts/posts
+Rendering posts/edit
+Completed in 4ms (View: 3, DB: 0) | 200 OK [http://test.host/users/1/posts/1]
+
+
+Processing PostsController#update (for 0.0.0.0 at 2010-11-02 07:26:35) [PUT]
+  Parameters: {"post"=>{"these"=>"params"}, "id"=>"37", "user_id"=>"1"}
+Rendering template within layouts/posts
+Rendering posts/edit
+Completed in 4ms (View: 2, DB: 0) | 200 OK [http://test.host/users/1/posts/37?post%5Bthese%5D=params]
+
+
+Processing PostsController#update (for 0.0.0.0 at 2010-11-02 07:26:35) [PUT]
+  Parameters: {"id"=>"1", "user_id"=>"1"}
+Redirected to http://test.host/users/1056/posts/1057
+Completed in 6ms (DB: 0) | 302 Found [http://test.host/users/1/posts/1]
+
+
+Processing PostsController#update (for 0.0.0.0 at 2010-11-02 07:26:35) [PUT]
+  Parameters: {"id"=>"1", "user_id"=>"1"}
+Redirected to http://test.host/users/1058/posts/1059
+Completed in 8ms (DB: 0) | 302 Found [http://test.host/users/1/posts/1]
+
+
+Processing PostsController#create (for 0.0.0.0 at 2010-11-02 07:26:35) [POST]
+  Parameters: {"post"=>{"these"=>"params"}, "user_id"=>"1"}
+Rendering template within layouts/posts
+Rendering posts/new
+Completed in 9ms (View: 5, DB: 0) | 200 OK [http://test.host/users/1/posts?post%5Bthese%5D=params]
+
+
+Processing PostsController#create (for 0.0.0.0 at 2010-11-02 07:26:35) [POST]
+  Parameters: {"post"=>{}, "user_id"=>"1"}
+Rendering template within layouts/posts
+Rendering posts/new
+Completed in 13ms (View: 5, DB: 0) | 200 OK [http://test.host/users/1/posts?]
+
+
+Processing PostsController#create (for 0.0.0.0 at 2010-11-02 07:26:35) [POST]
+  Parameters: {"post"=>{"these"=>"params"}, "user_id"=>"1"}
+Redirected to http://test.host/users/1064/posts/1065
+Completed in 10ms (DB: 0) | 302 Found [http://test.host/users/1/posts?post%5Bthese%5D=params]
+
+
+Processing PostsController#create (for 0.0.0.0 at 2010-11-02 07:26:35) [POST]
+  Parameters: {"post"=>{}, "user_id"=>"1"}
+Redirected to http://test.host/users/1066/posts/1067
+Completed in 5ms (DB: 0) | 302 Found [http://test.host/users/1/posts?]
+
+
+Processing PostsController#edit (for 0.0.0.0 at 2010-11-02 07:26:35) [GET]
+  Parameters: {"id"=>"37"}
+Rendering template within layouts/posts
+Rendering posts/edit
+Completed in 3ms (View: 2, DB: 0) | 200 OK [http://test.host/posts/edit/37]
+
+
+Processing PostsController#new (for 0.0.0.0 at 2010-11-02 07:26:35) [GET]
+  Parameters: {"user_id"=>"1"}
+Rendering template within layouts/posts
+Rendering posts/new
+Completed in 12ms (View: 3, DB: 0) | 200 OK [http://test.host/users/1/posts/new]
+
+
+Processing PostsController#show (for 0.0.0.0 at 2010-11-02 07:26:35) [GET]
+  Parameters: {"id"=>"37", "user_id"=>"1"}
+Rendering template within layouts/posts
+Rendering posts/show
+Completed in 6ms (View: 3, DB: 0) | 200 OK [http://test.host/users/1/posts/37]
+
+
+Processing PostsController#index (for 0.0.0.0 at 2010-11-02 07:26:35) [GET]
+  Parameters: {"user_id"=>"1"}
+Rendering template within layouts/posts
+Rendering posts/index
+Completed in 6ms (View: 4, DB: 0) | 200 OK [http://test.host/users/1/posts]
+
+
+Processing ItemsController#destroy (for 0.0.0.0 at 2010-11-02 07:26:35) [DELETE]
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/items
+Completed in 9ms (DB: 0) | 302 Found [http://test.host/items/37]
+
+
+Processing ItemsController#destroy (for 0.0.0.0 at 2010-11-02 07:26:35) [DELETE]
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/items
+Completed in 3ms (DB: 0) | 302 Found [http://test.host/items/1]
+
+
+Processing ItemsController#update (for 0.0.0.0 at 2010-11-02 07:26:35) [PUT]
+  Parameters: {"id"=>"37", "item"=>{"these"=>"params"}}
+Rendering template within layouts/items
+Rendering items/edit
+Completed in 23ms (View: 3, DB: 0) | 200 OK [http://test.host/items/37?item%5Bthese%5D=params]
+
+
+Processing ItemsController#update (for 0.0.0.0 at 2010-11-02 07:26:35) [PUT]
+  Parameters: {"id"=>"1"}
+Rendering template within layouts/items
+Rendering items/edit
+Completed in 8ms (View: 6, DB: 0) | 200 OK [http://test.host/items/1]
+
+
+Processing ItemsController#update (for 0.0.0.0 at 2010-11-02 07:26:35) [PUT]
+  Parameters: {"id"=>"1"}
+Rendering template within layouts/items
+Rendering items/edit
+Completed in 4ms (View: 2, DB: 0) | 200 OK [http://test.host/items/1]
+
+
+Processing ItemsController#update (for 0.0.0.0 at 2010-11-02 07:26:36) [PUT]
+  Parameters: {"id"=>"37", "item"=>{"these"=>"params"}}
+Rendering template within layouts/items
+Rendering items/edit
+Completed in 4ms (View: 2, DB: 0) | 200 OK [http://test.host/items/37?item%5Bthese%5D=params]
+
+
+Processing ItemsController#update (for 0.0.0.0 at 2010-11-02 07:26:36) [PUT]
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/items/1087
+Completed in 3ms (DB: 0) | 302 Found [http://test.host/items/1]
+
+
+Processing ItemsController#update (for 0.0.0.0 at 2010-11-02 07:26:36) [PUT]
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/items/1088
+Completed in 5ms (DB: 0) | 302 Found [http://test.host/items/1]
+
+
+Processing ItemsController#create (for 0.0.0.0 at 2010-11-02 07:26:36) [POST]
+  Parameters: {"item"=>{"these"=>"params"}}
+Rendering template within layouts/items
+Rendering items/new
+Completed in 4ms (View: 2, DB: 0) | 200 OK [http://test.host/items?item%5Bthese%5D=params]
+
+
+Processing ItemsController#create (for 0.0.0.0 at 2010-11-02 07:26:36) [POST]
+  Parameters: {"item"=>{}}
+Rendering template within layouts/items
+Rendering items/new
+Completed in 4ms (View: 2, DB: 0) | 200 OK [http://test.host/items?]
+
+
+Processing ItemsController#create (for 0.0.0.0 at 2010-11-02 07:26:36) [POST]
+  Parameters: {"item"=>{"these"=>"params"}}
+Redirected to http://test.host/items/1091
+Completed in 4ms (DB: 0) | 302 Found [http://test.host/items?item%5Bthese%5D=params]
+
+
+Processing ItemsController#create (for 0.0.0.0 at 2010-11-02 07:26:36) [POST]
+  Parameters: {"item"=>{}}
+Redirected to http://test.host/items/1092
+Completed in 5ms (DB: 0) | 302 Found [http://test.host/items?]
+
+
+Processing ItemsController#edit (for 0.0.0.0 at 2010-11-02 07:26:36) [GET]
+  Parameters: {"id"=>"37"}
+Rendering template within layouts/items
+Rendering items/edit
+Completed in 5ms (View: 3, DB: 0) | 200 OK [http://test.host/items/37/edit]
+
+
+Processing ItemsController#new (for 0.0.0.0 at 2010-11-02 07:26:36) [GET]
+Rendering template within layouts/items
+Rendering items/new
+Completed in 4ms (View: 2, DB: 0) | 200 OK [http://test.host/items/new]
+
+
+Processing ItemsController#show (for 0.0.0.0 at 2010-11-02 07:26:36) [GET]
+  Parameters: {"id"=>"37"}
+Rendering template within layouts/items
+Rendering items/show
+Completed in 13ms (View: 12, DB: 0) | 200 OK [http://test.host/items/37]

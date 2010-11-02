@@ -8,6 +8,12 @@
   <%=h @user.last_name %>
 </p>
 
+<p>
+  <b>E-mail:</b>
+  <%=h @user.email %>
+</p>
 
+
+<%= link_to 'Posts', user_posts_path(@user) %> |
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
