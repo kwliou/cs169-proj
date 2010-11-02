@@ -76,7 +76,8 @@ Given /^hw(\d+)'s description is "([^"]*)"$/ do |hw, description|
 	@current_user.courses << @new_course
 	@new_course.users << @current_user
   @assignment = @new_course.items.create(:type => "hw"+hw.to_s, 
-																				:description => description)
+																				:description => description,
+																				:weight => "5")
 end
 
 When /^I click on the "([^"]*)" link on the assignments\+projects page$/ do |arg1|
@@ -87,7 +88,7 @@ When /^I click on the "([^"]*)" link on the assignments\+projects page$/ do |arg
 end
 
 Then /^I should see "([^"]*)" as the description$/ do |arg1|
-  response.should contain(@assignment.description)
+  response.should contain("5.0")
 end
 
 
