@@ -1,4 +1,4 @@
-<h1>Listing posts from <%=h @user.first_name %></h1>
+<h1>Listing posts from <%=h @user.first_name %> <%=h @user.last_name %></h1>
 
 <table>
   <tr>
@@ -13,12 +13,12 @@
       <td><%=h post.body %></td>
       <td><%=h post.commented_at %></td>
       <td><%=h post.tags %></td>
-      <td><%= link_to 'Show', post %></td>
-      <td><%= link_to 'Edit', edit_post_path(post) %></td>
-      <td><%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%= link_to 'Show', [@user, post] %></td>
+      <td><%= link_to 'Edit', edit_user_post_path(@user, post) %></td>
+      <td><%= link_to 'Destroy', [@user, post], :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>
   <% end %>
 </table>
 <br />
 
-<%= link_to 'New post', new_post_path %>
+<%= link_to 'New post', new_user_post_path(@user) %>

@@ -2,15 +2,14 @@ class PostsController < ApplicationController
   before_filter :get_user
 
   def get_user
-    #@user = User.find(params[:user_id])
+    @user = User.find(params[:user_id])
   end
 
   
   # GET /posts
   # GET /posts.xml
   def index
-    @user = current_user
-    @posts = Post.all
+    @posts = @user.posts #Post.all
     
     respond_to do |format|
       format.html # index.html.erb
@@ -21,7 +20,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.xml
   def show
-    @post = Post.find(params[:id])
+    @post = @user.posts.find(params[:id]) #Post.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -32,7 +31,7 @@ class PostsController < ApplicationController
   # GET /posts/new
   # GET /posts/new.xml
   def new
-    @post = Post.new #@user.posts.build
+    @post = @user.posts.build #Post.new
     
     respond_to do |format|
       format.html # new.html.erb
@@ -42,17 +41,17 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-    @post = Post.find(params[:id])
+    @post = @user.posts.find(params[:id])#Post.find(params[:id])
   end
 
   # POST /posts
   # POST /posts.xml
   def create
-    @post = Post.new(params[:post])
+    @post = @user.posts.build(params[:post]) #Post.new(params[:post])
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to(@post, :notice => 'Post was successfully created.') }
+        format.html { redirect_to([@user, @post], :notice => 'Post was successfully created.') }
         format.xml  { render :xml => @post, :status => :created, :location => @post }
       else
         format.html { render :action => "new" }
@@ -64,11 +63,11 @@ class PostsController < ApplicationController
   # PUT /posts/1
   # PUT /posts/1.xml
   def update
-    @post = Post.find(params[:id])
+    @post = @user.posts.find(params[:id])
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
-        format.html { redirect_to(@post, :notice => 'Post was successfully updated.') }
+        format.html { redirect_to([@user, @post], :notice => 'Post was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -80,11 +79,11 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.xml
   def destroy
-    @post = Post.find(params[:id])
+    @post = @user.posts.find(params[:id]) #Post.find(params[:id])
     @post.destroy
 
     respond_to do |format|
-      format.html { redirect_to(posts_url) }
+      format.html { redirect_to(user_posts_path(@user)) }
       format.xml  { head :ok }
     end
   end

@@ -1,6 +1,6 @@
 <h1>New post</h1>
 
-<% form_for(@post) do |f| %>
+<% form_for([@user, @post]) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -20,14 +20,8 @@
     <%= f.text_field :tags %>
   </p>
   <p>
-    <%= f.label :user_id %><br />
-    <%= f.select :user_id, User.find(:all , :order => "id").collect {|s|
-					      [(s.first_name + " " + s.last_name), s.id]} %>
-
-  </p>
-  <p>
     <%= f.submit 'Create' %>
   </p>
 <% end %>
 
-<%= link_to 'Back', posts_path %>
+<%= link_to 'Back', user_posts_path(@user) %>
