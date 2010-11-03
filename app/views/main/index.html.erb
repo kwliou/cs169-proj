@@ -1,5 +1,9 @@
 <% content_for :title, "re.factored" %>
+<div id="bg">
+  <img src="/images/grad.png" />
+</div>
 <div id="main">
+  <div id="top">
   <div id ="header">
     <% if @current_user %>
       Welcome, <%= link_to  "#{@current_user.first_name} #{@current_user.last_name}", @current_user %>! Want to <%= link_to "sign out", logout_path %>?
@@ -67,11 +71,11 @@
           <p>
             <strong>re.factored</strong> is a project by students for students. We're sick of
             old <acronym title="Course Management System">CMS</acronym>s that are hard to
-            navigate and highly restricted. Because this is meant to a invaluable utility used
-            everyday, this site needs to be highly accessible and quickly bring users to what
-            they need. However, that doesn't mean we need to sacrifice looks. We still believe
-            in a modern, clean, yet usable design that makes school life a little bit easier.
-            We want to give you, the student, the initiative.
+            navigate and highly restricted. Because this is meant to be an invaluable utility
+            used everyday, this site needs to be highly accessible and quickly bring users to
+            what they need. However, that doesn't mean we need to sacrifice looks. We still
+            believe in a modern, clean, yet usable design that makes school life a little bit
+            easier. We want to give you, the student, the initiative.
           </p>
         </div>
       <% end %>
@@ -88,7 +92,7 @@
     </div>
     <% end %>
   </div>
-
+  </div>
   <div id="footer">
     <span id="footer_links">
       <a href="help">Help</a>
