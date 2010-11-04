@@ -1,12 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :blurbs
-
   map.resources :grades
-
   map.resources :assignments
-
-  map.login "login", :controller => "user_sessions", :action => "new"
-  map.logout "logout", :controller => "user_sessions", :action => "destroy"
   map.resources :items
   #map.resources :posts
   map.resources :courses
@@ -15,6 +10,11 @@ ActionController::Routing::Routes.draw do |map|
   
   map.connect '/courses/:id/items', :controller => :items, :action => :index
   map.connect '/courses/:id/grades', :controller => :grades, :action => :index
+
+  map.login "login", :controller => "user_sessions", :action => "new"
+  map.logout "logout", :controller => "user_sessions", :action => "destroy"
+  map.mobile "mobile", :controller => "main", :action => "mobile"
+
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

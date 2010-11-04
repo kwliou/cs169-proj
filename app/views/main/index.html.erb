@@ -1,6 +1,31 @@
 <% content_for :title, "re.factored" %>
+<% content_for :stylesheet, "style.css" %>
+
+<script type="text/javascript">
+  function friendly(id, value) {
+    text_input = document.getElementById(id);
+    if (text_input.value == "") {
+      text_input.value = value;
+      oldstyle = text_input.style;
+      document.getElementById(id).onfocus = function clear() {
+        if (this.style.fontStyle == "italic")
+          this.value = "";
+        this.style.fontStyle = "normal";
+        this.style.color = "#757575";
+      };
+      text_input.style.fontStyle = "italic";
+      text_input.style.color = "#ddd";
+    }
+  }
+  function after_load() {
+    friendly("user_session_username", "Username");
+    friendly("user_session_password", "Password");
+  }
+  window.onload = after_load;
+</script>
+
 <div id="bg">
-  <img src="/images/grad.png" />
+  <img src="/images/grad.png" alt="" />
 </div>
 <div id="main">
   <div id="top">
@@ -24,9 +49,9 @@
             <!--span id="message" class="stryde">Remember my info, please.</span-->
             <% form_for @user_session do |f| %>
               <span id="input_label"><%= f.label :username, "Username", :class => "input_label" %></span>
-              <%= f.text_field :username, :size => 16 %>
+              <%= f.text_field :username, :style => "width: 10em" %>
               <span id="input_label"><%= f.label :password, "Password", :class => "input_label" %></span>
-              <%= f.password_field :password, :size => 16 %>
+              <%= f.password_field :password, :style => "width: 10em" %>
               <input type="checkbox" />
               <%= f.submit "", :class => "login_button", :onfocus => "this.blur()", :tabindex => 1000 %>
               <a class="login_button_load"></a>
@@ -67,7 +92,7 @@
       </div>
       <% else %>
         <div id="welcome">
-          <p class="stryde" style="font-size: 18pt">What are we about?</p>
+          <p class="stryde" id="welcome_title">What are we about?</p>
           <p>
             <strong>re.factored</strong> is a project by students for students. We're sick of
             old <acronym title="Course Management System">CMS</acronym>s that are hard to
