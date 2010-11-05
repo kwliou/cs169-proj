@@ -326,6 +326,7 @@ a.login_button_load {
 }
 
 #welcome {
+    font-family: "Constantia", "Palatino Linotype", "Georgia", "Garamond", "Times New Roman", serif;
     text-align: justify;
     line-height: 250%;
     padding: 0 5% 0 5%;

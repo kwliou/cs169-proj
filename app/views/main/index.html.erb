@@ -6,7 +6,6 @@
     text_input = document.getElementById(id);
     if (text_input.value == "") {
       text_input.value = value;
-      oldstyle = text_input.style;
       document.getElementById(id).onfocus = function clear() {
         if (this.style.fontStyle == "italic")
           this.value = "";
@@ -94,13 +93,14 @@
         <div id="welcome">
           <p class="stryde" id="welcome_title">What are we about?</p>
           <p>
-            <strong>re.factored</strong> is a project by students for students. We're sick of
-            old <acronym title="Course Management System">CMS</acronym>s that are hard to
-            navigate and highly restricted. Because this is meant to be an invaluable utility
-            used everyday, this site needs to be highly accessible and quickly bring users to
-            what they need. However, that doesn't mean we need to sacrifice looks. We still
-            believe in a modern, clean, yet usable design that makes school life a little bit
-            easier. We want to give you, the student, the initiative.
+            <strong>re.factored</strong> is a project by students for students. We know
+            first-hand about <acronym title="Course Management System">CMS</acronym>s that are
+            hard to navigate and highly restricted. Our goal is to give you, the student, a
+            user-driven collaborative environment. Because re.factored is meant to be an
+            invaluable utility used everyday, we made sure that this site is highly accessible
+            and can quickly bring users to what they need. That doesn't mean we need to
+            sacrifice looks, though. We still believe in a modern, clean, and usable design
+            that makes school life just a bit easier.
           </p>
         </div>
       <% end %>
