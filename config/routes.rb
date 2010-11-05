@@ -13,7 +13,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.login "login", :controller => "user_sessions", :action => "new"
   map.logout "logout", :controller => "user_sessions", :action => "destroy"
-  map.mobile "mobile", :controller => "main", :action => "mobile"
+  map.mobile "mobile", :controller => "mobile", :action => :index
 
   # The priority is based upon order of creation: first created -> highest priority.
 

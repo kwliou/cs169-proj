@@ -1,92 +1,74 @@
-html {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
 body {
+    width: 100%;
     height: 100%;
-    /*min-width: 900px;*/
     margin: 0;
     padding: 0;
-    background: #eeeeee;          /* sides background  url('/images/grad.png') */
-    background-position: center center;
+    background: #d1e751;          /* sides background  url('/images/grad.png') */
+    /*background-position: center center;*/
     font-family: "Tahoma", "Verdana", san-serif;
     color: #979899;
+    overflow: hidden;
 }
 
 #main {
     background-color: #d1e751;
-    /*margin: auto;*/
+    /*
+    width: 100%;
     height: 100%;
+    margin: auto;
     margin-bottom: -20px;
     position: relative;
-}
-
-#top {
-    height: 92.5%; /* Need this for pages to fill window */
-    color: #979899;
+    */
 }
 
 #maincol {
-   /* margin-top: 0;
+    /* margin-top: 0;
     margin-bottom: 0;
     background-color: #ffffff;
     position:relative;
     padding: 0;
     float:left;
-    width:100%;
     */
 }
 a {
     color: #979899;
 }
-#school {
-    float: right;
-}
 #header {
+    /*width: 100%;*/
     color: #646566;
-    padding: 5px;
+    padding: 5px 0 5px 5px;
     background-color: #ffffff;
 }
 #header a {
     color: #646566;
 }
 #banner {
+    /*width: 100%;*/
     padding: 2px 0 5px 0;
     background: url("/images/logo.png") #d1e751 no-repeat left center;
     height: 96px;
 }
-#college_logo {
-    float: right;
-    background: url("/images/school_logo.png") bottom no-repeat;
-    width: 220px;
-    height: 84px;
-}
-#banner_right {
-    height: 42px;
-    padding-top: 20px;
-    position: static;
-    margin-right: 12px;
-    background: url("/images/message.png") no-repeat 100% 85%;
-}
-#login_form, #login_form span {
-    /*margin: auto;*/
-    text-align: center;
+#login_form {
+    width: 80%;
+    margin: auto;
+    line-height: 150%;
     background-color: #d1e751;
-    /*float: left;
-    margin: 2.6em 0 0 0;*/
+    /*
+    max-width: 256px;
+    text-align: center;
+    float: left;
+    */
 }
 #login_form input {
     margin: auto;
     display: block;
-    vertical-align: middle;
     color: #757575;
+    margin: 10px;
 }
 .input_label {
-    margin: auto;
     font-size: 10pt;
     color: white;
-    padding-left: 1px;
+    /*padding-left: 1px;*/
 }
 
 a.login_button_load {
@@ -95,216 +77,19 @@ a.login_button_load {
 }
 
 .login_button {
-    display: inline;
+    /*display: inline;*/
+    margin: 10px auto !important;
     border: none;
     width: 72px;
     height: 28px;
-    padding-left: 0;
-    padding-right: 0;
+    padding: 20px 0 0 0;
     background: transparent url("/images/button.png") no-repeat;
-}
-/* active is only before focus since IE shifts buttons and sucks */
- .login_button:active {
-    background-image: url("/images/button_pressed.png");
- }
-
-.login_button:focus { outline: 0; }
-.login_button:focus { outline: none; }
-/*.login_button::-moz-focus-inner { border: none; } /* Mozilla hack */
-
-#breadcrumbs {
-    /*float: left;*/
-    width: 100%;
-    padding: 6px;
-    margin: 5px;
-    list-style-type: none;
-}
-#breadcrumbs a {
-    text-decoration: none;
-    color: white;
-}
-.breadcrumbs_a {
-    float: left;
-    font-weight: bold;
-    text-decoration: none;
-    color: white;
-    background-color: #26ade4;
-    margin: 3px;
-    padding: 3px;
-}
-.breadcrumbs_arrow {
-    float: left;
-    font-size: 9pt;
-    text-decoration: none;
-    color: #d1e5f3;
-    margin: 8px 3px 8px 3px;
-}
-.breadcrumbs_semester {
-    float: left;
-    font-weight: bold;
-    text-decoration: none;
-    color: #646566;
-    margin: 3px 3px 3px 10px;
-    padding: 3px;
 }
 #content {
     /*clear: left;
     padding: 20px 3% 0 3%;*/
     
 }
-.section_header {
-    display: block;
-    margin: 0 0 6px 0;
-    width: 85%;
-    font-size: 12pt;
-    font-family:  "Whitney HTF SC", "Century Gothic", "Verdana", "Lucida Sans Unicode", "Tahoma", sans-serif;
-    border-bottom: 1px #cccccc solid;
-    text-transform: uppercase;
-    letter-spacing: 0.5pt;
-}
-#content_left {
-    float: left;
-    width: 65%;
-}
-#courses .name {
-    text-decoration: none;
-    margin-right: 10px;
-}
-.course {
-    line-height: 30pt;
-    font-weight: bold;
-    font-size: 14pt;
-}
-.course_action {
-    width: 40%;
-    display: inline-block;
-    line-height: 30pt;
-    font-weight: bold;
-    font-size: 14pt;
-}
-.course_info {
-    padding: 0 0 0 2%;
-    vertical-align: text-bottom;
-    font-family: StRyde, "edelsans", "Tahoma", sans-serif;
-    font-size: 14pt;
-}
-.course_action_comment {
-    padding: 0 0 0 30px;
-    vertical-align: text-bottom;
-    font-family: StRyde, "edelsans", "Tahoma", sans-serif;
-    font-size: 14pt;
-}
-#calendar {
-    float: right;
-    width: 35%;
-    font-weight: bold;
-}
-#calendar ul {
-    padding-left: 5%;
-}
-
-#calendar_title {
-    color: #bd2031;
-    text-decoration: none;
-    border-bottom: 1px dashed;
-    font-weight: bold;
-}
-.calendar_entry {
-    list-style-type: square;
-    line-height: 150%;
-}
-.calendar_entry a {
-    font-weight: normal;
-}
-#add_icon {
-    visibility: hidden;
-}
-#new_item {
-    width: 115px;
-    height: 34px;
-    color: white;
-    font-weight: bold;
-    float: right;
-    margin-right: 26%;
-    padding: 0 2px 0 3px;
-    background-image: url("/images/round.png");
-}
-
-/* Forums CSS */
-
-.forum_actions {
-    display:inline-block;
-    width: 100%;
-    padding-left: 28px;
-    margin: 4px;
-    list-style-type: none;
-}
-.forum_actions a {
-    text-decoration: none;
-}
-.forum_actions li {
-    float: left;
-    text-decoration: none;
-    padding: 0 12px 0 12px;
-    text-transform: uppercase;
-    font-size: 10.5pt;
-    border-left: 1px solid #d3d3d3;
-}
-.forum_action_left {
-    border-left: 0!important;
-}
-#forum_content {
-    /*display:inline-block;*/
-    width: 100%;
-    list-style-type: none;
-    color: #646566;
-}
-
-#forum_content li {
-    font-size: 11pt;
-    line-height: 160%;
-}
-
-.post {
-    display:inline-block;
-    width: 90%;
-    padding-left: 0px;
-    list-style-type: none;
-    border-bottom: 1px dotted black;
-}
-.post a {
-    text-decoration: none;
-}
-.post li {
-    float: left;
-    text-decoration: none;
-}
-.unread {
-    font-weight: bold;
-}
-.post input {
-    vertical-align: text-top;
-}
-.post_expand {
-    font-weight: normal;
-}
-.post_title {
-    width: 56%;
-}
-.post_replies {
-    width: 10%;
-}
-.post_author {
-    width: 15%;
-}
-.post_date {
-    width: 9%;
-}
-.post_time {
-    font-variant: small-caps;
-    float:right!important;
-}
-
 #welcome {
     text-align: justify;
     line-height: 250%;
