@@ -3,7 +3,7 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
-    background: #d1e751;          /* sides background  url('/images/grad.png') */
+    /*background: #d1e751;          /* sides background  url('/images/grad.png') */
     /*background-position: center center;*/
     font-family: "Tahoma", "Verdana", san-serif;
     color: #979899;
@@ -11,8 +11,8 @@ body {
 }
 
 #main {
-    background-color: #d1e751;
-    /*
+    /*background-color: #d1e751;
+    
     width: 100%;
     height: 100%;
     margin: auto;
@@ -50,10 +50,10 @@ a {
 }
 #login_form {
     width: 80%;
-    margin: auto;
+    margin: 15px auto;
     line-height: 150%;
-    background-color: #d1e751;
     /*
+    background: #d1e751;
     max-width: 256px;
     text-align: center;
     float: left;
@@ -64,26 +64,23 @@ a {
     display: block;
     color: #757575;
     margin: 10px;
+    padding: 5px;
 }
 .input_label {
     font-size: 10pt;
-    color: white;
+    color: #878889;
+    font-weight: bold;
     /*padding-left: 1px;*/
-}
-
-a.login_button_load {
-    background: url("/images/button_pressed.png");
-    visibility: hidden;
 }
 
 .login_button {
     /*display: inline;*/
     margin: 10px auto !important;
     border: none;
-    width: 72px;
-    height: 28px;
+    width: 120px;
+    height: 52px;
     padding: 20px 0 0 0;
-    background: transparent url("/images/button.png") no-repeat;
+    background: transparent url("/images/button_big.png") no-repeat;
 }
 #content {
     /*clear: left;
