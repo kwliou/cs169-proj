@@ -1,3 +1,19 @@
+html {
+    height: 100%;
+    min-width: 900px;
+    margin: 0;
+    padding: 0;
+}
+body {
+    height: 100%;
+    min-width: 900px;
+    margin: 0;
+    padding: 0;
+    background: #eee;          /* sides background  url('/images/grad.png') */
+    background-position: center center;
+    font-family: "Tahoma", "Verdana", san-serif;
+    color: #979899;
+}
 #bg {
     width: 100%;
     height: 100%;
@@ -18,26 +34,9 @@
     /*background: url("/images/grad.png") repeat-y;*/
 
 }
-html {
-    height: 100%;
-    min-width: 900px;
-    margin: 0;
-    padding: 0;
-}
-body {
-    height: 100%;
-    min-width: 900px;
-    margin: 0;
-    padding: 0;
-    background: #eeeeee;          /* sides background  url('/images/grad.png') */
-    background-position: center center;
-    font-family: "Tahoma", "Verdana", san-serif;
-    color: #979899;
-}
-
 #main {
     width: 90%;
-    background-color: #ffffff;
+    background: #fff url("/images/bg.png");
     margin: auto;
     /*margin-left: 20%;*/
     height: 100%;
@@ -53,7 +52,7 @@ body {
 #maincol {
     margin-top: 0;
     margin-bottom: 0;
-    background-color: #ffffff;
+    background: #fff url("/images/bg.png"); /* #FFFFFA; */
     position:relative;	/* This fixes the IE7 overflow hidden bug */
     padding: 0;
     float:left;
@@ -70,9 +69,10 @@ a {
     float: right;
 }
 #header {
+    font-size: 11pt;
     color: #646566;
     padding: 5px;
-    background-color: #ffffff;
+    background: #fff url("/images/bg.png");
 }
 #header a {
     color: #646566;
@@ -104,10 +104,10 @@ a {
     color: #757575;
 }
 .input_label {
-    display: none;
+    /*display: none;*/
     font-size: 10pt;
     color: white;
-    padding-left: 1px;
+    padding-left: 2px;
 }
 
 a.login_button_load {
@@ -178,7 +178,7 @@ a.login_button_load {
     width: 85%;
     font-size: 12pt;
     font-family:  "Whitney HTF SC", "Century Gothic", "Verdana", "Lucida Sans Unicode", "Tahoma", sans-serif;
-    border-bottom: 1px #cccccc solid;
+    border-bottom: 1px #ccc solid;
     text-transform: uppercase;
     letter-spacing: 0.5pt;
 }
@@ -329,17 +329,18 @@ a.login_button_load {
     font-family: "Constantia", "Palatino Linotype", "Georgia", "Garamond", "Times New Roman", serif;
     text-align: justify;
     line-height: 250%;
-    padding: 0 5% 0 5%;
+    padding: 30px 5% 0 5%;
 }
 
 #welcome_title {
+    font-family: "Fertigo Pro", "edelsans", "Anivers", "Helvetica", "Verdana", sans-serif;
     margin-top: 0;
     font-size: 17pt;
 }
 
 #footer {
     text-align: center;
-    background-color: #ffffff;
+    background: #fff url("/images/bg.png");
     padding: 10px 0 10px 0;
     clear: both;
     /*
@@ -355,5 +356,6 @@ a.login_button_load {
 #footer_links a {
     font-size: 10.5px;
     padding: 0 2% 0 2%;
-    border-left: 1px #dddddd solid;
+    border-left: 1px #ddd solid;
+    border-right: 1px #fff solid;
 }
