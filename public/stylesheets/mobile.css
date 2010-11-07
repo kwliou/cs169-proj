@@ -3,8 +3,7 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
-    /*background: #d1e751;          /* sides background  url('/images/grad.png') */
-    /*background-position: center center;*/
+    /*background: #d1e751; */
     font-family: "Tahoma", "Verdana", san-serif;
     color: #979899;
     overflow: hidden;
@@ -35,6 +34,7 @@ a {
 }
 #header {
     /*width: 100%;*/
+    font-size: 13pt;
     color: #646566;
     padding: 5px 0 5px 5px;
     background-color: #ffffff;
@@ -61,10 +61,10 @@ a {
     
 }
 #login_form input {
-    /*margin: auto;*/
     display: block;
     color: #757575;
-    padding: 5px;
+    padding: 0.5%;
+    margin-right: 1px; /* Why do input boxes not have correct width?! */
     /*margin: 10px;*/
 }
 .input_label {
@@ -76,6 +76,7 @@ a {
 
 .login_button {
     /*display: inline;*/
+    
     margin: 10px auto !important;
     border: none;
     width: 120px;

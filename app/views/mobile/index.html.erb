@@ -16,9 +16,9 @@
     <div id="login_form">
       <% form_for @user_session do |f| %>
         <%= f.label :username, "Username", :class => "input_label" %>
-        <%= f.text_field :username, :style => "width: 100%;" %>
+        <%= f.text_field :username, :style => "width: 98.5%;" %>
         <%= f.label :password, "Password", :class => "input_label" %>
-        <%= f.password_field :password, :style => "width: 100%;" %>
+        <%= f.password_field :password, :style => "width: 98.5%;" %>
         <%= f.label "remember", "Remember me", :style => "height: 24px; vertical-align: middle", :class => "input_label" %>
         <input id="remember" type="checkbox" style="height: 24px; margin: 0 0 0 10px; display: inline; vertical-align: text-top"/><br />
         <%= f.submit "", :class => "login_button", :onfocus => "this.blur()", :tabindex => 1000 %>

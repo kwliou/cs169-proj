@@ -9,7 +9,7 @@ body {
     min-width: 900px;
     margin: 0;
     padding: 0;
-    background: #eee;          /* sides background  url('/images/grad.png') */
+    background: #fff;          /* sides background  url('/images/grad.png') */
     background-position: center center;
     font-family: "Tahoma", "Verdana", san-serif;
     color: #979899;
@@ -69,6 +69,7 @@ a {
     float: right;
 }
 #header {
+    width: 90%;
     font-size: 11pt;
     color: #646566;
     padding: 5px;
@@ -115,6 +116,7 @@ a.login_button_load {
     visibility: hidden;
 }
 
+/*#login_form input*/
 .login_button {
     display: inline;
     border: none;
@@ -123,6 +125,13 @@ a.login_button_load {
     padding-left: 0;
     padding-right: 0;
     background: transparent url("/images/button.png") no-repeat;
+    /* Following is if no text in button image */
+    color: #327B99 !important;
+    vertical-align: middle;
+    font-variant: small-caps;
+    letter-spacing: 1px;
+    font-family: "Whitney HTF Black SC", "Arial Black", sans-serif;
+    text-shadow: 0px 1px 1px #acdaec;
 }
 /* active is only before focus since IE shifts buttons and sucks */
  .login_button:active {
@@ -329,7 +338,8 @@ a.login_button_load {
     font-family: "Constantia", "Palatino Linotype", "Georgia", "Garamond", "Times New Roman", serif;
     text-align: justify;
     line-height: 250%;
-    padding: 30px 5% 0 5%;
+    padding: 20px 5% 0 5%;
+    text-shadow: 0px 1px 1px #fff;
 }
 
 #welcome_title {
@@ -350,11 +360,13 @@ a.login_button_load {
     */
     
 }
-#footer_links a:first-child {
-    border: none;
+#footer_links li:first-child {
+    border-left: none;
 }
-#footer_links a {
-    font-size: 10.5px;
+#footer_links li {
+    font-size: 9.5pt;
+    list-style: none;
+    display: inline;
     padding: 0 2% 0 2%;
     border-left: 1px #ddd solid;
     border-right: 1px #fff solid;
