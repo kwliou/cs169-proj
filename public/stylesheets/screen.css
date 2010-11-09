@@ -206,20 +206,21 @@ a.login_button_load {
     font-size: 14pt;
 }
 .course_action {
-    width: 40%;
+    text-decoration: none;
+    width: 14em;
     display: inline-block;
     line-height: 30pt;
     font-weight: bold;
     font-size: 14pt;
 }
 .course_info {
-    padding: 0 0 0 2%;
+    padding: 0;
     vertical-align: text-bottom;
     font-family: StRyde, "edelsans", "Tahoma", sans-serif;
     font-size: 14pt;
 }
 .course_action_comment {
-    padding: 0 0 0 30px;
+    padding: 0 0 0 24px;
     vertical-align: text-bottom;
     font-family: StRyde, "edelsans", "Tahoma", sans-serif;
     font-size: 14pt;
