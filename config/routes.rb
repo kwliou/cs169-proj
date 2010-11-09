@@ -2,13 +2,13 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :blurbs
   map.resources :grades
   map.resources :assignments
-  map.resources :items
-  #map.resources :posts
-  map.resources :courses
+  map.resources :courses, :has_many => [ :items ]
   map.resources :users, :has_many => [ :posts ]
   map.resources :user_sessions
+  #map.resources :items
+  #map.resources :posts
   
-  map.connect '/courses/:id/items', :controller => :items, :action => :index
+  #map.connect '/courses/:id/items', :controller => :items, :action => :index
   map.connect '/courses/:id/grades', :controller => :grades, :action => :index
 
   map.login "login", :controller => "user_sessions", :action => "new"

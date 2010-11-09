@@ -10,7 +10,6 @@ class PostsController < ApplicationController
   # GET /posts.xml
   def index
     @posts = @user.posts #Post.all
-    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @posts }
@@ -21,7 +20,6 @@ class PostsController < ApplicationController
   # GET /posts/1.xml
   def show
     @post = @user.posts.find(params[:id]) #Post.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @post }
@@ -83,7 +81,7 @@ class PostsController < ApplicationController
     @post.destroy
 
     respond_to do |format|
-      format.html { redirect_to(user_posts_path(@user)) }
+      format.html { redirect_to(user_posts_url(@user)) }
       format.xml  { head :ok }
     end
   end

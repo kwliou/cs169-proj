@@ -6,7 +6,7 @@
 <div class="nav-bar">
 	<a href="<%= url_for(:controller => "courses", :action => "index") %>" class="nav-link">Home</a> > 
 	<a href="<%= url_for(:controller => "courses", :action => "show", :id => @course.id) %>" class="nav-link"><%= @course.short_title %></a> > 
-	<a href="<%= url_for(:controller => "items", :action => "index", :id => @course.id) %>" class="nav-link">Assignments/Projects</a>
+	<%= link_to "Assignments/Projects", course_items_path(@course), :class => "nav-link" %>
 </div>
 
 
@@ -24,7 +24,7 @@
     <td><%=h item.due_date %></td>
     <td><%=h item.points %></td>
     <td><%=h item.weight %></td>
-    <td><%= link_to 'Show', item %></td>
+    <td><%= link_to 'Show', [@course, item] %></td>
   </tr>
 <% end %>
 </table>

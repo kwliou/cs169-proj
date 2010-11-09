@@ -1,6 +1,6 @@
 <h1>Editing item</h1>
 
-<% form_for(@item) do |f| %>
+<% form_for([@course, @item]) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -24,5 +24,5 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', @item %> |
-<%= link_to 'Back', items_path %>
+<%= link_to 'Show', [@course, @item] %> |
+<%= link_to 'Back', course_items_path(@course) %>

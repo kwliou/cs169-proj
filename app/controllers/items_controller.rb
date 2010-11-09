@@ -1,10 +1,14 @@
 class ItemsController < ApplicationController
+  before_filter :get_course
+
+  def get_course
+    @course = Course.find(params[:course_id])
+  end
+
   # GET /courses/:id/items
   # GET /items.xml
   def index
-    # find all items associated with the course id
-    @items = Item.all(:conditions => {:course_id => params[:id]})
-    @course = Course.find(params[:id])
+    @items = @course.items
     @current_user = current_user
     respond_to do |format|
       format.html # index.html.erb
@@ -15,8 +19,7 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET/items/1.xml
   def show
-    @item = Item.find(params[:id])
-
+    @item = @course.items.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @item }
@@ -26,7 +29,7 @@ class ItemsController < ApplicationController
   # GET /items/new
   # GET /items/new.xml
   def new
-    @item = Item.new
+    @item = @course.items.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,17 +39,17 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
-    @item = Item.find(params[:id])
+    @item = @course.items.find(params[:id])
   end
 
   # POST /items
   # POST /items.xml
   def create
-    @item = Item.new(params[:item])
+    @item = @course.items.build(params[:item])
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to(@item, :notice => 'Item was successfully created.') }
+        format.html { redirect_to([@course, @item], :notice => 'Item was successfully created.') }
         format.xml  { render :xml => @item, :status => :created, :location => @item }
       else
         format.html { render :action => "new" }
@@ -58,11 +61,11 @@ class ItemsController < ApplicationController
   # PUT /items/1
   # PUT /items/1.xml
   def update
-    @item = Item.find(params[:id])
+    @item = @course.items.find(params[:id])
 
     respond_to do |format|
       if @item.update_attributes(params[:item])
-        format.html { redirect_to(@item, :notice => 'Item was successfully updated.') }
+        format.html { redirect_to([@course, @item], :notice => 'Item was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -74,11 +77,11 @@ class ItemsController < ApplicationController
   # DELETE /items/1
   # DELETE /items/1.xml
   def destroy
-    @item = Item.find(params[:id])
+    @item = @course.items.find(params[:id])
     @item.destroy
 
     respond_to do |format|
-      format.html { redirect_to(items_url) }
+      format.html { redirect_to(course_items_url(@course)) }
       format.xml  { head :ok }
     end
   end
