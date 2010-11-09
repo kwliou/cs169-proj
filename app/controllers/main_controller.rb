@@ -5,7 +5,7 @@ class MainController < ApplicationController
     @user_session = UserSession.new
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @courses }
+      # format.xml  { render :xml => @courses }
     end
   end
   def mobile
@@ -14,7 +14,7 @@ class MainController < ApplicationController
     @user_session = UserSession.new
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @courses }
+      # format.xml  { render :xml => @courses }
     end
   end
 end

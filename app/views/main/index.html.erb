@@ -39,31 +39,29 @@
   </div>
   <div id="maincol">
     <div id="banner">
-      <div style="float: left; background: url('/images/banner_left.png'); margin-left: -4px; width: 4px; height: 103px"> <!--#cfe54f-->
-      </div>
-      <div style="float: left; background: #E2EF8E; margin-top: -1px; width: 100%; height: 2px"> <!--#cfe54f-->
-      </div>
-      <div style="float: right; background: url('/images/banner_right.png'); margin-right: -4px; width: 4px; height: 103px"> <!--#cfe54f-->
-      </div>
+      <div style="float: left; background: url('/images/banner_left.png'); margin-top: -1px; margin-left: -4px; width: 4px; height: 104px"></div>
+      <div style="float: left; background: #E2EF8E; margin-top: -1px; width: 100%; height: 2px"></div>
+      <div style="float: right; background: url('/images/banner_right.png'); margin-top: -1px; margin-right: -4px; width: 4px; height: 104px"></div>
       <% if @current_user %>
         <div id ="college_logo"></div>
+        <div style="float: left; background: url('/images/banner_bottom.png'); margin-top: 15px; width: 100%; height: 12px"></div>
       <% else %>
         <div id="banner_right">
           <div id="login_form">
-            <!--span id="message" class="stryde">Remember my info, please.</span-->
             <% form_for @user_session do |f| %>
               <span class="input_label"><%= f.label :username, "Username", :id => "username_label" %></span>
               <%= f.text_field :username, :style => "width: 9.5em" %>
               <span class="input_label"><%= f.label :password, "Password", :id => "password_label" %></span>
               <%= f.password_field :password, :style => "width: 9.5em" %>
-              <input type="checkbox" />
+              <%= f.check_box :remember_me, {}, true, false %>
               <%= f.submit "", :class => "login_button", :onfocus => "this.blur()", :tabindex => 1000 %>
               <a class="login_button_load"></a>
             <% end %>
-          </div></div>
-      <% end %>
+          </div>
+        </div>
         <div style="float: left; background: url('/images/banner_bottom.png'); margin-top: 10px; width: 100%; height: 12px"> <!--#cfe54f-->
         </div>
+      <% end %>
     </div>
     <% if @current_user %>
       <div>
@@ -77,7 +75,7 @@
       <div id="content_left">
         <div id="courses">
           <span class="section_header">Subscribed Courses</span>
-          
+
             <% @current_user.courses.each do |course| %>
               <% link_to course, :class => "name", :id => "#{course.department} #{course.number}" do %>
                 <span class="course"><%=h course.department %> <%=h course.number %></span>
@@ -86,7 +84,7 @@
               <%= link_to 'Edit', edit_course_path(course) %>
               <br />
             <% end %>
-          
+
           <br />
           <%= link_to 'Edit Subscriptions', "edit" %>
           <%= link_to "New course", new_course_path %>
