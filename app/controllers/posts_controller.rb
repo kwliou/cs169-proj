@@ -1,10 +1,7 @@
 class PostsController < ApplicationController
+  layout "scaffold"
+
   before_filter :get_user
-
-  def get_user
-    @user = User.find(params[:user_id])
-  end
-
   
   # GET /posts
   # GET /posts.xml
@@ -86,3 +83,8 @@ class PostsController < ApplicationController
     end
   end
 end
+
+private
+  def get_user
+    @user = @current_user = User.find(params[:user_id])
+  end

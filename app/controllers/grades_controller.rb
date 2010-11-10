@@ -1,4 +1,6 @@
 class GradesController < ApplicationController
+  layout "scaffold"
+
   # GET /grades
   # GET /grades.xml
   def index

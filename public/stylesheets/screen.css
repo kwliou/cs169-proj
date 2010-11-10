@@ -146,7 +146,7 @@ a.login_button_load {
 #breadcrumbs {
     /*float: left;*/
     width: 100%;
-    padding: 6px;
+    padding: 10px;
     margin: 5px;
     list-style-type: none;
 }

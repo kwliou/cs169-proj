@@ -1,102 +1,79 @@
-<div id="bg">
-  <img src="/images/grad.png" alt="" />
+<!-- All this is the content between header and footer -->
+<div>
+  <ul id ="breadcrumbs">
+    <li class="breadcrumbs_a"><%= link_to "Home", root_path %></li>
+    <li class="breadcrumbs_arrow">&#9654;</li>
+    <li class="breadcrumbs_a"><%= link_to "Courses", courses_path %></li>
+    <li class="breadcrumbs_arrow">&#9654;</li>
+    <li class="breadcrumbs_a"><%= link_to "#{@course.department} #{@course.number}", "" %></li>
+    <li class="breadcrumbs_semester">Fall '10
+      <img alt="&9662;" src="/images/flat_triangle.gif" />
+    </li>
+  </ul>
 </div>
-<div id="main">
-  <div id="top">
-    <div id ="header">
-      Welcome, <%= link_to  "#{@current_user.first_name} #{@current_user.last_name}", @current_user %>! Want to <%= link_to "sign out", logout_path %>?
+
+<div id="content">
+  <div id="content_left">
+    <div>
+      <%= link_to "Assignments, Projects, etc.", course_items_path(@course, :type => "assignmnent"), :class => "course_action" %>
+      <span class="stryde course_action_comment">Time to work!</span>
     </div>
-    <div id="maincol">
-      <div id="banner">
-        <div style="float: left; background: url('/images/banner_left.png'); margin-top: -1px; margin-left: -4px; width: 4px; height: 104px"></div>
-        <div style="float: left; background: #E2EF8E; margin-top: -1px; width: 100%; height: 2px"></div>
-        <div style="float: right; background: url('/images/banner_right.png'); margin-top: -1px; margin-right: -4px; width: 4px; height: 104px"></div>
-        <div id ="college_logo"></div>
-        <div style="float: left; background: url('/images/banner_bottom.png'); margin-top: 15px; width: 100%; height: 12px"></div>
-      </div>
-
-      <div>
-        <ul id ="breadcrumbs">
-          <li class="breadcrumbs_a"><%= link_to "Home", root_path %></li>
-          <li class="breadcrumbs_arrow">&#9654;</li>
-          <li class="breadcrumbs_a"><%= link_to "Courses", courses_path %></li>
-          <li class="breadcrumbs_arrow">&#9654;</li>
-          <li class="breadcrumbs_a"><%= link_to "#{@course.department} #{@course.number}", "" %></li>
-          <li class="breadcrumbs_semester">Fall '10
-            <img alt="&9662;" src="/images/flat_triangle.gif" /></li>
-        </ul>
-      </div>
-
-      <div id="content">
-        <div id="content_left">
-          <div>
-            <a class="course_action" href="<%= url_for(:controller => "items", :action => "index", :id => @course.id) %>">Assignments, Projects, etc.</a>
-            <span class="stryde course_action_comment">Time to work!</span>
-          </div>
-          <div>
-            <a class="course_action" href="<%= url_for(:controller => "items", :action => "index", :id => @course.id) %>">Exams, Quizzes, etc.</a>
-            <span class="stryde course_action_comment">Study buddy?</span>
-          </div>
-          <div>
-            <a class="course_action" href="<%= url_for(:controller => "grades", :action => "index", :id => @course.id) %>">Grades</a>
-            <span class="stryde course_action_comment">Ignorance is bliss.</span>
-          </div>
-          <div>
-            <a class="course_action" href="<%= url_for(:controller => "grades", :action => "index", :id => @course.id) %>">Course Info</a>
-            <span class="stryde course_action_comment">What's this all about?</span>
-          </div>
-          <div>
-            <a class="course_action" href="<%= url_for(:controller => "grades", :action => "index", :id => @course.id) %>">Semester Wrap-up</a>
-            <span class="stryde course_action_comment">Is school over yet?</span>
-          </div>
-        </div>
-      </div>
-
-      <div id="calendar">
-        <a id="calendar_title" href="calendar">Course Calendar</a>
-        <ul>
-          <li class="calendar_entry">Oct 11 <a href="item1">Midterm 1</a></li>
-          <li class="calendar_entry">Oct 11 <a href="item1">Midterm 2</a></li>
-          <li class="calendar_entry">Oct 12 <a href="item1">Project Milestone 3</a></li>
-        </ul>
-        <div class="course-body-container">
-          <div class="course-blurbs-container">
-            <% for blurb in @course.blurbs do %>
-              <% if blurb.position == "center" %>
-                <div class="blurb">
-                  <h2><%= blurb.title %></h2>
-                  <% if blurb.as_html %>
-                    <%= blurb.text %>
-                  <% else %>
-                    <%= h blurb.text %>
-                  <% end %>
-                </div>
-              <% end %>
-            <% end %>
-          </div>
-
-          <div class="course-announcements-container">
-            <% for blurb in @course.blurbs do %>
-              <% if blurb.position == "right" %>
-                <div class="announcement">
-                  <a class="announcement-link" href="#"><h2><%= blurb.title %></h2></a>
-                    <% if blurb.as_html %>
-                      <%= blurb.text %>
-                    <% else %>
-                      <%=h blurb.text %>
-                    <% end %>
-                </div>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-      
+    <div>
+      <a class="course_action" href="<%= url_for(:controller => "items", :action => "index", :id => @course.id) %>">Exams, Quizzes, etc.</a>
+      <span class="stryde course_action_comment">Study buddy?</span>
+    </div>
+    <div>
+      <a class="course_action" href="<%= url_for(:controller => "grades", :action => "index", :id => @course.id) %>">Grades</a>
+      <span class="stryde course_action_comment">Ignorance is bliss.</span>
+    </div>
+    <div>
+      <a class="course_action" href="<%= url_for(:controller => "grades", :action => "index", :id => @course.id) %>">Course Info</a>
+      <span class="stryde course_action_comment">What's this all about?</span>
+    </div>
+    <div>
+      <a class="course_action" href="<%= url_for(:controller => "grades", :action => "index", :id => @course.id) %>">Semester Wrap-up</a>
+      <span class="stryde course_action_comment">Is school over yet?</span>
     </div>
   </div>
-  <div id="footer">
-    <span id="footer_links">
-      <li><a href="help">Help</a></li><li><a href="about">About</a></li><li><a href="feedback">Feedback</a></li><li><a href="contact">Contact</a></li>
-    </span>
+</div>
+
+<div id="calendar">
+  <a id="calendar_title" href="calendar">Course Calendar</a>
+  <ul>
+    <li class="calendar_entry">Oct 11 <a href="item1">Midterm 1</a></li>
+    <li class="calendar_entry">Oct 11 <a href="item1">Midterm 2</a></li>
+    <li class="calendar_entry">Oct 12 <a href="item1">Project Milestone 3</a></li>
+  </ul>
+  <div class="course-body-container">
+    <div class="course-blurbs-container">
+      <% @course.blurbs.each do %>
+        <% if blurb.position == "center" %>
+          <div class="blurb">
+            <h2><%= blurb.title %></h2>
+            <% if blurb.as_html %>
+              <%= blurb.text %>
+            <% else %>
+              <%= h blurb.text %>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="course-announcements-container">
+      <% for blurb in @course.blurbs do %>
+        <% if blurb.position == "right" %>
+          <div class="announcement">
+            <a class="announcement-link" href="#"><h2><%= blurb.title %></h2></a>
+            <% if blurb.as_html %>
+              <%= blurb.text %>
+            <% else %>
+              <%=h blurb.text %>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
+

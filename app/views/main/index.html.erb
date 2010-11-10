@@ -1,29 +1,6 @@
 <% content_for :title, "re.factored" %>
 <% content_for :stylesheet, "style.css" %>
 
-<script type="text/javascript">
-  function defaultInput(id, value, fontStyle) {
-    text_input = document.getElementById(id);
-    if (text_input.value == "") {
-      text_input.value = value;
-      document.getElementById(id).onfocus = function () {
-        if (this.style.color == "#dddddd")
-          this.value = "";
-        this.style.fontStyle = "normal";
-        this.style.color = "#757575";
-      };
-      text_input.style.fontStyle = fontStyle;
-      text_input.style.color = "#dddddd";
-    }
-  }
-  function after_load() {
-    document.getElementById("username_label").style.display = "none";
-    document.getElementById("password_label").style.display = "none";
-    defaultInput("user_session_username", "Username", "italic");
-    defaultInput("user_session_password", "Password", "normal");
-  }
-  //window.onload = after_load;
-</script>
 
 <div id="bg">
   <img src="/images/grad.png" alt="" />

@@ -1,4 +1,6 @@
 class BlurbsController < ApplicationController
+  layout "scaffold"
+
   # GET /blurbs
   # GET /blurbs.xml
   def index

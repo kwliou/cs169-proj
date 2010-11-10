@@ -4,7 +4,7 @@
 </div>
 
 <div class="nav-bar">
-	<a href="<%= url_for(:controller => "courses", :action => "index") %>" class="nav-link">Home</a> > 
+	<%= link_to root_path %>
 	<a href="<%= url_for(:controller => "courses", :action => "show", :id => @course.id) %>" class="nav-link"><%= @course.short_title %></a> > 
 	<%= link_to "Assignments/Projects", course_items_path(@course), :class => "nav-link" %>
 </div>

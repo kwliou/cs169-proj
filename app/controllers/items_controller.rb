@@ -1,14 +1,12 @@
 class ItemsController < ApplicationController
+  layout "scaffold"
+  
   before_filter :get_course
-
-  def get_course
-    @course = Course.find(params[:course_id])
-  end
 
   # GET /courses/:id/items
   # GET /items.xml
   def index
-    @items = @course.items
+    @items = params[:type] ? @course.items.find_by_type(params[:type]) : @course.items
     @current_user = current_user
     respond_to do |format|
       format.html # index.html.erb
@@ -86,3 +84,8 @@ class ItemsController < ApplicationController
     end
   end
 end
+
+private
+  def get_course
+    @course = Course.find(params[:course_id])
+  end

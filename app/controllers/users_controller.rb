@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  layout "scaffold"
+  
+  before_filter :get_user
+
   # GET /users
   # GET /users.xml
   def index
@@ -81,3 +85,9 @@ class UsersController < ApplicationController
     end
   end
 end
+
+private
+  def get_user
+    @current_user = User.find(params[:id])
+  end
+  
