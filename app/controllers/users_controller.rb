@@ -1,23 +1,21 @@
 class UsersController < ApplicationController
-  layout "scaffold"
-  
   before_filter :get_user
 
   # GET /users
   # GET /users.xml
   def index
-    @users = User.all
-
+    #@current_user = User.find(params[:id])
+    @users = User.find(:all)
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @users }
+      format.xml  { render :xml => @current_user }
     end
   end
 
   # GET /users/1
   # GET /users/1.xml
   def show
-    @user = User.find(params[:id])
+    #@user = User.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -38,7 +36,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user = User.find(params[:id])
+    #@user = User.find(params[:id])
   end
 
   # POST /users
@@ -48,6 +46,15 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+#        ActionMailer::Base.smtp_settings = {
+#          :address        => "smtp.sendgrid.net",
+#          :port           => "25",
+#          :authentication => :plain,
+#          :user_name      => ENV['SENDGRID_USERNAME'],
+#          :password       => ENV['SENDGRID_PASSWORD'],
+#          :domain         => ENV['SENDGRID_DOMAIN']
+#        }
+        UserMailer.deliver_welcome(@user)
         format.html { redirect_to(@user, :notice => 'User was successfully created.') }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
@@ -60,7 +67,7 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.xml
   def update
-    @user = User.find(params[:id])
+    #@user = User.find(params[:id])
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
@@ -76,7 +83,7 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.xml
   def destroy
-    @user = User.find(params[:id])
+    #@user = User.find(params[:id])
     @user.destroy
 
     respond_to do |format|
@@ -85,9 +92,7 @@ class UsersController < ApplicationController
     end
   end
 end
-
 private
   def get_user
-    @current_user = User.find(params[:id])
+    @user = User.find_by_username(params[:id])
   end
-  

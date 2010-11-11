@@ -55,7 +55,7 @@
 
             <% @current_user.courses.each do |course| %>
               <% link_to course, :class => "name", :id => "#{course.department} #{course.number}" do %>
-                <span class="course"><%=h course.department %> <%=h course.number %></span>
+                <span class="course"><%=h course.dept %> <%=h course.number %></span>
                 <span class="stryde course_info"><%=h course.name %></span>
               <% end %>
               <%= link_to 'Edit', edit_course_path(course) %>
@@ -101,8 +101,11 @@
   </div>
   </div>
   <div id="footer">
-    <span id="footer_links">
+    <ul id="footer_links">
       <li><a href="help">Help</a></li><li><a href="about">About</a></li><li><a href="feedback">Feedback</a></li><li><a href="contact">Contact</a></li>
-    </span>
+      <!--
+      <a href="help">Help</a><a href="about">About</a><a href="feedback">Feedback</a><a href="contact">Contact</a>
+      -->
+    </ul>
   </div>
 </div>

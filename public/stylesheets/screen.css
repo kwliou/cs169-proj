@@ -15,7 +15,7 @@ acronym { /* IE doesn't have this style by default '*/
 #bg {
     width: 100%;
     height: 100%;
-    position: absolute;
+    position: fixed;
     top: 0;
     /*
     margin: 0;
@@ -28,8 +28,10 @@ acronym { /* IE doesn't have this style by default '*/
     min-width: 900px;
     width: 100%;
     height: 100%;
+    /*
     margin-bottom: -20px;
-    /*background: url("/images/grad.png") repeat-y;*/
+    background: url("/images/grad.png") repeat-y;
+    */
 
 }
 #main {
@@ -214,7 +216,7 @@ a.login_button_load {
     font-size: 14pt;
 }
 .course_info {
-    padding: 0;
+    padding-left: 10px;
     vertical-align: text-bottom;
     font-family: StRyde, "edelsans", "Tahoma", sans-serif;
     font-size: 14pt;
@@ -250,7 +252,7 @@ a.login_button_load {
 #add_icon {
     visibility: hidden;
 }
-#new_item {
+#add_item {
     width: 115px;
     height: 34px;
     color: white;
@@ -351,25 +353,26 @@ a.login_button_load {
 }
 
 #footer {
-    text-align: center;
     background: #fff url("/images/bg.png");
-    clear: both;
-    padding-top: 5px;
+    padding: 7px 0 7px 0;
+    text-align: center;
     /*
-    bottom: 0;
-    position: absolute;
-    width: 100%;
+    clear: both;
+    bottom: 0; position: absolute;
     */
-    
+}
+#footer_links {
+    margin: 0;
+    font-size: 9.5pt;
 }
 #footer_links li:first-child {
     border-left: none;
 }
 #footer_links li {
-    font-size: 9.5pt;
     list-style: none;
     display: inline;
-    padding: 0 2% 0 2%;
+    /*margin: auto;*/
+    padding: 0 1em 0 1em;
     border-left: 1px #ddd solid;
     border-right: 1px #fff solid;
 }

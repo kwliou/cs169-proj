@@ -1,11 +1,31 @@
-<h1>New item</h1>
+<div>
+  <ul id ="breadcrumbs">
+    <li class="breadcrumbs_a"><%= link_to "Home", root_path %></li>
+    <li class="breadcrumbs_arrow">&#9654;</li>
+    <li class="breadcrumbs_a"><%= link_to "Courses", courses_path %></li>
+    <li class="breadcrumbs_arrow">&#9654;</li>
+    <li class="breadcrumbs_a"><%= link_to "#{@course.department} #{@course.number}", course_path(@course) %></li>
+    <li class="breadcrumbs_arrow">&#9654;</li>
+    <li class="breadcrumbs_a"><%= link_to "Items", course_items_path(@course) %></li>
+    <li class="breadcrumbs_semester">Fall '10
+      <img alt="&9662;" src="/images/flat_triangle.gif" />
+    </li>
+  </ul>
+</div>
 
+<div id="content">
+  <div id="content_left">
+<h1>New item</h1>
 <% form_for([@course, @item]) do |f| %>
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :type %><br />
-    <%= f.text_field :type %>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :category %><br />
+    <%= f.text_field :category %>
   </p>
   <p>
     <%= f.label :due_date %><br />
@@ -20,8 +40,14 @@
     <%= f.text_field :weight %>
   </p>
   <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </p>
+  <p>
     <%= f.submit 'Create' %>
   </p>
 <% end %>
 
 <%= link_to 'Back', course_items_path(@course) %>
+</div>
+</div>

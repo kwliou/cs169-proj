@@ -1,14 +1,18 @@
 class PostsController < ApplicationController
   layout "scaffold"
 
-  before_filter :get_user
+  before_filter :get_data
   
   # GET /posts
   # GET /posts.xml
   def index
-    @posts = @user.posts #Post.all
+    @posts = @user ? @user.posts : @item.posts
     respond_to do |format|
-      format.html # index.html.erb
+      if @user
+        format.html # index.html.erb
+      else
+        format.html { render :action => "forum" }
+      end
       format.xml  { render :xml => @posts }
     end
   end
@@ -16,7 +20,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.xml
   def show
-    @post = @user.posts.find(params[:id]) #Post.find(params[:id])
+    @post = @user ? @user.posts.find(params[:id]) : @item.posts.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @post }
@@ -26,7 +30,7 @@ class PostsController < ApplicationController
   # GET /posts/new
   # GET /posts/new.xml
   def new
-    @post = @user.posts.build #Post.new
+    @post = @current_user.posts.build #Post.new
     
     respond_to do |format|
       format.html # new.html.erb
@@ -42,11 +46,12 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.xml
   def create
-    @post = @user.posts.build(params[:post]) #Post.new(params[:post])
-
+    #params[:post][:item_id] = @item
+    @post = @current_user.posts.build(params[:post]) #Post.new(params[:post])
+    @post.item = @item
     respond_to do |format|
       if @post.save
-        format.html { redirect_to([@user, @post], :notice => 'Post was successfully created.') }
+        format.html { redirect_to([@course, @item, @post], :notice => 'Post was successfully created.') }
         format.xml  { render :xml => @post, :status => :created, :location => @post }
       else
         format.html { render :action => "new" }
@@ -58,7 +63,7 @@ class PostsController < ApplicationController
   # PUT /posts/1
   # PUT /posts/1.xml
   def update
-    @post = @user.posts.find(params[:id])
+    @post = @current_user.posts.find(params[:id])
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
@@ -74,7 +79,7 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.xml
   def destroy
-    @post = @user.posts.find(params[:id]) #Post.find(params[:id])
+    @post = @current_user.posts.find(params[:id]) #Post.find(params[:id])
     @post.destroy
 
     respond_to do |format|
@@ -85,6 +90,11 @@ class PostsController < ApplicationController
 end
 
 private
-  def get_user
-    @user = @current_user = User.find(params[:user_id])
+  def get_data
+    if params[:course_id]
+      @course = Course.find(params[:course_id])
+      @item = Item.find(params[:item_id]) # @course.items.find(params[:item_id])
+    end
+    @user = User.find_by_username(params[:user_id]) if params[:user_id]
+    @current_user = current_user
   end

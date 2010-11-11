@@ -1,11 +1,12 @@
 class CoursesController < ApplicationController
   layout "scaffold"
 
+  before_filter :get_course, :get_user
+  
   # GET /courses
   # GET /courses.xml
   def index
-    @current_user = current_user
-    @courses = @current_user.courses
+    @courses = Course.all #@current_user.courses
     #@user_session = UserSession.new
     respond_to do |format|
       format.html # index.html.erb
@@ -16,8 +17,8 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.xml
   def show
-    @course = Course.find(params[:id])
-    @current_user = current_user
+    #@course = Course.find(params[:id])
+    #@current_user = current_user
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @course }
@@ -37,16 +38,16 @@ class CoursesController < ApplicationController
 
   # GET /courses/1/edit
   def edit
-    @course = Course.find(params[:id])
+    #@course = Course.find(params[:id])
   end
 
   # POST /courses
   # POST /courses.xml
   def create
-	@user=current_user
-	@user_course=@user.courses.create!(params[:course])
-	@course=@user_course
-
+    #@user=current_user
+    @course = @current_user.courses.build(params[:course])
+    self
+    
     respond_to do |format|
       if @course.save
         format.html { redirect_to(@course, :notice => 'Course was successfully created.') }
@@ -61,7 +62,7 @@ class CoursesController < ApplicationController
   # PUT /courses/1
   # PUT /courses/1.xml
   def update
-    @course = Course.find(params[:id])
+    #@course = Course.find(params[:id])
 
     respond_to do |format|
       if @course.update_attributes(params[:course])
@@ -77,7 +78,7 @@ class CoursesController < ApplicationController
   # DELETE /courses/1
   # DELETE /courses/1.xml
   def destroy
-    @course = Course.find(params[:id])
+    #@course = Course.find(params[:id])
     @course.destroy
 
     respond_to do |format|
@@ -86,3 +87,15 @@ class CoursesController < ApplicationController
     end
   end
 end
+
+private
+  def get_course
+    if params[:id]
+      dept, number = params[:id].split('_')
+      department = Course.unabbr(dept)
+      @course = Course.find_by_department_and_number(department, number)
+    end
+  end
+  def get_user
+    @current_user = current_user
+  end

@@ -1,32 +1,42 @@
-<div class="course-heading">
-	<div class="course-shortname"><%= @course.short_title %></div>
-	<div class="course-longname"><%= @course.title %></div>
+<div>
+  <ul id ="breadcrumbs">
+    <li class="breadcrumbs_a"><%= link_to "Home", root_path %></li>
+    <li class="breadcrumbs_arrow">&#9654;</li>
+    <li class="breadcrumbs_a"><%= link_to "Courses", courses_path %></li>
+    <li class="breadcrumbs_arrow">&#9654;</li>
+    <li class="breadcrumbs_a"><%= link_to "#{@course.department} #{@course.number}", course_path(@course) %></li>
+    <li class="breadcrumbs_arrow">&#9654;</li>
+    <li class="breadcrumbs_a"><%= link_to "Items", "" %></li>
+    <li class="breadcrumbs_semester">Fall '10
+      <img alt="&9662;" src="/images/flat_triangle.gif" />
+    </li>
+  </ul>
 </div>
-
-<div class="nav-bar">
-	<%= link_to root_path %>
-	<a href="<%= url_for(:controller => "courses", :action => "show", :id => @course.id) %>" class="nav-link"><%= @course.short_title %></a> > 
-	<%= link_to "Assignments/Projects", course_items_path(@course), :class => "nav-link" %>
-</div>
-
-
+<div id="content">
 <table>
   <tr>
-    <th>Type</th>
+    <th>Name</th>
+    <th>Category</th>
     <th>Due date</th>
     <th>Points</th>
     <th>Weight</th>
+    <th>Description</th>
   </tr>
 
 <% @items.each do |item| %>
   <tr>
-    <td><%=h item.type %></td>
+    <td><%=h item.name %></td>
+    <td><%=h item.category %></td>
     <td><%=h item.due_date %></td>
     <td><%=h item.points %></td>
     <td><%=h item.weight %></td>
+    <td><%=h item.description %></td>
     <td><%= link_to 'Show', [@course, item] %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
+
+<%= link_to 'New item', new_course_item_path(@course) %>
+</div>

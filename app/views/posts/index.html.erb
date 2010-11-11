@@ -6,6 +6,7 @@
     <th>Body</th>
     <th>Commented at</th>
     <th>Tags</th>
+    <th>Forum</th>
   </tr>
   <% @posts.each do |post| %>
     <tr>
@@ -13,12 +14,11 @@
       <td><%=h post.body %></td>
       <td><%=h post.commented_at %></td>
       <td><%=h post.tags %></td>
-      <td><%= link_to 'Show', [@user, post] %></td>
-      <td><%= link_to 'Edit', edit_user_post_path(@user, post) %></td>
-      <td><%= link_to 'Destroy', [@user, post], :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%=h post.item.name %></td>
+      <td><%= link_to 'Show', [post.item.course, post.item, post] %></td>
+      <!--td><%= link_to 'Edit', edit_user_post_path(@user, post) %></td-->
+      <!--td><%= link_to 'Destroy', [@user, post], :confirm => 'Are you sure?', :method => :delete %></td-->
     </tr>
   <% end %>
 </table>
 <br />
-
-<%= link_to 'New post', new_user_post_path(@user) %>

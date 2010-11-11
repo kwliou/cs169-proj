@@ -1,6 +1,11 @@
 <p>
-  <b>Type:</b>
-  <%=h @item.type %>
+  <b>Name:</b>
+  <%=h @item.name %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%=h @item.category %>
 </p>
 
 <p>
@@ -18,6 +23,10 @@
   <%=h @item.weight %>
 </p>
 
+<p>
+  <b>Description:</b>
+  <%=h @item.description %>
+</p>
 
 <%= link_to 'Edit', edit_course_item_path(@course, @item) %> |
 <%= link_to 'Back', course_items_path(@course) %>

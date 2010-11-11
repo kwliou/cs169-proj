@@ -4,8 +4,12 @@
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :type %><br />
-    <%= f.text_field :type %>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :category %><br />
+    <%= f.text_field :category %>
   </p>
   <p>
     <%= f.label :due_date %><br />
@@ -18,6 +22,10 @@
   <p>
     <%= f.label :weight %><br />
     <%= f.text_field :weight %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
   </p>
   <p>
     <%= f.submit 'Update' %>

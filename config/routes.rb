@@ -1,10 +1,19 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :blurbs
-  map.resources :grades
-  map.resources :assignments
-  map.resources :courses, :has_many => [ :items ]
+  # too tedious adding all those other routes so instead override to_param in model
+  # map.user '/users/:username', :controller => :users, :action => "show"
+
   map.resources :users, :has_many => [ :posts ]
   map.resources :user_sessions
+
+  map.resources :assignments
+  map.resources :blurbs
+  # This should be nested somewhere
+  # map.resources :grades
+  map.resources :courses do |course|
+    course.resources :items do |item|
+      item.resources :posts
+    end
+  end
   #map.resources :items
   #map.resources :posts
   

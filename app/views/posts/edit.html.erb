@@ -1,6 +1,6 @@
 <h1>Editing post</h1>
 
-<% form_for([@user, @post]) do |f| %>
+<% form_for([@current_user, @post]) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -24,5 +24,5 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', [@user, @post] %> |
+<%= link_to 'Show', [@current_user, @post] %> |
 <%= link_to 'Back', user_posts_path(@user) %>
