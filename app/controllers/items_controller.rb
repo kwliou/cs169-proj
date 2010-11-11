@@ -1,12 +1,12 @@
 class ItemsController < ApplicationController
   layout "scaffold"
   
-  before_filter :get_course, :get_user
+  before_filter :get_course, :get_item, :get_user
 
   # GET /courses/:id/items
   # GET /items.xml
   def index
-    @items = params[:type] ? @course.items.find_by_type(params[:type]) : @course.items
+    @items = params[:category] ? @course.items.find(:all, :conditions => ["lower(category) = ?", params[:category].downcase]) : @course.items
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @items }
@@ -16,7 +16,7 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET/items/1.xml
   def show
-    @item = @course.items.find(params[:id])
+    #@item = @course.items.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @item }
@@ -36,7 +36,7 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
-    @item = @course.items.find(params[:id])
+    #@item = @course.items.find(params[:id])
   end
 
   # POST /items
@@ -58,7 +58,7 @@ class ItemsController < ApplicationController
   # PUT /items/1
   # PUT /items/1.xml
   def update
-    @item = @course.items.find(params[:id])
+    #@item = @course.items.find(params[:id])
 
     respond_to do |format|
       if @item.update_attributes(params[:item])
@@ -74,7 +74,7 @@ class ItemsController < ApplicationController
   # DELETE /items/1
   # DELETE /items/1.xml
   def destroy
-    @item = @course.items.find(params[:id])
+    #@item = @course.items.find(params[:id])
     @item.destroy
 
     respond_to do |format|
@@ -85,10 +85,16 @@ class ItemsController < ApplicationController
 end
 
 private
-  def get_course
-    @course = Course.find(params[:course_id])
-  end
-
   def get_user
     @current_user = current_user
+  end
+  def get_item
+    @item = @course.items.find(:first, :conditions => ["lower(name) = ?", params[:id].downcase.gsub('_', ' ')]) if params[:id]
+  end
+  def get_course
+    if params[:course_id]
+      dept, number = params[:course_id].split('_')
+      department = Course.unabbr(dept)
+      @course = Course.find_by_department_and_number(department, number)
+    end
   end
