@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
   layout "scaffold"
 
-  before_filter :get_data
+  before_filter :get_current_user, :get_course
   
   # GET /courses
   # GET /courses.xml
@@ -90,11 +90,6 @@ class CoursesController < ApplicationController
   end
 end
 
-def get_data
-  get_current_user
-  get_course
-end
-private
   def get_current_user
     @current_user = current_user
   end
