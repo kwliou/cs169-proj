@@ -3,7 +3,7 @@ ActionController::Routing::Routes.draw do |map|
   # map.user '/users/:username', :controller => :users, :action => "show"
 
   map.user '/users/:user_id/posts', :controller => :posts, :action => "index"
-  
+  map.resources :users
   map.resources :assignments
   map.resources :blurbs
   map.resources :user_sessions
