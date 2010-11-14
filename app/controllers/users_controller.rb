@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :get_user # :get_user works on Heroku
+  before_filter :get_current_user, :get_user # :get_user works on Heroku BUT WHY???
 
   # GET /users
   # GET /users.xml
@@ -93,6 +93,10 @@ class UsersController < ApplicationController
   end
 end
 private
+  def get_current_user
+    @current_user = current_user
+  end
+
   def get_user
     @user = User.find_by_username(params[:id])
   end

@@ -1,8 +1,7 @@
 class CoursesController < ApplicationController
-  layout "scaffold"
-  # :get_course doesn't work on Heroku
-  before_filter :get_current_user, :get_course
+  before_filter :get_current_user # :get_course doesn't work on Heroku
 
+  layout "scaffold"
   # GET /courses
   # GET /courses.xml
   def index

@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
-  layout "scaffold"
-
   # :get_post also probably doesn't work on Heroku
   before_filter :get_current_user, :get_user, :get_course, :get_item
-  
+
+  layout "scaffold"
+
   # GET /posts
   # GET /posts.xml
   def index
@@ -32,7 +32,7 @@ class PostsController < ApplicationController
   # GET /posts/new.xml
   def new
     @post = @current_user.posts.build #Post.new
-    
+
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @post }
@@ -41,12 +41,12 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+    @post = @current_user.posts.find(params[:id])
   end
 
   # POST /posts
   # POST /posts.xml
   def create
-    #params[:post][:item_id] = @item
     @post = @current_user.posts.build(params[:post]) #Post.new(params[:post])
     @post.item = @item
     respond_to do |format|
