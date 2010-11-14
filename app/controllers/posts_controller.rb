@@ -98,7 +98,7 @@ private
     end
   end
   def get_item
-    @item = @course.items.find(:first, :conditions => ["lower(name) = ?", params[:item_id].downcase.gsub('_', ' ')])
+    @item = @course.items.find(:first, :conditions => ["lower(name) = ?", params[:item_id].downcase.gsub('_', ' ')]) if params[:item_id]
   end
   def get_user
     @user = User.find_by_username(params[:user_id]) if params[:user_id]
