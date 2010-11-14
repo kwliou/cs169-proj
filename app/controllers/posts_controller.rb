@@ -1,7 +1,10 @@
 class PostsController < ApplicationController
   layout "scaffold"
 
-  before_filter :get_current_user, :get_course, :get_item, :get_user
+  before_filter :get_current_user
+  before_filter :get_course
+  before_filter :get_item
+  before_filter :get_user
   
   # GET /posts
   # GET /posts.xml

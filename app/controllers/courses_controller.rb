@@ -1,7 +1,8 @@
 class CoursesController < ApplicationController
   layout "scaffold"
 
-  before_filter :get_current_user, :get_course
+  before_filter :get_current_user
+  before_filter :get_course
   
   # GET /courses
   # GET /courses.xml
