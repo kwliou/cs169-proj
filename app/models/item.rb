@@ -1,4 +1,5 @@
 class Item < ActiveRecord::Base
+  include ApplicationHelper
   belongs_to :course
   has_many :blurbs
   has_many :grades
@@ -13,6 +14,7 @@ class Item < ActiveRecord::Base
   end
 
   def category_s # pretty string for navigation bar
-    category.titleizev2.pluralize;
+    titleizev2(category.pluralize);
   end
+
 end

@@ -1,4 +1,5 @@
 class Course < ActiveRecord::Base
+  include ApplicationHelper
   has_many :items
   has_many :blurbs
   has_and_belongs_to_many :users
@@ -6,7 +7,7 @@ class Course < ActiveRecord::Base
   validates_presence_of :department, :name, :number
   validates_uniqueness_of :name, :number, :scope => :department, :case_sensitive => false
 
-  before_create { |course| course.department = course.department.titleizev2 }
+  before_create { |course| course.department = titleizev2(course.department) }
 
   @@abbr = { # NOTE: department names might have funny capitalizing so hard to automate
     "Computer Science" => "compsci",

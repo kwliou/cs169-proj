@@ -9,14 +9,14 @@ body {
     font-family: "Tahoma", "Verdana", san-serif;
     color: #979899;
 }
-acronym { /* IE doesn't have this style by default '*/
+abbr { /* IE doesn't have this style by default */
     border-bottom: 1px dotted;
 }
 #bg {
     width: 100%;
-    height: 100%;
     position: fixed;
     top: 0;
+    height: 100%;
     /*
     margin: 0;
     padding: 0;
@@ -44,7 +44,7 @@ acronym { /* IE doesn't have this style by default '*/
 }
 
 #top {
-    height: 94%; /* Need this for pages to fill window */
+    height: 94.6%; /* Need this for pages to fill window */
     color: #979899;
 }
 
@@ -308,10 +308,10 @@ a.login_button_load {
     */
 }
 .post_content {
-    visibility: collapse;
+    /*display: none;*/
 }
 .post_body {
-    /*display: none;*/
+    display: none;
     font-family: "Georgia", "Garamond", "Times New Roman", serif;
     font-size: 11pt;
     padding-left: 0.5em;
