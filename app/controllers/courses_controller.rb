@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
   layout "scaffold"
 
-  before_filter :get_current_user, :get_course
+  before_filter :get_current_user, :get_course # :get_course doesn't work on Heroku
 
   # GET /courses
   # GET /courses.xml
@@ -40,6 +40,7 @@ class CoursesController < ApplicationController
 
   # GET /courses/1/edit
   def edit
+    get_course
     #@course = Course.find(params[:id])
   end
 
