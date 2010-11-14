@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   layout "scaffold"
   
-  before_filter [:get_current_user, :get_course, :get_item]
+  before_filter [:get_current_user, :get_course, :get_item] # :get_item doesn't work on Heroku
 
   # GET /courses/:id/items
   # GET /items.xml
@@ -16,7 +16,7 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET/items/1.xml
   def show
-    #@item = @course.items.find(params[:id])
+    @item = @course.items.find(:first, :conditions => ['lower(name) = ?', params[:id].downcase.gsub('_', ' ')])
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @item }
@@ -36,7 +36,6 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
-    @item = @course.items.find(:first, :conditions => ['lower(name) = ?', params[:id].downcase.gsub('_', ' ')])
   end
 
   # POST /items

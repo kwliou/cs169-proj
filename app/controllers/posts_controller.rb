@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   layout "scaffold"
 
-  before_filter [:get_current_user, :get_user, :get_course, :get_item]
+  before_filter [:get_current_user, :get_user, :get_course, :get_item] # :get_item doesn't work?
   
   # GET /posts
   # GET /posts.xml
@@ -40,7 +40,6 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-    @post = @user.posts.find(params[:id])#Post.find(params[:id])
   end
 
   # POST /posts

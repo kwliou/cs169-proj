@@ -20,7 +20,6 @@ class CoursesController < ApplicationController
     dept, number = params[:id].split('_')
     department = Course.unabbr(dept)
     @course = Course.find_by_department_and_number(department, number)
-    #@course = Course.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @course }
@@ -40,7 +39,7 @@ class CoursesController < ApplicationController
 
   # GET /courses/1/edit
   def edit
-    #@course = Course.find(params[:id])
+    @course
   end
 
   # POST /courses
@@ -64,8 +63,9 @@ class CoursesController < ApplicationController
   # PUT /courses/1
   # PUT /courses/1.xml
   def update
-    #@course = Course.find(params[:id])
-
+    dept, number = params[:id].split('_')
+    department = Course.unabbr(dept)
+    @course = Course.find_by_department_and_number(department, number)
     respond_to do |format|
       if @course.update_attributes(params[:course])
         format.html { redirect_to(@course, :notice => 'Course was successfully updated.') }
