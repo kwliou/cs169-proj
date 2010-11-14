@@ -206,6 +206,7 @@ a.login_button_load {
     line-height: 30pt;
     font-weight: bold;
     font-size: 14pt;
+    /*text-shadow: 0px 1px 1px #fff;*/
 }
 .course_action {
     text-decoration: none;
@@ -218,14 +219,16 @@ a.login_button_load {
 .course_info {
     padding-left: 10px;
     vertical-align: text-bottom;
-    font-family: StRyde, "edelsans", "Tahoma", sans-serif;
+    font-family: "St Ryde Regular", "edelsans", "Tahoma", sans-serif;
     font-size: 14pt;
+    color: #a5a5a5;
 }
 .course_action_comment {
     padding: 0 0 0 24px;
     vertical-align: text-bottom;
-    font-family: StRyde, "edelsans", "Tahoma", sans-serif;
+    font-family: "St Ryde Regular", "edelsans", "Tahoma", sans-serif;
     font-size: 14pt;
+    color: #a5a5a5;
 }
 #calendar {
     float: right;
@@ -286,56 +289,74 @@ a.login_button_load {
 .forum_action_left {
     border-left: 0!important;
 }
-#forum_content {
-    /*display:inline-block;*/
-    width: 100%;
-    list-style-type: none;
+#forum_posts {
+    border-collapse: collapse;
     color: #646566;
-}
-
-#forum_content li {
-    font-size: 11pt;
-    line-height: 160%;
-}
-
-.post {
-    display:inline-block;
-    width: 90%;
-    padding-left: 0px;
+    min-width: 90%;
+    /*
+    margin: 0 20px 0 20px;
+    display: inline-block;
     list-style-type: none;
+    */
+}
+.post { /* THIS IS A TR */
     border-bottom: 1px dotted black;
+    height: 1.5em;
+    /*
+    border-bottom: 1px dotted black;
+    width: 100%;
+    */
+}
+.post_content {
+    visibility: collapse;
+}
+.post_body {
+    /*display: none;*/
+    font-family: "Georgia", "Garamond", "Times New Roman", serif;
+    font-size: 11pt;
+    padding-left: 0.5em;
+    margin: 10px;
+    border-left: 1px solid #ccc;
+}
+.post:hover, .post:hover a {
+    color: #000;
+}
+.post td {
+    text-align: left;
+    font-size: 11pt;
+    /*
+    height: 1.5em;
+    text-decoration: none;
+    */
 }
 .post a {
-    text-decoration: none;
-}
-.post li {
-    float: left;
+    color: #646566;
     text-decoration: none;
 }
 .unread {
     font-weight: bold;
 }
-.post input {
-    vertical-align: text-top;
-}
-.post_expand {
-    font-weight: normal;
-}
-.post_title {
-    width: 56%;
+.post_check {
+    width: 1.5em;
 }
 .post_replies {
-    width: 10%;
+    width: 6em;
+    /*width: 10%;*/
 }
 .post_author {
-    width: 15%;
+    min-width: 6.5em;
+    /*width: 15%;*/
 }
 .post_date {
-    width: 9%;
+    width: 6.5em;
+    /*width: 20%;*/
 }
 .post_time {
+    text-align: right !important;
+    padding-right: 5px;
+    width: 4.5em;
+    text-transform: lowercase;
     font-variant: small-caps;
-    float:right!important;
 }
 
 #welcome {

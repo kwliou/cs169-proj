@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101110235033) do
+ActiveRecord::Schema.define(:version => 20101114000840) do
 
   create_table "blurbs", :force => true do |t|
     t.string   "text"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(:version => 20101110235033) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "item_id"
+    t.integer  "parent_id"
   end
 
   create_table "users", :force => true do |t|

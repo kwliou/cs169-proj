@@ -1,7 +1,7 @@
 class MainController < ApplicationController
   def index
     @current_user = current_user
-    @courses = Course.all
+    @courses = @current_user.courses if @current_user
     @user_session = UserSession.new
     respond_to do |format|
       format.html # index.html.erb

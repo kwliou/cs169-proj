@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  # too tedious adding all those other routes so instead override to_param in model
+  # too tedious adding all those other routes so instead override to_param in model class
   # map.user '/users/:username', :controller => :users, :action => "show"
 
   map.resources :users, :has_many => [ :posts ]
@@ -7,22 +7,23 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :assignments
   map.resources :blurbs
-  # This should be nested somewhere
+  # TODO: this should be put somewhere else
   # map.resources :grades
   map.resources :courses do |course|
     course.resources :items do |item|
       item.resources :posts
     end
   end
-  #map.resources :items
-  #map.resources :posts
+  # example of how huge nesting is "funny-looking" so instead use a query string
+  # /courses/COMPSCI_3/items/category/assignment => /courses/COMPSCI_3/items?category=assignment
+  # map.connect '/courses/:course_id/items/category/:category', :controller => :items, :action => :index
   
-  #map.connect '/courses/:id/items', :controller => :items, :action => :index
+  # map.connect '/courses/:id/items', :controller => :items, :action => :index
   map.connect '/courses/:id/grades', :controller => :grades, :action => :index
 
-  map.login "login", :controller => "user_sessions", :action => "new"
-  map.logout "logout", :controller => "user_sessions", :action => "destroy"
-  map.mobile "mobile", :controller => "mobile", :action => :index
+  map.login 'login', :controller => :user_sessions, :action => :new
+  map.logout 'logout', :controller => :user_sessions, :action => :destroy
+  map.mobile 'mobile', :controller => :mobile, :action => :index
 
   # The priority is based upon order of creation: first created -> highest priority.
 

@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
   layout "scaffold"
 
-  before_filter :get_course, :get_user
+  before_filter :get_course, :get_current_user
   
   # GET /courses
   # GET /courses.xml
@@ -18,7 +18,6 @@ class CoursesController < ApplicationController
   # GET /courses/1.xml
   def show
     #@course = Course.find(params[:id])
-    #@current_user = current_user
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @course }
@@ -46,10 +45,10 @@ class CoursesController < ApplicationController
   def create
     #@user=current_user
     @course = @current_user.courses.build(params[:course])
-    self
     
     respond_to do |format|
       if @course.save
+        @current_user.courses << @course
         format.html { redirect_to(@course, :notice => 'Course was successfully created.') }
         format.xml  { render :xml => @course, :status => :created, :location => @course }
       else
@@ -96,6 +95,6 @@ private
       @course = Course.find_by_department_and_number(department, number)
     end
   end
-  def get_user
+  def get_current_user
     @current_user = current_user
   end

@@ -1,23 +1,80 @@
-<table>
- <tr>
-    <th>Title</th>
-    <th>Body</th>
-    <th>Commented at</th>
-    <th>Tags</th>
-  </tr>
-<% @posts.each do |post| %>
-    <tr>
-      <td><%=h post.title %></td>
-      <td><%=h post.body %></td>
-      <td><%=h post.commented_at %></td>
-      <td><%=h post.tags %></td>
-      <td><%= link_to 'Show', [@course, @item, post] %></td>
-      <!--td><%= link_to 'Edit', edit_user_post_path(post.user, post) %></td-->
-      <!--td><%= link_to 'Destroy', [post.user, post], :confirm => 'Are you sure?', :method => :delete %></td-->
-    </tr>
-  <% end %>
-</table>
+<script type="text/javascript">
+  <!--
+  function hideContent() {
+  x = document.getElementsByTagName('tr'); // document.getElementsByName("post_content");
+  for (i = 0; i < x.length; i++)
+    if ((i + 1) % 2 == 0)
+      x[i].style.visibility = 'collapse'; //x[i].style.visibility = 'collapse';
+  }
+  function toggle(a, tr_id) {
+    hidden = document.getElementById(tr_id).style.visibility == 'collapse';
+    a.innerHTML = (hidden ? '&#9652;' : '&#9662;') + a.innerHTML.substring(1);
+    document.getElementById(tr_id).style.visibility = hidden ? 'visible' : 'collapse';
+  }
+  window.onload = hideContent; // NOT necessary now that we use CSS + <noscript>
+  // -->
+</script>
 
-<br />
+<div>
+  <ul id ="breadcrumbs">
+    <li class="breadcrumbs_a"><%= link_to "Home", root_path %></li>
+    <li class="breadcrumbs_arrow">&#9654;</li>
+    <li class="breadcrumbs_a"><%= link_to "Courses", courses_path %></li>
+    <li class="breadcrumbs_arrow">&#9654;</li>
+    <li class="breadcrumbs_a"><%= link_to "#{@course.dept} #{@course.number}", @course %></li>
+    <li class="breadcrumbs_arrow">&#9654;</li>
+    <li class="breadcrumbs_a"><%= link_to @item.category_s, course_items_path(@course, :category => @item.category) %></li>
+    <li class="breadcrumbs_arrow">&#9654;</li>
+    <li class="breadcrumbs_a"><%= link_to @item.name, [@course, @item] %></li>
+    <li class="breadcrumbs_arrow">&#9654;</li>
+    <li class="breadcrumbs_a"><%= link_to "Discussion", course_item_posts_path(@course, @item) %></li>
+    <li class="breadcrumbs_semester">Fall '10
+      <img alt="&9662;" src="/images/flat_triangle.gif" />
+    </li>
+  </ul>
+</div>
 
-<%= link_to 'New post', new_course_item_post_path(@course, @item) %>
+<div id="content">
+  <table id="forum_posts">
+    <!--tr>
+      <th class="post_check"></th>
+      <th class="post_title">Title</th>
+      <th class="post_replies">Replies</th>
+      <th class="post_author">Author</th>
+      <th class="post_date">Date</th>
+      <th>Time</th>
+    </tr-->
+    <% @posts.each_with_index do |post, index| %>
+      <tr class="post">
+        <td class="post_check"><input type="checkbox"></input></td>
+        <!-- <%= link_to post.title, [@course, @item, post] %> -->
+        <td class="post_title"><a href="#" onclick="toggle(this, <%= index %>)">&#9662;<%=h post.title %></a></td>
+        <td class="post_replies"><%=h post.replies_s %></td>
+        <td class="post_author"><%=h post.user.name %></td>
+        <td class="post_date"><%=h post.created_at_day_s %></td>
+        <td class="post_time"><%=h post.created_at_time_s %></td>
+        <!--td><%=h post.tags %></td-->
+        <!--td><%= link_to 'Edit', edit_user_post_path(post.user, post) %></td-->
+        <!--td><%= link_to 'Destroy', [post.user, post], :confirm => 'Are you sure?', :method => :delete %></td-->
+      </tr>
+      <tr class="post_content" id="<%= index %>">
+        <td colspan="6">
+          <div class="post_body">
+            <%= post.body.gsub("\n", "<br>") %>
+          </div>
+        </td>
+      </tr>
+      <noscript>
+        <tr id="<%= index %>">
+        <td colspan="6">
+          <div class="post_body">
+            <%= post.body.gsub("\n", "<br>") %>
+          </div>
+        </td>
+      </tr>
+      </noscript>
+    <% end %>
+  </table>
+  <br />
+  <%= link_to 'New post', new_course_item_post_path(@course, @item) %>
+</div>

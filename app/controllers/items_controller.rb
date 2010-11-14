@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   layout "scaffold"
   
-  before_filter :get_course, :get_item, :get_user
+  before_filter :get_current_user, :get_course, :get_item
 
   # GET /courses/:id/items
   # GET /items.xml
@@ -85,11 +85,11 @@ class ItemsController < ApplicationController
 end
 
 private
-  def get_user
+  def get_current_user
     @current_user = current_user
   end
   def get_item
-    @item = @course.items.find(:first, :conditions => ["lower(name) = ?", params[:id].downcase.gsub('_', ' ')]) if params[:id]
+    @item = @course.items.find(:first, :conditions => ['lower(name) = ?', params[:id].downcase.gsub('_', ' ')]) if params[:id]
   end
   def get_course
     if params[:course_id]
