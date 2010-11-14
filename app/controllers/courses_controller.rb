@@ -1,7 +1,6 @@
 class CoursesController < ApplicationController
   before_filter :get_current_user, :get_course
   
-  layout "scaffold"
   # GET /courses
   # GET /courses.xml
   def index
@@ -89,6 +88,7 @@ class CoursesController < ApplicationController
   end
 end
 
+private
   def get_current_user
     @current_user = current_user
   end
