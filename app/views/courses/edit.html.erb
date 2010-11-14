@@ -2,7 +2,10 @@
 
 <% form_for(@course) do |f| %>
   <%= f.error_messages %>
-
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
   <p>
     <%= f.label :department %><br />
     <%= f.text_field :department %>
@@ -26,10 +29,6 @@
   <p>
     <%= f.label :description %><br />
     <%= f.text_area :description %>
-  </p>
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
   </p>
   <p>
     <%= f.submit 'Update' %>

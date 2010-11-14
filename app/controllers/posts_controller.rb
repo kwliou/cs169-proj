@@ -20,7 +20,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.xml
   def show
-    @post = @user ? @user.posts.find(params[:id]) : @item.posts.find(params[:id])
+    @post = @item.posts.find(params[:id]) # @user.posts.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @post }

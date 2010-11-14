@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
   layout "scaffold"
 
-  before_filter :get_course, :get_current_user
+  before_filter :get_current_user, :get_course
   
   # GET /courses
   # GET /courses.xml
@@ -88,13 +88,14 @@ class CoursesController < ApplicationController
 end
 
 private
+  def get_current_user
+    @current_user = current_user
+  end
+
   def get_course
     if params[:id]
       dept, number = params[:id].split('_')
       department = Course.unabbr(dept)
       @course = Course.find_by_department_and_number(department, number)
     end
-  end
-  def get_current_user
-    @current_user = current_user
   end
