@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   layout "scaffold"
   
-  before_filter :get_current_user, :get_course, :get_item
+  before_filter [:get_current_user, :get_course, :get_item]
 
   # GET /courses/:id/items
   # GET /items.xml
@@ -36,7 +36,7 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
-    #@item = @course.items.find(params[:id])
+    @item = @course.items.find(:first, :conditions => ['lower(name) = ?', params[:id].downcase.gsub('_', ' ')])
   end
 
   # POST /items
@@ -88,13 +88,13 @@ private
   def get_current_user
     @current_user = current_user
   end
-  def get_item
-    @item = @course.items.find(:first, :conditions => ['lower(name) = ?', params[:id].downcase.gsub('_', ' ')]) if params[:id]
-  end
   def get_course
     if params[:course_id]
       dept, number = params[:course_id].split('_')
       department = Course.unabbr(dept)
       @course = Course.find_by_department_and_number(department, number)
     end
+  end
+  def get_item
+    @item = @course.items.find(:first, :conditions => ['lower(name) = ?', params[:id].downcase.gsub('_', ' ')]) if params[:id]
   end

@@ -1,10 +1,7 @@
 class PostsController < ApplicationController
   layout "scaffold"
 
-  before_filter :get_current_user
-  before_filter :get_course
-  before_filter :get_item
-  before_filter :get_user
+  before_filter [:get_current_user, :get_user, :get_course, :get_item]
   
   # GET /posts
   # GET /posts.xml
@@ -93,6 +90,12 @@ class PostsController < ApplicationController
 end
 
 private
+  def get_current_user
+    @current_user = current_user
+  end
+  def get_user
+    @user = User.find_by_username(params[:user_id]) if params[:user_id]
+  end
   def get_course
     if params[:course_id]
       dept, number = params[:course_id].split('_')
@@ -102,10 +105,4 @@ private
   end
   def get_item
     @item = @course.items.find(:first, :conditions => ["lower(name) = ?", params[:item_id].downcase.gsub('_', ' ')]) if params[:item_id]
-  end
-  def get_user
-    @user = User.find_by_username(params[:user_id]) if params[:user_id]
-  end
-  def get_current_user
-    @current_user = current_user
   end
