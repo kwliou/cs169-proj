@@ -11,6 +11,7 @@ class ItemsController < ApplicationController
       @category_s = (@categories.map { |c| c.pluralize.titleizev2 }).join(', ')
       @items = @course.items.find(:all, :conditions => ["lower(category) IN (?)", @category.downcase.split(' ')])
     else
+      @category_s = 'Items'
       @items = @course.items
     end
     respond_to do |format|

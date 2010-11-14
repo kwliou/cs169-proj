@@ -32,6 +32,7 @@
     <td><%=h item.weight %></td>
     <td><%=h item.description %></td>
     <td><%= link_to 'Show', [@course, item] %></td>
+    <td><%= link_to 'Discuss', course_item_posts_path(@course, item) %></td>
   </tr>
 <% end %>
 </table>
