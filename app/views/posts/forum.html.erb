@@ -60,9 +60,7 @@ abbr alt cite class datetime height href name src title width xml:lang
         <td class="post_replies"><%=h post.replies_s %></td>
         <td class="post_author"><%= link_to post.user.name, post.user %></td>
         <td class="post_date"><time><%=h post.created_at_day_s %></time></td>
-        <td class="post_time"><time><%=h post.created_at_time_s %></time></td>
-        <!--td><%= link_to 'Edit', edit_user_post_path(post.user, post) %></td-->
-        <!--td><%= link_to 'Destroy', [post.user, post], :confirm => 'Are you sure?', :method => :delete %></td-->
+        <td class="post_time"><time><%=h post.created_at_time_s %></time></td>        
       </tr>
       <tr class="post_content">
         <td colspan="7">

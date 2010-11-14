@@ -17,6 +17,9 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.xml
   def show
+    dept, number = params[:id].split('_')
+    department = Course.unabbr(dept)
+    @course = Course.find_by_department_and_number(department, number)
     #@course = Course.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
@@ -87,12 +90,11 @@ class CoursesController < ApplicationController
   end
 end
 
+def get_data
+  get_current_user
+  get_course
+end
 private
-  def get_data
-    get_current_user
-    get_course
-  end
-
   def get_current_user
     @current_user = current_user
   end
