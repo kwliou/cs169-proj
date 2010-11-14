@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
   layout "scaffold"
-  
-  before_filter [:get_current_user, :get_course, :get_item] # :get_item doesn't work on Heroku
-
+  # :get_item doesn't work on Heroku
+  before_filter :get_current_user, :get_course
+  before_filter :get_item, :except => :index
   # GET /courses/:id/items
   # GET /items.xml
   def index
@@ -16,7 +16,7 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET/items/1.xml
   def show
-    @item = @course.items.find(:first, :conditions => ['lower(name) = ?', params[:id].downcase.gsub('_', ' ')])
+    #@item = @course.items.find(:first, :conditions => ['lower(name) = ?', params[:id].downcase.gsub('_', ' ')])
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @item }
@@ -36,12 +36,13 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
+    @item = @course.items.find(:first, :conditions => ['lower(name) = ?', params[:id].downcase.gsub('_', ' ')]) if params[:id]
   end
 
   # POST /items
   # POST /items.xml
   def create
-    @item = @course.items.build(params[:item])
+    #@item = @course.items.build(params[:item])
 
     respond_to do |format|
       if @item.save
@@ -58,7 +59,7 @@ class ItemsController < ApplicationController
   # PUT /items/1.xml
   def update
     #@item = @course.items.find(params[:id])
-
+    #@item = @course.items.find(:first, :conditions => ['lower(name) = ?', params[:id].downcase.gsub('_', ' ')]) if params[:id]
     respond_to do |format|
       if @item.update_attributes(params[:item])
         format.html { redirect_to([@course, @item], :notice => 'Item was successfully updated.') }
@@ -73,7 +74,7 @@ class ItemsController < ApplicationController
   # DELETE /items/1
   # DELETE /items/1.xml
   def destroy
-    #@item = @course.items.find(params[:id])
+    @item = @course.items.find(:first, :conditions => ['lower(name) = ?', params[:id].downcase.gsub('_', ' ')]) if params[:id]
     @item.destroy
 
     respond_to do |format|

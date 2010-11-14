@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
   layout "scaffold"
-
-  before_filter [:get_current_user, :get_course] # :get_course doesn't work on Heroku
+  # :get_course doesn't work on Heroku
+  before_filter :get_current_user, :get_course
 
   # GET /courses
   # GET /courses.xml
@@ -39,13 +39,14 @@ class CoursesController < ApplicationController
 
   # GET /courses/1/edit
   def edit
-    @course
+    dept, number = params[:id].split('_')
+    department = Course.unabbr(dept)
+    @course = Course.find_by_department_and_number(department, number)
   end
 
   # POST /courses
   # POST /courses.xml
   def create
-    #@user=current_user
     @course = @current_user.courses.build(params[:course])
     
     respond_to do |format|
@@ -80,7 +81,9 @@ class CoursesController < ApplicationController
   # DELETE /courses/1
   # DELETE /courses/1.xml
   def destroy
-    #@course = Course.find(params[:id])
+    dept, number = params[:id].split('_')
+    department = Course.unabbr(dept)
+    @course = Course.find_by_department_and_number(department, number)
     @course.destroy
 
     respond_to do |format|

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :get_user
+  before_filter :get_user # :get_user works on Heroku
 
   # GET /users
   # GET /users.xml

@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
   layout "scaffold"
 
-  before_filter [:get_current_user, :get_user, :get_course, :get_item] # :get_item doesn't work?
+  # :get_post also probably doesn't work on Heroku
+  before_filter :get_current_user, :get_user, :get_course, :get_item
   
   # GET /posts
   # GET /posts.xml
@@ -63,7 +64,6 @@ class PostsController < ApplicationController
   # PUT /posts/1.xml
   def update
     @post = @current_user.posts.find(params[:id])
-
     respond_to do |format|
       if @post.update_attributes(params[:post])
         format.html { redirect_to([@user, @post], :notice => 'Post was successfully updated.') }
