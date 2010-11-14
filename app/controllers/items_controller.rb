@@ -1,9 +1,7 @@
 class ItemsController < ApplicationController
   layout "scaffold"
   
-  before_filter :get_current_user
-  before_filter :get_course
-  before_filter :get_item
+  before_filter :get_current_user, :get_course, :get_item
 
   # GET /courses/:id/items
   # GET /items.xml
