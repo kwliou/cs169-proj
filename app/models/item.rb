@@ -13,8 +13,8 @@ class Item < ActiveRecord::Base
     name.gsub(' ', '_')
   end
 
-  def category_s # pretty string for navigation bar
-    titleizev2(category.pluralize);
+  def category_s # WTF doesn't String.titleizev2 work anymore???
+    category.pluralize.titleizev2;
   end
 
 end
