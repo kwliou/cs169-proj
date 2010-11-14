@@ -4,47 +4,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title>re.factored | <%=h yield :title %></title>
-  <link rel="shortcut icon" type="image/ico" href="/images/favicon.ico" />
-  <link rel="icon" type="image/ico" href="/images/favicon.ico" />
-  <%= stylesheet_link_tag 'scaffold' %>
-  <%= stylesheet_link_tag 'style' %>
   <script type="text/javascript" src="/javascripts/cufon-yui.js"></script>
   <script type="text/javascript" src="/javascripts/St_Ryde_Regular_400.font.js"></script>
-  <script type="text/javascript">
-    Cufon.replace(".stryde");
-  </script>
 </head>
 <body>
-<div id="bg">
-  <img src="/images/grad.png" alt="" />
-</div>
-  <div id="main">
-    <div id="top">
-      <div id ="header">
-        Welcome, <%= link_to "#{@current_user.first_name} #{@current_user.last_name}", @current_user %>! Want to <%= link_to "sign out", logout_path %>?
-      </div>
-      <div id="maincol">
-        <div id="banner">
-          <div style="float: left; background: url('/images/banner_left.png'); margin-top: -1px; margin-left: -4px; width: 4px; height: 104px"></div>
-          <div style="float: left; background: #E2EF8E; margin-top: -1px; width: 100%; height: 2px"></div>
-          <div style="float: right; background: url('/images/banner_right.png'); margin-top: -1px; margin-right: -4px; width: 4px; height: 104px"></div>
-          <div id ="college_logo"></div>
-          <div style="float: left; background: url('/images/banner_bottom.png'); margin-top: 15px; width: 100%; height: 12px"></div>
-        </div>
-        <%= yield %>
-      </div>
-    </div>
-    <div id="footer">
-      <span id="footer_links">
-        <li><a href="help">Help</a></li><li><a href="about">About</a></li><li><a href="feedback">Feedback</a></li><li><a href="contact">Contact</a></li>
-      </span>
-    </div>
-  </div>
-
-  <script type="text/javascript">
-    Cufon.now(); // to avoid font rendering delay in IE
-  </script>
-  <!--p style="color: green"><%= notice %></p-->
 </body>
 </html>
