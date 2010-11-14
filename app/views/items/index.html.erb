@@ -6,7 +6,7 @@
     <li class="breadcrumbs_arrow">&#9654;</li>
     <li class="breadcrumbs_a"><%= link_to "#{@course.dept} #{@course.number}", course_path(@course) %></li>
     <li class="breadcrumbs_arrow">&#9654;</li>
-    <li class="breadcrumbs_a"><%= link_to "Items", "" %></li>
+    <li class="breadcrumbs_a"><%= link_to @category_s, course_items_path(@course, :category => @category) %></li>
     <li class="breadcrumbs_semester">Fall '10
       <img alt="&9662;" src="/images/flat_triangle.gif" />
     </li>

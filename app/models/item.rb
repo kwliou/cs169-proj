@@ -7,7 +7,7 @@ class Item < ActiveRecord::Base
 
   validates_presence_of :category
 
-  before_create { |item| item.category.downcase! }
+  before_create { |item| item.category = item.category.cap }
 
   def to_param
     name.gsub(' ', '_')

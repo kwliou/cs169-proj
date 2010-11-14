@@ -15,12 +15,16 @@
 <div id="content">
   <div id="content_left">
     <div>
-      <%= link_to "Assignments, Projects, etc.", course_items_path(@course, :category => "assignment"), :class => "course_action" %>
+      <%= link_to "Assignments, Projects, etc.", course_items_path(@course, :category => "assignment project"), :class => "course_action" %>
       <span class="stryde course_action_comment">Time to work!</span>
     </div>
     <div>
-      <a class="course_action" href="<%= url_for(:controller => "items", :action => "index", :id => @course.id) %>">Exams, Quizzes, etc.</a>
+      <%= link_to "Exams, Quizzes, etc.", course_items_path(@course, :category => "exam quiz"), :class => "course_action" %>
       <span class="stryde course_action_comment">Study buddy?</span>
+    </div>
+    <div>
+      <%= link_to "All Course Items", course_items_path(@course), :class => "course_action" %>
+      <span class="stryde course_action_comment">All that other stuff.</span>
     </div>
     <div>
       <a class="course_action" href="<%= url_for(:controller => "grades", :action => "index", :id => @course.id) %>">Grades</a>

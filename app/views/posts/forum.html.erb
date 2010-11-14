@@ -30,7 +30,7 @@ abbr alt cite class datetime height href name src title width xml:lang
       <li class="breadcrumbs_arrow">&#9654;</li>
       <li class="breadcrumbs_a"><%= link_to "#{@course.dept} #{@course.number}", @course %></li>
       <li class="breadcrumbs_arrow">&#9654;</li>
-      <li class="breadcrumbs_a"><%= link_to @item.category_s, course_items_path(@course, :category => @item.category) %></li>
+      <li class="breadcrumbs_a"><%= link_to @item.category_s, course_items_path(@course, :category => @item.category.downcase) %></li>
       <li class="breadcrumbs_arrow">&#9654;</li>
       <li class="breadcrumbs_a"><%= link_to @item.name, [@course, @item] %></li>
       <li class="breadcrumbs_arrow">&#9654;</li>
