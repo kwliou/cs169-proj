@@ -17,7 +17,15 @@
   <b>Tags:</b>
   <%=h @post.tags %>
 </p>
-
+REPLIES
+<% @post.replies.each do |post| %>
+  <p>
+  <b>Title:</b>
+  <%=h post.title %><br />
+  <%=h post.body %><br />
+  <%=h post.user.name %>
+  </p>
+<% end %>
 
 <!--%= link_to 'Edit', edit_course_item_post_path(@course, @item, @post) %--> |
 <%= link_to 'Back', course_item_posts_path(@course, @item) %>

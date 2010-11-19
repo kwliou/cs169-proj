@@ -1,7 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-  # too tedious adding all those other routes so instead override to_param in model class
-  # map.user '/users/:username', :controller => :users, :action => "show"
-
   map.user_posts '/users/:user_id/posts', :controller => :posts, :action => "index"
   map.resources :users
   map.resources :assignments
@@ -9,6 +6,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :user_sessions
   # TODO: this should be put somewhere else
   # map.resources :grades
+  map.course_item_post_reply '/courses/:course_id/items/:item_id/posts/:id/reply', :controller => :posts, :action => :new_post_reply
   map.resources :courses do |course|
     course.resources :items do |item|
       item.resources :posts

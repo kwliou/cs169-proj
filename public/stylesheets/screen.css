@@ -1,3 +1,12 @@
+/*
+@font-face {
+    font-family: Museo;
+    src: url('/html/Museo_Slab_500.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+*/
+
 html, body {
     height: 100%;
     min-width: 900px;
@@ -33,6 +42,19 @@ abbr { /* IE doesn't have this style by default */
     background: url("/images/grad.png") repeat-y;
     */
 
+}
+#welcome {
+    font-family: "Constantia", "Palatino Linotype", "Georgia", "Garamond", "Times New Roman", serif;
+    text-align: justify;
+    line-height: 250%;
+    padding: 20px 5% 0 5%;
+    text-shadow: 0px 1px 1px #fff;
+}
+
+#welcome_title {
+    font-family: "Museo Slab 500", "Fertigo Pro", "edelsans", "Anivers", "Helvetica", "Verdana", sans-serif;
+    margin-top: 0;
+    font-size: 17pt;
 }
 #main {
     width: 90%;
@@ -307,16 +329,14 @@ a.login_button_load {
     width: 100%;
     */
 }
-.post_content {
-    /*display: none;*/
+.noscript {
+    display: block !important;
 }
-.post_body {
+.post_content {
     display: none;
-    font-family: "Georgia", "Garamond", "Times New Roman", serif;
     font-size: 11pt;
-    padding-left: 0.5em;
     margin: 10px;
-    border-left: 1px solid #ccc;
+    padding-left: 0.1em;
 }
 .post:hover, .post:hover a {
     color: #000;
@@ -339,8 +359,11 @@ a.login_button_load {
 .post_check {
     width: 1.5em;
 }
+.post_expand {
+    width: 5em;
+}
 .post_replies {
-    width: 6em;
+    width: 5.5em;
     /*width: 10%;*/
 }
 .post_author {
@@ -358,21 +381,25 @@ a.login_button_load {
     text-transform: lowercase;
     font-variant: small-caps;
 }
-
-#welcome {
-    font-family: "Constantia", "Palatino Linotype", "Georgia", "Garamond", "Times New Roman", serif;
-    text-align: justify;
-    line-height: 250%;
-    padding: 20px 5% 0 5%;
-    text-shadow: 0px 1px 1px #fff;
+.post_header {
+    /*font-family: "Tahoma", sans-serif;*/
+    font-weight: bold;
+    font-size: 10pt;
+    margin-bottom: 10px;
 }
-
-#welcome_title {
-    font-family: "Fertigo Pro", "edelsans", "Anivers", "Helvetica", "Verdana", sans-serif;
-    margin-top: 0;
-    font-size: 17pt;
+.post_header a {
+    text-decoration: none;
 }
-
+.post_body {
+    font-family: "Georgia", "Garamond", "Times New Roman", serif;
+    border-left: 1px solid #ccc;
+    padding-left: 0.5em;
+}
+.post_footer {
+    text-transform: lowercase;
+    font-variant: small-caps;
+    margin-top: 10px;
+}
 #footer {
     background: #fff url("/images/bg.png");
     padding: 7px 0 7px 0;

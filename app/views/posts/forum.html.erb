@@ -60,23 +60,33 @@ abbr alt cite class datetime height href name src title width xml:lang
         <td class="post_replies"><%=h post.replies_s %></td>
         <td class="post_author"><%= link_to post.user.name, post.user %></td>
         <td class="post_date"><time><%=h post.created_at_day_s %></time></td>
-        <td class="post_time"><time><%=h post.created_at_time_s %></time></td>        
+        <td class="post_time"><time><%=h post.created_at_time_s %></time></td>
       </tr>
-      <tr class="post_content">
+      <tr>
         <td colspan="7">
-          <div class="post_body" id="<%= index %>">
-            <%= post.body.gsub("\n", "<br>") %>
+          <div class="post_content" id="<%= index %>">
+            <div class="post_header">
+              <% if @current_user == post.user %>
+                <%= link_to "Edit", edit_course_item_post_path(@course, @item, post) %>
+              <% else %>
+                <%= link_to "Reply", course_item_post_reply_path(@course, @item, post) %>
+                <%= link_to "Private Message", "blah" %>
+              <% end %>
+            </div>
+            <div class="post_body">
+              <%= sanitize post.body.gsub("\n", "<br>") %>
+            </div>
+            <div class="post_footer">
+              Tags: <%=h post.tags %>
+            </div>
           </div>
-          <!--%=h post.tags %-->
         </td>
       </tr>
       <noscript>
-        <tr id="<%= index %>">
-        <td colspan="6">
-          <div class="post_body">
-            <article>
-            <%= sanitize post.body, :attributes => "colspan rowspan" %>
-            </article>
+        <tr>
+        <td colspan="7">
+          <div class="post_content" id="<%= index %>">
+            <%= sanitize post.body.gsub("\n", "<br>") %>
           </div>
         </td>
       </tr>

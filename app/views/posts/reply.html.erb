@@ -1,7 +1,12 @@
 <h1>New post under forum for: <%=h @item.name %></h1>
-<% form_for([@course, @item, @post]) do |f| %>
+Replying to:
+<p>
+  <%= @parent.body %><br />
+</p>
+<%= @parent.user.name %>
+<% form_for [@course, @item, @post] do |f| %>
   <%= f.error_messages %>
-
+  <%= f.hidden_field :parent_id %>
   <p>
     <%= f.label :title %><br />
     <%= f.text_field :title %>
