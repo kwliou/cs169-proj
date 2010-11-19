@@ -12,7 +12,7 @@ class Post < ActiveRecord::Base
     replies.count.to_s + (replies.count == 1 ? " Reply" : " Replies")
   end
   def created_at_day_s
-    created_at.getlocal.strftime("%b %d '%y")
+    created_at.getlocal.strftime("%b %d, %Y")
   end
   def created_at_time_s
     time = created_at.getlocal.strftime("%I:%M %p")

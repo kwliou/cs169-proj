@@ -56,14 +56,13 @@ abbr alt cite class datetime height href name src title width xml:lang
       <tr class="post">
         <td class="post_check"><input type="checkbox"></input></td>
         <td class="post_title" onclick="toggle(this, <%=h index %>); return false;"><%= link_to "&#9662;#{post.title}", [@course, @item, post] %></td>
-        <td class="post_expand"><%= link_to "Permalink", [@course, @item, post] %></td>
-        <td class="post_replies"><%=h post.replies_s %></td>
+        <td class="post_replies"><%= link_to post.replies_s, [@course, @item, post] %></td>
         <td class="post_author"><%= link_to post.user.name, post.user %></td>
         <td class="post_date"><time><%=h post.created_at_day_s %></time></td>
         <td class="post_time"><time><%=h post.created_at_time_s %></time></td>
       </tr>
       <tr>
-        <td colspan="7">
+        <td colspan="6">
           <div class="post_content" id="<%= index %>">
             <div class="post_header">
               <% if @current_user == post.user %>
@@ -79,6 +78,8 @@ abbr alt cite class datetime height href name src title width xml:lang
             <div class="post_footer">
               Tags: <%=h post.tags %>
             </div>
+            <%= render 'replies', :post => post %>
+           
           </div>
         </td>
       </tr>

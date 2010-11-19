@@ -1,0 +1,24 @@
+<% post.replies.each do |reply| %>
+  <div class='post_reply'>
+    <div class="post_header">
+      <% if @current_user == reply.user %>
+        <%= link_to "Edit", edit_course_item_post_path(@course, @item, reply) %>
+      <% else %>
+        <%= link_to "Reply", course_item_post_reply_path(@course, @item, reply) %>
+        <%= link_to "Private Message", "blah" %>
+      <% end %>
+    </div>
+    <div class="post_body">
+      <%= sanitize reply.body.gsub("\n", "<br>") %>
+    </div>
+    <div>
+      <%= link_to reply.user.name, reply.user %><br />
+      <time><%=h reply.created_at_day_s %></time>
+      <time><%=h reply.created_at_time_s %></time>
+    </div>
+    <div class="post_footer">
+      Tags: <%=h reply.tags %>
+    </div>
+    <%= render 'replies', :post => reply %>
+  </div>
+<% end %>

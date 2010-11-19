@@ -332,12 +332,6 @@ a.login_button_load {
 .noscript {
     display: block !important;
 }
-.post_content {
-    display: none;
-    font-size: 11pt;
-    margin: 10px;
-    padding-left: 0.1em;
-}
 .post:hover, .post:hover a {
     color: #000;
 }
@@ -381,19 +375,32 @@ a.login_button_load {
     text-transform: lowercase;
     font-variant: small-caps;
 }
+.post_content {
+    display: none;
+    font-size: 11pt;
+    margin: 10px;
+    border-left: 1px solid #ccc;
+    padding-left: 0.5em;
+
+}
+.post_reply {
+    font-size: 11pt;
+    margin: 20px 10px 10px 10px;
+    border-left: 1px solid #ccc;
+    padding-left: 0.5em;
+
+}
 .post_header {
     /*font-family: "Tahoma", sans-serif;*/
     font-weight: bold;
     font-size: 10pt;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 .post_header a {
     text-decoration: none;
 }
 .post_body {
     font-family: "Georgia", "Garamond", "Times New Roman", serif;
-    border-left: 1px solid #ccc;
-    padding-left: 0.5em;
 }
 .post_footer {
     text-transform: lowercase;
