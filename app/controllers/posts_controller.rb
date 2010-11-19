@@ -1,13 +1,18 @@
 class PostsController < ApplicationController
   # :get_post also probably doesn't work on Heroku
-  before_filter :get_current_user, :get_user, :get_course, :get_item
+  before_filter :get_current_user, :get_course, :get_item
 
   layout "scaffold"
 
   # GET /posts
   # GET /posts.xml
   def index
-    @posts = @user ? @user.posts : @item.posts.find_all_by_parent_id(nil)
+    if params[:user_id]
+      @user = User.find_by_username(params[:user_id])
+      @posts = @user.posts
+    else
+      @posts = @item.posts.find_all_by_parent_id(nil)
+    end
     respond_to do |format|
       if @user
         format.html # index.html.erb
@@ -102,9 +107,6 @@ end
 private
   def get_current_user
     @current_user = current_user
-  end
-  def get_user
-    @user = User.find_by_username(params[:user_id]) if params[:user_id]
   end
   def get_course
     if params[:course_id]
