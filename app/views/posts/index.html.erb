@@ -1,22 +1,114 @@
-<h1>Listing posts from <%=h @user.first_name %> <%=h @user.last_name %></h1>
+<!--
+Allowed HTML tags:
+a abbr acronym address b big blockquote br cite code dd del dfn div dt em h1 h2 h3 h4 h5 h6
+hr i img ins kbd li ol p pre samp small span strong sub sup tt ul var
+Allowed HTML attributes:
+abbr alt cite class datetime height href name src title width xml:lang
+-->
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Body</th>
-    <th>Commented at</th>
-    <th>Tags</th>
-    <th>Forum</th>
-  </tr>
-  <% @posts.each do |post| %>
-    <tr>
-      <td><%=h post.title %></td>
-      <td><%=h post.body %></td>
-      <td><%=h post.commented_at %></td>
-      <td><%=h post.tags %></td>
-      <td><%=h post.item.name %></td>
-      <td><%= link_to 'Show', [post.item.course, post.item, post] %></td>
-    </tr>
-  <% end %>
-</table>
-<br />
+<!--script src="http://jquery.com/src/jquery-latest.js"></script-->
+<script type="text/javascript">
+  <!--
+  function toggle(td, tr_id) {
+    a = td.firstChild;
+    shown = 'block';
+    hidden = document.getElementById(tr_id).style.display != shown;
+    a.innerHTML = (hidden ? '&#9652;' : '&#9662;') + a.innerHTML.substring(1);
+    document.getElementById(tr_id).style.display = hidden ? shown : 'none';
+  /* jQuery is really laggy on my laptop, so better to not use it if it adds nothing.
+   * $("#"+tr_id).slideToggle("fast");
+   */
+  }
+  // -->
+</script>
+<div>
+  <nav>
+    <ul id ="breadcrumbs">
+      <li class="breadcrumbs_a"><%= link_to "Home", root_path %></li>
+      <li class="breadcrumbs_arrow">&#9654;</li>
+      <li class="breadcrumbs_a"><%= link_to "Courses", courses_path %></li>
+      <li class="breadcrumbs_arrow">&#9654;</li>
+      <li class="breadcrumbs_a"><%= link_to "#{@course.dept} #{@course.number}", @course %></li>
+      <li class="breadcrumbs_arrow">&#9654;</li>
+      <li class="breadcrumbs_a"><%= link_to @item.category_s, course_items_path(@course, :category => @item.category.downcase) %></li>
+      <li class="breadcrumbs_arrow">&#9654;</li>
+      <li class="breadcrumbs_a"><%= link_to @item.name, [@course, @item] %></li>
+      <li class="breadcrumbs_arrow">&#9654;</li>
+      <li class="breadcrumbs_a"><%= link_to "Discussion", course_item_posts_path(@course, @item) %></li>
+      <li class="breadcrumbs_semester">Fall '10
+        <img alt="&9662;" src="/images/flat_triangle.gif" />
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<div id="content">
+  <table id="forum_posts">
+    <!--tr>
+      <th class="post_check"></th>
+      <th class="post_title">Title</th>
+      <th class="post_replies">Replies</th>
+      <th class="post_author">Author</th>
+      <th class="post_date">Date</th>
+      <th>Time</th>
+    </tr-->
+    <% @posts.each_with_index do |post, index| %>
+      <tr class="post">
+        <td class="post_check"><input type="checkbox"></input></td>
+        <td class="post_title" onclick="toggle(this, <%=h index %>); return false;"><%= link_to "&#9662;#{post.title}", [@course, @item, post] %></td>
+        <td class="post_replies"><%= link_to post.replies_s, [@course, @item, post] %></td>
+        <td class="post_author"><%= link_to post.user.name, post.user %></td>
+        <td class="post_date"><time><%=h post.created_at_day_s %></time></td>
+        <td class="post_time"><time><%=h post.created_at_time_s %></time></td>
+      </tr>
+      <tr>
+        <td colspan="6">
+          <div class="post_content" id="<%= index %>">
+            <div class="post_header">
+              <% if @current_user == post.user %>
+                <%= link_to "Edit", edit_course_item_post_path(@course, @item, post) %>
+              <% else %>
+                <%= link_to "Reply", course_item_post_reply_path(@course, @item, post) %>
+                <%= link_to "Private Message", "blah" %>
+              <% end %>
+            </div>
+            <div class="post_body">
+              <%= sanitize post.body.gsub("\n", "<br>") %>
+            </div>
+            <div class="post_footer">
+              Tags: <%=h post.tags %>
+            </div>
+            <%= render 'replies', :post => post %>
+           
+          </div>
+        </td>
+      </tr>
+      <noscript>
+        <tr>
+        <td colspan="7">
+          <div class="post_content noscript" id="<%= index %>">
+            <div class="post_header">
+              <% if @current_user == post.user %>
+                <%= link_to "Edit", edit_course_item_post_path(@course, @item, post) %>
+              <% else %>
+                <%= link_to "Reply", course_item_post_reply_path(@course, @item, post) %>
+                <%= link_to "Private Message", "blah" %>
+              <% end %>
+            </div>
+            <div class="post_body">
+            <%= sanitize post.body.gsub("\n", "<br>") %>
+            </div>
+            <div class="post_footer">
+              Tags: <%=h post.tags %>
+            </div>
+            <%= render 'replies', :post => post %>
+           
+          </div>
+        </td>
+      </tr>
+      </noscript>
+    <% end %>
+  </table>
+  <br />
+  <%= link_to 'New post', new_course_item_post_path(@course, @item) %>
+</div>

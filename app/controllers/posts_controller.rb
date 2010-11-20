@@ -7,18 +7,19 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.xml
   def index
-    if params[:user_id]
-      @user = User.find_by_username(params[:user_id])
-      @posts = @user.posts
-    else
-      @posts = @item.posts.find_all_by_parent_id(nil)
-    end
+    @posts = @item.posts.find_all_by_parent_id(nil)
     respond_to do |format|
-      if @user
-        format.html # index.html.erb
-      else
-        format.html { render :action => "forum" }
-      end
+      format.html # index.html.erb
+      format.xml  { render :xml => @posts }
+    end
+  end
+
+  # GET /user/:user_id/posts
+  def index_user
+    @user = User.find_by_username(params[:user_id])
+    @posts = @user.posts
+    respond_to do |format|
+      format.html # index_user.html.erb
       format.xml  { render :xml => @posts }
     end
   end
@@ -85,7 +86,7 @@ class PostsController < ApplicationController
         format.html { redirect_to([@user, @post], :notice => 'Post was successfully updated.') }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { render :action => 'edit' }
         format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }
       end
     end

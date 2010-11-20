@@ -2,7 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   #:parse => {:id => /([^\?\/](?!(xml|html)(?!\.(xml|html))))+/}, 
   #map.user_posts '/users/:user_id/posts', :controller => :posts, :action => :index, :requirements => { :user_id => /([^\/?]+)/ }
   map.resources :users, :requirements => {:id => /[^\?\/]+/} do |user|
-    user.posts 'posts', :controller => :posts, :action => :index, :requirements => { :user_id => /([^\/?]+)/ }
+    user.posts 'posts', :controller => :posts, :action => :index_user, :requirements => { :user_id => /([^\/?]+)/ }
   end
   map.resources :assignments
   map.resources :blurbs
