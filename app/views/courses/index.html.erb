@@ -1,6 +1,23 @@
+<%= stylesheet_link_tag 'courses_index' %>
+
+<script type="text/javascript" src="/javascripts/jquery-1.4.4.js"></script>
+<script type="text/javascript" src="/javascripts/deadline.js"></script>
+<script type="text/javascript" src="/javascripts/highcharts.js"></script>
+
+<script type="text/javascript">
+</script>
+
+ <ul class ="breadcrumbs">
+    <li class=""><%= link_to "Home", root_path, :class => "blue awesome" %></li>
+    <li class="breadcrumbs_arrow">&#9654;</li>
+    <li class=""><%= link_to "Courses", courses_path, :class => "blue awesome" %></li>
+    </li>
+  </ul>
+  
+<div id="courses_container">
 <h1>Listing courses</h1>
 
-<table>
+<table id="courses_list">
   <tr>
     <th>Department</th>
     <th>Number</th>
@@ -30,3 +47,8 @@
 <br />
 
 <%= link_to 'New course', new_course_path %>
+</div>
+
+<div id="deadline-container">
+
+</div>

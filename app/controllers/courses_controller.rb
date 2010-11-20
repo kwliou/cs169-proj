@@ -1,6 +1,23 @@
 class CoursesController < ApplicationController
   before_filter :get_current_user # :get_course doesn't work on Heroku
 
+  
+  
+  def histogram
+    # Generates a histogram for an assignment, total assignments etc.
+  end
+  
+  def deadline
+    # Generates a deadline visualization
+  end
+  
+  def performance
+    # Generates average item performance of a student and all students
+  end
+  
+  
+  
+  
   layout "scaffold"
   # GET /courses
   # GET /courses.xml
