@@ -1,6 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   #:parse => {:id => /([^\?\/](?!(xml|html)(?!\.(xml|html))))+/}, 
-  #map.user_posts '/users/:user_id/posts', :controller => :posts, :action => :index, :requirements => { :user_id => /([^\/?]+)/ }
+  # :requirements is for usernames with periods in them
   map.resources :users, :requirements => {:id => /[^\?\/]+/} do |user|
     user.posts 'posts', :controller => :posts, :action => :index_user, :requirements => { :user_id => /([^\/?]+)/ }
   end
@@ -10,9 +10,11 @@ ActionController::Routing::Routes.draw do |map|
   # TODO: this should be put somewhere else
   # map.resources :grades
   map.course_item_post_reply '/courses/:course_id/items/:item_id/posts/:id/reply', :controller => :posts, :action => :new_post_reply
+
   map.resources :courses do |course|
-    course.resources :items do |item|
-      item.resources :posts
+    # :requirements is for items with periods in them ex. Chapter 2.1 Questions
+    course.resources :items, :requirements => {:id => /[^\?\/]+/} do |item|
+      item.resources :posts, :requirements => {:item_id => /[^\?\/]+/}
     end
   end
   # example of how huge nesting is "funny-looking" so instead use a query string

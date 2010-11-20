@@ -83,7 +83,7 @@ class PostsController < ApplicationController
     @post = @current_user.posts.find(params[:id])
     respond_to do |format|
       if @post.update_attributes(params[:post])
-        format.html { redirect_to([@user, @post], :notice => 'Post was successfully updated.') }
+        format.html { redirect_to([@course, @item, @post], :notice => 'Post was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => 'edit' }
