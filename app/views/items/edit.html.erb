@@ -1,3 +1,5 @@
+<% content_for :title, "#{@course.abbr} | #{@item.name} | Edit" %>
+
 <h1>Editing item</h1>
 
 <% form_for([@course, @item]) do |f| %>

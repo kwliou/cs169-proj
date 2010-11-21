@@ -1,3 +1,5 @@
+<% content_for :title, "Courses" %>
+
 <%= stylesheet_link_tag 'courses_index' %>
 
 <script type="text/javascript" src="/javascripts/jquery-1.4.4.js"></script>
@@ -11,7 +13,6 @@
     <li class=""><%= link_to "Home", root_path, :class => "blue awesome" %></li>
     <li class="breadcrumbs_arrow">&#9654;</li>
     <li class=""><%= link_to "Courses", courses_path, :class => "blue awesome" %></li>
-    </li>
   </ul>
   
 <div id="courses_container">

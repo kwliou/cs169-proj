@@ -19,10 +19,13 @@ class Course < ActiveRecord::Base
   def Course.unabbr(abbr)
     @@abbr.index(abbr.downcase) || abbr
   end
-  def dept    
+  def dept
     (@@abbr[department] || department).upcase
   end
-  def to_param 
+  def abbr
+    "#{dept} #{number}"
+  end
+  def to_param
     "#{dept}_#{number}"
   end
 end
