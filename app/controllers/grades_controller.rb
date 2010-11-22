@@ -7,17 +7,97 @@ class GradesController < ApplicationController
     @course = Course.find(params[:id])
     @current_user = current_user
     @grades = @current_user.grades
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @grades }
     end
   end
 
+  def histogram
+    item = Item.find(params[:id])
+    # Median is easy
+    grades = item.grades.sort { |a, b| a.points_received <=> b.points_received }
+    median = grades[grades.length / 2].points_received
+    scores = []
+    
+    # Calculate the mean
+    total = 0.0
+    grades.each do |g|
+      total += g.points_received
+      scores << g.points_received
+    end
+    mean = total / grades.length
+    
+    # Calculate the std. dev
+    sd_sum = 0
+    scores.each do |s|
+      sd_sum += (s - mean)**2
+    end
+    
+    std_dev = (sd_sum / scores.length)**0.5
+    segment_size = item.points / 15
+    
+    # Segment the scores into frequency buckets
+    segments = []
+    data = []
+    low = scores.min
+    high = low + segment_size
+    while high < scores.max do
+      range = [low.floor, high.ceil]  
+      freq = 0
+      scores.each do |score|
+        if score >= low && score <= high
+          freq += 1
+        end
+      end
+      data << {:range => range, :freq => freq}
+      low = high
+      high = high + segment_size
+    end
+    
+    # Return the histogram encoded as JSON
+    j = ActiveSupport::JSON
+    histogram = j.encode(data)
+    respond_to do |format|
+        format.json  { render :json => histogram }
+    end
+  
+  end
+  
+  def performance
+    user = User.find(params[:id])
+    grades = user.grades.sort { |a, b| a.item.due_date <=> b.item.due_date }
+    
+    # For each grade, calculate the average grade % up to 
+    # the corresponding due date
+    j = ActiveSupport::JSON
+    i = 1
+    data = []
+    grades.each do |grade|
+      total_pct = 0.0
+      grades[0, i].each do |g|
+        total_pct += (g.points_received / g.item.points) * 100
+      end
+      pct = total_pct / i
+      data << {:date => grade.item.due_date, :average => pct}
+      i += 1
+    end
+    
+    # Return performance encoded as JSON
+    performance = j.encode(data)
+    respond_to do |format|
+        format.json  { render :json => performance }
+    end
+  end
+  
   # GET /grades/1
   # GET /grades/1.xml
   def show
     @grade = Grade.find(params[:id])
-
+    
+    # Get histogram for THIS assignment
+      
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @grade }

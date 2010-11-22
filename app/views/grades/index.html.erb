@@ -10,23 +10,41 @@
     <li class=""><%= link_to "Grades", url_for(:controller => :grades, :action => :index), :class => "blue awesome" %></li>
  </ul>
   
-  
-<div id="content-container">	
-	<table id="grades-list">
+<div id="content_container">	
+	<table id="grades_list">
 	  <tr>
 	  	<th>Item</th>
-	  	<th>Points Received</th>
+	  	<th>Pts. Received</th>
 	  	<th>/</th>
-	  	<th>Points Possible</th>
+	  	<th>Pts. Possible</th>
+	  	<th></th>
 	  </tr>
 	
+	<% total_pts = 0
+	 total_possible = 0 
+	%>
 	<% @grades.each do |grade| %>
+	 <% if grade.item.course == @course %>
+	  <% total_pts += grade.points_received
+	  	 total_possible += grade.item.points
+	  %>
 	  <tr>
 	    <td><%= grade.item.name %></td>
-	    <td><%= grade.points_received %></td>
+	    <td><%= format("%.2f", grade.points_received) %></td>
 	    <td>/</td>
 	    <td><%= grade.item.points %></td>
+	  	<td><%= format("%.2f%%", ((grade.points_received)/(grade.item.points))*100) %></td>
 	  </tr>
 	<% end %>
+	<% end %>
+	<tr id="grade_totals">
+		<td></td>
+		<td><%= format("%.2f", total_pts) %></td>
+		<td>/</td>
+		<td><%= total_possible %></td>
+	  	<td><%= format("%.2f%", (total_pts*100)/(total_possible)) %></td>
+	</tr>
 	</table>
+	
+	<div id="histogram_container"></div>
 </div>
