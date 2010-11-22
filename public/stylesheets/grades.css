@@ -1,0 +1,16 @@
+#grades-list th {
+	padding-right:20px;
+	text-align:left;
+	padding-bottom:12px;
+}
+
+#grades-list td {
+	padding-right:20px;
+	text-align:left;
+}
+
+#content-container {
+	margin-left:40px;
+	clear:both;
+	margin-top:36px;
+}

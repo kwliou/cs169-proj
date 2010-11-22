@@ -56,13 +56,13 @@
                 <span class="course"><%=h course.dept %> <%=h course.number %></span>
                 <span class="stryde course_info"><%=h course.name %></span>
               <% end %>
-              <%= link_to 'Edit', edit_course_path(course) %>
+              <!--<%= link_to 'Edit', edit_course_path(course) %>-->
               <br />
             <% end %>
 
           <br />
-          <%= link_to 'Edit Subscriptions', "edit" %>
-          <%= link_to "New course", new_course_path %>
+          <%= link_to 'View All Courses', url_for(:controller => 'courses', :action => 'index') %>
+          <!--<%= link_to "New course", new_course_path %>-->
         </div>
         <br />
         <div id="otherstuff">

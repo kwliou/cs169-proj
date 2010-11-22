@@ -43,7 +43,6 @@ class UsersController < ApplicationController
   # POST /users.xml
   def create
     @user = User.new(params[:user])
-
     respond_to do |format|
       if @user.save
 #        ActionMailer::Base.smtp_settings = {
@@ -54,7 +53,7 @@ class UsersController < ApplicationController
 #          :password       => ENV['SENDGRID_PASSWORD'],
 #          :domain         => ENV['SENDGRID_DOMAIN']
 #        }
-        UserMailer.deliver_welcome(@user)
+        #UserMailer.deliver_welcome(@user)
         format.html { redirect_to(@user, :notice => 'User was successfully created.') }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else

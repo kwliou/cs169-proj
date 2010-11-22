@@ -4,9 +4,9 @@ class GradesController < ApplicationController
   # GET /grades
   # GET /grades.xml
   def index
-    @grades = Grade.all
     @course = Course.find(params[:id])
     @current_user = current_user
+    @grades = @current_user.grades
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @grades }

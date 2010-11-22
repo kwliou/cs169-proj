@@ -1,21 +1,32 @@
-<div class="course-heading">
-	<div class="course-shortname"><%= @course.short_title %></div>
-	<div class="course-longname"><%= @course.title %></div>
+<%= stylesheet_link_tag 'grades' %>
+
+ <ul class ="breadcrumbs">
+    <li class=""><%= link_to "Home", root_path, :class => "blue awesome" %></li>
+    <li class="breadcrumbs_arrow">&#9654;</li>
+    <li class=""><%= link_to "Courses", courses_path, :class => "blue awesome" %></li>
+    <li class="breadcrumbs_arrow">&#9654;</li>
+    <li class=""><%= link_to "#{@course.department} #{@course.number}", course_path(@course), :class => "blue awesome" %></li>
+    <li class="breadcrumbs_arrow">&#9654;</li>
+    <li class=""><%= link_to "Grades", url_for(:controller => :grades, :action => :index), :class => "blue awesome" %></li>
+ </ul>
+  
+  
+<div id="content-container">	
+	<table id="grades-list">
+	  <tr>
+	  	<th>Item</th>
+	  	<th>Points Received</th>
+	  	<th>/</th>
+	  	<th>Points Possible</th>
+	  </tr>
+	
+	<% @grades.each do |grade| %>
+	  <tr>
+	    <td><%= grade.item.name %></td>
+	    <td><%= grade.points_received %></td>
+	    <td>/</td>
+	    <td><%= grade.item.points %></td>
+	  </tr>
+	<% end %>
+	</table>
 </div>
-
-<div class="nav-bar">
-	<a href="<%= url_for(:controller => "courses", :action => "index") %>" class="nav-link">Home</a> > 
-	<a href="<%= url_for(:controller => "courses", :action => "show", :id => @course.id) %>" class="nav-link"><%= @course.short_title %></a> > 
-	<a href="<%= url_for(:controller => "grades", :action => "index", :id => @course.id) %>" class="nav-link">Grades</a>
-</div>
-
-<table>
-  <tr>
-  </tr>
-
-<% @grades.each do |grade| %>
-  <tr>
-    <td><%= link_to 'Show', grade %></td>
-  </tr>
-<% end %>
-</table>

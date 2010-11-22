@@ -1,0 +1,20 @@
+#courses_container {
+	margin-left:50px;
+}
+
+#courses_list th {
+	padding-right:36px;
+	text-align:left;
+}
+
+#courses_list td {
+	padding-right:36px;
+	text-align:left;
+}
+
+#deadline-container {
+	margin-left:50px;
+	border: 1px solid red;
+	margin-top:36px;
+	width:90%;
+}

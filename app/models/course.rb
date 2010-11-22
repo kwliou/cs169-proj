@@ -13,11 +13,13 @@ class Course < ActiveRecord::Base
     "Computer Science" => "compsci",
     "Anthropology" => "anthro",
     "Gender and Women's Studies" => "gws",
-    "Aerospace Studies (Air Force ROTC)" => "aerospc"
+    "Aerospace Studies (Air Force ROTC)" => "aerospc",
+    "math" => "Math",
+    "MATH" => "Math"
   }
   
   def Course.unabbr(abbr)
-    @@abbr.index(abbr.downcase) || abbr
+    @@abbr[abbr.downcase] || abbr
   end
   def dept    
     (@@abbr[department] || department).upcase

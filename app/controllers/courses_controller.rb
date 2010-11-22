@@ -1,7 +1,5 @@
 class CoursesController < ApplicationController
   before_filter :get_current_user # :get_course doesn't work on Heroku
-
-  
   
   def histogram
     # Generates a histogram for an assignment, total assignments etc.
@@ -15,10 +13,17 @@ class CoursesController < ApplicationController
     # Generates average item performance of a student and all students
   end
   
-  
-  
-  
+  def subscribe
+    @course = Course.find(params[:id])
+    if !@current_user.courses.include?(@course)
+      @current_user.courses << @course
+    end
+    
+    redirect_to :action => 'show', :id => @course.id
+  end
+
   layout "scaffold"
+  
   # GET /courses
   # GET /courses.xml
   def index
