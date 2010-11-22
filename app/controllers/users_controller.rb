@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :get_current_user, :get_user # :get_user works on Heroku BUT WHY???
-
+  before_filter :get_user # :get_user works on Heroku BUT WHY???
+  before_filter :get_current_user, :except => [:new, :create]
   # GET /users
   # GET /users.xml
   def index
@@ -94,6 +94,7 @@ end
 private
   def get_current_user
     @current_user = current_user
+    redirect_to root_url if @current_user.nil?
   end
 
   def get_user

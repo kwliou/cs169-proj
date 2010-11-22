@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   # :get_post also probably doesn't work on Heroku
   before_filter :get_current_user, :get_course, :get_item
-
+  
   layout "scaffold"
 
   # GET /posts
@@ -108,6 +108,7 @@ end
 private
   def get_current_user
     @current_user = current_user
+    redirect_to root_url if @current_user.nil?
   end
   def get_course
     if params[:course_id]

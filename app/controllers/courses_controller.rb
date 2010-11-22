@@ -117,8 +117,9 @@ end
 private
   def get_current_user
     @current_user = current_user
+    redirect_to root_url if @current_user.nil?
   end
-
+  
   def get_course
     if params[:id]
       dept, number = params[:id].split('_')

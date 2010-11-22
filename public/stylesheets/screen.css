@@ -167,7 +167,7 @@ a.login_button_load {
 .login_button:focus { outline: none; }
 /*.login_button::-moz-focus-inner { border: none; } /* Mozilla hack */
 
-.breadcrumbs {
+#breadcrumbs {
     /*float: left;*/
     width: 100%;
     padding: 10px;
@@ -451,7 +451,7 @@ a.login_button_load {
  
 .awesome:hover { background-color: #111; color: #fff; }
 .awesome:active { top: 1px; }
-.small.awesome, .small.awesome:visited { font-size: 11px; padding: ; }
+.small.awesome, .small.awesome:visited { font-size: 11px; padding: 0; }
 .awesome, .awesome:visited, 
 .medium.awesome, .medium.awesome:visited { font-size: 13px; font-weight: bold; line-height: 1; text-shadow: 0 -1px 1px rgba(0,0,0,0.25); }
 .large.awesome, .large.awesome:visited { font-size: 14px; padding: 8px 14px 9px; }
