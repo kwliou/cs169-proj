@@ -24,6 +24,7 @@ abbr alt cite class datetime height href name src title width xml:lang
   // -->
 </script>
 <div id="content">
+  <h1>Discussion</h1>
   <table id="forum_posts">
     <!--tr>
       <th class="post_check"></th>
@@ -49,12 +50,12 @@ abbr alt cite class datetime height href name src title width xml:lang
               <% if @current_user == post.user %>
                 <%= link_to "Edit", edit_course_item_post_path(@course, @item, post) %>
               <% else %>
-                <%= link_to "Reply", course_item_post_reply_path(@course, @item, post) %>
+                <%= link_to "Reply", course_item_post_reply_path(@course, @item, post) %> | 
                 <%= link_to "Private Message", "blah" %>
               <% end %>
             </div>
             <div class="post_body">
-              <%= sanitize post.body.gsub("\n", "<br>") %>
+              <%= sanitize post.body.gsub("\n", "<br />") %>
             </div>
             <div class="post_footer">
               Tags: <%=h post.tags %>
@@ -72,12 +73,12 @@ abbr alt cite class datetime height href name src title width xml:lang
               <% if @current_user == post.user %>
                 <%= link_to "Edit", edit_course_item_post_path(@course, @item, post) %>
               <% else %>
-                <%= link_to "Reply", course_item_post_reply_path(@course, @item, post) %>
+                <%= link_to "Reply", course_item_post_reply_path(@course, @item, post) %> | 
                 <%= link_to "Private Message", "blah" %>
               <% end %>
             </div>
             <div class="post_body">
-            <%= sanitize post.body.gsub("\n", "<br>") %>
+              <%= sanitize post.body.gsub("\n", "<br />") %>
             </div>
             <div class="post_footer">
               Tags: <%=h post.tags %>

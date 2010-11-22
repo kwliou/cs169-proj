@@ -5,10 +5,10 @@
 <% form_for([@course, @item, @post]) do |f| %>
   <%= f.error_messages %>
 
-  <p>
+  <p id="post_page_title">
     <%=h @post.title %>
   </p>
-  <p>
+  <p id="post_page_body">
     <%=h @post.body %>
   </p>
   <p>

@@ -17,6 +17,7 @@ class Post < ActiveRecord::Base
     created_at.getlocal.strftime("%b %d, %Y")
   end
   def created_at_time_s
+    #For some reason %l instead of %I doesn't work
     time = created_at.getlocal.strftime("%I:%M %p")
     time.first == '0' ? time[1..-1] : time
   end
