@@ -23,27 +23,6 @@ abbr alt cite class datetime height href name src title width xml:lang
   }
   // -->
 </script>
-<div>
-  <nav>
-    <ul id ="breadcrumbs">
-      <li class="breadcrumbs_a"><%= link_to "Home", root_path %></li>
-      <li class="breadcrumbs_arrow">&#9654;</li>
-      <li class="breadcrumbs_a"><%= link_to "Courses", courses_path %></li>
-      <li class="breadcrumbs_arrow">&#9654;</li>
-      <li class="breadcrumbs_a"><%= link_to "#{@course.dept} #{@course.number}", @course %></li>
-      <li class="breadcrumbs_arrow">&#9654;</li>
-      <li class="breadcrumbs_a"><%= link_to @item.category_s, course_items_path(@course, :category => @item.category.downcase) %></li>
-      <li class="breadcrumbs_arrow">&#9654;</li>
-      <li class="breadcrumbs_a"><%= link_to @item.name, [@course, @item] %></li>
-      <li class="breadcrumbs_arrow">&#9654;</li>
-      <li class="breadcrumbs_a"><%= link_to "Discussion", course_item_posts_path(@course, @item) %></li>
-      <li class="breadcrumbs_semester">Fall '10
-        <img alt="&9662;" src="/images/flat_triangle.gif" />
-      </li>
-    </ul>
-  </nav>
-</div>
-
 <div id="content">
   <table id="forum_posts">
     <!--tr>

@@ -1,17 +1,19 @@
 <% content_for :title, "#{@course.abbr} | #{@item.name} | Forum | Post Edit" %>
-
+<div id="content">
 <h1>Editing post</h1>
 
 <% form_for([@course, @item, @post]) do |f| %>
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <%=h @post.title %>
   </p>
   <p>
-    <%= f.label :body %><br />
-    <%= f.text_area :body %>
+    <%=h @post.body %>
+  </p>
+  <p>
+    <%= text_area_tag 'append', nil, :rows => 10, :cols => 50 %>
+    
   </p>
   <p>
     <%= f.label :tags %><br />
@@ -24,3 +26,5 @@
 
 <%= link_to 'Show', [@course, @item, @post] %> |
 <%= link_to 'Back', course_item_posts_path(@course, @item) %>
+
+</div>

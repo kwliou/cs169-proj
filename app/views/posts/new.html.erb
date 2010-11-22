@@ -1,3 +1,5 @@
+<% content_for :title, "#{@course.abbr} | #{@item.name} | Forum | New Post" %>
+
 <h1>New post under forum for: <%=h @item.name %></h1>
 <% form_for([@course, @item, @post]) do |f| %>
   <%= f.error_messages %>
