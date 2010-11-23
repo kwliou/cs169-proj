@@ -47,7 +47,7 @@ describe PostsController do
   @wip
   describe "GET index_user" do
     it "assigns the requested user's posts as @posts" do
-      current_user = mock_user
+      #current_user = mock_user
       User.should_receive(:find_by_username).and_return(mock_user)
       mock_user.stub(:posts).and_return([mock_post]) #Post.stub(:find).with(:all).and_return([mock_post])
       get :index_user, :user_id => 1
@@ -70,8 +70,8 @@ describe PostsController do
 
   describe "GET new" do
     it "assigns a new post as @post" do
-      current_user = mock_user
-      mock_user.stub(:posts).and_return(Post)
+      #current_user = mock_user
+      current_user.stub(:posts).and_return(Post)
       Post.stub(:build).and_return(mock_post)
       get :new, :user_id => 1
       assigns[:post].should equal(mock_post)
