@@ -1,0 +1,12 @@
+observed project's webpage: white-board.heroku.com
+
+the site already looks like a finished product. The most interesting feature
+is definitely the drawing feature. I originally expected the board's "new" view to be where
+a chunk of the code would be, but it turns out that most of the work is done in the "show" view,
+and of course the board model. In fact, other than the "show" view, all other views are suprisingly simple.
+The show view involves a lot of use of javascript, a lot more than that used by our group, and it 
+definitely required a lot of time and effort. Overall it looks very professional compared to most of
+the other groups in the class, however, it seems that main feature is really just drawing on the board.
+While from a coding prespective, the app is really impressive, from a user's stand point, it really isn't
+that special. Since whiteboards are often used for brain storming, it may be a good idea to include a
+feature that allows users to switch between drawing and typing with ease.
