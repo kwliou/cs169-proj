@@ -21,7 +21,11 @@ class CoursesController < ApplicationController
     
     redirect_to :action => 'show', :id => @course.id
   end
-
+def unsubscribe
+	@current_user.courses.delete(Course.find(params[:id]))
+	redirect_to :controller=>:main, :action=>:index
+	end
+	
   layout "scaffold"
   
   # GET /courses
