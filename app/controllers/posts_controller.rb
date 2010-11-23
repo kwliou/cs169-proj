@@ -64,8 +64,9 @@ class PostsController < ApplicationController
   def create
     # maybe should separated into def create_post_reply
     # maybe parent_id should be added after save instead of before ...
+    params[:post][:item_id] = @item.id
     @post = @current_user.posts.build(params[:post])
-    @post.item = @item
+    #@post.item = @item
     respond_to do |format|
       if @post.save
         format.html { redirect_to([@course, @item, @post], :notice => 'Post was successfully created.') }
@@ -101,7 +102,7 @@ class PostsController < ApplicationController
     @post.destroy
 
     respond_to do |format|
-      format.html { redirect_to(user_posts_url(@user)) }
+      format.html { redirect_to(course_item_posts_url(@course, @item)) }
       format.xml  { head :ok }
     end
   end
