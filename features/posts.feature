@@ -1,9 +1,9 @@
 Feature: user can manipulate own posts
 
   Scenario: Student views own posts
-    Given I am "John Doe" logged in with "username" and "password"
-    When I visit the posts page
-    Then I should see "Listing posts from John Doe"
+    Given I am "Guest User" logged in with "username" and "password"
+    When I visit my posts page
+    Then I should see "Listing posts from Guest User"
 
   Scenario: Student edits own post
     Given I am "Guest User" logged in with "username" and "password"

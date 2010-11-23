@@ -11,6 +11,10 @@ describe CoursesController do
     @mock_course ||= mock_model(Course, stubs)
   end
 
+  def mock_item(stubs={})
+    @mock_item ||= mock_model(Item, stubs)
+  end
+
   describe "GET index" do
     it "assigns all courses as @courses" do
       Course.stub(:find).with(:all).and_return([mock_course])
@@ -22,6 +26,7 @@ describe CoursesController do
   describe "GET show" do
     it "assigns the requested course as @course" do
       Course.stub(:find_by_param).with("COMPSCI_169").and_return(mock_course)
+      mock_course.stub(:items).and_return([mock_item])
       get :show, :id => "COMPSCI_169"
       assigns[:course].should equal(mock_course)
     end
@@ -47,13 +52,15 @@ describe CoursesController do
 
     describe "with valid params" do
       it "assigns a newly created course as @course" do
-        Course.stub(:new).with({'these' => 'params'}).and_return(mock_course(:save => true))
+        @current_user.stub(:courses).and_return(Course)
+        Course.stub(:build).with({'these' => 'params'}).and_return(mock_course(:save => true))
         post :create, :course => {:these => 'params'}
         assigns[:course].should equal(mock_course)
       end
 
       it "redirects to the created course" do
-        Course.stub(:new).and_return(mock_course(:save => true))
+        @current_user.stub(:courses).and_return(Course)
+        Course.stub(:build).and_return(mock_course(:save => true))
         post :create, :course => {}
         response.should redirect_to(course_url(mock_course))
       end
@@ -61,13 +68,15 @@ describe CoursesController do
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved course as @course" do
-        Course.stub(:new).with({'these' => 'params'}).and_return(mock_course(:save => false))
+        @current_user.stub(:courses).and_return(Course)
+        Course.stub(:build).with({'these' => 'params'}).and_return(mock_course(:save => false))
         post :create, :course => {:these => 'params'}
         assigns[:course].should equal(mock_course)
       end
 
       it "re-renders the 'new' template" do
-        Course.stub(:new).and_return(mock_course(:save => false))
+        @current_user.stub(:courses).and_return(Course)
+        Course.stub(:build).and_return(mock_course(:save => false))
         post :create, :course => {}
         response.should render_template('new')
       end

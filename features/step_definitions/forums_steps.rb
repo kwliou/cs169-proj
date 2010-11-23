@@ -79,6 +79,11 @@ When /^I edit the post with "([^"]*)"$/ do |body|
   @post.body = body
 end
 
+When /^I visit my posts page$/ do
+  visit user_posts_path(@current_user)
+end
+
+
 When /^I post a reply "([^"]*)" with "([^"]*)"$/ do |title, body|
   visit course_item_post_path(@course, @item, @post2)
   click_link('Reply')
