@@ -1,29 +1,32 @@
-<p id="post_page_title">
-  <%=h @post.title %>
-</p>
+<% content_for :title, "#{@course.abbr} | #{@item.name} | Forum" %>
 
-<p id="post_page_body">
-  <%= sanitize @post.body.gsub("\n", "<br />") %>
-</p>
-
-<p>
-  <b>Commented at:</b>
-  <%=h @post.commented_at %>
-</p>
-
-<p>
-  <b>Tags:</b>
-  <%=h @post.tags %>
-</p>
-REPLIES
-<% @post.replies.each do |post| %>
+<div id="content" class="post_page">
+  <%= link_to @post.user.name, @post.user %> wrote on <%= @post.created_at_day_s %> at <span class="post_page_time"><%= @post.created_at_time_s %></span>
+  
   <p>
-  <b>Title:</b>
-  <%=h post.title %><br />
-  <%=h post.body %><br />
-  <%=h post.user.name %>
+    <div class="post_header">
+      <% if @current_user == @post.user %>
+        <%= link_to "Edit", edit_course_item_post_path(@course, @item, @post) %>
+      <% else %>
+        <%= link_to "Reply", course_item_post_reply_path(@course, @item, @post) %> |
+        <%= link_to "Private Message", "blah" %>
+      <% end %>
+    </div>
+    <div id="post_page_title">
+      <%=h @post.title %>
+    </div>
   </p>
-<% end %>
+  <div id="post_page_content">
+    <div id="post_page_body">
+      <%= sanitize @post.body.gsub("\n", "<br />") %>
+    </div>
+    <div class="post_footer">
+      Tags: <%=h @post.tags %>
+    </div>
+  </div><br />
+  
+ 
+ <%= render 'page_replies', :post => @post %>
 
-<!--%= link_to 'Edit', edit_course_item_post_path(@course, @item, @post) %--> |
-<%= link_to 'Back', course_item_posts_path(@course, @item) %>
+  <!--%= link_to 'Edit', edit_course_item_post_path(@course, @item, @post) %-->
+</div>
