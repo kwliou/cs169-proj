@@ -19,7 +19,7 @@ class Course < ActiveRecord::Base
   }
   
   def Course.unabbr(abbr)
-    @@abbr.index(abbr.downcase) || abbr
+    @@abbr.index(abbr.downcase) || abbr.downcase.titleizev2
   end
   def dept
     (@@abbr[department] || department).upcase
