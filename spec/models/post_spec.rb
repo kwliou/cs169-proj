@@ -6,7 +6,7 @@ describe Post do
       :title => "value for title",
       :body => "value for body",
       :commented_at => Time.now,
-      :tags => "value for tags"
+      :tags => "tags"
     }
   end
 

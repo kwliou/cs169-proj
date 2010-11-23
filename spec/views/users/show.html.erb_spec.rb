@@ -9,9 +9,9 @@ describe "/users/show.html.erb" do
     )
   end
 
-  it "renders attributes in <p>" do
-    render
-    response.should have_text(/value\ for\ first_name/)
-    response.should have_text(/value\ for\ last_name/)
-  end
+#  it "renders attributes in <p>" do
+#    render
+#    response.should have_text(/value\ for\ first_name/)
+#    response.should have_text(/value\ for\ last_name/)
+#  end
 end

@@ -6,7 +6,8 @@ describe Item do
       :type => "value for type",
       :due_date => Time.now,
       :points => 1,
-      :weight => 1.5
+      :weight => 1.5,
+      :category => "value for category"
     }
   end
 
