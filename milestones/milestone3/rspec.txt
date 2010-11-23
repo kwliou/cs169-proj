@@ -1,0 +1,286 @@
+(in C:/Documents and Settings/Kristopher/cs169-proj)
+CoursesController
+  GET index
+    assigns all courses as @courses
+  GET show
+    assigns the requested course as @course
+  GET new
+    assigns a new course as @course
+  GET edit
+    assigns the requested course as @course
+  POST create
+    with valid params
+      assigns a newly created course as @course
+      redirects to the created course
+    with invalid params
+      assigns a newly created but unsaved course as @course
+      re-renders the 'new' template
+  PUT update
+    with valid params
+      updates the requested course
+      assigns the requested course as @course
+      redirects to the course
+    with invalid params
+      updates the requested course
+      assigns the course as @course
+      re-renders the 'edit' template
+  DELETE destroy
+    destroys the requested course
+    redirects to the courses list
+ItemsController
+  GET index
+    assigns all course items as @items
+  GET show
+    assigns the requested item as @item
+  GET new
+    assigns a new item as @item
+  GET edit
+    assigns the requested item as @item
+  POST create
+    with valid params
+      assigns a newly created item as @item
+      redirects to the created item
+    with invalid params
+      assigns a newly created but unsaved item as @item
+      re-renders the 'new' template
+  PUT update
+    with valid params
+      updates the requested item
+      assigns the requested item as @item
+      redirects to the item
+    with invalid params
+      updates the requested item
+      assigns the item as @item
+      re-renders the 'edit' template
+  DELETE destroy
+    destroys the requested item
+    redirects to the items list
+PostsController
+  GET index
+    assigns requested course item's posts as @posts
+  GET index_user
+    assigns the requested user's posts as @posts
+  GET show
+    assigns the requested post as @post
+  GET new
+    assigns a new post as @post
+  GET new_post_reply
+    assigns a new reply as @post
+  GET edit
+    assigns the requested post as @post
+  POST create
+    with valid params
+      assigns a newly created post as @post
+      redirects to the created post
+    with invalid params
+      assigns a newly created but unsaved post as @post
+      re-renders the 'new' template
+  PUT update
+    with valid params
+      updates the requested post
+      assigns the requested post as @post
+      redirects to the post
+    with invalid params
+      updates the requested post
+      assigns the post as @post
+      re-renders the 'edit' template
+  DELETE destroy
+    destroys the requested post
+    redirects to the posts list
+RatingsController
+  GET index
+    assigns all ratings as @ratings
+  GET show
+    assigns the requested rating as @rating
+  GET new
+    assigns a new rating as @rating
+  GET edit
+    assigns the requested rating as @rating
+  POST create
+    with valid params
+      assigns a newly created rating as @rating
+      redirects to the created rating
+    with invalid params
+      assigns a newly created but unsaved rating as @rating
+      re-renders the 'new' template
+  PUT update
+    with valid params
+      updates the requested rating
+      assigns the requested rating as @rating
+      redirects to the rating
+    with invalid params
+      updates the requested rating
+      assigns the rating as @rating
+      re-renders the 'edit' template
+  DELETE destroy
+    destroys the requested rating
+    redirects to the ratings list
+UsersController
+  GET index
+    assigns all users as @users
+  GET show
+    assigns the requested user as @user
+  GET new
+    assigns a new user as @user
+  GET edit
+    assigns the requested user as @user
+  POST create
+    with valid params
+      assigns a newly created user as @user
+      redirects to the created user
+    with invalid params
+      assigns a newly created but unsaved user as @user
+      re-renders the 'new' template
+  PUT update
+    with valid params
+      updates the requested user
+      assigns the requested user as @user
+      redirects to the user
+    with invalid params
+      updates the requested user
+      assigns the user as @user
+      re-renders the 'edit' template
+  DELETE destroy
+    destroys the requested user
+    redirects to the users list
+CoursesHelper
+  is included in the helper object
+ItemsHelper
+  is included in the helper object
+PostsHelper
+  is included in the helper object
+RatingsHelper
+  is included in the helper object
+UsersHelper
+  is included in the helper object
+Course
+  should create a new instance given valid attributes
+  when validating a course
+    should not allow a course with no name
+    should not allow a course with no number
+    should not allow a course with no department
+    should not allow course names in a department that are not unique
+    should not allow course numbers in a department that are not unique
+  When checking ratings
+    should print a message if no one has rated it
+    should have 1 rater if 1 person has rated it
+    should print a funny message if it is rated highly
+  when printing its information
+    should print its whole name
+    should print its abbreviated name
+Item
+  should create a new instance given valid attributes
+Post
+  should create a new instance given valid attributes
+  should automatically convert links
+Rating
+  should create a new instance given valid attributes
+  when validating a rating
+    should not allow a rating without easiness
+    should not allow a rating without interest
+    should not allow a rating without work load
+    should not allow a rating without user
+    should not allow a rating without course
+    the same user should not be able to make 2 ratings
+    the same user should be allowed to make the different ratings for different courses
+    the different users should be allowed to rate the same course
+  when returning the total easiness ratings
+    should generate the correct sum
+  when returning the total interest ratings
+    should generate the correct sum
+  when returning the total easiness ratings
+    should generate the correct sum
+  when easiness==1
+    should generate the string WTF? (1/5)
+  when easiness==2
+    should generate the string prerequisite: IQ must be over 180 (2/5)
+  when easiness==3
+    should generate the string eh...can't complain (3/5)
+  when easiness==4
+    should generate the string GPA booster (4/5)
+  when easiness==5
+    should generate the string I swear this is elementary school material (5/5)
+  when interest==1
+    should generate the string World's greatest treatement for Insomnia! (1/5)
+  when interest==2
+    should generate the string Zzz...Zzz... (2/5)
+  when interest==3
+    should generate the string eh...can't complain (3/5)
+  when interest==4
+    should generate the string I took the course 3 times!!! (4/5)
+  when interest==5
+    should generate the string I cried each time class was over (5/5)
+  when work_load==1
+    should generate the string my therapist says I'm scarred for life (1/5)
+  when work_load==2
+    should generate the string sleep is for losers (2/5)
+  when work_load==3
+    should generate the string eh...can't complain (3/5)
+  when work_load==4
+    should generate the string for lazy students only!!! (4/5)
+  when work_load==5
+    should generate the string a semester long vacation (5/5)
+User
+  should create a new instance given valid attributes
+  when looking for a user's rating of a course
+    should return the correct rating
+CoursesController
+  routing
+    recognizes and generates #index
+    recognizes and generates #new
+    recognizes and generates #show
+    recognizes and generates #edit
+    recognizes and generates #create
+    recognizes and generates #update
+    recognizes and generates #destroy
+UsersController
+  routing
+    recognizes and generates #index
+    recognizes and generates #new
+    recognizes and generates #show
+    recognizes and generates #edit
+    recognizes and generates #create
+    recognizes and generates #update
+    recognizes and generates #destroy
+/courses/edit.html.erb
+  renders the edit course form
+/courses/index.html.erb
+  renders a list of courses
+/courses/new.html.erb
+  renders new course form
+/courses/show.html.erb
+  renders attributes in <p>
+/items/edit.html.erb
+  renders the edit item form
+/items/index.html.erb
+  renders a list of items
+/items/new.html.erb
+  renders new item form
+/items/show.html.erb
+  renders attributes in <p>
+/posts/edit.html.erb
+  renders the edit post form
+/posts/index.html.erb
+  renders a list of posts
+/posts/new.html.erb
+  renders new post form
+/posts/show.html.erb
+  renders attributes in <p>
+/ratings/edit.html.erb
+  renders the edit rating form
+/ratings/index.html.erb
+  renders a list of ratings
+/ratings/new.html.erb
+  renders new rating form
+/ratings/show.html.erb
+  renders attributes in <p>
+/users/edit.html.erb
+  renders the edit user form
+/users/index.html.erb
+  renders a list of users
+/users/new.html.erb
+  renders new user form
+
+Finished in 3.8125 seconds
+
+163 examples, 0 failures
