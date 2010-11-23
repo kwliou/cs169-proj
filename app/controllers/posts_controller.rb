@@ -70,6 +70,13 @@ class PostsController < ApplicationController
   end
   
   def new_post_reply
+    @navigation = [
+      ["Courses", courses_path],
+      ["#{@course.dept} #{@course.number}", @course],
+      [@item.category_s, course_items_path(@course, :category => @item.category.downcase)],
+      [@item.name, [@course, @item]],
+      ["Discussion", course_item_posts_path(@course, @item)]
+    ]
     @post = @current_user.posts.build # Post.new
     @post.parent = @parent = @item.posts.find(params[:id])
     respond_to do |format|
@@ -113,7 +120,7 @@ class PostsController < ApplicationController
   def update
     @post = @current_user.posts.find(params[:id])
     append = ActionController::Base.helpers.sanitize(params[:append], :attributes => 'abbr alt cite datetime height href name src title width rowspan colspan')
-    params[:post][:body] = "#{@post.body}<br /><br /><span class='post_edit'>Edit(#{DateTime.now.strftime("%x")}, #{DateTime.now.strftime("%l:%M %p")}): </span><br />#{append}"
+    params[:post][:body] = "#{@post.body}<br /><br /><span class='post_edit'>Edit (#{DateTime.now.strftime("%x")}, #{DateTime.now.strftime("%l:%M %p")}): </span><br />#{append}"
     respond_to do |format|
       if @post.update_attributes(params[:post])
         format.html { redirect_to([@course, @item, @post], :notice => 'Post was successfully updated.') }

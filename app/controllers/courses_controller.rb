@@ -63,7 +63,7 @@ def unsubscribe
   def show
     dept, number = params[:id].split('_')
     department = Course.unabbr(dept)
-    @course = Course.find_by_department_and_number(dept, number)
+    @course = Course.find_by_department_and_number(department, number)
     @items = @course.items
     
     respond_to do |format|

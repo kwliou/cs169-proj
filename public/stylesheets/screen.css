@@ -419,14 +419,39 @@ a.login_button_load {
     font-variant: small-caps;
     margin-top: 10px;
 }
+.post_page {
+    color: #646566;
+    font-size: 11pt;
+}
 #post_page_title {
-    text-decoration: underline;
+    /*text-decoration: underline;*/
+    font-size: 11.5pt;
+    font-weight: bold;
+}
+/* Note that rounded corners should be done with images to look uniform with IE but I'm lazy */
+#post_page_content {
+    margin-top: 15px;
+    display: inline-block;
+    font-size: 11pt;
+    background-color: #f0f0f0;
+    background-color: rgba(220, 220, 220, 0.4);
+    padding: 10px 30px 10px 13px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
 }
 #post_page_body {
+    font-family: "Georgia", "Garamond", "Times New Roman", serif;
     font-size: 11pt;
-    margin-left: 10px;
-    border-left: 1px solid #ccc;
-    padding-left: 0.5em;
+}
+#post_page_footer {
+    text-transform: lowercase;
+    font-variant: small-caps;
+    margin-top: 10px;
+}
+.post_page_time {
+    text-transform: lowercase;
+    font-variant: small-caps;
 }
 #footer {
     background: #fff url("/images/bg.png");
