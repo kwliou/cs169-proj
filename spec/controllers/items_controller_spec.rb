@@ -1,16 +1,25 @@
 require 'spec_helper'
 
 describe ItemsController do
+  before :each do
+    @current_user = mock_model(User)
+    controller.stub!(:current_user).and_return(@current_user)
+  end
+
+  def mock_course(stubs={})
+    @mock_course ||= mock_model(Course, stubs)
+  end
 
   def mock_item(stubs={})
     @mock_item ||= mock_model(Item, stubs)
   end
 
   describe "GET index" do
-    it "assigns all items as @items" do
-#      Item.stub(:find).with(:all).and_return([mock_item])
-#      get :index
-#      assigns[:items].should == [mock_item]
+    it "assigns all course items as @items" do
+      Course.stub(:find_by_param).and_return(mock_course)
+      mock_course.stub(:items).and_return([mock_item])
+      get :index
+      assigns[:items].should == [mock_item]
     end
   end
 
