@@ -33,7 +33,9 @@
 	    <td><%= format("%.2f", grade.points_received) %></td>
 	    <td>/</td>
 	    <td><%= grade.item.points %></td>
-	  	<td><%= format("%.2f%%", ((grade.points_received)/(grade.item.points))*100) %></td>
+	    <% if grade.item.points > 0 %>
+		  	<td><%= format("%.2f%%", ((grade.points_received)/(grade.item.points))*100) %></td>
+	  	<% end %>
 	  </tr>
 	<% end %>
 	<% end %>
@@ -42,7 +44,9 @@
 		<td><%= format("%.2f", total_pts) %></td>
 		<td>/</td>
 		<td><%= total_possible %></td>
-	  	<td><%= format("%.2f%", (total_pts*100)/(total_possible)) %></td>
+		<% if total_possible > 0 %>
+	  		<td><%= format("%.2f%", (total_pts*100)/(total_possible)) %></td>
+	  	<% end %>
 	</tr>
 	</table>
 	

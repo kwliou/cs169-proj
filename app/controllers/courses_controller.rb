@@ -35,12 +35,33 @@ class CoursesController < ApplicationController
     end
   end
 
+  def deadline
+    # For each item, we went due date and radius
+    course = Course.find(params[:id])
+    items = course.items
+    data = []
+    items.each do |item|
+      data << {:name => item.name, :due_date => item.due_date,
+               :points => item.points}
+    end
+    
+    # Return deadline data encoded as JSON
+    j = ActiveSupport::JSON
+    deadline = j.encode(data)
+    respond_to do |format|
+        format.json  { render :json => deadline }
+    end
+    
+  end
+  
   # GET /courses/1
   # GET /courses/1.xml
   def show
     dept, number = params[:id].split('_')
     department = Course.unabbr(dept)
-    @course = Course.find_by_department_and_number(department, number)
+    @course = Course.find_by_department_and_number(dept, number)
+    @items = @course.items
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @course }
