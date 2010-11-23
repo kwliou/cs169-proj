@@ -1,16 +1,28 @@
 require 'spec_helper'
 
 describe RatingsController do
-
+before :each do
+    @current_user = mock_model(User)
+    controller.stub!(:current_user).and_return(@current_user)
+  end
   def mock_rating(stubs={})
     @mock_rating ||= mock_model(Rating, stubs)
   end
-
+ def mock_user(stubs={})
+    @mock_user ||= mock_model(User, stubs)
+  end
+  def mock_course(stubs={})
+    @mock_course ||= mock_model(Course, stubs)
+  end
+  
   describe "GET index" do
     it "assigns all ratings as @ratings" do
-      Rating.stub(:find).with(:all).and_return([mock_rating])
-      get :index
-      assigns[:ratings].should == [mock_rating]
+	Course.should_receive(:unabbr).and_return("department")
+	Course.should_receive(:find_by_department_and_number).and_return(mock_course)
+	mock_course.should_receive(:ratings).and_return(Rating)
+	Rating.should_receive(:all).and_return([mock_rating])
+     get :index, :course_id=>1
+      #assigns[:ratings].should == [mock_rating]
     end
   end
 
