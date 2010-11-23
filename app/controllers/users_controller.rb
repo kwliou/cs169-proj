@@ -53,7 +53,7 @@ class UsersController < ApplicationController
 #          :password       => ENV['SENDGRID_PASSWORD'],
 #          :domain         => ENV['SENDGRID_DOMAIN']
 #        }
-        #UserMailer.deliver_welcome(@user)
+        UserMailer.deliver_welcome(@user)
         format.html { redirect_to(:controller=>:main, :action=>:index, :notice=>'User was successfully created.') }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
@@ -98,5 +98,5 @@ private
   end
 
   def get_user
-    @user = User.find_by_username(params[:id])
+    @user = User.find_by_username(params[:id]) if params[:id]
   end

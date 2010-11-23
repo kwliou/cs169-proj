@@ -2,8 +2,8 @@ class Rating < ActiveRecord::Base
 belongs_to :user
 belongs_to :course
 validates_uniqueness_of :user_id, :scope=>:course_id
-validates_presence_of :user
-validates_presence_of :course
+validates_presence_of :user_id
+validates_presence_of :course_id
 validates_presence_of :easiness
 validates_presence_of :interest
 validates_presence_of :work_load

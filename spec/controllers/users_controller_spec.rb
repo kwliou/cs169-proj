@@ -2,6 +2,11 @@ require 'spec_helper'
 
 describe UsersController do
 
+  before :each do
+    @current_user = mock_model(User)
+    controller.stub!(:current_user).and_return(@current_user)
+  end
+
   def mock_user(stubs={})
     @mock_user ||= mock_model(User, stubs)
   end
@@ -74,7 +79,7 @@ describe UsersController do
 
     describe "with valid params" do
       it "updates the requested user" do
-        User.should_receive(:find).with("37").and_return(mock_user)
+        User.should_receive(:find).and_return(mock_user)
         mock_user.should_receive(:update_attributes).with({'these' => 'params'})
         put :update, :id => "37", :user => {:these => 'params'}
       end
@@ -94,7 +99,7 @@ describe UsersController do
 
     describe "with invalid params" do
       it "updates the requested user" do
-        User.should_receive(:find).with("37").and_return(mock_user)
+        User.should_receive(:find).and_return(mock_user)
         mock_user.should_receive(:update_attributes).with({'these' => 'params'})
         put :update, :id => "37", :user => {:these => 'params'}
       end
@@ -116,7 +121,7 @@ describe UsersController do
 
   describe "DELETE destroy" do
     it "destroys the requested user" do
-      User.should_receive(:find).with("37").and_return(mock_user)
+      User.should_receive(:find).and_return(mock_user)
       mock_user.should_receive(:destroy)
       delete :destroy, :id => "37"
     end
