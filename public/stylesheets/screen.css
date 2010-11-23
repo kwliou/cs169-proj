@@ -15,8 +15,15 @@ html, body {
 }
 body {
     background: #fff;
-    font-family: "Tahoma", "Verdana", san-serif;
+    font-family: "Tahoma", "Verdana", sans-serif;
     color: #979899;
+}
+h1 {
+    font-family: "Tahoma", sans-serif;
+    font-size: 15pt;
+    line-height: normal;
+    margin: 0 0 1em 0;
+
 }
 abbr { /* IE doesn't have this style by default */
     border-bottom: 1px dotted;
@@ -176,13 +183,12 @@ a.login_button_load {
 }
 #breadcrumbs a {
     text-decoration: none;
-    color: white;
+     color: white;   
 }
 .breadcrumbs_a {
+    text-decoration: none;
     float: left;
     font-weight: bold;
-    text-decoration: none;
-    color: white;
     background-color: #26ade4;
     margin: 3px;
     padding: 3px;
@@ -391,12 +397,17 @@ a.login_button_load {
 
 }
 .post_header {
-    /*font-family: "Tahoma", sans-serif;*/
-    font-weight: bold;
     font-size: 10pt;
     margin-bottom: 5px;
 }
+.post_edit {
+    font-family: "Tahoma", sans-serif;
+    color: #bd2031;
+    font-weight: bold;
+    font-size: 10pt;
+}
 .post_header a {
+    font-weight: bold;
     text-decoration: none;
 }
 .post_body {
@@ -406,6 +417,15 @@ a.login_button_load {
     text-transform: lowercase;
     font-variant: small-caps;
     margin-top: 10px;
+}
+#post_page_title {
+    text-decoration: underline;
+}
+#post_page_body {
+    font-size: 11pt;
+    margin-left: 10px;
+    border-left: 1px solid #ccc;
+    padding-left: 0.5em;
 }
 #footer {
     background: #fff url("/images/bg.png");

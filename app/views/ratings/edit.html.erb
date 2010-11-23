@@ -17,34 +17,47 @@
 
 <div id="content">
   <div id="content_left">
-    <div>
-      <%= link_to "Assignments, Projects, etc.", course_items_path(@course, :category => "assignment project"), :class => "course_action" %>
-      <span class="stryde course_action_comment">Time to work!</span>
-    </div>
-    <div>
-      <%= link_to "Exams, Quizzes, etc.", course_items_path(@course, :category => "exam quiz"), :class => "course_action" %>
-      <span class="stryde course_action_comment">Study buddy?</span>
-    </div>
-    <div>
-      <%= link_to "All Course Items", course_items_path(@course), :class => "course_action" %>
-      <span class="stryde course_action_comment">All that other stuff.</span>
-    </div>
-    <div>
-      <a class="course_action" href="<%= url_for(:controller => "grades", :action => "index", :id => @course.id) %>">Grades</a>
-      <span class="stryde course_action_comment">Ignorance is bliss.</span>
-    </div>
-    <div>
-      <a class="course_action" href="<%= url_for(:controller => "grades", :action => "index", :id => @course.id) %>">Course Info</a>
-      <span class="stryde course_action_comment">What's this all about?</span>
-    </div>
-    <div>
-      <a class="course_action" href="<%= url_for(:controller => "grades", :action => "index", :id => @course.id) %>">Semester Wrap-up</a>
-      <span class="stryde course_action_comment">Is school over yet?</span>
-    </div>
-	<div>
-      <%= link_to "Ratings", course_ratings_path(@course), :class => "course_action" %>
-      <span class="stryde course_action_comment">Give the class a piece of yoru mind</span>
-    </div>
+<h1>Editing rating</h1>
+
+<% form_for([@course,@rating]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+  <b>Easiness: Was it a free "A"? (1 being hard as hell, 5 being a walk in the park,)</b>
+    <br />
+    <%= f.radio_button(:easiness, 1)%> WTF? (1)</br>
+	<%= f.radio_button(:easiness, 2)%> prerequisite: IQ must be over 180 (2)</br>
+	<%= f.radio_button(:easiness, 3)%> eh...can't complain (3)</br>
+	<%= f.radio_button(:easiness, 4)%> GPA booster (4)</br>
+	<%= f.radio_button(:easiness, 5)%> I swear this is elementary school material (5)</br>
+  </p>
+  <p>
+    <b>Interesting?: Do you dream of going to class, or dream while you're in class? (1 being bored to death, 5 being absolutely fascinating)</b>
+    <br />
+    <%= f.radio_button(:interest, 1)%> World's greatest treatement for Insomnia... (1)</br>
+	<%= f.radio_button(:interest, 2)%> Zzz...Zzz... (2)</br>
+	<%= f.radio_button(:interest, 3)%> eh...can't complain (3)</br>
+	<%= f.radio_button(:interest, 4)%> I took the course 3 times!!! (4)</br>
+	<%= f.radio_button(:interest, 5)%> I cried each time class was over (5)</br>
+  </p>
+  <p>
+    <b>Work load: Do you have a life? (1 being no I don't, 5 being a life free of school work)</b>
+    <br />
+    <%= f.radio_button(:work_load, 1)%> my therapist says I'm scarred for life (1)</br>
+	<%= f.radio_button(:work_load, 2)%> sleep is for losers (2)</br>
+	<%= f.radio_button(:work_load, 3)%> eh...can't complain (3)</br>
+	<%= f.radio_button(:work_load, 4)%> for lazy students only!!! (4)</br>
+	<%= f.radio_button(:work_load, 5)%> a semester long vacation (5)</br>
+  </p>
+  
+  <p>
+
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', [@course,@rating] %> |
+<%= link_to 'Back', course_ratings_path(@course) %>
   </div>
 </div>
 
@@ -87,3 +100,6 @@
     </div>
   </div>
 </div>
+
+
+

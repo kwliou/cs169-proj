@@ -51,6 +51,7 @@
                 <span class="stryde course_info"><%=h course.name %></span>
               <% end %>
               <!--<%= link_to 'Edit', edit_course_path(course) %>-->
+			  <%= link_to 'Remove from list',url_for(:controller => 'courses', :action => 'unsubscribe', :id => course.id) %>
               <br />
             <% end %>
 

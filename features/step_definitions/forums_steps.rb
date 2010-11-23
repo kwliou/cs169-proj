@@ -3,7 +3,7 @@ Before do
   activate_authlogic
 end
 
-Given  /^I am "([^"]*)" logged in with "([^"]*)" and "([^"]*)"$/ do |name, username, password|
+Given /^I am "([^"]*)" logged in with "([^"]*)" and "([^"]*)"$/ do |name, username, password|
   first, last = name.split
   @current_user = User.create!(
     :first_name => first,
@@ -18,7 +18,7 @@ Given  /^I am "([^"]*)" logged in with "([^"]*)" and "([^"]*)"$/ do |name, usern
   click_button 'Login'
 end
 
-Given  /^I am subscribed to "([^"]*)" with item "([^"]*)"$/ do |course, item|
+Given /^I am subscribed to "([^"]*)" with item "([^"]*)"$/ do |course, item|
   department, number = course.split
   @course = @current_user.courses.create!(
     :department => department,
@@ -29,6 +29,22 @@ Given  /^I am subscribed to "([^"]*)" with item "([^"]*)"$/ do |course, item|
     :category => 'test')
 end
 
-Given  /^I am looking at the posts page$/ do
+Given /^I am looking at the posts page$/ do
   visit course_item_posts_path(@course, @item)
+end
+
+Given /^I am making a new post$/ do
+  visit new_course_item_post_path(@course, @item)
+end
+
+Given /^I posted "([^"]*)" with "([^"]*)"$/ do |title, body|
+  @post = @item.posts.create!(
+    :user_id => @current_user.id,
+    :title => title,
+    :body => body,
+    :tags => 'test')
+end
+
+When /^I edit the post with "([^"]*)"$/ do |body|
+  @post.body = body
 end

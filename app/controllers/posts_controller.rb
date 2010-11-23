@@ -7,6 +7,12 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.xml
   def index
+    @navigation = [
+      ["Courses", courses_path],
+      ["#{@course.dept} #{@course.number}", @course],
+      [@item.category_s, course_items_path(@course, :category => @item.category.downcase)],
+      [@item.name, [@course, @item]]
+    ]
     @posts = @item.posts.find_all_by_parent_id(nil)
     respond_to do |format|
       format.html # index.html.erb
@@ -18,6 +24,10 @@ class PostsController < ApplicationController
   def index_user
     @user = User.find_by_username(params[:user_id])
     @posts = @user.posts
+    @navigation = [
+      ["Users", users_path],
+      [@user.username, @user]
+    ]
     respond_to do |format|
       format.html # index_user.html.erb
       format.xml  { render :xml => @posts }
@@ -27,6 +37,13 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.xml
   def show
+    @navigation = [
+      ["Courses", courses_path],
+      ["#{@course.dept} #{@course.number}", @course],
+      [@item.category_s, course_items_path(@course, :category => @item.category.downcase)],
+      [@item.name, [@course, @item]],
+      ["Discussion", course_item_posts_path(@course, @item)]
+    ]
     @post = @item.posts.find(params[:id]) # @user.posts.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
@@ -37,6 +54,13 @@ class PostsController < ApplicationController
   # GET /posts/new
   # GET /posts/new.xml
   def new
+    @navigation = [
+      ["Courses", courses_path],
+      ["#{@course.dept} #{@course.number}", @course],
+      [@item.category_s, course_items_path(@course, :category => @item.category.downcase)],
+      [@item.name, [@course, @item]],
+      ["Discussion", course_item_posts_path(@course, @item)]
+    ]
     @post = @current_user.posts.build # Post.new
     @parent = @item.posts.find(params[:post_id]) if params[:post_id]
     respond_to do |format|
@@ -56,6 +80,13 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+    @navigation = [
+      ["Courses", courses_path],
+      ["#{@course.dept} #{@course.number}", @course],
+      [@item.category_s, course_items_path(@course, :category => @item.category.downcase)],
+      [@item.name, [@course, @item]],
+      ["Discussion", course_item_posts_path(@course, @item)]
+    ]
     @post = @current_user.posts.find(params[:id])
   end
 
@@ -81,6 +112,8 @@ class PostsController < ApplicationController
   # PUT /posts/1.xml
   def update
     @post = @current_user.posts.find(params[:id])
+    append = ActionController::Base.helpers.sanitize(params[:append], :attributes => 'abbr alt cite datetime height href name src title width rowspan colspan')
+    params[:post][:body] = "#{@post.body}<br /><br /><span class='post_edit'>Edit(#{DateTime.now.strftime("%x")}, #{DateTime.now.strftime("%l:%M %p")}): </span><br />#{append}"
     respond_to do |format|
       if @post.update_attributes(params[:post])
         format.html { redirect_to([@course, @item, @post], :notice => 'Post was successfully updated.') }
