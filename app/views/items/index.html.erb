@@ -1,19 +1,10 @@
 <% content_for :title, "#{@course.abbr} | #{@category_s}" %>
 
-<div>
-  <ul id ="breadcrumbs">
-    <li class="breadcrumbs_a"><%= link_to "Home", root_path %></li>
-    <li class="breadcrumbs_arrow">&#9654;</li>
-    <li class="breadcrumbs_a"><%= link_to "Courses", courses_path %></li>
-    <li class="breadcrumbs_arrow">&#9654;</li>
-    <li class="breadcrumbs_a"><%= link_to "#{@course.dept} #{@course.number}", course_path(@course) %></li>
-    <li class="breadcrumbs_arrow">&#9654;</li>
-    <li class="breadcrumbs_a"><%= link_to @category_s, course_items_path(@course, :category => @category) %></li>
-    <li class="breadcrumbs_semester">Fall '10
-      <img alt="&9662;" src="/images/flat_triangle.gif" />
-    </li>
-  </ul>
-</div>
+<%= render '/layouts/nav', :navigation =>
+  [["Courses", courses_path],
+  ["#{@course.dept} #{@course.number}", @course],
+  [@category_s, course_items_path(@course, :category => @category)]] %>
+
 <div id="content">
 <table>
   <tr>

@@ -5,16 +5,10 @@
 <script type="text/javascript" src="/javascripts/deadline.js"></script>
 <script type="text/javascript" src="/javascripts/highcharts.js"></script>
 
-<script type="text/javascript">
-</script>
-
- <ul id="breadcrumbs">
-    <li class=""><%= link_to "Home", root_path, :class => "blue awesome" %></li>
-    <li class="breadcrumbs_arrow">&#9654;</li>
-    <li class=""><%= link_to "Courses", courses_path, :class => "blue awesome" %></li>
- </ul>
+<%= render '/layouts/nav', :navigation =>
+  [["Courses", courses_path]] %>
   
-<div id="courses_container">
+<div id="content">
 <h1>Listing courses</h1>
 
 <table id="courses_list">

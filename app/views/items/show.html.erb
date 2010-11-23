@@ -1,34 +1,42 @@
 <% content_for :title, "#{@course.abbr} | #{@item.name}" %>
 
-<p>
-  <b>Name:</b>
-  <%=h @item.name %>
-</p>
+<%= render '/layouts/nav', :navigation =>
+  [["Courses", courses_path],
+  ["#{@course.dept} #{@course.number}", @course],
+  [@item.category_s, course_items_path(@course, :category => @item.category.downcase)],
+  [@item.name, [@course, @item]]] %>
 
-<p>
-  <b>Category:</b>
-  <%=h @item.category %>
-</p>
+<div id="content">
+  <p>
+    <b>Name:</b>
+    <%=h @item.name %>
+  </p>
 
-<p>
-  <b>Due date:</b>
-  <%=h @item.due_date %>
-</p>
+  <p>
+    <b>Category:</b>
+    <%=h @item.category %>
+  </p>
 
-<p>
-  <b>Points:</b>
-  <%=h @item.points %>
-</p>
+  <p>
+    <b>Due date:</b>
+    <%=h @item.due_date %>
+  </p>
 
-<p>
-  <b>Weight:</b>
-  <%=h @item.weight %>
-</p>
+  <p>
+    <b>Points:</b>
+    <%=h @item.points %>
+  </p>
 
-<p>
-  <b>Description:</b>
-  <%=h @item.description %>
-</p>
+  <p>
+    <b>Weight:</b>
+    <%=h @item.weight %>
+  </p>
 
-<%= link_to 'Edit', edit_course_item_path(@course, @item) %> |
-<%= link_to 'Back', course_items_path(@course) %>
+  <p>
+    <b>Description:</b>
+    <%=h @item.description %>
+  </p>
+
+  <%= link_to 'Edit', edit_course_item_path(@course, @item) %> |
+  <%= link_to 'Back', course_items_path(@course) %>
+</div>

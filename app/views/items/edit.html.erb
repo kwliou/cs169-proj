@@ -1,38 +1,46 @@
 <% content_for :title, "#{@course.abbr} | #{@item.name} | Edit" %>
 
-<h1>Editing item</h1>
+<%= render '/layouts/nav', :navigation =>
+  [["Courses", courses_path],
+  ["#{@course.dept} #{@course.number}", @course],
+  [@item.category_s, course_items_path(@course, :category => @item.category.downcase)],
+  [@item.name, [@course, @item]]] %>
 
-<% form_for([@course, @item]) do |f| %>
-  <%= f.error_messages %>
+<div id="content">
+  <h1>Editing item</h1>
 
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :category %><br />
-    <%= f.text_field :category %>
-  </p>
-  <p>
-    <%= f.label :due_date %><br />
-    <%= f.datetime_select :due_date %>
-  </p>
-  <p>
-    <%= f.label :points %><br />
-    <%= f.text_field :points %>
-  </p>
-  <p>
-    <%= f.label :weight %><br />
-    <%= f.text_field :weight %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
-<% end %>
+  <% form_for([@course, @item]) do |f| %>
+    <%= f.error_messages %>
 
-<%= link_to 'Show', [@course, @item] %> |
-<%= link_to 'Back', course_items_path(@course) %>
+    <p>
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label :category %><br />
+      <%= f.text_field :category %>
+    </p>
+    <p>
+      <%= f.label :due_date %><br />
+      <%= f.datetime_select :due_date %>
+    </p>
+    <p>
+      <%= f.label :points %><br />
+      <%= f.text_field :points %>
+    </p>
+    <p>
+      <%= f.label :weight %><br />
+      <%= f.text_field :weight %>
+    </p>
+    <p>
+      <%= f.label :description %><br />
+      <%= f.text_area :description %>
+    </p>
+    <p>
+      <%= f.submit 'Update' %>
+    </p>
+  <% end %>
+
+  <%= link_to 'Show', [@course, @item] %> |
+  <%= link_to 'Back', course_items_path(@course) %>
+</div>
