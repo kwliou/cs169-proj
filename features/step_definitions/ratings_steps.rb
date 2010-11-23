@@ -12,6 +12,21 @@ Given /^I rated all (\d+)$/ do |value|
     :work_load => value)
 end
 
+Given /^someone rated all (\d+)$/ do |value|
+	@temp=User.create!(:first_name => "temp",
+    :last_name => "temp",
+    :username => "username2",
+    :password => "password2",
+    :password_confirmation => "password2",
+    :email => "user@example2.com")
+  @rating = @course.ratings.create!(
+  :course_id=>@course.id,
+	:user_id=>@temp.id,
+    :easiness => value,
+    :interest => value,
+    :work_load => value)
+end
+
 Given /^I am subscribed to "([^"]*)"$/ do |course|
   department, number = course.split
   @course = @current_user.courses.create!(

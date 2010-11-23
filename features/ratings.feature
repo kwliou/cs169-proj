@@ -47,7 +47,15 @@ Feature: user can create rating for a course
 	And I follow "Remove"
 	#And I press "Yes"
 	Then I should see "New rating"
-
+	
+	Scenario: Student cannot edit/delete others' ratings
+	Given I am "Guest User" logged in with "username" and "password"
+    And I am subscribed to "Math 101"
+	And someone rated all 1
+	When I am looking at the ratings page
+	Then I should not see "Edit"
+	And I should not see "Delete"
+	
 #  Scenario: Student reads post
 #    Given there is a post "How to get started"
 #    When I click on the link to "How to get started"
