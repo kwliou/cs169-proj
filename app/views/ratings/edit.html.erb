@@ -1,19 +1,9 @@
 <%= stylesheet_link_tag 'courses' %>
 <% content_for :title, @course.abbr %>
 
-<!-- All this is the content between header and footer -->
-<div>
-  <ul id="breadcrumbs">
-    <li class=""><%= link_to "Home", root_path, :class => "blue awesome" %></li>
-    <li class="breadcrumbs_arrow">&#9654;</li>
-    <li class=""><%= link_to "Courses", courses_path, :class => "blue awesome" %></li>
-    <li class="breadcrumbs_arrow">&#9654;</li>
-    <li class=""><%= link_to "#{@course.department} #{@course.number}", course_path(@course), :class => "blue awesome" %></li>
-    <li class="breadcrumbs_semester">Fall '10
-      <img alt="&9662;" src="/images/flat_triangle.gif" />
-    </li>
-  </ul>
-</div>
+<%= render '/layouts/nav', :navigation =>
+  [["Courses", courses_path],
+  ["#{@course.dept} #{@course.number}", @course]] %>
 
 <div id="content">
   <div id="content_left">
