@@ -113,7 +113,7 @@ class PostsController < ApplicationController
   def update
     @post = @current_user.posts.find(params[:id])
     append = ActionController::Base.helpers.sanitize(params[:append], :attributes => 'abbr alt cite datetime height href name src title width rowspan colspan')
-    params[:post][:body] = "#{@post.body}<br /><br /><span class='post_edit'>Edit(#{DateTime.now.strftime("%x")}, #{DateTime.now.strftime("%l:%M %p")}): </span><br />#{append}"
+    params[:post][:body] = "#{@post.body}<br /><br /><span class='post_edit'>Edit (#{DateTime.now.strftime("%x")}, #{DateTime.now.strftime("%l:%M %p")}): </span><br />#{append}"
     respond_to do |format|
       if @post.update_attributes(params[:post])
         format.html { redirect_to([@course, @item, @post], :notice => 'Post was successfully updated.') }
