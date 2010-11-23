@@ -1,5 +1,9 @@
 <% content_for :title, "#{@user.name} | Posts" %>
 
+<%= render '/layouts/nav', :navigation => 
+  [["Users", users_path],
+   [@user.username, @user]] %>
+
 <h1>Listing posts from <%=h @user.name %></h1>
 
 <table>

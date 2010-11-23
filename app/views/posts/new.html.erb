@@ -1,5 +1,12 @@
 <% content_for :title, "#{@course.abbr} | #{@item.name} | Forum | New Post" %>
 
+<%= render '/layouts/nav', :navigation =>
+  [["Courses", courses_path],
+  ["#{@course.dept} #{@course.number}", @course],
+  [@item.category_s, course_items_path(@course, :category => @item.category.downcase)],
+  [@item.name, [@course, @item]],
+  ["Discussion", course_item_posts_path(@course, @item)]] %>
+
 <h1>New post under forum for: <%=h @item.name %></h1>
 <% form_for([@course, @item, @post]) do |f| %>
   <%= f.error_messages %>

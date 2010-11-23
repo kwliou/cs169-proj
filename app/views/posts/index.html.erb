@@ -1,5 +1,11 @@
 <% content_for :title, "#{@course.abbr} | #{@item.name} | Forum" %>
 
+<%= render '/layouts/nav', :navigation =>
+  [["Courses", courses_path],
+  ["#{@course.dept} #{@course.number}", @course],
+  [@item.category_s, course_items_path(@course, :category => @item.category.downcase)],
+  [@item.name, [@course, @item]]] %>
+
 <!--
 Allowed HTML tags:
 a abbr acronym address b big blockquote br cite code dd del dfn div dt em h1 h2 h3 h4 h5 h6
