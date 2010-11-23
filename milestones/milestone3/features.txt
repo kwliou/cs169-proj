@@ -1,0 +1,4 @@
+forum.feature
+posts.feature
+replies.feature
+ratings.feature
