@@ -1,6 +1,5 @@
 class GradesController < ApplicationController
   layout "scaffold"
-
   # GET /grades
   # GET /grades.xml
   def index
@@ -43,6 +42,7 @@ class GradesController < ApplicationController
     data = {:mean => format("%.2f", mean), 
             :std_dev => format("%.2f", std_dev), 
             :title => item.name, :points => []}
+              
     low = scores.min
     high = low + segment_size
     while high < scores.max and segment_size > 0 do
@@ -161,7 +161,7 @@ class GradesController < ApplicationController
     @grade.destroy
 
     respond_to do |format|
-      format.html { redirect_to(grades_url) }
+      format.html { redirect_to(:controller => 'grades', :action => 'index', :notice => 'Grade was successfully destroyed.') }
       format.xml  { head :ok }
     end
   end
