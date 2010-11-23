@@ -49,7 +49,9 @@ class Course < ActiveRecord::Base
   end
   else return "I swear this is elementary school material (" << rating_s <<"/5)"
   end
-  
+  def raters
+	self.ratings.count
+  end
   def i_rating
   if (raters==0)
   return "Someone needs to rate this course!"
