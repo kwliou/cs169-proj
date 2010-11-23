@@ -28,17 +28,17 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-main_controller_rb.html">app/controllers/main_controller.rb</a></td>
-            <td class='right_align'><tt>12</tt></td>
-            <td class='right_align'><tt>11</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>25.00%</tt></div>
+            <td class='right_align'><tt>21</tt></td>
+            <td class='right_align'><tt>18</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>19.05%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:25px"></div>
-            <div class="uncovered" style="width:75px"></div>
+            <div class="covered" style="width:19px"></div>
+            <div class="uncovered" style="width:81px"></div>
           </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>18.18%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>16.67%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:18px"></div>
-            <div class="uncovered" style="width:82px"></div>
+            <div class="covered" style="width:17px"></div>
+            <div class="uncovered" style="width:83px"></div>
           </div></td>
           </tr>
         </tbody>
@@ -75,7 +75,7 @@
           
           
           <tr class="uncovered">
-            <td><pre><a name="line4">4</a>     @courses = Course.all</pre></td>
+            <td><pre><a name="line4">4</a>     @courses = @current_user.courses if @current_user</pre></td>
           </tr>
         
           
@@ -99,7 +99,7 @@
           
           
           <tr class="uncovered">
-            <td><pre><a name="line8">8</a>       format.xml  { render :xml =&gt; @courses }</pre></td>
+            <td><pre><a name="line8">8</a>       # format.xml  { render :xml =&gt; @courses }</pre></td>
           </tr>
         
           
@@ -116,20 +116,74 @@
         
           
           
+          <tr class="marked">
+            <td><pre><a name="line11">11</a>   def mobile</pre></td>
+          </tr>
+        
+          
+          
           <tr class="uncovered">
-            <td><pre><a name="line11">11</a> end</pre></td>
+            <td><pre><a name="line12">12</a>     @current_user = current_user</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line13">13</a>     @courses = Course.all</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line14">14</a>     @user_session = UserSession.new</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line15">15</a>     respond_to do |format|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line16">16</a>       format.html # index.html.erb</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line17">17</a>       # format.xml  { render :xml =&gt; @courses }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line18">18</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line19">19</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line20">20</a> end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line12">12</a> </pre></td>
+            <td><pre><a name="line21">21</a> </pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Tue Nov 02 07:22:15 -0700 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Nov 23 08:28:54 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

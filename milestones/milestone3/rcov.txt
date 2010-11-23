@@ -1,0 +1,32 @@
+
+NAME	TOTAL LINES	LINES OF CODE	TOTAL COVERAGE	CODE COVERAGE
+TOTAL	1207	929	70.26%	65.55%
+app/controllers/application_controller.rb	25	15	72.00%	53.33%
+app/controllers/blurbs_controller.rb	85	59	34.12%	15.25%
+app/controllers/courses_controller.rb	149	105	81.21%	77.14%
+app/controllers/grades_controller.rb	168	122	19.64%	9.02%
+app/controllers/items_controller.rb	103	79	90.29%	87.34%
+app/controllers/main_controller.rb	21	18	19.05%	16.67%
+app/controllers/mobile_controller.rb	21	20	19.05%	15.00%
+app/controllers/posts_controller.rb	121	91	91.74%	89.01%
+app/controllers/ratings_controller.rb	98	73	93.88%	91.78%
+app/controllers/user_sessions_controller.rb	22	17	31.82%	23.53%
+app/controllers/users_controller.rb	102	65	100.00%	100.00%
+app/helpers/application_helper.rb	21	14	100.00%	100.00%
+app/helpers/blurbs_helper.rb	2	2	100.00%	100.00%
+app/helpers/courses_helper.rb	2	2	100.00%	100.00%
+app/helpers/grades_helper.rb	2	2	100.00%	100.00%
+app/helpers/items_helper.rb	2	2	100.00%	100.00%
+app/helpers/posts_helper.rb	2	2	100.00%	100.00%
+app/helpers/ratings_helper.rb	2	2	100.00%	100.00%
+app/helpers/users_helper.rb	2	2	100.00%	100.00%
+app/models/blurb.rb	3	3	100.00%	100.00%
+app/models/course.rb	104	100	55.77%	54.00%
+app/models/grade.rb	4	4	100.00%	100.00%
+app/models/item.rb	20	15	70.00%	66.67%
+app/models/post.rb	24	19	91.67%	89.47%
+app/models/rating.rb	69	67	100.00%	100.00%
+app/models/user.rb	21	19	80.95%	78.95%
+app/models/user_mailer.rb	10	8	100.00%	100.00%
+app/models/user_session.rb	2	2	100.00%	100.00%
+Generated on Tue Nov 23 08:28:54 -0800 2010 with rcov 0.9.8

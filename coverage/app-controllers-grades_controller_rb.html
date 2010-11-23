@@ -28,17 +28,17 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-grades_controller_rb.html">app/controllers/grades_controller.rb</a></td>
-            <td class='right_align'><tt>84</tt></td>
-            <td class='right_align'><tt>60</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>32.14%</tt></div>
+            <td class='right_align'><tt>168</tt></td>
+            <td class='right_align'><tt>122</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>19.64%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:32px"></div>
-            <div class="uncovered" style="width:68px"></div>
+            <div class="covered" style="width:20px"></div>
+            <div class="uncovered" style="width:80px"></div>
           </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>13.33%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>9.02%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:13px"></div>
-            <div class="uncovered" style="width:87px"></div>
+            <div class="covered" style="width:9px"></div>
+            <div class="uncovered" style="width:91px"></div>
           </div></td>
           </tr>
         </tbody>
@@ -62,506 +62,1010 @@
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line2">2</a>   # GET /grades</pre></td>
+          <tr class="marked">
+            <td><pre><a name="line2">2</a>   layout &quot;scaffold&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line3">3</a>   # GET /grades.xml</pre></td>
+            <td><pre><a name="line3">3</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line4">4</a>   # GET /grades</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line5">5</a>   # GET /grades.xml</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>   def index</pre></td>
+            <td><pre><a name="line6">6</a>   def index</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line5">5</a>     @grades = Grade.all</pre></td>
+            <td><pre><a name="line7">7</a>     @course = Course.find_by_param(params[:id])</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line6">6</a>     @course = Course.find(params[:id])</pre></td>
+            <td><pre><a name="line8">8</a>     @current_user = current_user</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line7">7</a>     @current_user = current_user</pre></td>
+            <td><pre><a name="line9">9</a>     @grades = @current_user.grades</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line8">8</a>     respond_to do |format|</pre></td>
+            <td><pre><a name="line10">10</a>     </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line9">9</a>       format.html # index.html.erb</pre></td>
+            <td><pre><a name="line11">11</a>     respond_to do |format|</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line10">10</a>       format.xml  { render :xml =&gt; @grades }</pre></td>
+            <td><pre><a name="line12">12</a>       format.html # index.html.erb</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line11">11</a>     end</pre></td>
+            <td><pre><a name="line13">13</a>       format.xml  { render :xml =&gt; @grades }</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line12">12</a>   end</pre></td>
+            <td><pre><a name="line14">14</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line15">15</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line13">13</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line14">14</a>   # GET /grades/1</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line15">15</a>   # GET /grades/1.xml</pre></td>
+            <td><pre><a name="line16">16</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line16">16</a>   def show</pre></td>
+            <td><pre><a name="line17">17</a>   def histogram</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line17">17</a>     @grade = Grade.find(params[:id])</pre></td>
+            <td><pre><a name="line18">18</a>     item = Item.find(params[:id])</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line18">18</a> </pre></td>
+            <td><pre><a name="line19">19</a>     # Median is easy</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line19">19</a>     respond_to do |format|</pre></td>
+            <td><pre><a name="line20">20</a>     grades = item.grades.sort { |a, b| a.points_received &lt;=&gt; b.points_received }</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line20">20</a>       format.html # show.html.erb</pre></td>
+            <td><pre><a name="line21">21</a>     median = grades[grades.length / 2].points_received</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line21">21</a>       format.xml  { render :xml =&gt; @grade }</pre></td>
+            <td><pre><a name="line22">22</a>     scores = []</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line22">22</a>     end</pre></td>
+            <td><pre><a name="line23">23</a>     </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line23">23</a>   end</pre></td>
+            <td><pre><a name="line24">24</a>     # Calculate the mean</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line25">25</a>     total = 0.0</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line26">26</a>     grades.each do |g|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line27">27</a>       total += g.points_received</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line28">28</a>       scores &lt;&lt; g.points_received</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line29">29</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line30">30</a>     mean = total / grades.length</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line31">31</a>     </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line32">32</a>     # Calculate the std. dev</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line33">33</a>     sd_sum = 0</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line34">34</a>     scores.each do |s|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line35">35</a>       sd_sum += (s - mean)**2</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line36">36</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line37">37</a>     </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line38">38</a>     std_dev = (sd_sum / scores.length)**0.5</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line39">39</a>     segment_size = item.points / 15</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line40">40</a>     </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line41">41</a>     # Segment the scores into frequency buckets</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line42">42</a>     segments = []</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line43">43</a>     data = {:mean =&gt; format(&quot;%.2f&quot;, mean), </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line44">44</a>             :std_dev =&gt; format(&quot;%.2f&quot;, std_dev), </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line45">45</a>             :title =&gt; item.name, :points =&gt; []}</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line46">46</a>     low = scores.min</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line47">47</a>     high = low + segment_size</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line48">48</a>     while high &lt; scores.max and segment_size &gt; 0 do</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line49">49</a>       range = [low.floor, high.ceil]  </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line50">50</a>       freq = 0</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line51">51</a>       scores.each do |score|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line52">52</a>         if score &gt;= low &amp;&amp; score &lt;= high</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line53">53</a>           freq += 1</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line54">54</a>         end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line55">55</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line56">56</a>       data[:points] &lt;&lt; {:range =&gt; range, :freq =&gt; freq}</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line57">57</a>       low = high</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line58">58</a>       high = high + segment_size</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line59">59</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line60">60</a>     </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line61">61</a>     # Return the histogram encoded as JSON</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line62">62</a>     j = ActiveSupport::JSON</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line63">63</a>     histogram = j.encode(data)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line64">64</a>     respond_to do |format|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line65">65</a>         format.json  { render :json =&gt; histogram }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line66">66</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line67">67</a>   </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line68">68</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line24">24</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line25">25</a>   # GET /grades/new</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line26">26</a>   # GET /grades/new.xml</pre></td>
+            <td><pre><a name="line69">69</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line27">27</a>   def new</pre></td>
+            <td><pre><a name="line70">70</a>   def performance</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line28">28</a>     @grade = Grade.new</pre></td>
+            <td><pre><a name="line71">71</a>     user = User.find(params[:id])</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line29">29</a> </pre></td>
+            <td><pre><a name="line72">72</a>     grades = user.grades.sort { |a, b| a.item.due_date &lt;=&gt; b.item.due_date }</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line30">30</a>     respond_to do |format|</pre></td>
+            <td><pre><a name="line73">73</a>     </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line31">31</a>       format.html # new.html.erb</pre></td>
+            <td><pre><a name="line74">74</a>     # For each grade, calculate the average grade % up to </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line32">32</a>       format.xml  { render :xml =&gt; @grade }</pre></td>
+            <td><pre><a name="line75">75</a>     # the corresponding due date</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line33">33</a>     end</pre></td>
+            <td><pre><a name="line76">76</a>     j = ActiveSupport::JSON</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line34">34</a>   end</pre></td>
+            <td><pre><a name="line77">77</a>     i = 1</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line78">78</a>     data = []</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line79">79</a>     grades.each do |grade|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line80">80</a>       total_pct = 0.0</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line81">81</a>       grades[0, i].each do |g|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line82">82</a>         total_pct += (g.points_received / g.item.points) * 100</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line83">83</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line84">84</a>       pct = total_pct / i</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line85">85</a>       data &lt;&lt; {:date =&gt; grade.item.due_date, :average =&gt; pct}</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line86">86</a>       i += 1</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line87">87</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line88">88</a>     </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line89">89</a>     # Return performance encoded as JSON</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line90">90</a>     performance = j.encode(data)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line91">91</a>     respond_to do |format|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line92">92</a>         format.json  { render :json =&gt; performance }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line93">93</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line94">94</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line35">35</a> </pre></td>
+            <td><pre><a name="line95">95</a>   </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line36">36</a>   # GET /grades/1/edit</pre></td>
+            <td><pre><a name="line96">96</a>   # GET /grades/1</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line97">97</a>   # GET /grades/1.xml</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line37">37</a>   def edit</pre></td>
+            <td><pre><a name="line98">98</a>   def show</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line38">38</a>     @grade = Grade.find(params[:id])</pre></td>
+            <td><pre><a name="line99">99</a>     @grade = Grade.find(params[:id])</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line39">39</a>   end</pre></td>
+            <td><pre><a name="line100">100</a>     </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line101">101</a>     # Get histogram for THIS assignment</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line102">102</a>       </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line103">103</a>     respond_to do |format|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line104">104</a>       format.html # show.html.erb</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line105">105</a>       format.xml  { render :xml =&gt; @grade }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line106">106</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line107">107</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line40">40</a> </pre></td>
+            <td><pre><a name="line108">108</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line41">41</a>   # POST /grades</pre></td>
+            <td><pre><a name="line109">109</a>   # GET /grades/new</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line42">42</a>   # POST /grades.xml</pre></td>
+            <td><pre><a name="line110">110</a>   # GET /grades/new.xml</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line43">43</a>   def create</pre></td>
+            <td><pre><a name="line111">111</a>   def new</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line44">44</a>     @grade = Grade.new(params[:grade])</pre></td>
+            <td><pre><a name="line112">112</a>     @grade = Grade.new</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line45">45</a> </pre></td>
+            <td><pre><a name="line113">113</a> </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line46">46</a>     respond_to do |format|</pre></td>
+            <td><pre><a name="line114">114</a>     respond_to do |format|</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line47">47</a>       if @grade.save</pre></td>
+            <td><pre><a name="line115">115</a>       format.html # new.html.erb</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line48">48</a>         format.html { redirect_to(@grade, :notice =&gt; 'Grade was successfully created.') }</pre></td>
+            <td><pre><a name="line116">116</a>       format.xml  { render :xml =&gt; @grade }</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line49">49</a>         format.xml  { render :xml =&gt; @grade, :status =&gt; :created, :location =&gt; @grade }</pre></td>
+            <td><pre><a name="line117">117</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line50">50</a>       else</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line51">51</a>         format.html { render :action =&gt; &quot;new&quot; }</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line52">52</a>         format.xml  { render :xml =&gt; @grade.errors, :status =&gt; :unprocessable_entity }</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line53">53</a>       end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line54">54</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line55">55</a>   end</pre></td>
+            <td><pre><a name="line118">118</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line56">56</a> </pre></td>
+            <td><pre><a name="line119">119</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line57">57</a>   # PUT /grades/1</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line58">58</a>   # PUT /grades/1.xml</pre></td>
+            <td><pre><a name="line120">120</a>   # GET /grades/1/edit</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line59">59</a>   def update</pre></td>
+            <td><pre><a name="line121">121</a>   def edit</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line60">60</a>     @grade = Grade.find(params[:id])</pre></td>
+            <td><pre><a name="line122">122</a>     @grade = Grade.find(params[:id])</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line61">61</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line62">62</a>     respond_to do |format|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line63">63</a>       if @grade.update_attributes(params[:grade])</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line64">64</a>         format.html { redirect_to(@grade, :notice =&gt; 'Grade was successfully updated.') }</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line65">65</a>         format.xml  { head :ok }</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line66">66</a>       else</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line67">67</a>         format.html { render :action =&gt; &quot;edit&quot; }</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line68">68</a>         format.xml  { render :xml =&gt; @grade.errors, :status =&gt; :unprocessable_entity }</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line69">69</a>       end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line70">70</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line71">71</a>   end</pre></td>
+            <td><pre><a name="line123">123</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line72">72</a> </pre></td>
+            <td><pre><a name="line124">124</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line73">73</a>   # DELETE /grades/1</pre></td>
+            <td><pre><a name="line125">125</a>   # POST /grades</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line74">74</a>   # DELETE /grades/1.xml</pre></td>
+            <td><pre><a name="line126">126</a>   # POST /grades.xml</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line75">75</a>   def destroy</pre></td>
+            <td><pre><a name="line127">127</a>   def create</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line76">76</a>     @grade = Grade.find(params[:id])</pre></td>
+            <td><pre><a name="line128">128</a>     @grade = Grade.new(params[:grade])</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line77">77</a>     @grade.destroy</pre></td>
+            <td><pre><a name="line129">129</a> </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line78">78</a> </pre></td>
+            <td><pre><a name="line130">130</a>     respond_to do |format|</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line79">79</a>     respond_to do |format|</pre></td>
+            <td><pre><a name="line131">131</a>       if @grade.save</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line80">80</a>       format.html { redirect_to(grades_url) }</pre></td>
+            <td><pre><a name="line132">132</a>         format.html { redirect_to(@grade, :notice =&gt; 'Grade was successfully created.') }</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line81">81</a>       format.xml  { head :ok }</pre></td>
+            <td><pre><a name="line133">133</a>         format.xml  { render :xml =&gt; @grade, :status =&gt; :created, :location =&gt; @grade }</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line82">82</a>     end</pre></td>
+            <td><pre><a name="line134">134</a>       else</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line83">83</a>   end</pre></td>
+            <td><pre><a name="line135">135</a>         format.html { render :action =&gt; &quot;new&quot; }</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line84">84</a> end</pre></td>
+            <td><pre><a name="line136">136</a>         format.xml  { render :xml =&gt; @grade.errors, :status =&gt; :unprocessable_entity }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line137">137</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line138">138</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line139">139</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line140">140</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line141">141</a>   # PUT /grades/1</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line142">142</a>   # PUT /grades/1.xml</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line143">143</a>   def update</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line144">144</a>     @grade = Grade.find(params[:id])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line145">145</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line146">146</a>     respond_to do |format|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line147">147</a>       if @grade.update_attributes(params[:grade])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line148">148</a>         format.html { redirect_to(@grade, :notice =&gt; 'Grade was successfully updated.') }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line149">149</a>         format.xml  { head :ok }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line150">150</a>       else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line151">151</a>         format.html { render :action =&gt; &quot;edit&quot; }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line152">152</a>         format.xml  { render :xml =&gt; @grade.errors, :status =&gt; :unprocessable_entity }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line153">153</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line154">154</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line155">155</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line156">156</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line157">157</a>   # DELETE /grades/1</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line158">158</a>   # DELETE /grades/1.xml</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line159">159</a>   def destroy</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line160">160</a>     @grade = Grade.find(params[:id])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line161">161</a>     @grade.destroy</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line162">162</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line163">163</a>     respond_to do |format|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line164">164</a>       format.html { redirect_to(grades_url) }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line165">165</a>       format.xml  { head :ok }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line166">166</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line167">167</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line168">168</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Tue Nov 02 07:22:15 -0700 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Nov 23 08:28:54 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

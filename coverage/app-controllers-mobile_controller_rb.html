@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>app/helpers/application_helper.rb</title>
+    <title>app/controllers/mobile_controller.rb</title>
     <link href="screen.css" media="all" rel="stylesheet" type="text/css" />
     <link href="print.css" media="print" rel="stylesheet" type="text/css" />
     
@@ -10,7 +10,7 @@
   </head>
   <body>
     <h1>Cs169 Proj C0 Coverage Information - RCov</h1>
-    <h2>app/helpers/application_helper.rb</h2>
+    <h2>app/controllers/mobile_controller.rb</h2>
 
     
 
@@ -27,18 +27,18 @@
         </thead>
         <tbody>
           <tr>
-            <td class="left_align"><a href="app-helpers-application_helper_rb.html">app/helpers/application_helper.rb</a></td>
+            <td class="left_align"><a href="app-controllers-mobile_controller_rb.html">app/controllers/mobile_controller.rb</a></td>
             <td class='right_align'><tt>21</tt></td>
-            <td class='right_align'><tt>14</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
+            <td class='right_align'><tt>20</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>19.05%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:100px"></div>
-            <div class="uncovered" style="width:0px"></div>
+            <div class="covered" style="width:19px"></div>
+            <div class="uncovered" style="width:81px"></div>
           </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>15.00%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:100px"></div>
-            <div class="uncovered" style="width:0px"></div>
+            <div class="covered" style="width:15px"></div>
+            <div class="uncovered" style="width:85px"></div>
           </div></td>
           </tr>
         </tbody>
@@ -56,121 +56,121 @@
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line1">1</a> # Methods added to this helper will be available to all templates in the application.</pre></td>
+          <tr class="marked">
+            <td><pre><a name="line1">1</a> class MobileController &lt; ApplicationController</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a> module ApplicationHelper</pre></td>
+            <td><pre><a name="line2">2</a>   def index</pre></td>
           </tr>
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line3">3</a> </pre></td>
+          <tr class="uncovered">
+            <td><pre><a name="line3">3</a>     @current_user = current_user</pre></td>
           </tr>
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line4">4</a> end</pre></td>
+          <tr class="uncovered">
+            <td><pre><a name="line4">4</a>     @courses = Course.all</pre></td>
           </tr>
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line5">5</a> class String</pre></td>
+          <tr class="uncovered">
+            <td><pre><a name="line5">5</a>     @user_session = UserSession.new</pre></td>
           </tr>
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line6">6</a>   def cap  # String.capitalize doesn't account for acronyms or '(' in front</pre></td>
+          <tr class="uncovered">
+            <td><pre><a name="line6">6</a>     respond_to do |format|</pre></td>
           </tr>
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line7">7</a>     return '' if self.empty?</pre></td>
+          <tr class="uncovered">
+            <td><pre><a name="line7">7</a>       format.html # index.html.erb</pre></td>
           </tr>
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line8">8</a>     self.first == '(' ? '(' + self[1..-1].cap : self.first.upcase + self[1..-1]</pre></td>
+          <tr class="uncovered">
+            <td><pre><a name="line8">8</a>       format.xml  { render :xml =&gt; @courses }</pre></td>
           </tr>
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line9">9</a>   end</pre></td>
+          <tr class="uncovered">
+            <td><pre><a name="line9">9</a>     end</pre></td>
           </tr>
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line10">10</a>   def titleizev2  # String.titleize doesn't account for acronyms, special words</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line11">11</a>     return '' if self.empty?</pre></td>
+          <tr class="uncovered">
+            <td><pre><a name="line10">10</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line12">12</a>     lcase_list = &quot;of etc and by the for on is at to but nor or a via Of Etc And By The For On Is At To But Nor Or A Via&quot;</pre></td>
+            <td><pre><a name="line11">11</a>   def mobile</pre></td>
           </tr>
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line13">13</a>     first, *rest = self.split(' ')</pre></td>
+          <tr class="uncovered">
+            <td><pre><a name="line12">12</a>     @current_user = current_user</pre></td>
           </tr>
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line14">14</a>     first.cap + (rest.map { |w| ' ' + (lcase_list.include?(w) ? w.downcase : w.cap) }).join</pre></td>
+          <tr class="uncovered">
+            <td><pre><a name="line13">13</a>     @courses = Course.all</pre></td>
           </tr>
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line15">15</a>   end</pre></td>
+          <tr class="uncovered">
+            <td><pre><a name="line14">14</a>     @user_session = UserSession.new</pre></td>
           </tr>
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line16">16</a> </pre></td>
+          <tr class="uncovered">
+            <td><pre><a name="line15">15</a>     respond_to do |format|</pre></td>
           </tr>
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line17">17</a> # def each_upcase</pre></td>
+          <tr class="uncovered">
+            <td><pre><a name="line16">16</a>       format.html # index.html.erb</pre></td>
           </tr>
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line18">18</a> #   self.split(' ').map {|w| w.capitalize }.join(' ')</pre></td>
+          <tr class="uncovered">
+            <td><pre><a name="line17">17</a>       format.xml  { render :xml =&gt; @courses }</pre></td>
           </tr>
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line19">19</a> # end</pre></td>
+          <tr class="uncovered">
+            <td><pre><a name="line18">18</a>     end</pre></td>
           </tr>
         
           
           
-          <tr class="inferred">
+          <tr class="uncovered">
+            <td><pre><a name="line19">19</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
             <td><pre><a name="line20">20</a> end</pre></td>
           </tr>
         
