@@ -1,5 +1,47 @@
 <%= stylesheet_link_tag 'grades' %>
 
+<script type="text/javascript" src="/javascripts/stats.js"></script>
+<script type="text/javascript">
+$(document).ready(function(e) {
+
+	$('.item_row').click(function(e) {
+		var item_id = $(this).attr('data-id');
+		$.ajax({
+		  type: 'GET',
+		  url: '/grades/histogram/' + item_id + '.json',
+		  success: function(data) {
+		  	if (data.length == 0) {
+		  		$('#histogram_container').fadeOut(300);
+		  		return;
+		  	}
+		  	var categories = [],
+		  		points = [];
+		  	for (var i=0; i<data['points'].length; i++) {
+		  		categories[i] = data['points'][i]['range'][0] + '-' + data['points'][i]['range'][1]
+		  		points[i] = data['points'][i]['freq'];
+		  	}
+		  	
+		  	var mean = data['mean'], 
+		  		std_dev = data['std_dev'];
+		  	var title = data['title']
+		  		subtitle = 'Mean: ' + mean + '\tStd. Dev: ' + std_dev;
+		  	var opts = {
+		  		points: points,
+		  		title: title,
+		  		subtitle: subtitle,
+		  		categories: categories
+		  	};
+		  	
+		  	$.histogram('histogram_container', opts);
+		  	$('#histogram_container').fadeIn(300);
+		  },
+		  dataType: 'json'
+		});
+	});
+	
+});
+</script>
+
  <ul id="breadcrumbs">
     <li class=""><%= link_to "Home", root_path, :class => "blue awesome" %></li>
     <li class="breadcrumbs_arrow">&#9654;</li>
@@ -28,22 +70,26 @@
 	  <% total_pts += grade.points_received
 	  	 total_possible += grade.item.points
 	  %>
-	  <tr>
-	    <td><%= grade.item.name %></td>
+	  <tr class="item_row" data-id="<%= grade.item.id %>">
+	    <td><span class="item_name"><%= grade.item.name %></span></td>
 	    <td><%= format("%.2f", grade.points_received) %></td>
 	    <td>/</td>
 	    <td><%= grade.item.points %></td>
-	  	<td><%= format("%.2f%%", ((grade.points_received)/(grade.item.points))*100) %></td>
+	    <% if grade.item.points != 0 %>
+		  	<td><%= format("%.2f%%", ((grade.points_received)/(grade.item.points))*100) %></td>
+		<% end %>
 	  </tr>
 	<% end %>
 	<% end %>
-	<tr id="grade_totals">
-		<td></td>
-		<td><%= format("%.2f", total_pts) %></td>
-		<td>/</td>
-		<td><%= total_possible %></td>
-	  	<td><%= format("%.2f%", (total_pts*100)/(total_possible)) %></td>
-	</tr>
+	<% if total_possible != 0 %>
+		<tr id="grade_totals">
+			<td></td>
+			<td><%= format("%.2f", total_pts) %></td>
+			<td>/</td>
+			<td><%= total_possible %></td>
+		  	<td><%= format("%.2f%", (total_pts*100)/(total_possible)) %></td>
+		</tr>
+	<% end %>
 	</table>
 	
 	<div id="histogram_container"></div>

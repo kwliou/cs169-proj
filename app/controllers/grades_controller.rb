@@ -40,10 +40,12 @@ class GradesController < ApplicationController
     
     # Segment the scores into frequency buckets
     segments = []
-    data = []
+    data = {:mean => format("%.2f", mean), 
+            :std_dev => format("%.2f", std_dev), 
+            :title => item.name, :points => []}
     low = scores.min
     high = low + segment_size
-    while high < scores.max do
+    while high < scores.max and segment_size > 0 do
       range = [low.floor, high.ceil]  
       freq = 0
       scores.each do |score|
@@ -51,7 +53,7 @@ class GradesController < ApplicationController
           freq += 1
         end
       end
-      data << {:range => range, :freq => freq}
+      data[:points] << {:range => range, :freq => freq}
       low = high
       high = high + segment_size
     end
