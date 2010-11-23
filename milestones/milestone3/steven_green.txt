@@ -1,0 +1,19 @@
+I checked out the Beatmap app. (beatmap.heroku.com)
+
+The site is supposed to show you a heatmap of nearby events and
+restaurants. I guess that means that exciting places should show up as
+big blobs? Anyway I checked out their code and what they had wasn't
+really a heatmap. They had hardcoded in about 13 red spot images and
+then they overlay them on a map returned by Google maps. So each
+hotspot only encompasses one location and doesn't neccessarily grow
+any larger if there is a lot of stuff nearby. I don't really get how
+they added any functionality to Yelp since their heatmaps are just icons
+in the exact locations that Yelp returns from a search. Also clicking on 
+one of the icons simply pops up an address and not the business name. 
+Perhaps this feature is still a work in progress? It would be a more 
+interesting app if they handled more than just a few results from Yelp 
+or if there was color variation in their dots to represent the rating
+instead of just a change in opacity which is what they have now.
+A heatmap with less than 20 data points doesn't really make for much of 
+a heatmap. I don't mean to sound super mean, I'm just tired. I'm sure
+they've worked really hard.

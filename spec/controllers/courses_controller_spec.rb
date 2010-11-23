@@ -14,6 +14,28 @@ describe CoursesController do
   def mock_item(stubs={})
     @mock_item ||= mock_model(Item, stubs)
   end
+  
+  describe "subscribe" do
+    it "adds a course to a user's courses and redirects to that course's page" do
+      Course.stub(:find).with("37").and_return(mock_course)
+      @current_user.stub(:courses).and_return(Course)
+      Course.stub(:include?).with(mock_course).and_return(true)
+      Course.stub(:<<)
+      put :subscribe, :id => "37"
+      assigns[:course].should equal(mock_course)
+      response.should redirect_to(course_url(mock_course))
+    end
+  end
+  
+  describe "unsubscribe" do
+    it "removes the course from a user's courses and redirects to the home page" do
+      Course.stub(:find).with("37").and_return(mock_course)
+      @current_user.stub(:courses).and_return(Course)
+      Course.should_receive(:delete).with(mock_course)
+      delete :unsubscribe, :id => "37"
+      response.should redirect_to(root_url)
+    end
+  end
 
   describe "GET index" do
     it "assigns all courses as @courses" do
