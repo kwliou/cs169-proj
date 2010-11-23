@@ -1,11 +1,9 @@
-<p>
-  <b>Title:</b>
+<p id="post_page_title">
   <%=h @post.title %>
 </p>
 
-<p>
-  <b>Body:</b>
-  <%=h @post.body %>
+<p id="post_page_body">
+  <%= sanitize @post.body.gsub("\n", "<br />") %>
 </p>
 
 <p>
