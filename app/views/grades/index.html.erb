@@ -42,17 +42,12 @@ $(document).ready(function(e) {
 });
 </script>
 
- <ul id="breadcrumbs">
-    <li class=""><%= link_to "Home", root_path, :class => "blue awesome" %></li>
-    <li class="breadcrumbs_arrow">&#9654;</li>
-    <li class=""><%= link_to "Courses", courses_path, :class => "blue awesome" %></li>
-    <li class="breadcrumbs_arrow">&#9654;</li>
-    <li class=""><%= link_to "#{@course.department} #{@course.number}", course_path(@course), :class => "blue awesome" %></li>
-    <li class="breadcrumbs_arrow">&#9654;</li>
-    <li class=""><%= link_to "Grades", url_for(:controller => :grades, :action => :index), :class => "blue awesome" %></li>
- </ul>
-  
-<div id="content_container">	
+<%= render '/layouts/nav', :navigation =>
+  [["Courses", courses_path],
+  ["#{@course.dept} #{@course.number}", @course],
+  ["Grades", url_for(:controller => :grades, :action => :index)]] %>
+
+<div id="content">	
 	<table id="grades_list">
 	  <tr>
 	  	<th>Item</th>

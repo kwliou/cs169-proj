@@ -1,12 +1,18 @@
 <% content_for :title, "#{@course.abbr} | #{@item.name} | Forum | Post Edit" %>
-<div id="content">
-<h1>Editing post</h1>
 
+<%= render '/layouts/nav', :navigation => 
+  [["Courses", courses_path],
+  ["#{@course.dept} #{@course.number}", @course],
+  [@item.category_s, course_items_path(@course, :category => @item.category.downcase)],
+  [@item.name, [@course, @item]],
+  ["Discussion", course_item_posts_path(@course, @item)]] %>
+
+<div id="content" class="post_page">
 <% form_for([@course, @item, @post]) do |f| %>
   <%= f.error_messages %>
 
   <p id="post_page_title">
-    <%=h @post.title %>
+    Editing: <%=h @post.title %>
   </p>
   <p id="post_page_body">
     <%= sanitize @post.body.gsub("\n", "<br />") %>

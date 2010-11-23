@@ -16,17 +16,6 @@ class User < ActiveRecord::Base
   def rated_course(course)
 	course.ratings.find_by_user_id(self.id)
 	end
-	def rating_e(course)
-	(self.ratings.find_by_course_id(course.id)).easiness
-	end
-	def rating_i(course)
-	self.ratings.find_by_course_id(course.id).interest
-	end
-	def rating_w(course)
-	self.ratings.find_by_course_id(course.id).work_load
-	end
-  def ratings(course)
-  self.ratings.find_by_course_id(course.id)
-  end
+	
 
 end

@@ -1,0 +1,143 @@
+require 'spec_helper'
+
+describe RatingsController do
+before :each do
+    @current_user = mock_model(User)
+    controller.stub!(:current_user).and_return(@current_user)
+  end
+  def mock_rating(stubs={})
+    @mock_rating ||= mock_model(Rating, stubs)
+  end
+ def mock_user(stubs={})
+    @mock_user ||= mock_model(User, stubs)
+  end
+  def mock_course(stubs={})
+    @mock_course ||= mock_model(Course, stubs)
+  end
+  
+  describe "GET index" do
+    it "assigns all ratings as @ratings" do
+	Course.should_receive(:unabbr).and_return("department")
+	Course.should_receive(:find_by_department_and_number).and_return(mock_course)
+	mock_course.should_receive(:ratings).and_return(Rating)
+	Rating.should_receive(:all).and_return([mock_rating])
+     get :index, :course_id=>1
+      #assigns[:ratings].should == [mock_rating]
+    end
+  end
+
+  describe "GET show" do
+    it "assigns the requested rating as @rating" do
+      Rating.stub(:find).with("37").and_return(mock_rating)
+      get :show, :id => "37"
+      assigns[:rating].should equal(mock_rating)
+    end
+  end
+
+  describe "GET new" do
+    it "assigns a new rating as @rating" do
+      Rating.stub(:new).and_return(mock_rating)
+      get :new
+      assigns[:rating].should equal(mock_rating)
+    end
+  end
+
+  describe "GET edit" do
+    it "assigns the requested rating as @rating" do
+      Rating.stub(:find).with("37").and_return(mock_rating)
+      get :edit, :id => "37"
+      assigns[:rating].should equal(mock_rating)
+    end
+  end
+
+  describe "POST create" do
+
+    describe "with valid params" do
+      it "assigns a newly created rating as @rating" do
+        Rating.stub(:new).with({'these' => 'params'}).and_return(mock_rating(:save => true))
+        post :create, :rating => {:these => 'params'}
+        assigns[:rating].should equal(mock_rating)
+      end
+
+      it "redirects to the created rating" do
+        Rating.stub(:new).and_return(mock_rating(:save => true))
+        post :create, :rating => {}
+        response.should redirect_to(rating_url(mock_rating))
+      end
+    end
+
+    describe "with invalid params" do
+      it "assigns a newly created but unsaved rating as @rating" do
+        Rating.stub(:new).with({'these' => 'params'}).and_return(mock_rating(:save => false))
+        post :create, :rating => {:these => 'params'}
+        assigns[:rating].should equal(mock_rating)
+      end
+
+      it "re-renders the 'new' template" do
+        Rating.stub(:new).and_return(mock_rating(:save => false))
+        post :create, :rating => {}
+        response.should render_template('new')
+      end
+    end
+
+  end
+
+  describe "PUT update" do
+
+    describe "with valid params" do
+      it "updates the requested rating" do
+        Rating.should_receive(:find).with("37").and_return(mock_rating)
+        mock_rating.should_receive(:update_attributes).with({'these' => 'params'})
+        put :update, :id => "37", :rating => {:these => 'params'}
+      end
+
+      it "assigns the requested rating as @rating" do
+        Rating.stub(:find).and_return(mock_rating(:update_attributes => true))
+        put :update, :id => "1"
+        assigns[:rating].should equal(mock_rating)
+      end
+
+      it "redirects to the rating" do
+        Rating.stub(:find).and_return(mock_rating(:update_attributes => true))
+        put :update, :id => "1"
+        response.should redirect_to(rating_url(mock_rating))
+      end
+    end
+
+    describe "with invalid params" do
+      it "updates the requested rating" do
+        Rating.should_receive(:find).with("37").and_return(mock_rating)
+        mock_rating.should_receive(:update_attributes).with({'these' => 'params'})
+        put :update, :id => "37", :rating => {:these => 'params'}
+      end
+
+      it "assigns the rating as @rating" do
+        Rating.stub(:find).and_return(mock_rating(:update_attributes => false))
+        put :update, :id => "1"
+        assigns[:rating].should equal(mock_rating)
+      end
+
+      it "re-renders the 'edit' template" do
+        Rating.stub(:find).and_return(mock_rating(:update_attributes => false))
+        put :update, :id => "1"
+        response.should render_template('edit')
+      end
+    end
+
+  end
+
+  describe "DELETE destroy" do
+    it "destroys the requested rating" do
+      Rating.should_receive(:find).with("37").and_return(mock_rating)
+      mock_rating.should_receive(:destroy)
+      delete :destroy, :id => "37"
+    end
+
+    it "redirects to the ratings list" do
+      Rating.stub(:find).and_return(mock_rating(:destroy => true))
+      delete :destroy, :id => "1"
+      response.should redirect_to(ratings_url)
+    end
+  end
+
+end

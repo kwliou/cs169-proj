@@ -14,10 +14,13 @@ class Course < ActiveRecord::Base
     "Anthropology" => "anthro",
     "Gender and Women's Studies" => "gws",
     "Aerospace Studies (Air Force ROTC)" => "aerospc",
-    "Math" => "math",
-    "CS" => "CS"
+    "Math" => "math"
   }
-  
+  def Course.find_by_param(param)
+      dept, number = param.split('_')
+      department = Course.unabbr(dept)
+      Course.find_by_department_and_number(department, number)
+  end
   def Course.unabbr(abbr)
     @@abbr.index(abbr.downcase) || abbr.downcase.titleizev2
   end

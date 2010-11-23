@@ -1,0 +1,140 @@
+Using the default profile...
+Feature: user can create posts on a course item's forum
+
+  Scenario: Student clicks new post                                  # features\forum.feature:3
+    Given I am "Guest User" logged in with "username" and "password" # features/step_definitions/forums_steps.rb:6
+    And I am subscribed to "Math 101" with item "HW 1"               # features/step_definitions/forums_steps.rb:21
+    And I am looking at the posts page                               # features/step_definitions/forums_steps.rb:32
+    When I follow "New Post"                                         # features/step_definitions/web_steps.rb:27
+    Then I should see "New post"                                     # features/step_definitions/web_steps.rb:143
+
+  Scenario: Student creates new post                                 # features\forum.feature:10
+    Given I am "Guest User" logged in with "username" and "password" # features/step_definitions/forums_steps.rb:6
+    And I am subscribed to "Math 101" with item "HW 1"               # features/step_definitions/forums_steps.rb:21
+    And I am making a new post                                       # features/step_definitions/forums_steps.rb:36
+    When I fill in the following:                                    # features/step_definitions/web_steps.rb:54
+      | Title | Hey everyone |
+      | Body  | Welcome!     |
+      | Tags  | Other        |
+    And I press "Create"                                             # features/step_definitions/web_steps.rb:23
+    Then I should see "Welcome!"                                     # features/step_definitions/web_steps.rb:143
+
+Feature: main homepage is linked to various course pages
+
+  #As a student,
+  #I want to access my course pages from the main homepage
+  #So that I can view details about my courses
+  Scenario: student clicks on the link to his/her course           # features\home.feature:8
+    Given I am "John Doe" logged in with "username" and "password" # features/step_definitions/forums_steps.rb:6
+    And I am subscribed to "Math 101"                              # features/step_definitions/home_steps.rb:2
+    And I am on the home page                                      # features/step_definitions/web_steps.rb:15
+    When I follow "MATH 101"                                       # features/step_definitions/web_steps.rb:27
+    Then I should see "re.factored | MATH 101"                     # features/step_definitions/web_steps.rb:143
+
+Feature: user can manipulate own posts
+
+  Scenario: Student views own posts                                  # features\posts.feature:3
+    Given I am "Guest User" logged in with "username" and "password" # features/step_definitions/forums_steps.rb:6
+    When I visit my posts page                                       # features/step_definitions/forums_steps.rb:82
+    Then I should see "Listing posts from Guest User"                # features/step_definitions/web_steps.rb:143
+
+  Scenario: Student edits own post                                     # features\posts.feature:8
+    Given I am "Guest User" logged in with "username" and "password"   # features/step_definitions/forums_steps.rb:6
+    And I am subscribed to "Math 101" with item "HW 1"                 # features/step_definitions/forums_steps.rb:21
+    And I posted "How to get started" with "Just click post you guys!" # features/step_definitions/forums_steps.rb:40
+    And I am looking at the posts page                                 # features/step_definitions/forums_steps.rb:32
+    When I follow "Edit"                                               # features/step_definitions/web_steps.rb:27
+    And I fill in "append" with "This site is so cool"                 # features/step_definitions/web_steps.rb:35
+    And I press "Update"                                               # features/step_definitions/web_steps.rb:23
+    Then I should see "Just click post you guys!Edit ("                # features/step_definitions/web_steps.rb:143
+    And I should see "): This site is so cool"                         # features/step_definitions/web_steps.rb:143
+
+  Scenario: Student attempts fake edits                                  # features\posts.feature:19
+    Given I am "Guest User" logged in with "username" and "password"     # features/step_definitions/forums_steps.rb:6
+    And I am subscribed to "Math 101" with item "HW 1"                   # features/step_definitions/forums_steps.rb:21
+    And I posted "How to get started" with "Just click post you guys!"   # features/step_definitions/forums_steps.rb:40
+    And I am looking at the posts page                                   # features/step_definitions/forums_steps.rb:32
+    When I follow "Edit"                                                 # features/step_definitions/web_steps.rb:27
+    And I fill in "append" with "<span class=post_edit>FAKE EDIT</span>" # features/step_definitions/web_steps.rb:35
+    And I press "Update"                                                 # features/step_definitions/web_steps.rb:23
+    Then I should not see "FAKE EDIT" within ".post_edit"                # features/step_definitions/web_steps.rb:190
+
+Feature: user can create rating for a course
+
+  Scenario: Student clicks new rating                                # features\ratings.feature:3
+    Given I am "Guest User" logged in with "username" and "password" # features/step_definitions/forums_steps.rb:6
+    And I am subscribed to "Math 101"                                # features/step_definitions/home_steps.rb:2
+    And I am looking at the ratings page                             # features/step_definitions/ratings_steps.rb:30
+    When I follow "New Rating"                                       # features/step_definitions/web_steps.rb:27
+    Then I should see "New rating"                                   # features/step_definitions/web_steps.rb:143
+
+  Scenario: Student creates new rating                               # features\ratings.feature:10
+    Given I am "Guest User" logged in with "username" and "password" # features/step_definitions/forums_steps.rb:6
+    And I am subscribed to "Math 101"                                # features/step_definitions/home_steps.rb:2
+    And I am making a new rating                                     # features/step_definitions/ratings_steps.rb:37
+    When I choose "rating_easiness_1"                                # features/step_definitions/web_steps.rb:119
+    And I choose "rating_interest_1"                                 # features/step_definitions/web_steps.rb:119
+    And I choose "rating_work_load_1"                                # features/step_definitions/web_steps.rb:119
+    And I press "Create"                                             # features/step_definitions/web_steps.rb:23
+    Then I should see "WTF? (1/5)"                                   # features/step_definitions/web_steps.rb:143
+    And I should not see "eh...can't complain (3)"                   # features/step_definitions/web_steps.rb:182
+
+  Scenario: Student edits his/her own rating                             # features\ratings.feature:21
+    Given I am "Guest User" logged in with "username" and "password"     # features/step_definitions/forums_steps.rb:6
+    And I am subscribed to "Math 101"                                    # features/step_definitions/home_steps.rb:2
+    And I rated all 1                                                    # features/step_definitions/ratings_steps.rb:6
+    And I am looking at the ratings edit page                            # features/step_definitions/ratings_steps.rb:33
+    When I choose "rating_easiness_5"                                    # features/step_definitions/web_steps.rb:119
+    And I press "Update"                                                 # features/step_definitions/web_steps.rb:23
+    Then I should see "I swear this is elementary school material (5/5)" # features/step_definitions/web_steps.rb:143
+    And I should not see "WTF? (1/5)"                                    # features/step_definitions/web_steps.rb:182
+
+  Scenario: Student can only create 1 rating per course              # features\ratings.feature:31
+    Given I am "Guest User" logged in with "username" and "password" # features/step_definitions/forums_steps.rb:6
+    And I am subscribed to "Math 101"                                # features/step_definitions/home_steps.rb:2
+    And I rated all 1                                                # features/step_definitions/ratings_steps.rb:6
+    And I am looking at the ratings page                             # features/step_definitions/ratings_steps.rb:30
+    Then I should not see "New rating"                               # features/step_definitions/web_steps.rb:182
+
+  Scenario: Student can delete his own rating                        # features\ratings.feature:38
+    Given I am "Guest User" logged in with "username" and "password" # features/step_definitions/forums_steps.rb:6
+    And I am subscribed to "Math 101"                                # features/step_definitions/home_steps.rb:2
+    And I am making a new rating                                     # features/step_definitions/ratings_steps.rb:37
+    When I choose "rating_easiness_1"                                # features/step_definitions/web_steps.rb:119
+    And I choose "rating_interest_1"                                 # features/step_definitions/web_steps.rb:119
+    And I choose "rating_work_load_1"                                # features/step_definitions/web_steps.rb:119
+    And I press "Create"                                             # features/step_definitions/web_steps.rb:23
+    And I am looking at the ratings page                             # features/step_definitions/ratings_steps.rb:30
+    And I follow "Remove"                                            # features/step_definitions/web_steps.rb:27
+    Then I should see "New rating"                                   # features/step_definitions/web_steps.rb:143
+
+  Scenario: Student cannot edit/delete others' ratings               # features\ratings.feature:50
+    Given I am "Guest User" logged in with "username" and "password" # features/step_definitions/forums_steps.rb:6
+    And I am subscribed to "Math 101"                                # features/step_definitions/home_steps.rb:2
+    And someone rated all 1                                          # features/step_definitions/ratings_steps.rb:15
+    When I am looking at the ratings page                            # features/step_definitions/ratings_steps.rb:30
+    Then I should not see "Edit"                                     # features/step_definitions/web_steps.rb:182
+    And I should not see "Delete"                                    # features/step_definitions/web_steps.rb:182
+
+Feature: user can reply to other forum posts
+
+  # seems a bit unnecessary
+  # Scenario: Student can view nested posts
+  Scenario: Student replies to post                                   # features\replies.feature:6
+    Given I am "Guest User" logged in with "username" and "password"  # features/step_definitions/forums_steps.rb:6
+    And I am subscribed to "Math 101" with item "HW 1"                # features/step_definitions/forums_steps.rb:21
+    And "Bob" posted "Help" with "How to get started"                 # features/step_definitions/forums_steps.rb:48
+    When I post a reply "Here is a hint" with "read the instructions" # features/step_definitions/forums_steps.rb:87
+    Then I should see "read the instructions"                         # features/step_definitions/web_steps.rb:143
+
+  Scenario: Student replies to a reply                                 # features\replies.feature:13
+    Given I am "Guest User" logged in with "username" and "password"   # features/step_definitions/forums_steps.rb:6
+    And I am subscribed to "Math 101" with item "HW 1"                 # features/step_definitions/forums_steps.rb:21
+    And I posted "How to get started" with "Just click post you guys!" # features/step_definitions/forums_steps.rb:40
+    And "Bob" replied "Wow" with "thanks that was helpful"             # features/step_definitions/forums_steps.rb:63
+    When I reply to the reply "Yeah" with "you are welcome"            # features/step_definitions/forums_steps.rb:96
+    Then I should see "you are welcome"                                # features/step_definitions/web_steps.rb:143
+
+14 scenarios (14 passed)
+90 steps (90 passed)
+0m36.722s

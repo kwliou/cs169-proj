@@ -1,0 +1,4 @@
+I tried out Project Jukebox.
+The site wasn't finished concerning overall layout and none of the AJAX worked.
+One cool feature is that you can upload pictures.
+They do this by having s3 storage and has_attached_file in the user model. It looks like a cool idea, and they have scenarios, but currently it isn't working.

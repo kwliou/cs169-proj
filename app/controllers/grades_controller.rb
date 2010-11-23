@@ -3,7 +3,7 @@ class GradesController < ApplicationController
   # GET /grades
   # GET /grades.xml
   def index
-    @course = Course.find(params[:id])
+    @course = Course.find_by_param(params[:id])
     @current_user = current_user
     @grades = @current_user.grades
     

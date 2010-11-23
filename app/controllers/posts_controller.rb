@@ -7,12 +7,6 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.xml
   def index
-    @navigation = [
-      ["Courses", courses_path],
-      ["#{@course.dept} #{@course.number}", @course],
-      [@item.category_s, course_items_path(@course, :category => @item.category.downcase)],
-      [@item.name, [@course, @item]]
-    ]
     @posts = @item.posts.find_all_by_parent_id(nil)
     respond_to do |format|
       format.html # index.html.erb
@@ -24,10 +18,6 @@ class PostsController < ApplicationController
   def index_user
     @user = User.find_by_username(params[:user_id])
     @posts = @user.posts
-    @navigation = [
-      ["Users", users_path],
-      [@user.username, @user]
-    ]
     respond_to do |format|
       format.html # index_user.html.erb
       format.xml  { render :xml => @posts }
@@ -37,13 +27,6 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.xml
   def show
-    @navigation = [
-      ["Courses", courses_path],
-      ["#{@course.dept} #{@course.number}", @course],
-      [@item.category_s, course_items_path(@course, :category => @item.category.downcase)],
-      [@item.name, [@course, @item]],
-      ["Discussion", course_item_posts_path(@course, @item)]
-    ]
     @post = @item.posts.find(params[:id]) # @user.posts.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
@@ -54,13 +37,6 @@ class PostsController < ApplicationController
   # GET /posts/new
   # GET /posts/new.xml
   def new
-    @navigation = [
-      ["Courses", courses_path],
-      ["#{@course.dept} #{@course.number}", @course],
-      [@item.category_s, course_items_path(@course, :category => @item.category.downcase)],
-      [@item.name, [@course, @item]],
-      ["Discussion", course_item_posts_path(@course, @item)]
-    ]
     @post = @current_user.posts.build # Post.new
     @parent = @item.posts.find(params[:post_id]) if params[:post_id]
     respond_to do |format|
@@ -80,13 +56,6 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-    @navigation = [
-      ["Courses", courses_path],
-      ["#{@course.dept} #{@course.number}", @course],
-      [@item.category_s, course_items_path(@course, :category => @item.category.downcase)],
-      [@item.name, [@course, @item]],
-      ["Discussion", course_item_posts_path(@course, @item)]
-    ]
     @post = @current_user.posts.find(params[:id])
   end
 
@@ -95,8 +64,9 @@ class PostsController < ApplicationController
   def create
     # maybe should separated into def create_post_reply
     # maybe parent_id should be added after save instead of before ...
+    params[:post][:item_id] = @item.id
     @post = @current_user.posts.build(params[:post])
-    @post.item = @item
+    #@post.item = @item
     respond_to do |format|
       if @post.save
         format.html { redirect_to([@course, @item, @post], :notice => 'Post was successfully created.') }
@@ -132,7 +102,7 @@ class PostsController < ApplicationController
     @post.destroy
 
     respond_to do |format|
-      format.html { redirect_to(user_posts_url(@user)) }
+      format.html { redirect_to(course_item_posts_url(@course, @item)) }
       format.xml  { head :ok }
     end
   end
@@ -144,11 +114,7 @@ private
     redirect_to root_url if @current_user.nil?
   end
   def get_course
-    if params[:course_id]
-      dept, number = params[:course_id].split('_')
-      department = Course.unabbr(dept)
-      @course = Course.find_by_department_and_number(department, number)
-    end
+    @course = Course.find_by_param(params[:course_id]) if params[:course_id]
   end
   def get_item
     @item = @course.items.find(:first, :conditions => ["lower(name) = ?", params[:item_id].downcase.gsub('_', ' ')]) if params[:item_id]
