@@ -14,8 +14,7 @@ class Course < ActiveRecord::Base
     "Anthropology" => "anthro",
     "Gender and Women's Studies" => "gws",
     "Aerospace Studies (Air Force ROTC)" => "aerospc",
-    "Math" => "math",
-    "CS" => "CS"
+    "Math" => "math"
   }
   
   def Course.unabbr(abbr)
