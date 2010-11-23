@@ -54,7 +54,7 @@ class UsersController < ApplicationController
 #          :domain         => ENV['SENDGRID_DOMAIN']
 #        }
         #UserMailer.deliver_welcome(@user)
-        format.html { redirect_to(@user, :notice => 'User was successfully created.') }
+        format.html { redirect_to(:controller=>:main, :action=>:index 'User was successfully created.') }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
         format.html { render :action => "new" }
