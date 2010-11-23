@@ -70,6 +70,13 @@ class PostsController < ApplicationController
   end
   
   def new_post_reply
+    @navigation = [
+      ["Courses", courses_path],
+      ["#{@course.dept} #{@course.number}", @course],
+      [@item.category_s, course_items_path(@course, :category => @item.category.downcase)],
+      [@item.name, [@course, @item]],
+      ["Discussion", course_item_posts_path(@course, @item)]
+    ]
     @post = @current_user.posts.build # Post.new
     @post.parent = @parent = @item.posts.find(params[:id])
     respond_to do |format|
