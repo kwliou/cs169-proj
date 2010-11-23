@@ -19,7 +19,7 @@ class CoursesController < ApplicationController
       @current_user.courses << @course
     end
     
-    redirect_to :action => 'show', :id => @course.id
+    redirect_to :action => 'show', :id => @course.to_param
   end
 def unsubscribe
 	@current_user.courses.delete(Course.find(params[:id]))
@@ -61,9 +61,7 @@ def unsubscribe
   # GET /courses/1
   # GET /courses/1.xml
   def show
-    dept, number = params[:id].split('_')
-    department = Course.unabbr(dept)
-    @course = Course.find_by_department_and_number(department, number)
+    @course = Course.find_by_param(params[:id])
     @items = @course.items
     
     respond_to do |format|
@@ -85,9 +83,7 @@ def unsubscribe
 
   # GET /courses/1/edit
   def edit
-    dept, number = params[:id].split('_')
-    department = Course.unabbr(dept)
-    @course = Course.find_by_department_and_number(department, number)
+    @course = Course.find_by_param(params[:id])
   end
 
   # POST /courses
@@ -110,9 +106,7 @@ def unsubscribe
   # PUT /courses/1
   # PUT /courses/1.xml
   def update
-    dept, number = params[:id].split('_')
-    department = Course.unabbr(dept)
-    @course = Course.find_by_department_and_number(department, number)
+    @course = Course.find_by_param(params[:id])
     respond_to do |format|
       if @course.update_attributes(params[:course])
         format.html { redirect_to(@course, :notice => 'Course was successfully updated.') }
@@ -127,9 +121,10 @@ def unsubscribe
   # DELETE /courses/1
   # DELETE /courses/1.xml
   def destroy
-    dept, number = params[:id].split('_')
-    department = Course.unabbr(dept)
-    @course = Course.find_by_department_and_number(department, number)
+    #dept, number = params[:id].split('_')
+    #department = Course.unabbr(dept)
+    #@course = Course.find_by_department_and_number(department, number)
+    @course = Course.find_by_param(params[:id])
     @course.destroy
 
     respond_to do |format|

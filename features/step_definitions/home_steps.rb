@@ -1,7 +1,8 @@
-Given /^I have a course named (.+)$/  do |name|
-	@user_course=@current_user.courses.create!(:name=> name)
-	@course=@user_course
-	@course.save
-  end
 
-
+Given /^I am subscribed to "([^"]*)"$/ do |course|
+  department, number = course.split
+  @course = @current_user.courses.create!(
+    :department => department,
+    :number => number,
+    :name => 'Test Class')
+end

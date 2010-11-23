@@ -4,7 +4,8 @@
   [["Courses", courses_path],
   ["#{@course.dept} #{@course.number}", @course],
   [@item.category_s, course_items_path(@course, :category => @item.category.downcase)],
-  [@item.name, [@course, @item]]] %>
+  [@item.name, [@course, @item]],
+  ["Discussion", course_item_posts_path(@course, @item)]] %>
 
 <!--
 Allowed HTML tags:
@@ -30,7 +31,7 @@ abbr alt cite class datetime height href name src title width xml:lang
   // -->
 </script>
 <div id="content">
-  <h1>Discussion</h1>
+  <!--h1>Discussion</h1-->
   <table id="forum_posts">
     <!--tr>
       <th class="post_check"></th>

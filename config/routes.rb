@@ -1,6 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :ratings
-
   #:parse => {:id => /([^\?\/](?!(xml|html)(?!\.(xml|html))))+/}, 
   # :requirements is for usernames with periods in them
   map.resources :users, :requirements => {:id => /[^\?\/]+/} do |user|

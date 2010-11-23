@@ -27,14 +27,6 @@ Given /^someone rated all (\d+)$/ do |value|
     :work_load => value)
 end
 
-Given /^I am subscribed to "([^"]*)"$/ do |course|
-  department, number = course.split
-  @course = @current_user.courses.create!(
-    :department => department,
-    :number => number,
-    :name => 'Test Class')
-end
-
 Given /^I am looking at the ratings page$/ do
   visit course_ratings_path(@course, @rating)
 end
