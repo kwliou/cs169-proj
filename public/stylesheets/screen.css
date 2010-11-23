@@ -328,7 +328,6 @@ a.login_button_load {
     */
 }
 .post { /* THIS IS A TR */
-    border-bottom: 1px dotted black;
     height: 1.5em;
     /*
     border-bottom: 1px dotted black;
@@ -344,6 +343,8 @@ a.login_button_load {
 .post td {
     text-align: left;
     font-size: 11pt;
+    border-bottom: 1px dotted black;
+    
     /*
     height: 1.5em;
     text-decoration: none;
