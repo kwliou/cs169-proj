@@ -16,7 +16,7 @@ Feature: user can create posts on a course item's forum
       | Body    | Welcome!     |
       | Tags    | Other        |
     And I press "Create"
-    Then I should see "Title:"
+    Then I should see "Welcome!"
 
   @wip
   Scenario: Student edits his/her own post
@@ -27,7 +27,7 @@ Feature: user can create posts on a course item's forum
     When I follow "Edit"
     And I fill in "Body" with "This site is so cool"
     And I press "Update"
-    Then I should see "This site is so cool"
+    Then I should see "Just click post you guys Edit("
     #the "How to get started" post should contain "Edit[timestamp]:"
 
 #  Scenario: Student reads post

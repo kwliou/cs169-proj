@@ -25,8 +25,8 @@ ActionController::Routing::Routes.draw do |map|
   
   # map.connect '/courses/:id/items', :controller => :items, :action => :index
   map.connect '/courses/:id/grades', :controller => :grades, :action => :index
-   map.resources :courses, :has_many =>:ratings
-  map.resources :users, :has_many=>:ratings
+  map.resources :courses, :has_many => :ratings
+  map.resources :users, :has_many => :ratings
 
   map.login 'login', :controller => :user_sessions, :action => :new
   map.logout 'logout', :controller => :user_sessions, :action => :destroy
