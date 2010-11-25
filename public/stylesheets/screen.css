@@ -453,6 +453,18 @@ a.login_button_load {
     text-transform: lowercase;
     font-variant: small-caps;
 }
+.notification {
+	margin-bottom:12px;
+}
+
+.success {
+	color:#2dba44;
+}
+
+.error {
+	color:#bd1f12;
+}
+
 #footer {
     background: #fff url("/images/bg.png");
     padding: 7px 0 7px 0;

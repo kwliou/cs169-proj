@@ -55,7 +55,7 @@ class GradesController < ApplicationController
     respond_to do |format|
       if @grade.save
         # Redirect to course/:course_id/grades
-        format.html { redirect_to(course_grades_path) }
+        format.html { redirect_to(course_grades_path(:notification => "Grade successfully created")) }
         format.xml  { render :xml => @grade, :status => :created, :location => @grade }
       else
         format.html { redirect_to(course_grades_path) }
@@ -85,9 +85,10 @@ class GradesController < ApplicationController
   def destroy
     # Destroy all of the selected grades
     @grades = Grade.find(params[:grade_ids])
+    count = @grades.length
     @grades.each { |g| g.destroy }
     respond_to do |format|
-      format.html { redirect_to(course_grades_path(@course.to_param)) }
+      format.html { redirect_to(course_grades_path(@course.to_param, :notification => "#{count} grade#{count == 1 ? '' : 's'} successfully deleted")) }
       format.xml  { head :ok }
     end
   end
