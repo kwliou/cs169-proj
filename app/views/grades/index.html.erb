@@ -40,7 +40,6 @@ $(document).ready(function(e) {
 	});
 	
 	$('#remove_grades_button').hide()
-	
 	$('.destroy_checkbox').change(function(e) {
 		var count = $('.destroy_checkbox:checked').length;
 		if (count === 0) {
@@ -61,6 +60,7 @@ $(document).ready(function(e) {
 <div id="content">	
 	<form action="/grades/destroy" method="POST">
 	<div id="notification" class="success notification"><%= params[:notification] %></div>
+	<div id="notification" class="error notification"><%= params[:errors] %></div>
 	<table id="grades_list">
 	  <tr>
 	  	<th>Item</th>
