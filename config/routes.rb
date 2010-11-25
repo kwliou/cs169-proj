@@ -6,13 +6,12 @@ ActionController::Routing::Routes.draw do |map|
   end
   map.resources :assignments
   map.resources :blurbs
-  map.resources :user_sessions
-  # TODO: this should be put somewhere else
-  # map.resources :grades
+  map.resources :user_sessions  
   map.course_item_post_reply '/courses/:course_id/items/:item_id/posts/:id/reply', :controller => :posts, :action => :new_post_reply
 
   map.resources :courses do |course|
     # :requirements is for items with periods in them ex. Chapter 2.1 Questions
+    course.resources :grades
     course.resources :items, :requirements => {:id => /[^\?\/]+/} do |item|
       item.resources :posts, :requirements => {:item_id => /[^\?\/]+/}
     end
@@ -20,6 +19,11 @@ ActionController::Routing::Routes.draw do |map|
   # example of how huge nesting is "funny-looking" so instead use a query string
   # /courses/COMPSCI_3/items/category/assignment => /courses/COMPSCI_3/items?category=assignment
   # map.connect '/courses/:course_id/items/category/:category', :controller => :items, :action => :index
+  
+  # Grades routes
+  map.resources :grades
+  map.connect '/courses/:course_id/grades/:action', :controller => 'grades'
+  map.create_course_grade '/courses/:course_id/grades/create', :controller => :grades, :action => :create
   
   # map.connect '/courses/:id/items', :controller => :items, :action => :index
   map.connect '/courses/:id/grades', :controller => :grades, :action => :index

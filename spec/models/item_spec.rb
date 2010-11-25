@@ -14,4 +14,8 @@ describe Item do
   it "should create a new instance given valid attributes" do
     Item.create!(@valid_attributes)
   end
+  
+  # Histogram test
+  # Create some validations and validate those
+  
 end

@@ -37,7 +37,25 @@
 	padding-top:30px;
 }
 
-#grades_list tr:hover {
-	background:#e2e2e2;
-	cursor:pointer;
+#new_grade_link {
+	font-size:16px;	
+	font-weight:normal;
+	margin-left:12px;
+}
+
+#grades_list td.align_right {
+	text-align:right;
+}
+
+#grades_list th.align_right {
+	text-align:right;
+}
+
+.divide {
+	color:#e2e2e2;
+	padding-left:16px;
+}
+
+.destroy_checkbox {
+	margin-right:16px;
 }

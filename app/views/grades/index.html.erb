@@ -8,7 +8,7 @@ $(document).ready(function(e) {
 		var item_id = $(this).attr('data-id');
 		$.ajax({
 		  type: 'GET',
-		  url: '/grades/histogram/' + item_id + '.json',
+		  url: '/items/histogram/' + item_id + '.json',
 		  success: function(data) {
 		  	if (data.length == 0) {
 		  		$('#histogram_container').fadeOut(300);
@@ -48,13 +48,14 @@ $(document).ready(function(e) {
   ["Grades", url_for(:controller => :grades, :action => :index)]] %>
 
 <div id="content">	
+	<form action="/grades/destroy" method="POST">
 	<table id="grades_list">
 	  <tr>
 	  	<th>Item</th>
-	  	<th>Pts. Received</th>
-	  	<th>/</th>
-	  	<th>Pts. Possible</th>
-	  	<th></th>
+	  	<th class="align_right">Points</th>
+	  	<th class="divide">/</th>
+	  	<th>Possible</th>
+	  	<th>%</th>
 	  </tr>
 	
 	<% total_pts = 0
@@ -66,9 +67,9 @@ $(document).ready(function(e) {
 	  	 total_possible += grade.item.points
 	  %>
 	  <tr class="item_row" data-id="<%= grade.item.id %>">
-	    <td><span class="item_name"><%= grade.item.name %></span></td>
-	    <td><%= format("%.2f", grade.points_received) %></td>
-	    <td>/</td>
+	    <td><span class="item_name"><%= check_box_tag "grade_ids[]", grade.id, false, :class => "destroy_checkbox" %><%= grade.item.name %></span></td>
+	    <td class="align_right"><%= format("%.2f", grade.points_received) %></td>
+	    <td class="divide">/</td>
 	    <td><%= grade.item.points %></td>
 	    <% if grade.item.points != 0 %>
 		  	<td><%= format("%.2f%%", ((grade.points_received)/(grade.item.points))*100) %></td>
@@ -78,14 +79,17 @@ $(document).ready(function(e) {
 	<% end %>
 	<% if total_possible != 0 %>
 		<tr id="grade_totals">
-			<td></td>
-			<td><%= format("%.2f", total_pts) %></td>
-			<td>/</td>
+			<td><input type="submit" value="Remove" /><%= link_to 'Enter New Grade', new_course_grade_path(@course), :id => "new_grade_link" %></td>
+			<td class="align_right"><%= format("%.2f", total_pts) %></td>
+			<td class="divide">/</td>
 			<td><%= total_possible %></td>
 		  	<td><%= format("%.2f%", (total_pts*100)/(total_possible)) %></td>
 		</tr>
 	<% end %>
 	</table>
-	
+	<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+	<input type="hidden" name="course_id" value="<%= @course.to_param %>" />
+	</form>
 	<div id="histogram_container"></div>
+	</div>
 </div>

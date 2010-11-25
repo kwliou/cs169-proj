@@ -11,7 +11,18 @@ class UsersController < ApplicationController
       format.xml  { render :xml => @current_user }
     end
   end
-
+  
+  def performance
+    user = User.find(params[:id])
+    data = user.performance()
+    
+    # Return performance encoded as JSON
+    performance = ActiveSupport::JSON.encode(data)
+    respond_to do |format|
+        format.json  { render :json => performance }
+    end
+  end
+  
   # GET /users/1
   # GET /users/1.xml
   def show

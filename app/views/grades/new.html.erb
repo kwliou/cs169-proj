@@ -1,15 +1,22 @@
+<div id="content">
 <h1>New grade</h1>
-
-<% form_for(@grade) do |f| %>
+<% form_for([@course, @grade], :url => create_course_grade_path) do |f| %>
   <%= f.error_messages %>
-
-	item
-	points_received
-	letter
-	
+  <p>
+	<%= f.label "Item" %><br />
+	<%= select_tag(:item_id, options_for_select(@items.collect {|i| [i.name, i.id] })) %>
+  </p>
+  <p>
+    <%= f.label :letter %><br />
+    <%= f.text_field :letter %>
+  </p>
+  <p>
+    <%= f.label "Pts. Received" %><br />
+    <%= f.text_field :points_received %> / 100
+  </p>
   <p>
     <%= f.submit 'Create' %>
   </p>
 <% end %>
 
-<%= link_to 'Back', grades_path %>
+</div>
