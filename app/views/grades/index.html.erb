@@ -3,7 +3,6 @@
 <script type="text/javascript" src="/javascripts/stats.js"></script>
 <script type="text/javascript">
 $(document).ready(function(e) {
-
 	$('.histogram_link').click(function(e) {
 		var item_id = $(this).attr('data-id');
 		$.ajax({
@@ -91,7 +90,7 @@ $(document).ready(function(e) {
 		    <td class="divide">/</td>
 		    <td><%= item_grade[1].points %></td>
 		    <% if item_grade[1].points != 0 %>
-			  	<td><%= format("%.2f%%", ((item_grade[0].points_received)/(item_grade[1].points))) %></td>
+			  	<td><%= format("%.2f%%", ((item_grade[0].points_received*100)/(item_grade[1].points))) %></td>
 			<% end %>
 		  </tr>
 		<% else %>
