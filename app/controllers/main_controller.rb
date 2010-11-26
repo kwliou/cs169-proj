@@ -1,7 +1,7 @@
 class MainController < ApplicationController
-  before_filter :get_current_user
 
   def index
+    @current_user = current_user
     @courses = @current_user.courses if @current_user
     @user_session = UserSession.new
     respond_to do |format|
@@ -10,6 +10,7 @@ class MainController < ApplicationController
   end
   
   def feedback
+    @current_user = current_user
     @user_session = UserSession.new
     respond_to do |format|
       format.html # feedback.html.erb
