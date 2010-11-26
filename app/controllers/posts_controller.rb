@@ -47,7 +47,7 @@ class PostsController < ApplicationController
   
   def new_post_reply
     @post = @current_user.posts.build # Post.new
-    @post.parent = @parent = @item.posts.find(params[:id])
+    @post.parent = @parent = @item.posts.find(params[:post_id])
     respond_to do |format|
       format.html  { render :reply } # new.html.erb
       format.xml  { render :xml => @post }

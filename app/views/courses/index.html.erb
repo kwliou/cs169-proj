@@ -9,35 +9,35 @@
   [["Courses", courses_path]] %>
   
 <div id="content">
-<h1>Listing courses</h1>
+  <h1>Listing courses</h1>
 
-<table id="courses_list">
-  <tr>
-    <th>Department</th>
-    <th>Number</th>
-    <th>Days</th>
-    <th>Term</th>
-    <th>Year</th>
-    <th>Description</th>
-    <th>Name</th>
-  </tr>
+  <table id="courses_list">
+    <tr>
+      <th>Department</th>
+      <th>Number</th>
+      <th>Days</th>
+      <th>Term</th>
+      <th>Year</th>
+      <th>Description</th>
+      <th>Name</th>
+    </tr>
 
-<% @courses.each do |course| %>
-  <tr>
-    <td><%=h course.department %></td>
-    <td><%=h course.number %></td>
-    <td><%=h course.days %></td>
-    <td><%=h course.term %></td>
-    <td><%=h course.year %></td>
-    <td><%=h course.description %></td>
-    <td><%=h course.name %></td>
-    <td><%= link_to 'View', course %></td>
-    <td><%= link_to 'Subscribe', url_for(:controller => 'courses', :action => 'subscribe', :id => course.id) %></td>
-  </tr>
-<% end %>
-</table>
+  <% @courses.each do |course| %>
+    <tr>
+      <td><%=h course.department %></td>
+      <td><%=h course.number %></td>
+      <td><%=h course.days %></td>
+      <td><%=h course.term %></td>
+      <td><%=h course.year %></td>
+      <td><%=h course.description %></td>
+      <td><%=h course.name %></td>
+      <td><%= link_to 'View', course %></td>
+      <td><%= link_to 'Subscribe', url_for(:controller => 'courses', :action => 'subscribe', :id => course.id) %></td>
+    </tr>
+  <% end %>
+  </table>
 
-<br />
+  <br />
 
-<%= link_to 'New course', new_course_path %>
+  <%= link_to 'New course', new_course_path %>
 </div>

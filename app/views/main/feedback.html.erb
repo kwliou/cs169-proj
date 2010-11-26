@@ -1,0 +1,14 @@
+<% content_for :title, ' | Feedback' %>
+
+<div id="content">
+  <div id="welcome">
+    <p class="stryde" id="welcome_title">Feedback</p>
+    <% form_tag :controller => :main, :action => :send_feedback do %>
+      <p>
+        <%= text_area_tag 'body', nil, :rows => 10, :cols => 70 %>
+      </p>
+      <%= submit_tag 'Send' %>
+    <% end %>
+  </div>
+</div>
+

@@ -1,7 +1,6 @@
 <%= stylesheet_link_tag 'courses' %>
 <% content_for :title, @course.abbr %>
 
-
 <%= render '/layouts/nav', :navigation =>
   [["Courses", courses_path],
   ["#{@course.dept} #{@course.number}", @course]] %>
@@ -9,12 +8,8 @@
 <div id="content">
   <div id="content_left">
     <div>
-      <%= link_to "Assignments, Projects, etc.", course_items_path(@course, :category => "assignment project"), :class => "course_action" %>
+      <%= link_to "Assignments, Projects", course_items_path(@course, :category => "assignment project"), :class => "course_action" %>
       <span class="stryde course_action_comment">Time to work!</span>
-    </div>
-    <div>
-      <%= link_to "Connect", "", :class => "course_action" %>
-      <span class="stryde course_action_comment">Facebook</span>
     </div>
     <div>
       <%= link_to "Exams, Quizzes, etc.", course_items_path(@course, :category => "exam quiz"), :class => "course_action" %>
@@ -38,7 +33,7 @@
     </div>
 	<div>
       <%= link_to "Ratings", course_ratings_path(@course), :class => "course_action" %>
-      <span class="stryde course_action_comment">Give the class a piece of your mind.</span>
+      <span class="stryde course_action_comment">What did you think?</span>
     </div>
   </div>
 </div>
