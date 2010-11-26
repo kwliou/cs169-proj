@@ -9,6 +9,14 @@ class MainController < ApplicationController
     end
   end
   
+  def about
+    @current_user = current_user
+    @user_session = UserSession.new
+    respond_to do |format|
+      format.html # about.html.erb
+    end
+  end
+
   def feedback
     @current_user = current_user
     @user_session = UserSession.new
@@ -24,6 +32,14 @@ class MainController < ApplicationController
       format.html { redirect_to root_url }
     end
   end
+
+  def help
+    @current_user = current_user
+    @user_session = UserSession.new
+    respond_to do |format|
+      format.html # help.html.erb
+    end
+  end
   
   def mobile
     @current_user = current_user
@@ -35,8 +51,3 @@ class MainController < ApplicationController
     end
   end
 end
-
-private
-  def get_current_user
-    @current_user = current_user
-  end

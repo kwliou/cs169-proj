@@ -1,6 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.about 'about', :controller => :main, :action => :about
   map.feedback 'feedback', :controller => :main, :action => :feedback
-  #:parse => {:id => /([^\?\/](?!(xml|html)(?!\.(xml|html))))+/}, 
+  map.help 'help', :controller => :main, :action => :help
+  #:parse => {:id => /([^\?\/](?!(xml|html)(?!\.(xml|html))))+/},
   # :requirements is for usernames with periods in them
   map.resources :users, :requirements => {:id => /[^\?\/]+/} do |user|
     user.resources :ratings
@@ -8,12 +10,12 @@ ActionController::Routing::Routes.draw do |map|
   end
   map.resources :assignments
   map.resources :blurbs
+  map.resources :departments
   map.resources :user_sessions
-  # map.course_item_post_reply '/courses/:course_id/items/:item_id/posts/:id/reply', :controller => :posts, :action => :new_post_reply
-
-  map.resources :courses do |course|
+  map.resources :courses, :collection => {:auto_complete_for_course_department => :get } do |course|
     # :requirements is for items with periods in them ex. Chapter 2.1 Questions
-    course.resources :grades, :ratings
+    course.resources :grades
+    course.resources :ratings
     course.resources :items, :requirements => {:id => /[^\?\/]+/} do |item|
       item.resources :posts, :requirements => {:item_id => /[^\?\/]+/} do |post|
         post.reply 'reply', :controller => :posts, :action => :new_post_reply, :requirements => {:item_id => /[^\?\/]+/}

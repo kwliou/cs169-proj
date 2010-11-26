@@ -15,7 +15,10 @@
     </p>
     <p>
       <%= f.label :department %><br />
-      <%= f.text_field :department %>
+      <!-- Can't get AJAX auto_complete to work, don't know why
+      < % text_field_with_auto_complete :course, :department, {}, {:method => :get} %>
+      -->
+      <%= f.select :department, @depts, {}, :size => 5 %>
     </p>
     <p>
       <%= f.label :number %><br />

@@ -14,9 +14,18 @@ class Course < ActiveRecord::Base
     "Anthropology" => "anthro",
     "Gender and Women's Studies" => "gws",
     "Aerospace Studies (Air Force ROTC)" => "aerospc",
-    "Math" => "math",
-    "CS" => "cs"
+    "Math" => "math"
   }
+
+  def Course.departments
+    [
+    ["Computer Science", "compsci"],
+    ["Anthropology", "anthro"],
+    ["Gender and Women's Studies", "gws"],
+    ["Aerospace Studies (Air Force ROTC)", "aerospc"],
+    ["Math", "math"]
+    ]
+  end
   
   def Course.find_by_param(param)
       dept, number = param.split('_')

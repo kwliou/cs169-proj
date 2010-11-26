@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
   before_filter :get_current_user # :get_course doesn't work on Heroku
+  #auto_complete_for :course, :department
   
   def histogram
     # Generates a histogram for an assignment, total assignments etc.
@@ -74,7 +75,7 @@ def unsubscribe
   # GET /courses/new.xml
   def new
     @course = Course.new
-
+    @depts = Department.find(:all, :order => 'name').map { |c| c.name }
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @course }
