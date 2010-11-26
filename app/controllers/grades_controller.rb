@@ -1,12 +1,11 @@
 class GradesController < ApplicationController
   layout "scaffold"
-  
   before_filter :get_current_user, :get_course
   
   # GET /grades
   # GET /grades.xml
   def index
-    @grades = @current_user.grades
+    @item_grades = @current_user.items_with_grades(@course)
     
     respond_to do |format|
       format.html # index.html.erb
@@ -29,19 +28,11 @@ class GradesController < ApplicationController
   # GET /grades/new
   # GET /grades/new.xml
   def new
+    @item = Item.find(params[:item_id])
     @grade = Grade.new
-    graded_items = []
-    @current_user.grades.each { |g| 
-      graded_items << g.item 
-    }
+    @grade.item = @item
       
-    # We should only be using items that don't already have grades
-    @items = @course.items.reject { |i| graded_items.include?(i) }
-    
     respond_to do |format|
-      if @items.length == 0
-        format.html { redirect_to(course_grades_path(:errors => "No ungraded items")) }
-      end
       format.html # new.html.erb
       format.xml  { render :xml => @grade }
     end
@@ -56,7 +47,7 @@ class GradesController < ApplicationController
   # POST /grades.xml
   def create
     @grade = Grade.new(params[:grade])
-    @item = Item.find(params[:item_id])
+    @item = Item.find(params[:item][:id])
     @grade.user = @current_user
     @grade.item = @item
     respond_to do |format|
@@ -75,7 +66,6 @@ class GradesController < ApplicationController
   # PUT /grades/1.xml
   def update
     @grade = Grade.find(params[:id])
-
     respond_to do |format|
       if @grade.update_attributes(params[:grade])
         format.html { redirect_to(@grade, :notice => 'Grade was successfully updated.') }
@@ -95,7 +85,7 @@ class GradesController < ApplicationController
     count = @grades.length
     @grades.each { |g| g.destroy }
     respond_to do |format|
-      format.html { redirect_to(course_grades_path(@course.to_param, :notification => "#{count} grade#{count == 1 ? '' : 's'} successfully removed")) }
+      format.html { redirect_to(course_grades_path(@course.to_param, :notification => "#{count} grade#{count == 1 ? '' : 's'} removed")) }
       format.xml  { head :ok }
     end
   end

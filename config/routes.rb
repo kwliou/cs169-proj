@@ -1,4 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
+  
+  # Grades routes
+  map.resources :grades
+  map.connect '/courses/:course_id/grades/:action', :controller => 'grades'
+  map.create_course_grade '/courses/:course_id/grades/create', :controller => :grades, :action => :create
+  
   #:parse => {:id => /([^\?\/](?!(xml|html)(?!\.(xml|html))))+/}, 
   # :requirements is for usernames with periods in them
   map.resources :users, :requirements => {:id => /[^\?\/]+/} do |user|
@@ -19,11 +25,6 @@ ActionController::Routing::Routes.draw do |map|
   # example of how huge nesting is "funny-looking" so instead use a query string
   # /courses/COMPSCI_3/items/category/assignment => /courses/COMPSCI_3/items?category=assignment
   # map.connect '/courses/:course_id/items/category/:category', :controller => :items, :action => :index
-  
-  # Grades routes
-  map.resources :grades
-  map.connect '/courses/:course_id/grades/:action', :controller => 'grades'
-  map.create_course_grade '/courses/:course_id/grades/create', :controller => :grades, :action => :create
   
   # map.connect '/courses/:id/items', :controller => :items, :action => :index
   map.connect '/courses/:id/grades', :controller => :grades, :action => :index
