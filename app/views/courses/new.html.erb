@@ -16,7 +16,9 @@
     <p>
       <%= f.label :department %><br />
       <%= text_field_with_auto_complete :course, :department, {}, {:method => :get} %>
-      <!-- f.select :department, @depts, {}, :size => 5 -->
+      <noscript>
+        <%= f.select :department, @depts, {}, :size => 5 %>
+      </noscript>
     </p>
     <p>
       <%= f.label :number %><br />
