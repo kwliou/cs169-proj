@@ -3,7 +3,7 @@ class Course < ActiveRecord::Base
   has_many :items
   has_many :blurbs
   has_and_belongs_to_many :users
- has_many :ratings, :dependent=>:destroy
+  has_many :ratings, :dependent=>:destroy
   validates_presence_of :department, :name, :number
   validates_uniqueness_of :name, :number, :scope => :department, :case_sensitive => false
 
@@ -17,26 +17,33 @@ class Course < ActiveRecord::Base
     "Math" => "math",
     "CS" => "cs"
   }
+  
   def Course.find_by_param(param)
       dept, number = param.split('_')
       department = Course.unabbr(dept)
       Course.find_by_department_and_number(department, number)
   end
+  
   def Course.unabbr(abbr)
     @@abbr.index(abbr.downcase) || abbr.downcase.titleizev2
   end
+  
   def dept
     (@@abbr[department] || department).upcase
   end
+  
   def abbr
     "#{dept} #{number}"
   end
+  
   def to_param
     "#{dept}_#{number}"
   end
+  
   def e_rating
-  if (raters==0)
-  return "Someone needs to rate this course!"
+    if (raters == 0)
+    return "Someone needs to rate this course!"
+  
   end
   rating=(Rating.total_e(self))/raters
   rating_s=rating.to_s

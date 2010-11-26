@@ -464,6 +464,17 @@ we don't have to rely on proprietary attributes but there's no time
     text-transform: lowercase;
     font-variant: small-caps;
 }
+.notification {
+	margin-bottom:12px;
+}
+
+.success {
+	color:#2dba44;
+}
+
+.error {
+	color:#db1102;
+}
 
 #footer {
     background: #fff url("/images/bg.png");

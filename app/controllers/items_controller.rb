@@ -18,7 +18,18 @@ class ItemsController < ApplicationController
       format.xml  { render :xml => @items }
     end
   end
-
+  
+  def histogram
+    item = Item.find(params[:id])
+    data = item.histogram()
+    # Return the histogram encoded as JSON
+    histogram = ActiveSupport::JSON.encode(data)
+    respond_to do |format|
+        format.json  { render :json => histogram }
+    end
+  
+  end
+  
   # GET /items/1
   # GET/items/1.xml
   def show
