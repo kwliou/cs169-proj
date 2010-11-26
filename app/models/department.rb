@@ -40,6 +40,5 @@ private
     "Biophysics" =>	"biophy",
     "Buddhist Studies" =>	"buddstd",
     "Business Administration" => "bus adm",
-    "Undergraduate Program leading to the Bachelor of Science in Business Administration" => "ugba",
     "Full-time Masters in Business Administration" => "mba"
   }

@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   before_filter :get_current_user # :get_course doesn't work on Heroku
-  #auto_complete_for :course, :department
+  auto_complete_for :course, :department
   
   def histogram
     # Generates a histogram for an assignment, total assignments etc.
