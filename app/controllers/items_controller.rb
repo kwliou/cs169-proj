@@ -5,13 +5,12 @@ class ItemsController < ApplicationController
   # GET /courses/:id/items
   # GET /items.xml
   def index
-    @category = params[:category]
-    if @category
-      @categories = @category.split(' ')
-      @category_s = (@categories.map { |c| c.pluralize.titleizev2 }).join(', ')
-      @items = @course.items.find(:all, :conditions => ["lower(category) IN (?)", @category.downcase.split(' ')])
+    category = params[:category]
+    if category
+      @category_s = Item.categories_s(category)
+      @items = @course.items.find(:all, :conditions => ["lower(category) IN (?)", category.downcase.split(' ')])
     else
-      @category_s = 'Items'
+      @category_s = 'All Items'
       @items = @course.items
     end
     respond_to do |format|

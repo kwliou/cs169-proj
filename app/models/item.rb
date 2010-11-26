@@ -13,8 +13,12 @@ class Item < ActiveRecord::Base
     name.gsub(' ', '_')
   end
 
-  def category_s # WTF doesn't String.titleizev2 work anymore???
+  def category_s
     category.pluralize.titleizev2;
+  end
+
+  def Item.categories_s(categories)
+    (categories.split.map { |c| c.pluralize.titleizev2 }).join(', ')
   end
 
 end

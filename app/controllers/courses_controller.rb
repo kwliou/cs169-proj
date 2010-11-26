@@ -89,7 +89,7 @@ def unsubscribe
   # POST /courses
   # POST /courses.xml
   def create
-    @course = @current_user.courses.build(params[:course])
+    @course = Course.new(params[:course])
     
     respond_to do |format|
       if @course.save
@@ -121,9 +121,6 @@ def unsubscribe
   # DELETE /courses/1
   # DELETE /courses/1.xml
   def destroy
-    #dept, number = params[:id].split('_')
-    #department = Course.unabbr(dept)
-    #@course = Course.find_by_department_and_number(department, number)
     @course = Course.find_by_param(params[:id])
     @course.destroy
 
@@ -141,9 +138,5 @@ private
   end
   
   def get_course
-    if params[:id]
-      dept, number = params[:id].split('_')
-      department = Course.unabbr(dept)
-      @course = Course.find_by_department_and_number(department, number)
-    end
+    @course = Course.find_by_param(params[:id]) if params[:id]
   end

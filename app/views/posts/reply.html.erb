@@ -17,7 +17,7 @@
     <%= f.hidden_field :parent_id %>
     <p>
       <%= f.label :title %><br />
-      <%= f.text_field :title %>
+      <%= f.text_field :title, :value => "Re: #{@parent.title}" %>
     </p>
     <p>
       <%= f.label :body %><br />

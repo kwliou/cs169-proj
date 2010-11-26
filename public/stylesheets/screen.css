@@ -15,7 +15,7 @@ html, body {
 }
 body {
     background: #fff;
-    font-family: "Tahoma", "Verdana", sans-serif;
+    font-family: "Tahoma", "Helvetica", "Arial", "Verdana", sans-serif;
     color: #979899;
 }
 h1 {
@@ -50,6 +50,12 @@ abbr { /* IE doesn't have this style by default */
     */
 
 }
+
+#welcome_title {
+    font-family: "Museo Slab 500", "Fertigo Pro", "edelsans", "Anivers", "Helvetica", "Verdana", sans-serif;
+    margin-top: 0;
+    font-size: 17pt;
+}
 #welcome {
     font-family: "Constantia", "Palatino Linotype", "Georgia", "Garamond", "Times New Roman", serif;
     text-align: justify;
@@ -58,22 +64,17 @@ abbr { /* IE doesn't have this style by default */
     text-shadow: 0px 1px 1px #fff;
 }
 
-#welcome_title {
-    font-family: "Museo Slab 500", "Fertigo Pro", "edelsans", "Anivers", "Helvetica", "Verdana", sans-serif;
-    margin-top: 0;
-    font-size: 17pt;
-}
 #main {
     width: 90%;
     background: #fff url("/images/bg.png");
-    margin: auto; /*margin-left: 10%;*/
+    margin: 0 auto; /*margin-left: 10%;*/
     height: 100%;
     margin-bottom: -20px;
     position: relative;
 }
 
 #top {
-    height: 94.6%; /* Need this for pages to fill window */
+    height: 94%; /* Need this for pages to fill window */
     color: #979899;
 }
 
@@ -185,6 +186,10 @@ a.login_button_load {
     text-decoration: none;
      color: white;   
 }
+/*
+Again, I would rather rounded corners be done with images so that
+we don't have to rely on proprietary attributes but there's no time
+*/
 .breadcrumbs_a {
     text-decoration: none;
     float: left;
@@ -192,6 +197,12 @@ a.login_button_load {
     background-color: #26ade4;
     margin: 3px;
     padding: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+.breadcrumbs_a:hover {
+    background-color: #239fd1;
 }
 .breadcrumbs_arrow {
     float: left;
@@ -453,10 +464,11 @@ a.login_button_load {
     text-transform: lowercase;
     font-variant: small-caps;
 }
+
 #footer {
     background: #fff url("/images/bg.png");
-    padding: 7px 0 7px 0;
     text-align: center;
+    padding: 7px 0 7px 0;
     /*
     clear: both;
     bottom: 0; position: absolute;
@@ -466,16 +478,21 @@ a.login_button_load {
     margin: 0;
     font-size: 9.5pt;
 }
+#footer_links a {
+    text-shadow: 0px 1px 1px #fff;
+}
 #footer_links li:first-child {
     border-left: none;
+}
+#footer_links #last-child {
+    border-right: none;
 }
 #footer_links li {
     list-style: none;
     display: inline;
-    /*margin: auto;*/
     padding: 0 1em 0 1em;
-    border-left: 1px #ddd solid;
-    border-right: 1px #fff solid;
+    border-left: 1px #eee solid;
+    border-right: 1px #bbb solid;
 }
 
 .awesome, .awesome:visited {
