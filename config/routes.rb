@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :departments
+
   map.about 'about', :controller => :main, :action => :about
   map.feedback 'feedback', :controller => :main, :action => :feedback
   map.help 'help', :controller => :main, :action => :help
@@ -10,9 +12,9 @@ ActionController::Routing::Routes.draw do |map|
   end
   map.resources :assignments
   map.resources :blurbs
-  map.resources :departments
+  map.resources :departments #, :collection => {:auto_complete_for_course_department_id => :get }
   map.resources :user_sessions
-  map.resources :courses, :collection => {:auto_complete_for_course_department => :get } do |course|
+  map.resources :courses, :collection => {:auto_complete_for_course_department_id => :get } do |course|
     # :requirements is for items with periods in them ex. Chapter 2.1 Questions
     course.resources :grades
     course.resources :ratings

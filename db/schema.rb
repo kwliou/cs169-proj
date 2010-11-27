@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(:version => 20101126063232) do
   end
 
   create_table "courses", :force => true do |t|
-    t.string   "department"
     t.string   "number"
     t.string   "days"
     t.string   "term"
@@ -34,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20101126063232) do
     t.string   "title"
     t.string   "short_title"
     t.decimal  "points_possible"
+    t.integer  "department_id"
   end
 
   create_table "courses_users", :id => false, :force => true do |t|

@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   before_filter :get_current_user # :get_course doesn't work on Heroku
-  auto_complete_for :course, :department
+  auto_complete_for :course, :department_id #:department, :name
   
   def histogram
     # Generates a histogram for an assignment, total assignments etc.
@@ -75,21 +75,43 @@ def unsubscribe
   # GET /courses/new.xml
   def new
     @course = Course.new
-    @depts = Department.find(:all, :order => 'name').map { |c| c.name }
+    @departments = Department.find(:all, :order => 'name').map { |c| [c.name, c.id] }
+    @years = Course.year_limits
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @course }
     end
   end
 
+#  def update_abbr
+#    dept = Department.find_by_name(params[:department])
+#    dept || dept.abbr
+#  end
   # GET /courses/1/edit
   def edit
+#    params[:course][:days] = (params[:Su] || 's')
+#                           + (params[:M] || 'm')
+#                           + (params[:Tu] || 't')
+#                           + (params[:W] || 'w')
+#                           + (params[:Th] || 't')
+#                           + (params[:F] || 'f')
+#                           + (params[:Sa] || 's')
     @course = Course.find_by_param(params[:id])
+    @departments = Department.find(:all, :order => 'name').map { |c| [c.name, c.id] }
+    @years = Course.year_limits
+    @days = @course.days.each_char.map { |c| c == c.upcase }
   end
 
   # POST /courses
   # POST /courses.xml
   def create
+    params[:course][:days] = (params[:M] || 'm')
+                           + (params[:Tu] || 't')
+                           + (params[:W] || 'w')
+                           + (params[:Th] || 't')
+                           + (params[:F] || 'f')
+                           + (params[:Sa] || 's')
+                           + (params[:Su] || 's')
     @course = Course.new(params[:course])
     
     respond_to do |format|

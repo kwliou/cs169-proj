@@ -1,5 +1,16 @@
 <% content_for :title, "Courses | New" %>
 
+<script type="text/javascript">
+  function hide() {
+    document.getElementById('course_department_id').style.display = 'inline';
+    //document.getElementById('department_name').style.display = 'inline';
+  }
+  function updateAbbr() {
+    document.getElementById('abbr').value = 'adf';
+  }
+  window.onload = hide;
+</script>
+
 <%= render '/layouts/nav', :navigation =>
   [["Courses", courses_path]] %>
 
@@ -10,35 +21,48 @@
     <%= f.error_messages %>
 
     <p>
-      <%= f.label :name %><br />
+      <%= f.label :name, 'Name', :class => 'form_label' %>
       <%= f.text_field :name %>
     </p>
     <p>
-      <%= f.label :department %><br />
-      <%= text_field_with_auto_complete :course, :department, {}, {:method => :get} %>
-      <noscript>
-        <%= f.select :department, @depts, {}, :size => 5 %>
-      </noscript>
-    </p>
+      <%= f.label :department_id, 'Department', :class => 'form_label' %>
+      <!--noscript-->
+        <%= f.select :department_id, @departments %>
+      <!--/noscript-->
+      <!--
+      For now, auto complete doesn't work
+      < %= text_field_with_auto_complete :course, :department_id, {:style => 'display: none', :onchange => 'updateAbbr()'}, {:method => :get} %>
+      -->
+</p>
     <p>
-      <%= f.label :number %><br />
+      <%= f.label :number, 'Number', :class => 'form_label' %>
       <%= f.text_field :number %>
     </p>
     <p>
-      <%= f.label :days %><br />
-      <%= f.text_field :days %>
+      <%= f.label :term, 'Term', :class => 'form_label' %>
+      <%= f.select :term, ['Winter', 'Spring', 'Summer', 'Fall'] %>
+      <%= f.select :year, @years %>
+    </p>
+    <p id="day_options">
+      <%= f.label :days, 'Days', :class => 'form_label' %>
+      <%= check_box_tag 'M', 'M', true %>
+      <%= label_tag 'M', 'Monday' %>
+      <%= check_box_tag 'Tu', 'T', true %>
+      <%= label_tag 'Tu', 'Tuesday' %>
+      <%= check_box_tag 'W', 'W', true %>
+      <%= label_tag 'W', 'Wednesday' %>
+      <%= check_box_tag 'Th', 'T', true %>
+      <%= label_tag 'Th', 'Thursday' %>
+      <%= check_box_tag 'F', 'F', true %>
+      <%= label_tag 'F', 'Friday' %>
+      <%= check_box_tag 'Sa', 'S' %>
+      <%= label_tag 'Sa', 'Saturday' %>
+      <%= check_box_tag 'Su', 'S' %>
+      <%= label_tag 'Su', 'Sunday' %>
     </p>
     <p>
-      <%= f.label :term %><br />
-      <%= f.text_field :term %>
-    </p>
-    <p>
-      <%= f.label :year %><br />
-      <%= f.text_field :year %>
-    </p>
-    <p>
-      <%= f.label :description %><br />
-      <%= f.text_area :description %>
+      <%= f.label :description, {}, :class => 'form_label', :style => 'vertical-align: top' %>
+      <%= f.text_area :description, :rows => 8, :cols => 50 %>
     </p>
     <p>
       <%= f.submit 'Create' %>

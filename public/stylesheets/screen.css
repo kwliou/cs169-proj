@@ -502,10 +502,29 @@ we don't have to rely on proprietary attributes but there's no time
     list-style: none;
     display: inline;
     padding: 0 1em 0 1em;
-    border-left: 1px #eee solid;
-    border-right: 1px #bbb solid;
+    /*border-left: 1px #eee solid;*/
+    border-right: 1px #ccc solid;
 }
 
+/* Right now this is for new course form */
+.form_label {
+    width: 7.5em;
+    display: inline-block;
+    line-height: 1.5em;
+    font-weight: bold;
+    font-size: 11pt;
+}
+#day_options {
+    font-size: 10pt;
+}
+#M {
+    margin-left: 0 !important;
+}
+#day_options input {
+    vertical-align: middle;
+    margin-top: 1px;
+    margin-left: 20px;
+}
 .awesome, .awesome:visited {
 	background: #222 url(/images/button-overlay.png) repeat-x; 
 	display: inline-block; 
@@ -542,4 +561,3 @@ we don't have to rely on proprietary attributes but there's no time
 .orange.awesome:hover { background-color: #d45500; }
 .yellow.awesome, .yellow.awesome:visited { background-color: #ffb515; }
 .yellow.awesome:hover { background-color: #fc9200; }
-	
