@@ -7,7 +7,11 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.xml
   def index
-    @posts = @item.posts.find_all_by_parent_id(nil)
+    if params[:tags]
+      @posts = @item.posts.find_all_by_tags(params[:tags])
+    else
+      @posts = @item.posts.find_all_by_parent_id(nil)
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @posts }
@@ -27,7 +31,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.xml
   def show
-    @post = @item.posts.find(params[:id]) # @user.posts.find(params[:id])
+    @post = @item.posts.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @post }
@@ -83,7 +87,9 @@ class PostsController < ApplicationController
   def update
     @post = @current_user.posts.find(params[:id])
     append = ActionController::Base.helpers.sanitize(params[:append], :attributes => 'abbr alt cite datetime height href name src title width rowspan colspan')
-    params[:post][:body] = "#{@post.body}<br /><br /><span class='post_edit'>Edit (#{DateTime.now.strftime("%x")}, #{DateTime.now.strftime("%l:%M %p")}): </span><br />#{append}"
+    if !append.blank?
+      params[:post][:body] = "#{@post.body}<br /><br /><span class='post_edit'>Edit (#{DateTime.now.strftime("%x")}, #{DateTime.now.strftime("%l:%M %p")}): </span><br />#{append}"
+    end
     respond_to do |format|
       if @post.update_attributes(params[:post])
         format.html { redirect_to([@course, @item, @post], :notice => 'Post was successfully updated.') }

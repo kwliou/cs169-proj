@@ -4,11 +4,6 @@ ActionController::Routing::Routes.draw do |map|
   map.help 'help', :controller => :main, :action => :help
   #:parse => {:id => /([^\?\/](?!(xml|html)(?!\.(xml|html))))+/},
 
-  # Grades routes
-  map.resources :grades
-  map.connect '/courses/:course_id/grades/:action', :controller => 'grades'
-  map.create_course_grade '/courses/:course_id/grades/create', :controller => :grades, :action => :create
-  
   # :requirements is for usernames with periods in them
   map.resources :users, :requirements => {:id => /[^\?\/]+/} do |user|
     user.resources :ratings

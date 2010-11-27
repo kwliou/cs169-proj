@@ -13,9 +13,15 @@
   <p>
     <div class="post_header">
       <% if @current_user == @post.user %>
-        <%= link_to "Edit", edit_course_item_post_path(@course, @item, @post) %>
+        <%= link_to "Edit", edit_course_item_post_path(@course, @item, @post) %> |
+        <% if @post.parent %>
+          <%= link_to "Context", course_item_post_path(@course, @item, @post.parent) %>
+        <% end %>
       <% else %>
         <%= link_to "Reply", course_item_post_reply_path(@course, @item, @post) %> |
+        <% if @post.parent %>
+          <%= link_to "Context", course_item_post_path(@course, @item, @post.parent) %>
+        <% end %>
         <%= link_to "Private Message", "blah" %>
       <% end %>
     </div>

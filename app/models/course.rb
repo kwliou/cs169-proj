@@ -24,11 +24,12 @@ class Course < ActiveRecord::Base
   
   def Course.find_by_param(param)
       dept, number = param.split('_')
-      Course.find_by_number_and_department_id(number, Department.find_by_abbr(dept).id)
+      #Course.find_by_number_and_department_id(number, Department.find_by_abbr(dept).id)
+      Department.find_by_abbr(dept).courses.find_by_number(number)
   end
   
   def Course.year_limits
-    2004.upto(2015)
+    2010.upto(2015)
   end
 
   def dept

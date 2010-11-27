@@ -8,7 +8,7 @@ class Post < ActiveRecord::Base
 
   regex = Regexp.new '((https?:\/\/|www\.)([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)'
   
-  before_save { |post| post.body.gsub!(regex, '<a href="\1">\1</a>') }
+  before_save { |post| post.body.gsub!(regex, '<a href="\1">\1</a>'); post.tags.downcase! }
 
   def replies_s
     replies.count.to_s + (replies.count == 1 ? " Reply" : " Replies")
