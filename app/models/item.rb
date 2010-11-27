@@ -1,6 +1,7 @@
 class Item < ActiveRecord::Base
   include ApplicationHelper
   belongs_to :course
+  belongs_to :grade
   has_many :blurbs
   has_many :grades
   has_many :posts

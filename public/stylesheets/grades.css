@@ -51,6 +51,10 @@
 	text-align:right;
 }
 
+.no_grade {
+	padding-left:36px;
+}
+
 .divide {
 	color:#e2e2e2;
 	padding-left:16px;
@@ -58,4 +62,17 @@
 
 .destroy_checkbox {
 	margin-right:16px;
+}
+
+a {
+	text-decoration:none;
+}
+
+.enter_grade_link {
+	
+}
+
+a:hover {
+	text-decoration:none;
+	border-bottom: dotted 1px #979899;
 }

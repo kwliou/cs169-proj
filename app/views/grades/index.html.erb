@@ -3,8 +3,7 @@
 <script type="text/javascript" src="/javascripts/stats.js"></script>
 <script type="text/javascript">
 $(document).ready(function(e) {
-
-	$('.item_row').click(function(e) {
+	$('.histogram_link').click(function(e) {
 		var item_id = $(this).attr('data-id');
 		$.ajax({
 		  type: 'GET',
@@ -34,6 +33,7 @@ $(document).ready(function(e) {
 		  	
 		  	$.histogram('histogram_container', opts);
 		  	$('#histogram_container').fadeIn(300);
+		  	
 		  },
 		  dataType: 'json'
 		});
@@ -49,6 +49,10 @@ $(document).ready(function(e) {
 		}
 	});
 	
+	$('.enter_grade_link').click(function(e) {
+		//alert($(this).attr('data-id'));
+	});
+	
 });
 </script>
 
@@ -58,9 +62,9 @@ $(document).ready(function(e) {
   ["Grades", url_for(:controller => :grades, :action => :index)]] %>
 
 <div id="content">	
-	<form action="/grades/destroy" method="POST">
+	<% form_for @course, :url => url_for(:controller => 'grades', :action => 'destroy') do |f| %>
 	<div id="notification" class="success notification"><%= params[:notification] %></div>
-	<div id="notification" class="error notification"><%= params[:errors] %></div>
+	<div id="errors" class="error notification"><%= params[:errors] %></div>
 	<table id="grades_list">
 	  <tr>
 	  	<th>Item</th>
@@ -73,35 +77,49 @@ $(document).ready(function(e) {
 	<% total_pts = 0
 	 total_possible = 0 
 	%>
-	<% @grades.each do |grade| %>
-	 <% if grade.item.course == @course %>
-	  <% total_pts += grade.points_received
-	  	 total_possible += grade.item.points
-	  %>
-	  <tr class="item_row" data-id="<%= grade.item.id %>">
-	    <td><span class="item_name"><%= check_box_tag "grade_ids[]", grade.id, false, :class => "destroy_checkbox" %><%= grade.item.name %></span></td>
-	    <td class="align_right"><%= format("%.2f", grade.points_received) %></td>
-	    <td class="divide">/</td>
-	    <td><%= grade.item.points %></td>
-	    <% if grade.item.points != 0 %>
-		  	<td><%= format("%.2f%%", ((grade.points_received)/(grade.item.points))*100) %></td>
+	<% @item_grades.each do |item_grade| %>
+	  	<% total_possible += item_grade[1].points %>
+		<% if item_grade[0] != nil %>
+		<% total_pts += item_grade[0].points_received %>
+		  <tr class="item_row">
+		    <td>
+		    	<span class="item_name"><%= check_box_tag "grade_ids[]", item_grade[0].id, false, :class => "destroy_checkbox" %>
+			    <%= link_to item_grade[1].name, [@course, item_grade[1]] %></span>
+		    </td>
+		    <td class="align_right"><%= link_to format("%.2f", item_grade[0].points_received), '#', 'data-id' => item_grade[1].id, :class => 'histogram_link' %></td>
+		    <td class="divide">/</td>
+		    <td><%= item_grade[1].points %></td>
+		    <% if item_grade[1].points != 0 %>
+			  	<td><%= format("%.2f%%", ((item_grade[0].points_received*100)/(item_grade[1].points))) %></td>
+			<% end %>
+		  </tr>
+		<% else %>
+		  <tr class="item_row" data-id="<%= item_grade[1].id %>">
+		    <td>
+		    	<span class="item_name no_grade">
+			    	<%= link_to item_grade[1].name, [@course, item_grade[1]] %>
+			    </span>
+		    </td>
+		    <td class="align_right"><%= link_to 'Enter Grade', new_course_grade_path(@course, :item_id => item_grade[1].id), :class => 'enter_grade_link', 'data-id' => item_grade[1].id %>
+		    <td class="divide">/</td>
+		    <td><%= item_grade[1].points %></td>
+			<td>--</td>
+		  </tr>
 		<% end %>
-	  </tr>
 	<% end %>
-	<% end %>
+	
 	<% if total_possible != 0 %>
 		<tr id="grade_totals">
-			<td><input id="remove_grades_button" type="submit" value="Remove" /><%= link_to 'Enter New Grade', new_course_grade_path(@course), :id => "new_grade_link" %></td>
+			<td><input id="remove_grades_button" type="submit" value="Remove" /></td>
 			<td class="align_right"><%= format("%.2f", total_pts) %></td>
 			<td class="divide">/</td>
 			<td><%= total_possible %></td>
 		  	<td><%= format("%.2f%", (total_pts*100)/(total_possible)) %></td>
 		</tr>
 	<% end %>
+	
 	</table>
-		<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
-		<input type="hidden" name="course_id" value="<%= @course.to_param %>" />
-	</form>
+	<% end %>
 	<div id="histogram_container"></div>
 	</div>
 </div>

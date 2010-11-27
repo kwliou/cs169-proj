@@ -4,17 +4,40 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :grades
   has_many :ratings
+  
   def to_s
     username
   end
+  
   def name
     "#{first_name} #{last_name}"
   end
+  
   def to_param
     username
   end
+  
   def rated_course(course)
-	course.ratings.find_by_user_id(self.id)
+  	course.ratings.find_by_user_id(self.id)
+	end
+	
+	def items_with_grades(course)
+    items = course.items
+	  grades = self.grades.reject { |g| g.item.course != course }
+    item_grades = grades.collect { |g| [g, g.item] }
+    result = []
+      
+    items.each do |item|
+      item_grade = nil
+      grades.each do |g|
+        if g.item == item
+          item_grade = g
+        end
+      end
+      result << [item_grade, item]
+    end
+
+    return result
 	end
 	
 	def performance
@@ -36,6 +59,5 @@ class User < ActiveRecord::Base
     
     return data
 	end
-	
 
 end

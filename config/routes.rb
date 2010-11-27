@@ -1,10 +1,14 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :departments
-
   map.about 'about', :controller => :main, :action => :about
   map.feedback 'feedback', :controller => :main, :action => :feedback
   map.help 'help', :controller => :main, :action => :help
   #:parse => {:id => /([^\?\/](?!(xml|html)(?!\.(xml|html))))+/},
+
+  # Grades routes
+  map.resources :grades
+  map.connect '/courses/:course_id/grades/:action', :controller => 'grades'
+  map.create_course_grade '/courses/:course_id/grades/create', :controller => :grades, :action => :create
+  
   # :requirements is for usernames with periods in them
   map.resources :users, :requirements => {:id => /[^\?\/]+/} do |user|
     user.resources :ratings
@@ -28,6 +32,11 @@ ActionController::Routing::Routes.draw do |map|
   # /courses/COMPSCI_3/items/category/assignment => /courses/COMPSCI_3/items?category=assignment
   # map.connect '/courses/:course_id/items/category/:category', :controller => :items, :action => :index
   
+  # map.connect '/courses/:id/items', :controller => :items, :action => :index
+  map.connect '/courses/:id/grades', :controller => :grades, :action => :index
+  map.resources :courses, :has_many => :ratings
+  map.resources :users, :has_many => :ratings
+
   map.login 'login', :controller => :user_sessions, :action => :new
   map.logout 'logout', :controller => :user_sessions, :action => :destroy
   map.mobile 'mobile', :controller => :mobile, :action => :index
