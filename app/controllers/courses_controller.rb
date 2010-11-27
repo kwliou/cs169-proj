@@ -1,7 +1,11 @@
 class CoursesController < ApplicationController
   before_filter :get_current_user # :get_course doesn't work on Heroku
-  auto_complete_for :course, :department_id #:department, :name
-  
+
+  def auto_complete_for_department_name
+    @depts = Department.find(:all, :conditions=> ['name LIKE ?', "%#{params[:department][:name]}%"])
+    render :partial => 'department'
+  end
+
   def histogram
     # Generates a histogram for an assignment, total assignments etc.
   end
@@ -13,7 +17,7 @@ class CoursesController < ApplicationController
   def performance
     # Generates average item performance of a student and all students
   end
-  
+
   def subscribe
     @course = Course.find(params[:id])
     if !@current_user.courses.include?(@course)
@@ -89,13 +93,6 @@ def unsubscribe
 #  end
   # GET /courses/1/edit
   def edit
-#    params[:course][:days] = (params[:Su] || 's')
-#                           + (params[:M] || 'm')
-#                           + (params[:Tu] || 't')
-#                           + (params[:W] || 'w')
-#                           + (params[:Th] || 't')
-#                           + (params[:F] || 'f')
-#                           + (params[:Sa] || 's')
     @course = Course.find_by_param(params[:id])
     @departments = Department.find(:all, :order => 'name').map { |c| [c.name, c.id] }
     @years = Course.year_limits
@@ -129,6 +126,13 @@ def unsubscribe
   # PUT /courses/1
   # PUT /courses/1.xml
   def update
+    params[:course][:days] = (params[:M] || 'm')
+                           + (params[:Tu] || 't')
+                           + (params[:W] || 'w')
+                           + (params[:Th] || 't')
+                           + (params[:F] || 'f')
+                           + (params[:Sa] || 's')
+                           + (params[:Su] || 's')
     @course = Course.find_by_param(params[:id])
     respond_to do |format|
       if @course.update_attributes(params[:course])

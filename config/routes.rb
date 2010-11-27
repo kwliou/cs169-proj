@@ -16,9 +16,9 @@ ActionController::Routing::Routes.draw do |map|
   end
   map.resources :assignments
   map.resources :blurbs
-  map.resources :departments #, :collection => {:auto_complete_for_course_department_id => :get }
+  map.resources :departments #, :except => :destroy
   map.resources :user_sessions
-  map.resources :courses, :collection => {:auto_complete_for_course_department_id => :get } do |course|
+  map.resources :courses, :collection => {:auto_complete_for_department_name => :get } do |course|
     # :requirements is for items with periods in them ex. Chapter 2.1 Questions
     course.resources :grades
     course.resources :ratings
@@ -81,6 +81,8 @@ ActionController::Routing::Routes.draw do |map|
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing or commenting them out if you're using named routes and resources.
+  map.connect ':controller/destroy/:id', :controller => :main, :action => :index
+  map.connect ':controller/destroy/:id.:format', :controller => :main, :action => :index
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end

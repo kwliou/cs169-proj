@@ -2,11 +2,7 @@
 
 <script type="text/javascript">
   function hide() {
-    document.getElementById('course_department_id').style.display = 'inline';
-    //document.getElementById('department_name').style.display = 'inline';
-  }
-  function updateAbbr() {
-    document.getElementById('abbr').value = 'adf';
+    document.getElementById('department_name').style.display = 'inline';
   }
   window.onload = hide;
 </script>
@@ -26,13 +22,14 @@
     </p>
     <p>
       <%= f.label :department_id, 'Department', :class => 'form_label' %>
-      <!--noscript-->
+      <noscript>
         <%= f.select :department_id, @departments %>
-      <!--/noscript-->
+      </noscript>
       <!--
       For now, auto complete doesn't work
-      < %= text_field_with_auto_complete :course, :department_id, {:style => 'display: none', :onchange => 'updateAbbr()'}, {:method => :get} %>
       -->
+      <%= text_field_with_auto_complete :department, :name, {:style => 'display: none'}, {:method => :get} %>
+      
 </p>
     <p>
       <%= f.label :number, 'Number', :class => 'form_label' %>
