@@ -1,9 +1,20 @@
+include ActionView::Helpers::PrototypeHelper
+
 class PostsController < ApplicationController
   # :get_post also probably doesn't work on Heroku
   before_filter :get_current_user, :get_course, :get_item
   
-  layout "scaffold"
+  layout "scaffold", :except => [:update_results]
 
+
+  def update_results
+    #@tags = @item.posts.map {|i| i.tags}
+    @posts = @item.posts.find_all_by_tags(params[:tags])
+    #render do |page|
+    #  page.replace_html 'forum_posts', :partial => 'stuff', :posts => @posts
+    #end
+    render 'filter'#, :posts => @posts
+  end
   # GET /posts
   # GET /posts.xml
   def index
@@ -12,6 +23,7 @@ class PostsController < ApplicationController
     else
       @posts = @item.posts.find_all_by_parent_id(nil)
     end
+    @tags = (@item.posts.map {|i| i.tags }).uniq
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @posts }

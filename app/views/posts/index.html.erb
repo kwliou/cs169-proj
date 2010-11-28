@@ -1,3 +1,5 @@
+<%= javascript_include_tag :defaults %>
+
 <% content_for :title, "#{@course.abbr} | #{@item.name} | Forum" %>
 
 <%= render '/layouts/nav', :navigation =>
@@ -18,7 +20,7 @@ abbr alt cite class datetime height href name src title width xml:lang
 <!--script src="http://jquery.com/src/jquery-latest.js"></script-->
 <script type="text/javascript">
   <!--
-  function toggle(td, tr_id) {
+  function togglePost(td, tr_id) {
     a = td.firstChild;
     shown = 'block';
     hidden = document.getElementById(tr_id).style.display != shown;
@@ -32,8 +34,20 @@ abbr alt cite class datetime height href name src title width xml:lang
 </script>
 <div id="content">
   <% form_tag course_item_posts_path(@course, @item), :method => :get do %>
-    <%= text_field_tag 'tags' %>
-    <%= submit_tag 'Search Tags', :name => nil %>
+    <ul style="margin: 0; padding-left: 0">
+      <li style="margin: 0; display: inline">Filter by tags:</li>
+      <% @tags.each do |tag| %>
+        <li style="margin: 0; display: inline">
+          <%= link_to_remote tag,
+              {:update => 'forum_posts',
+              :url => course_item_pposts_url(@course, @item, :tags => tag),
+              :loading => "document.getElementById('forum_posts').innerHTML = 'Searching...'"},
+              :href => course_item_posts_url(@course, @item, :tags => tag) %><%= ', ' if @tags.last != tag %>
+        </li>
+      <% end %>
+    </ul>
+    <% text_field_tag 'tags' %>
+    <% submit_tag 'Search Tags', :name => nil %>
   <% end %><br />
   <table id="forum_posts">
     <!--tr>
@@ -44,62 +58,7 @@ abbr alt cite class datetime height href name src title width xml:lang
       <th class="post_date">Date</th>
       <th>Time</th>
     </tr-->
-    <% @posts.each_with_index do |post, index| %>
-      <tr class="post">
-        <td class="post_check"><input type="checkbox"></input></td>
-        <td class="post_title" onclick="toggle(this, <%=h index %>); return false;"><%= link_to "&#9662;#{post.title}", [@course, @item, post] %></td>
-        <td class="post_replies"><%= link_to post.replies_s, [@course, @item, post] %></td>
-        <td class="post_author"><%= link_to post.user.name, post.user %></td>
-        <td class="post_date"><time><%=h post.created_at_day_s %></time></td>
-        <td class="post_time"><time><%=h post.created_at_time_s %></time></td>
-      </tr>
-      <tr>
-        <td colspan="6">
-          <div class="post_content" id="<%= index %>">
-            <div class="post_header">
-              <% if @current_user == post.user %>
-                <%= link_to "Edit", edit_course_item_post_path(@course, @item, post) %>
-              <% else %>
-                <%= link_to "Reply", course_item_post_reply_path(@course, @item, post) %> | 
-                <%= link_to "Private Message", "blah" %>
-              <% end %>
-            </div>
-            <div class="post_body">
-              <%= sanitize post.body.gsub("\n", "<br />") %>
-            </div>
-            <div class="post_footer">
-              Tags: <%=h post.tags %>
-            </div>
-            <%= render 'replies', :post => post %>
-           
-          </div>
-        </td>
-      </tr>
-      <noscript>
-        <tr>
-        <td colspan="7">
-          <div class="post_content noscript" id="<%= index %>">
-            <div class="post_header">
-              <% if @current_user == post.user %>
-                <%= link_to "Edit", edit_course_item_post_path(@course, @item, post) %>
-              <% else %>
-                <%= link_to "Reply", course_item_post_reply_path(@course, @item, post) %> | 
-                <%= link_to "Private Message", "blah" %>
-              <% end %>
-            </div>
-            <div class="post_body">
-              <%= sanitize post.body.gsub("\n", "<br />") %>
-            </div>
-            <div class="post_footer">
-              Tags: <%=h post.tags %>
-            </div>
-            <%= render 'replies', :post => post %>
-           
-          </div>
-        </td>
-      </tr>
-      </noscript>
-    <% end %>
+    <%= render 'posts', :posts => @posts %>
   </table>
   <br />
   <%= link_to 'New post', new_course_item_post_path(@course, @item) %>
