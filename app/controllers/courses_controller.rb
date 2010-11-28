@@ -102,13 +102,13 @@ def unsubscribe
   # POST /courses
   # POST /courses.xml
   def create
-    params[:course][:days] = (params[:M] || 'm')
-                           + (params[:Tu] || 't')
-                           + (params[:W] || 'w')
-                           + (params[:Th] || 't')
-                           + (params[:F] || 'f')
-                           + (params[:Sa] || 's')
-                           + (params[:Su] || 's')
+    params[:course][:days] = "#{(params[:M] || 'm')}
+                              #{(params[:Tu] || 't')}
+                              #{(params[:W] || 'w')}
+                              #{(params[:Th] || 't')}
+                              #{(params[:F] || 'f')}
+                              #{(params[:Sa] || 's')}
+                              #{(params[:Su] || 's')}"
     @course = Course.new(params[:course])
     
     respond_to do |format|
@@ -126,13 +126,13 @@ def unsubscribe
   # PUT /courses/1
   # PUT /courses/1.xml
   def update
-    params[:course][:days] = (params[:M] || 'm')
-                           + (params[:Tu] || 't')
-                           + (params[:W] || 'w')
-                           + (params[:Th] || 't')
-                           + (params[:F] || 'f')
-                           + (params[:Sa] || 's')
-                           + (params[:Su] || 's')
+    params[:course][:days] = "#{(params[:M] || 'm')}
+                              #{(params[:Tu] || 't')}
+                              #{(params[:W] || 'w')}
+                              #{(params[:Th] || 't')}
+                              #{(params[:F] || 'f')}
+                              #{(params[:Sa] || 's')}
+                              #{(params[:Su] || 's')}"
     @course = Course.find_by_param(params[:id])
     respond_to do |format|
       if @course.update_attributes(params[:course])

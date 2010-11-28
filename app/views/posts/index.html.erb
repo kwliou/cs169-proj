@@ -2,6 +2,14 @@
 
 <% content_for :title, "#{@course.abbr} | #{@item.name} | Forum" %>
 
+<noscript>
+  <style type="text/css">
+    #forum_tags input {
+      display: inline !important;
+  }
+  </style>
+</noscript>
+
 <%= render '/layouts/nav', :navigation =>
   [["Courses", courses_path],
   ["#{@course.dept} #{@course.number}", @course],
@@ -37,7 +45,7 @@ abbr alt cite class datetime height href name src title width xml:lang
         inputs[i].style.display = 'none';
     }
   }
-  window.onload = hideCheckBoxes;
+  //window.onload = hideCheckBoxes;
   // -->
 </script>
 <div id="content">
@@ -52,13 +60,14 @@ abbr alt cite class datetime height href name src title width xml:lang
       <% @tags.each do |tag| %>
         <li>
           <!-- Didn't use document.getElementById('checktag_#{tag}') -->
-          <%= check_box_tag "tag_#{tag}", true, false %><%= link_to tag,
+          <%= check_box_tag "tag_#{tag}", true, false, :style => 'display: none' %><%= link_to tag,
             course_item_posts_url(@course, @item, :tags => tag),
             :onclick => "this.className = this.className == 'unselected' ? 'selected' : 'unselected'; this.previousSibling.checked = !this.previousSibling.checked; return false",
             :class => 'unselected' %><%= ', ' if @tags.last != tag %>
         </li>
       <% end %>
-    </ul><%= submit_tag 'Search', :name => nil %>
+        <li><%= submit_tag 'Search', :name => nil %></li>
+        </ul>
   <% end %><br />
   <table id="forum_posts">
     <!--tr>
