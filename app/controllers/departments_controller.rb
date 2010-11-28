@@ -1,5 +1,8 @@
 class DepartmentsController < ApplicationController
+  before_filter :get_current_user # :get_course doesn't work on Heroku
   auto_complete_for :department, :name
+
+  layout "scaffold"
 
   # GET /departments
   # GET /departments.xml
@@ -83,3 +86,9 @@ class DepartmentsController < ApplicationController
     end
   end
 end
+
+private
+  def get_current_user
+    @current_user = current_user
+    redirect_to root_url if @current_user.nil?
+  end

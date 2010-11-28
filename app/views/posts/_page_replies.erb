@@ -10,7 +10,7 @@
       <%= link_to "Permalink", course_item_post_path(@course, @item, reply) %>
     </div>
     <div class="post_body">
-      <%= sanitize reply.body.gsub("\n", "<br />") %>
+      <%= reply.sanitize %>
     </div>
     <div>
       <%= link_to reply.user.name, reply.user %>

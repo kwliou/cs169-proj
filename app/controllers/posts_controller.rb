@@ -8,22 +8,29 @@ class PostsController < ApplicationController
 
 
   def update_results
-    #@tags = @item.posts.map {|i| i.tags}
-    @posts = @item.posts.find_all_by_tags(params[:tags])
-    #render do |page|
-    #  page.replace_html 'forum_posts', :partial => 'stuff', :posts => @posts
-    #end
-    render 'filter'#, :posts => @posts
+    all_tags = (@item.posts.map {|i| i.tags }).uniq
+    sel_tags = all_tags.select { |t| params["tag_#{t}"] }
+    @posts = @item.posts.find(:all, :conditions => ['posts.tags IN (?)', sel_tags])
+    #@query = params[:tags]#(@item.posts.map { |i| i.tags }).uniq
+    render 'filter' do |page|#, :posts => @posts
+      page.replace_html '0', page['query'].value
+    end
   end
   # GET /posts
   # GET /posts.xml
   def index
+    @tags = (@item.posts.map {|i| i.tags }).uniq
+    sel_tags = @tags.select { |t| params["tag_#{t}"] }
     if params[:tags]
       @posts = @item.posts.find_all_by_tags(params[:tags])
-    else
+    elsif sel_tags.empty?
       @posts = @item.posts.find_all_by_parent_id(nil)
+    else
+      @posts = @item.posts.find(:all, :conditions => ['posts.tags IN (?)', sel_tags])
     end
-    @tags = (@item.posts.map {|i| i.tags }).uniq
+#    update_page do |page|
+#      page.replace_html 'forum_posts', :partial => 'posts', :posts => @posts
+#    end
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @posts }
@@ -81,6 +88,7 @@ class PostsController < ApplicationController
     # maybe should separated into def create_post_reply
     # maybe parent_id should be added after save instead of before ...
     params[:post][:item_id] = @item.id
+    params[:post][:body] = ActionController::Base.helpers.sanitize(params[:post][:body], :attributes => 'abbr alt cite datetime height href name src title width rowspan colspan rel')
     @post = @current_user.posts.build(params[:post])
     #@post.item = @item
     respond_to do |format|
@@ -98,7 +106,7 @@ class PostsController < ApplicationController
   # PUT /posts/1.xml
   def update
     @post = @current_user.posts.find(params[:id])
-    append = ActionController::Base.helpers.sanitize(params[:append], :attributes => 'abbr alt cite datetime height href name src title width rowspan colspan')
+    append = ActionController::Base.helpers.sanitize(params[:append], :attributes => 'abbr alt cite datetime height href name src title width rowspan colspan rel')
     if !append.blank?
       params[:post][:body] = "#{@post.body}<br /><br /><span class='post_edit'>Edit (#{DateTime.now.strftime("%x")}, #{DateTime.now.strftime("%l:%M %p")}): </span><br />#{append}"
     end

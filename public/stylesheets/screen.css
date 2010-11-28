@@ -305,10 +305,22 @@ we don't have to rely on proprietary attributes but there's no time
     background-image: url("/images/round.png");
 }
 
-/* Forums CSS */
-
+/************************** Forums CSS **************************/
+.unselected { /* should be li */
+    text-decoration: none;
+}
+#forum_tags {
+    display: inline;
+    margin: 0;
+    padding-left: 0;
+    font-size: 11.5pt;
+}
+#forum_tags li {
+    margin: 0;
+    display: inline;
+}
 .forum_actions {
-    display:inline-block;
+    display: inline-block;
     width: 100%;
     padding-left: 28px;
     margin: 4px;
@@ -430,6 +442,7 @@ we don't have to rely on proprietary attributes but there's no time
     font-variant: small-caps;
     margin-top: 10px;
 }
+/* post_page* is for individual post pages */
 .post_page {
     color: #646566;
     font-size: 11pt;
@@ -506,7 +519,7 @@ we don't have to rely on proprietary attributes but there's no time
     border-right: 1px #ccc solid;
 }
 
-/* Right now this is for new course form */
+/* Right now this is for new/edit course form */
 .form_label {
     width: 7.5em;
     display: inline-block;
@@ -517,7 +530,7 @@ we don't have to rely on proprietary attributes but there's no time
 #day_options {
     font-size: 10pt;
 }
-#M {
+#M { /* Monday checkbox */
     margin-left: 0 !important;
 }
 #day_options input {

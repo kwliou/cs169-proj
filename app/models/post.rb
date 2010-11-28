@@ -8,7 +8,7 @@ class Post < ActiveRecord::Base
 
   regex = Regexp.new '((https?:\/\/|www\.)([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)'
   
-  before_save { |post| post.body.gsub!(regex, '<a href="\1">\1</a>'); post.tags.downcase! }
+  before_save { |post| post.body.gsub!(regex, '<a href="\1" rel="nofollow">\1</a>'); post.tags.downcase! }
 
   def replies_s
     replies.count.to_s + (replies.count == 1 ? " Reply" : " Replies")
@@ -20,5 +20,8 @@ class Post < ActiveRecord::Base
     #For some reason %l instead of %I doesn't work
     time = created_at.getlocal.strftime("%I:%M %p")
     time.first == '0' ? time[1..-1] : time
+  end
+  def sanitize # for views only
+    ActionController::Base.helpers.sanitize(body.gsub("\n", "<br />"), :attributes => 'abbr alt cite class datetime height href name src title width rowspan colspan rel')
   end
 end
