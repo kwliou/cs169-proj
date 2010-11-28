@@ -30,35 +30,31 @@ abbr alt cite class datetime height href name src title width xml:lang
    * $("#"+tr_id).slideToggle("fast");
    */
   }
-  function hideCheckBoxes() {
-    var inputs = document.forms[0].getElementsByTagName('input');
-    for (var i in inputs) {
-      if (inputs[i].type == 'checkbox')
-        inputs[i].style.display = 'none';
-    }
-  }
-  window.onload = hideCheckBoxes;
   // -->
 </script>
 <div id="content">
-  <% form_remote_tag :update => 'forum_posts',
-            #:method => :get,
-             :url => course_item_pposts_url(@course, @item, :tags => @tags),
-             :loading => "document.getElementById('forum_posts').innerHTML = 'Searching...'",
-             :failure => "document.getElementById('forum_posts').innerHTML = 'Sorry, we couldn\\'t find any posts.'",
-             :html => { :action => course_item_posts_path(@course, @item), :method => :get } do %>
-    <ul id="forum_tags">
-      <li>Filter by tags:</li>
+  <% form_remote_tag course_item_pposts_path(@course, @item, :tags => tag) do %>
+    <ul style="margin: 0; padding-left: 0">
+      <li style="margin: 0; display: inline">Filter by tags:</li>
       <% @tags.each do |tag| %>
-        <li>
-          <!-- Didn't use document.getElementById('checktag_#{tag}') -->
-          <%= check_box_tag "tag_#{tag}", true, false %><%= link_to tag,
-            course_item_posts_url(@course, @item, :tags => tag),
-            :onclick => "this.className = this.className == 'unselected' ? 'selected' : 'unselected'; this.previousSibling.checked = !this.previousSibling.checked; return false",
-            :class => 'unselected' %><%= ', ' if @tags.last != tag %>
+        <li style="margin: 0; display: inline">
+          <%= link_to_remote tag,
+            {:update => 'forum_posts',
+            #:method => :get,
+             :url => course_item_pposts_url(@course, @item, :tags => tag),
+             :loading => "document.getElementById('forum_posts').innerHTML = 'Searching...'",
+             :success => "sel_tag = document.getElementsByName('tag');",
+             :failure => "document.getElementById('forum_posts').innerHTML = 'Sorry, we couldn\\'t find any posts.'"},
+             :onclick => "this.className = this.className == 'unselected' ? 'selected' : 'unselected'; sel_tag = document.getElementsByName('tag');",
+             :class => 'unselected',
+             :name => 'tag',
+             :href => course_item_posts_url(@course, @item, :tags => tag) %><%= ', ' if @tags.last != tag %>
         </li>
+        <
       <% end %>
-    </ul><%= submit_tag 'Search', :name => nil %>
+    </ul>
+    <% text_field_tag 'tags' %>
+    <% submit_tag 'Search Tags', :name => nil %>
   <% end %><br />
   <table id="forum_posts">
     <!--tr>

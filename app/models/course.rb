@@ -4,10 +4,11 @@ class Course < ActiveRecord::Base
   has_many :blurbs
   has_and_belongs_to_many :users
   has_many :ratings, :dependent=>:destroy
-  validates_presence_of :department, :name, :number
-  validates_uniqueness_of :name, :number, :scope => :department, :case_sensitive => false
+  belongs_to :department
+  validates_presence_of :department_id, :name, :number
+  validates_uniqueness_of :name, :number, :scope => :department_id, :case_sensitive => false
 
-  before_save { |course| course.department = course.department.titleizev2 }
+  #before_save { |course| course.department = course.department.titleizev2 }
 
   @@abbr = { # NOTE: department names might have funny capitalizing so hard to automate
     "Computer Science" => "compsci",
@@ -18,28 +19,23 @@ class Course < ActiveRecord::Base
     "CS" => "cs"
   }
 
-  def Course.departments
-    [
-    ["Computer Science", "compsci"],
-    ["Anthropology", "anthro"],
-    ["Gender and Women's Studies", "gws"],
-    ["Aerospace Studies (Air Force ROTC)", "aerospc"],
-    ["Math", "math"]
-    ]
+  def department_name
+    self.department.name
   end
   
   def Course.find_by_param(param)
       dept, number = param.split('_')
-      department = Course.unabbr(dept)
-      Course.find_by_department_and_number(department, number)
+      #Course.find_by_number_and_department_id(number, Department.find_by_abbr(dept).id)
+      Department.find_by_abbr(dept).courses.find_by_number(number)
   end
   
-  def Course.unabbr(abbr)
-    @@abbr.index(abbr.downcase) || abbr.downcase.titleizev2
+  def Course.year_limits
+    2010.upto(2015)
   end
-  
+
   def dept
-    (@@abbr[department] || department).upcase
+    Department.find(department_id).abbr
+    #(@@abbr[department] || department).upcase
   end
   
   def abbr

@@ -18,6 +18,9 @@
         <%= link_to "Reply", course_item_post_reply_path(@course, @item, @post) %> |
         <%= link_to "Private Message", "blah" %>
       <% end %>
+      <% if @post.parent %>
+        | <%= link_to "Context", course_item_post_path(@course, @item, @post.parent) %>
+      <% end %>
     </div>
     <div id="post_page_title">
       <%=h @post.title %>
@@ -25,7 +28,7 @@
   </p>
   <div id="post_page_content">
     <div id="post_page_body">
-      <%= sanitize @post.body.gsub("\n", "<br />") %>
+      <%= @post.sanitize %>
     </div>
     <div class="post_footer">
       Tags: <%=h @post.tags %>

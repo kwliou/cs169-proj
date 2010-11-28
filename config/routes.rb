@@ -1,12 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-  
-  # Grades routes
-  map.resources :grades
-  map.connect '/courses/:course_id/grades/:action', :controller => 'grades'
-  map.create_course_grade '/courses/:course_id/grades/create', :controller => :grades, :action => :create
-  
-  #:parse => {:id => /([^\?\/](?!(xml|html)(?!\.(xml|html))))+/}, 
-
   map.about 'about', :controller => :main, :action => :about
   map.feedback 'feedback', :controller => :main, :action => :feedback
   map.help 'help', :controller => :main, :action => :help
@@ -19,13 +11,14 @@ ActionController::Routing::Routes.draw do |map|
   end
   map.resources :assignments
   map.resources :blurbs
-  map.resources :departments
+  map.resources :departments #, :except => :destroy
   map.resources :user_sessions
-  map.resources :courses, :collection => {:auto_complete_for_course_department => :get } do |course|
+  map.resources :courses, :collection => {:auto_complete_for_department_name => :get } do |course|
     # :requirements is for items with periods in them ex. Chapter 2.1 Questions
     course.resources :grades
     course.resources :ratings
     course.resources :items, :requirements => {:id => /[^\?\/]+/} do |item|
+      item.pposts 'posts/update_results', :controller => :posts, :action => :update_results, :method => :get, :requirements => {:item_id => /[^\?\/]+/}
       item.resources :posts, :requirements => {:item_id => /[^\?\/]+/} do |post|
         post.reply 'reply', :controller => :posts, :action => :new_post_reply, :requirements => {:item_id => /[^\?\/]+/}
       end
@@ -84,6 +77,8 @@ ActionController::Routing::Routes.draw do |map|
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing or commenting them out if you're using named routes and resources.
+  map.connect ':controller/destroy/:id', :controller => :main, :action => :index
+  map.connect ':controller/destroy/:id.:format', :controller => :main, :action => :index
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end
