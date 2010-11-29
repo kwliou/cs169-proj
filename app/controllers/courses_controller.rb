@@ -81,6 +81,8 @@ def unsubscribe
     @course = Course.new
     @departments = Department.find(:all, :order => 'name').map { |c| [c.name, c.id] }
     @years = Course.year_limits
+    #win.getContent().update("<h1>Hello world !!</h1>");
+    #win.showCenter();
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @course }
@@ -109,6 +111,9 @@ def unsubscribe
                               #{(params[:F] || 'f')}
                               #{(params[:Sa] || 's')}
                               #{(params[:Su] || 's')}"
+    if params[:department] # params[:course][:department_id].nil?
+      params[:course][:department_id] = params[:department][:name]
+    end
     @course = Course.new(params[:course])
     
     respond_to do |format|

@@ -20,18 +20,20 @@
 
     <p>
       <%= f.label :name, 'Name', :class => 'form_label' %>
-      <%= f.text_field :name %>
+      <%= f.text_field :name, :style => 'width: 15em' %>
     </p>
     <p>
       <%= f.label :department_id, 'Department', :class => 'form_label' %>
-      <noscript>
-        <%= f.select :department_id, @departments %>
-      </noscript>
-      <%= text_field_with_auto_complete :department, :name, {}, {:method => :get} %>       
+      <%= f.select :department_id, @departments, {}, :style => 'min-width: 15.4em' %>
+      <%= link_to 'Add a department', new_department_path, :style => 'margin-left: 10px; text-transform: lowercase; font-variant: small-caps' %>
+      <!--
+      Auto complete isn't useful enough, kinda slow right now
+      < %= text_field_with_auto_complete :department, :name, {}, {:method => :get} %>
+      -->
 </p>
     <p>
       <%= f.label :number, 'Number', :class => 'form_label' %>
-      <%= f.text_field :number %>
+      <%= f.text_field :number, :style => 'width: 15em' %>
     </p>
     <p>
       <%= f.label :term, 'Term', :class => 'form_label' %>
