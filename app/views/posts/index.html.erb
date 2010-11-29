@@ -38,7 +38,7 @@ abbr alt cite class datetime height href name src title width xml:lang
    * $("#"+tr_id).slideToggle("fast");
    */
   }
-  function hideCheckBoxes() {
+  function hideCheckBoxes() { // UNUSED
     var inputs = document.forms[0].getElementsByTagName('input');
     for (var i in inputs) {
       if (inputs[i].type == 'checkbox')
@@ -51,24 +51,26 @@ abbr alt cite class datetime height href name src title width xml:lang
 <div id="content">
   <% form_remote_tag :update => 'forum_posts',
             #:method => :get,
-             :url => course_item_pposts_url(@course, @item, :tags => @tags),
+             :url => course_item_ajaxupdate_url(@course, @item),
              :loading => "document.getElementById('forum_posts').innerHTML = 'Searching...'",
              :failure => "document.getElementById('forum_posts').innerHTML = 'Sorry, we couldn\\'t find any posts.'",
              :html => { :action => course_item_posts_path(@course, @item), :method => :get } do %>
     <ul id="forum_tags">
       <li>Filter by tags:</li>
-      <% @tags.each do |tag| %>
+      <% @all_tags.each do |tag| %>
         <li>
           <!-- Didn't use document.getElementById('checktag_#{tag}') -->
-          <%= check_box_tag "tag_#{tag}", true, false, :style => 'display: none' %><%= link_to tag,
-            course_item_posts_url(@course, @item, :tags => tag),
+          <%= check_box_tag "tags[]", tag, @sel_tags.include?(tag), :style => 'display: none' %><%= link_to tag,
+            course_item_posts_url(@course, @item, :tag => tag),
             :onclick => "this.className = this.className == 'unselected' ? 'selected' : 'unselected'; this.previousSibling.checked = !this.previousSibling.checked; return false",
-            :class => 'unselected' %><%= ', ' if @tags.last != tag %>
+            :class => 'unselected' %><%= ', ' if @all_tags.last != tag %>
         </li>
       <% end %>
-        <li><%= submit_tag 'Search', :name => nil %></li>
-        </ul>
-  <% end %><br />
+    </ul><div id="forum_tags_search">
+    <%= label_tag 'include_all', 'Match all tags?', :style => 'font-size: 11pt' %>
+    <%= check_box_tag 'include_all', 'include_all', @include_all %>
+    <%= submit_tag 'Search', :name => nil, :style => 'font-size: 9.5pt' %></div>
+  <% end %>
   <table id="forum_posts">
     <!--tr>
       <th class="post_check"></th>

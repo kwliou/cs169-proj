@@ -8,8 +8,14 @@ class Post < ActiveRecord::Base
 
   regex = Regexp.new '((https?:\/\/|www\.)([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)'
   
-  before_save { |post| post.body.gsub!(regex, '<a href="\1" rel="nofollow">\1</a>'); post.tags.downcase! }
+  before_save do |post|
+    post.body.gsub!(regex, '<a href="\1" rel="nofollow">\1</a>')
+    post.tags = (post.tags.split(',').map {|t| t.downcase.strip}).sort.join(', ')
+  end
 
+  def tags_array
+    tags.split(', ')
+  end
   def replies_s
     replies.count.to_s + (replies.count == 1 ? " Reply" : " Replies")
   end
