@@ -36,7 +36,7 @@ class PostsController < ApplicationController
         (@sel_tags.map {|t| @item.posts.find(:all, :conditions => ['posts.tags LIKE ?', "%#{t}%"], :include => :replies) }).flatten.uniq
     elsif params[:tag]
       #@sel_tags = [params[:tag]]
-      @posts = @item.posts.find_all_by_tag(params[:tag])
+      @posts = @item.posts.find_all_by_tags(params[:tag])
     else
       #@sel_tags = []
       @posts = @item.posts.find_all_by_parent_id(nil)
