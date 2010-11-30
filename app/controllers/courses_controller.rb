@@ -81,6 +81,8 @@ def unsubscribe
     @course = Course.new
     @departments = Department.find(:all, :order => 'name').map { |c| [c.name, c.id] }
     @years = Course.year_limits
+    #win.getContent().update("<h1>Hello world !!</h1>");
+    #win.showCenter();
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @course }
@@ -102,13 +104,16 @@ def unsubscribe
   # POST /courses
   # POST /courses.xml
   def create
-    params[:course][:days] = (params[:M] || 'm')
-                           + (params[:Tu] || 't')
-                           + (params[:W] || 'w')
-                           + (params[:Th] || 't')
-                           + (params[:F] || 'f')
-                           + (params[:Sa] || 's')
-                           + (params[:Su] || 's')
+    params[:course][:days] = "#{(params[:M] || 'm')}
+                              #{(params[:Tu] || 't')}
+                              #{(params[:W] || 'w')}
+                              #{(params[:Th] || 't')}
+                              #{(params[:F] || 'f')}
+                              #{(params[:Sa] || 's')}
+                              #{(params[:Su] || 's')}"
+    if params[:department] # params[:course][:department_id].nil?
+      params[:course][:department_id] = params[:department][:name]
+    end
     @course = Course.new(params[:course])
     
     respond_to do |format|
@@ -126,13 +131,13 @@ def unsubscribe
   # PUT /courses/1
   # PUT /courses/1.xml
   def update
-    params[:course][:days] = (params[:M] || 'm')
-                           + (params[:Tu] || 't')
-                           + (params[:W] || 'w')
-                           + (params[:Th] || 't')
-                           + (params[:F] || 'f')
-                           + (params[:Sa] || 's')
-                           + (params[:Su] || 's')
+    params[:course][:days] = "#{(params[:M] || 'm')}
+                              #{(params[:Tu] || 't')}
+                              #{(params[:W] || 'w')}
+                              #{(params[:Th] || 't')}
+                              #{(params[:F] || 'f')}
+                              #{(params[:Sa] || 's')}
+                              #{(params[:Su] || 's')}"
     @course = Course.find_by_param(params[:id])
     respond_to do |format|
       if @course.update_attributes(params[:course])

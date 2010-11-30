@@ -18,7 +18,7 @@ ActionController::Routing::Routes.draw do |map|
     course.resources :grades
     course.resources :ratings
     course.resources :items, :requirements => {:id => /[^\?\/]+/} do |item|
-      item.pposts 'posts/update_results', :controller => :posts, :action => :update_results, :method => :get, :requirements => {:item_id => /[^\?\/]+/}
+      item.ajaxupdate 'posts/update_results', :controller => :posts, :action => :update_results, :method => :get, :requirements => {:item_id => /[^\?\/]+/}
       item.resources :posts, :requirements => {:item_id => /[^\?\/]+/} do |post|
         post.reply 'reply', :controller => :posts, :action => :new_post_reply, :requirements => {:item_id => /[^\?\/]+/}
       end

@@ -319,6 +319,9 @@ we don't have to rely on proprietary attributes but there's no time
     margin: 0;
     display: inline;
 }
+#forum_tags_search {
+    margin: 5px 0 8px 0;
+}
 .forum_actions {
     display: inline-block;
     width: 100%;

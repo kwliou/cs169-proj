@@ -46,6 +46,7 @@ doc\:clobber_plugins=Remove plugin documentation
 doc\:clobber_rails=Remove rdoc products
 doc\:guides=Generate Rails guides
 doc\:plugins=Generate documentation for all installed plugins
+doc\:plugins\:auto_complete=Generate documentation for the auto_complete plugin
 doc\:rails=Build the RDOC HTML Files
 doc\:reapp=Force a rebuild of the RDOC files
 doc\:rerails=Force a rebuild of the RDOC files

@@ -8,25 +8,38 @@ class PostsController < ApplicationController
 
 
   def update_results
-    all_tags = (@item.posts.map {|i| i.tags }).uniq
-    sel_tags = all_tags.select { |t| params["tag_#{t}"] }
-    @posts = @item.posts.find(:all, :conditions => ['posts.tags IN (?)', sel_tags])
-    #@query = params[:tags]#(@item.posts.map { |i| i.tags }).uniq
-    render 'filter' do |page|#, :posts => @posts
-      page.replace_html '0', page['query'].value
+    #all_tags = (@item.posts.map {|i| i.tags }).uniq
+    sel_tags = params[:tags]
+    @include_all = params[:include_all]
+    if sel_tags.nil?
+      @posts = @item.posts.find_all_by_parent_id(nil)
+    elsif @include_all
+      @posts = @item.posts.find(:all, :conditions => ['posts.tags LIKE ?', "%#{sel_tags.join(', ')}%"], :include => :replies)
+    else
+      #@posts = @item.posts.find(:all, :conditions => ['posts.tags IN (?)', sel_tags], :include => :replies)
+      @posts = (sel_tags.map {|t| @item.posts.find(:all, :conditions => ['posts.tags LIKE ?', "%#{t}%"], :include => :replies) }).flatten.uniq
     end
+    #@query = params[:tags]#(@item.posts.map { |i| i.tags }).uniq
+    render 'filter' #, :posts => @posts
   end
   # GET /posts
   # GET /posts.xml
   def index
-    @tags = (@item.posts.map {|i| i.tags }).uniq
-    sel_tags = @tags.select { |t| params["tag_#{t}"] }
+    @all_tags = (@item.posts.map {|i| i.tags_array}).flatten.uniq.sort
+    #@sel_tags = @all_tags.select { |t| params["tag_#{t}"] }
+    @sel_tags = params[:tags] || [params[:tag]]
+    @include_all = params[:include_all]
     if params[:tags]
-      @posts = @item.posts.find_all_by_tags(params[:tags])
-    elsif sel_tags.empty?
-      @posts = @item.posts.find_all_by_parent_id(nil)
+      #@sel_tags = params[:tags]
+      @posts = @include_all ?
+        @item.posts.find(:all, :conditions => ['posts.tags LIKE ?', "%#{@sel_tags.join(', ')}%"], :include => :replies) :
+        (@sel_tags.map {|t| @item.posts.find(:all, :conditions => ['posts.tags LIKE ?', "%#{t}%"], :include => :replies) }).flatten.uniq
+    elsif params[:tag]
+      #@sel_tags = [params[:tag]]
+      @posts = @item.posts.find_all_by_tags(params[:tag])
     else
-      @posts = @item.posts.find(:all, :conditions => ['posts.tags IN (?)', sel_tags])
+      #@sel_tags = []
+      @posts = @item.posts.find_all_by_parent_id(nil)
     end
 #    update_page do |page|
 #      page.replace_html 'forum_posts', :partial => 'posts', :posts => @posts
