@@ -1,7 +1,7 @@
 <% posts.each_with_index do |post, index| %>
   <tr class="post">
     <td class="post_check"><input type="checkbox"></input></td>
-    <td class="post_title" onclick="togglePost(this, <%=h index %>); return false;"><%= link_to "&#9662;#{post.title}", [@course, @item, post] %></td>
+    <td class="post_title" onclick="togglePost(this, <%=h index %>); return false;"><%= link_to post.title, [@course, @item, post], :class => 'post_title_min' %></td>
     <td class="post_replies"><%= link_to post.replies_s, [@course, @item, post] %></td>
     <td class="post_author"><%= link_to post.user.name, post.user %></td>
     <td class="post_date"><time><%=h post.created_at_day_s %></time></td>

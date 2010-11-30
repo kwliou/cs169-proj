@@ -389,6 +389,18 @@ we don't have to rely on proprietary attributes but there's no time
 .post_expand {
     width: 5em;
 }
+.post_title_min:before {
+    content: "▼ ";
+    font-size: 6.5pt;
+    position: relative;
+    bottom: 2px;
+}
+.post_title_max:before {
+    content: "▲ ";
+    font-size: 6.5pt;
+    position: relative;
+    bottom: 2px;
+}
 .post_replies {
     width: 5.5em;
     /*width: 10%;*/

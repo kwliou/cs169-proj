@@ -23,24 +23,24 @@
     </p>
     <p>
       <%= f.label :term, 'Term', :class => 'form_label' %>
-      <%= f.select :term, ['Winter', 'Spring', 'Summer', 'Fall'] %>
+      <%= f.select :term, ['Fall', 'Winter', 'Spring', 'Summer'] %>
       <%= f.select :year, @years %>
     </p>
     <p id="day_options">
       <%= f.label :days, 'Days', :class => 'form_label' %>
-      <%= check_box_tag 'M', 'M', @days[0] %>
+      <%= check_box_tag 'm', 'M', @days[0] %>
       <%= label_tag 'M', 'Monday' %>
-      <%= check_box_tag 'Tu', 'T', @days[1] %>
+      <%= check_box_tag 't', 'T', @days[1] %>
       <%= label_tag 'Tu', 'Tuesday' %>
-      <%= check_box_tag 'W', 'W', @days[2] %>
+      <%= check_box_tag 'w', 'W', @days[2] %>
       <%= label_tag 'W', 'Wednesday' %>
-      <%= check_box_tag 'Th', 'T', @days[3] %>
+      <%= check_box_tag 'r', 'R', @days[3] %>
       <%= label_tag 'Th', 'Thursday' %>
-      <%= check_box_tag 'F', 'F', @days[4] %>
+      <%= check_box_tag 'f', 'F', @days[4] %>
       <%= label_tag 'F', 'Friday' %>
-      <%= check_box_tag 'Sa', 'S', @days[5] %>
+      <%= check_box_tag 's', 'S', @days[5] %>
       <%= label_tag 'Sa', 'Saturday' %>
-      <%= check_box_tag 'Su', 'S', @days[6] %>
+      <%= check_box_tag 'u', 'U', @days[6] %>
       <%= label_tag 'Su', 'Sunday' %>
     </p>
     <p>
