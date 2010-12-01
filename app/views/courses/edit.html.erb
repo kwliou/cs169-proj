@@ -1,5 +1,13 @@
 <% content_for :title, "#{@course.abbr} | Edit" %>
 
+<noscript>
+  <style type="text/css">
+    #department_name, #department_name_auto_complete {
+      display: none;
+    }
+  </style>
+</noscript>
+
 <%= render '/layouts/nav', :navigation =>
   [["Courses", courses_path],
   ["#{@course.dept} #{@course.number}", @course]] %>
@@ -11,15 +19,16 @@
     <%= f.error_messages %>
     <p>
       <%= f.label :name, 'Name', :class => 'form_label' %>
-      <%= f.text_field :name %>
+      <%= f.text_field :name, :style => 'width: 15em' %>
     </p>
     <p>
       <%= f.label :department_id, 'Department', :class => 'form_label' %>
-      <%= f.select :department_id, @departments %>
+      <%= f.select :department_id, @departments, {}, :style => 'min-width: 15.4em' %>
+      <%= link_to 'Add a department', new_department_path, :style => 'margin-left: 10px; text-transform: lowercase; font-variant: small-caps' %>
     </p>
     <p>
       <%= f.label :number, 'Number', :class => 'form_label' %>
-      <%= f.text_field :number %>
+      <%= f.text_field :number, :style => 'width: 15em' %>
     </p>
     <p>
       <%= f.label :term, 'Term', :class => 'form_label' %>
