@@ -7,36 +7,32 @@
   [@item.name, [@course, @item]]] %>
 
 <div id="content">
+  <h1 style="display: inline"><%=h @item.name %></h1> <%= link_to 'Edit', edit_course_item_path(@course, @item) %>
   <p>
-    <b>Name:</b>
-    <%=h @item.name %>
+    <span class="item_h2">Due <%=h @item.due_date_s %></span>&nbsp;&nbsp;<%=h @item.time_left %>
   </p>
 
   <p>
-    <b>Category:</b>
-    <%=h @item.category %>
-  </p>
-
-  <p>
-    <b>Due date:</b>
-    <%=h @item.due_date %>
-  </p>
-
-  <p>
-    <b>Points:</b>
+    <span class="item_h2">Points</span>
     <%=h @item.points %>
+    <span class="item_h2">Weight</span>
+    <%=h @item.weight %>%
   </p>
-
-  <p>
-    <b>Weight:</b>
-    <%=h @item.weight %>
-  </p>
-
-  <p>
-    <b>Description:</b>
+  
+  <div class="item_h2">Description</div>
+  <div class="item_p">
     <%=h @item.description %>
-  </p>
+  </div>
 
-  <%= link_to 'Edit', edit_course_item_path(@course, @item) %> |
-  <%= link_to 'Back', course_items_path(@course) %>
+  <div>
+    <%=h link_to 'Discussion', course_item_posts_path(@course, @item), :class => "item_h2" %>
+  </div>
+  <% if @post %>
+    <strong><%=h @post.user.name %></strong> <%=h @post.time_ago %> wrote under <%= link_to @post.title, [@course, @item, @post] %>
+    <div class="item_p">
+      <%= @post.sanitize[0, 100] %>&#133;
+    </div>
+  <% else %>
+    <div class="item_p">No posts found.</div>
+  <% end %>
 </div>

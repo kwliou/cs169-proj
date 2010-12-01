@@ -6,7 +6,10 @@
   <style type="text/css">
     #forum_tags input {
       display: inline !important;
-  }
+    }
+    .selected {
+      text-decoration: none !important;
+    }
   </style>
 </noscript>
 
@@ -32,7 +35,8 @@ abbr alt cite class datetime height href name src title width xml:lang
     a = td.firstChild;
     shown = 'block';
     hidden = document.getElementById(tr_id).style.display != shown;
-    a.innerHTML = (hidden ? '&#9652;' : '&#9662;') + a.innerHTML.substring(1);
+    a.className = hidden ? 'post_title_max' : 'post_title_min';
+    //a.innerHTML = (hidden ? '&#9652;' : '&#9662;') + a.innerHTML.substring(1);
     document.getElementById(tr_id).style.display = hidden ? shown : 'none';
   /* jQuery is really laggy on my laptop, so better to not use it if it adds nothing.
    * $("#"+tr_id).slideToggle("fast");
@@ -62,13 +66,13 @@ abbr alt cite class datetime height href name src title width xml:lang
           <!-- Didn't use document.getElementById('checktag_#{tag}') -->
           <%= check_box_tag "tags[]", tag, @sel_tags.include?(tag), :style => 'display: none' %><%= link_to tag,
             course_item_posts_url(@course, @item, :tag => tag),
-            :onclick => "this.className = this.className == 'unselected' ? 'selected' : 'unselected'; this.previousSibling.checked = !this.previousSibling.checked; return false",
-            :class => 'unselected' %><%= ', ' if @all_tags.last != tag %>
+            :onclick => "if (this.className == 'unselected') { this.className = 'selected'; this.previousSibling.checked = true; } else { this.className = 'unselected'; this.previousSibling.checked = false; } return false",
+            :class => @sel_tags.include?(tag) ? "selected" : "unselected" %><%= ', ' if @all_tags.last != tag %>
         </li>
       <% end %>
     </ul><div id="forum_tags_search">
     <%= label_tag 'include_all', 'Match all tags?', :style => 'font-size: 11pt' %>
-    <%= check_box_tag 'include_all', 'include_all', @include_all %>
+    <%= check_box_tag 'include_all', 'include_all', @include_all, :style => 'vertical-align: middle' %>
     <%= submit_tag 'Search', :name => nil, :style => 'font-size: 9.5pt' %></div>
   <% end %>
   <table id="forum_posts">

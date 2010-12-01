@@ -34,6 +34,7 @@ class ItemsController < ApplicationController
   # GET/items/1.xml
   def show
     @item = @course.items.find(:first, :conditions => ['lower(name) = ?', params[:id].downcase.gsub('_', ' ')])
+    @post = @item.posts.last
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @item }

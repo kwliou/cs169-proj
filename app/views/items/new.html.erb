@@ -22,7 +22,7 @@
   </p>
   <p>
     <%= f.label :due_date %><br />
-    <%= f.datetime_select :due_date %>
+    <%= f.datetime_select :due_date, :default => DateTime.now.end_of_day %>
   </p>
   <p>
     <%= f.label :points %><br />

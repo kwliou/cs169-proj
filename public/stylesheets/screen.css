@@ -305,9 +305,27 @@ we don't have to rely on proprietary attributes but there's no time
     background-image: url("/images/round.png");
 }
 
+/************************** Items CSS **************************/
+.item_h2 {
+    font-family: "Tahoma", sans-serif;
+    font-size: 13pt;
+    font-weight: bold;
+}
+.item_p {
+    margin: 2px 0 20px 10px;
+    width: 85%;
+    font-size: 11pt;
+    line-height: 150%;
+    font-family: "Georgia", "Garamond", "Times New Roman", serif;
+    /*font-family: 'Segoe UI', 'Lucida Sans Unicode', 'Droid Sans', sans-serif;*/
+}
+
 /************************** Forums CSS **************************/
 .unselected { /* should be li */
     text-decoration: none;
+}
+.selected { /* should be li */
+    text-decoration: underline;
 }
 #forum_tags {
     display: inline;
@@ -388,6 +406,18 @@ we don't have to rely on proprietary attributes but there's no time
 }
 .post_expand {
     width: 5em;
+}
+.post_title_min:before {
+    content: "▼ ";
+    font-size: 6.5pt;
+    position: relative;
+    bottom: 2px;
+}
+.post_title_max:before {
+    content: "▲ ";
+    font-size: 6.5pt;
+    position: relative;
+    bottom: 2px;
 }
 .post_replies {
     width: 5.5em;
