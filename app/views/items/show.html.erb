@@ -9,7 +9,9 @@
 <div id="content">
   <h1 style="display: inline"><%=h @item.name %></h1> <%= link_to 'Edit', edit_course_item_path(@course, @item) %>
   <p>
-    <span class="item_h2">Due <%=h @item.due_date_s %></span>&nbsp;&nbsp;<%=h @item.time_left %>
+    <span class="item_h2">Due <%=h @item.due_date_s %></span>
+    &nbsp;<%=h time_ago_in_words(@item.due_date) %>
+    <%=h @item.due_date.future? ? 'from now' : 'ago' %>
   </p>
 
   <p>
@@ -28,7 +30,8 @@
     <%=h link_to 'Discussion', course_item_posts_path(@course, @item), :class => "item_h2" %>
   </div>
   <% if @post %>
-    <strong><%=h @post.user.name %></strong> <%=h @post.time_ago %> wrote under <%= link_to @post.title, [@course, @item, @post] %>
+    <strong><%=h @post.user.name %></strong> <%=h time_ago_in_words(@post.created_at) %> ago
+    wrote under <%= link_to @post.title, [@course, @item, @post] %>
     <div class="item_p">
       <%= @post.sanitize[0, 100] %>&#133;
     </div>

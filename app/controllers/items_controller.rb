@@ -61,9 +61,9 @@ class ItemsController < ApplicationController
   # POST /items.xml
   def create
     @item = @course.items.build(params[:item])
-
     respond_to do |format|
       if @item.save
+        @item.update_attributes(:due_date => @item.due_date - DateTime.now.utc_offset) # Rails doesn't do this automatically!
         format.html { redirect_to([@course, @item], :notice => 'Item was successfully created.') }
         format.xml  { render :xml => @item, :status => :created, :location => @item }
       else
@@ -79,6 +79,7 @@ class ItemsController < ApplicationController
     @item = @course.items.find(:first, :conditions => ['lower(name) = ?', params[:id].downcase.gsub('_', ' ')])
     respond_to do |format|
       if @item.update_attributes(params[:item])
+        @item.update_attributes(:due_date => @item.due_date - DateTime.now.utc_offset) # Rails doesn't do this automatically!
         format.html { redirect_to([@course, @item], :notice => 'Item was successfully updated.') }
         format.xml  { head :ok }
       else

@@ -73,14 +73,14 @@ class Item < ActiveRecord::Base
     time = date.strftime("%I:%M %p")
     "#{date.to_date.to_formatted_s(:long)} #{time.first == '0' ? time[1..-1] : time}"
   end
-  def time_left
-    time = ((due_date.getlocal - DateTime.current) / 86400).to_i
-    if time < 0
-      "#{-time} days ago"
-    elsif time > 0
-      "#{time} days from now"
-    else
-      "Today"
-    end
-  end
+#  def time_left
+#    time = ((due_date.getlocal - DateTime.current) / 86400).to_i
+#    if time < 0
+#      "#{-time} days ago"
+#    elsif time > 0
+#      "#{time} days from now"
+#    else
+#      "Today"
+#    end
+#  end
 end
