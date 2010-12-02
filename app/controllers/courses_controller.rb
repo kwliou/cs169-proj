@@ -27,7 +27,7 @@ class CoursesController < ApplicationController
     redirect_to :action => 'show', :id => @course.to_param
   end
 def unsubscribe
-	@current_user.courses.delete(Course.find(params[:id]))
+	@current_user.courses.delete(Course.find_by_param(params[:id]))
 	redirect_to :controller=>:main, :action=>:index
 	end
 	

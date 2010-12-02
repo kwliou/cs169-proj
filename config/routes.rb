@@ -36,6 +36,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :courses, :has_many => :ratings
   map.resources :users, :has_many => :ratings
+  map.remove_course 'courses/:id/remove_course', :controller => :courses, :action => :unsubscribe, :id => :course.id
 
   map.login 'login', :controller => :user_sessions, :action => :new
   map.logout 'logout', :controller => :user_sessions, :action => :destroy
