@@ -56,6 +56,7 @@ abbr alt cite class datetime height href name src title width xml:lang
   // -->
 </script>
 <div id="content">
+  <%= link_to 'New post', new_course_item_post_path(@course, @item) %>
   <% form_remote_tag :update => 'forum_posts',
             #:method => :get,
              :url => course_item_ajaxupdate_url(@course, @item),
@@ -74,9 +75,9 @@ abbr alt cite class datetime height href name src title width xml:lang
         </li>
       <% end %>
     </ul><div id="forum_tags_search">
-    <%= label_tag 'include_all', 'Match all tags?', :style => 'font-size: 11pt' %>
-    <%= check_box_tag 'include_all', 'include_all', @include_all, :style => 'vertical-align: middle' %>
-    <%= submit_tag 'Search', :name => nil, :style => 'font-size: 9.5pt' %></div>
+    <%= label_tag 'include_all', 'Match all tags?' %>
+    <%= check_box_tag 'include_all', 'include_all', @include_all %>
+    <%= submit_tag 'Search', :name => nil %></div>
   <% end %>
   <table id="forum_posts">
     <!--tr>
@@ -93,6 +94,4 @@ abbr alt cite class datetime height href name src title width xml:lang
       <%= render 'posts', :posts => @posts %>
     <% end %>
   </table>
-  <br />
-  <%= link_to 'New post', new_course_item_post_path(@course, @item) %>
 </div>

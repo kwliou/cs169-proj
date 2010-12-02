@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   before_filter :get_user # :get_user works on Heroku BUT WHY???
   before_filter :get_current_user, :except => [:new, :create]
+
+  layout 'scaffold'
+
   # GET /users
   # GET /users.xml
   def index
@@ -26,7 +29,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.xml
   def show
-    #@user = User.find(params[:id])
+    @profile = @current_user == @user
 
     respond_to do |format|
       format.html # show.html.erb
@@ -47,7 +50,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    #@user = User.find(params[:id])
+    @profile = @current_user == @user
   end
 
   # POST /users

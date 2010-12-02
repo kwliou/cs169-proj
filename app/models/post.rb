@@ -13,6 +13,9 @@ class Post < ActiveRecord::Base
     post.tags = (post.tags.split(',').map {|t| t.downcase.strip}).sort.join(', ')
   end
 
+  def course
+    item.course
+  end
   def tags_array
     tags.split(', ')
   end

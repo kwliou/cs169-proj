@@ -96,7 +96,7 @@ a {
 }
 
 a:hover {
-	color: #b6b7b9;
+    color: #a4a4a5;
 }
 
 #school {
@@ -360,6 +360,10 @@ we don't have to rely on proprietary attributes but there's no time
 }
 #forum_tags_search {
     margin: 5px 0 8px 0;
+    font-size: 11pt;
+}
+#forum_tags_search input, #forum_tags_search label {
+    vertical-align: middle;
 }
 .forum_actions {
     display: inline-block;
@@ -383,18 +387,11 @@ we don't have to rely on proprietary attributes but there's no time
     border-left: 0!important;
 }
 #forum_posts {
-    /*border-collapse: collapse;*/
+    /*border-collapse: collapse; This doesn't work in Chrome */
     border-spacing: 1px;
     color: #646566;
-    width: 90%;
-    /*
-    margin: 0 20px 0 20px;
-    display: inline-block;
-    list-style-type: none;
-    */
-}
-#forum_posts tbody {
-    /* width: 90%;*/
+    width: 94%;
+    margin-bottom: 10px;
 }
 .post { /* THIS IS A TR */
     height: 1.5em;
@@ -501,7 +498,7 @@ we don't have to rely on proprietary attributes but there's no time
     font-variant: small-caps;
     margin-top: 10px;
 }
-/* post_page* is for individual post pages */
+/************************** Posts Page CSS **************************/
 .post_page {
     color: #646566;
     font-size: 11pt;
