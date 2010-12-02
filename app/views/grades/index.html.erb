@@ -1,7 +1,9 @@
 <%= stylesheet_link_tag 'grades' %>
 
+<script type="text/javascript" src="/javascripts/jquery-1.4.4.js"></script>
+<script type="text/javascript" src="/javascripts/highcharts.js"></script>
 <script type="text/javascript" src="/javascripts/stats.js"></script>
-<script type="text/javascript">
+<script>
 $(document).ready(function(e) {
 	$('.histogram_link').click(function(e) {
 		var item_id = $(this).attr('data-id');
@@ -62,64 +64,68 @@ $(document).ready(function(e) {
   ["Grades", url_for(:controller => :grades, :action => :index)]] %>
 
 <div id="content">	
-	<% form_for @course, :url => url_for(:controller => 'grades', :action => 'destroy') do |f| %>
-	<div id="notification" class="success notification"><%= params[:notification] %></div>
-	<div id="errors" class="error notification"><%= params[:errors] %></div>
-	<table id="grades_list">
-	  <tr>
-	  	<th>Item</th>
-	  	<th class="align_right">Points</th>
-	  	<th class="divide">/</th>
-	  	<th>Possible</th>
-	  	<th>%</th>
-	  </tr>
+	<% if @item_grades.length == 0 %>
+		<span style="float:left;">No items to grade</span>
+	<% else %>
+		<% form_for @course, :url => url_for(:controller => 'grades', :action => 'destroy') do |f| %>
+		<div id="notification" class="success notification"><%= params[:notification] %></div>
+		<div id="errors" class="error notification"><%= params[:errors] %></div>
+		<table id="grades_list">
+		  <tr>
+		  	<th>Item</th>
+		  	<th class="align_right">Points</th>
+		  	<th class="divide">/</th>
+		  	<th>Possible</th>
+		  	<th>%</th>
+		  </tr>
+		
+		<% total_pts = 0
+		 total_possible = 0 
+		%>
 	
-	<% total_pts = 0
-	 total_possible = 0 
-	%>
-	<% @item_grades.each do |item_grade| %>
-	  	<% total_possible += item_grade[1].points %>
-		<% if item_grade[0] != nil %>
-		<% total_pts += item_grade[0].points_received %>
-		  <tr class="item_row">
-		    <td>
-		    	<span class="item_name"><%= check_box_tag "grade_ids[]", item_grade[0].id, false, :class => "destroy_checkbox" %>
-			    <%= link_to item_grade[1].name, [@course, item_grade[1]] %></span>
-		    </td>
-		    <td class="align_right"><%= link_to format("%.2f", item_grade[0].points_received), '#', 'data-id' => item_grade[1].id, :class => 'histogram_link' %></td>
-		    <td class="divide">/</td>
-		    <td><%= item_grade[1].points %></td>
-		    <% if item_grade[1].points != 0 %>
-			  	<td><%= format("%.2f%%", ((item_grade[0].points_received*100)/(item_grade[1].points))) %></td>
+		<% @item_grades.each do |item_grade| %>
+		  	<% total_possible += item_grade[1].points %>
+			<% if item_grade[0] != nil %>
+			<% total_pts += item_grade[0].points_received %>
+			  <tr class="item_row">
+			    <td>
+			    	<span class="item_name"><%= check_box_tag "grade_ids[]", item_grade[0].id, false, :class => "destroy_checkbox" %>
+				    <%= link_to item_grade[1].name, [@course, item_grade[1]] %></span>
+			    </td>
+			    <td class="align_right"><%= link_to format("%.2f", item_grade[0].points_received), '#', 'data-id' => item_grade[1].id, :class => 'histogram_link' %></td>
+			    <td class="divide">/</td>
+			    <td><%= item_grade[1].points %></td>
+			    <% if item_grade[1].points != 0 %>
+				  	<td><%= format("%.2f%%", ((item_grade[0].points_received*100)/(item_grade[1].points))) %></td>
+				<% end %>
+			  </tr>
+			<% else %>
+			  <tr class="item_row" data-id="<%= item_grade[1].id %>">
+			    <td>
+			    	<span class="item_name no_grade">
+				    	<%= link_to item_grade[1].name, [@course, item_grade[1]] %>
+				    </span>
+			    </td>
+			    <td class="align_right"><%= link_to 'Enter Grade', new_course_grade_path(@course, :item_id => item_grade[1].id), :class => 'enter_grade_link', 'data-id' => item_grade[1].id %>
+			    <td class="divide">/</td>
+			    <td><%= item_grade[1].points %></td>
+				<td>--</td>
+			  </tr>
 			<% end %>
-		  </tr>
-		<% else %>
-		  <tr class="item_row" data-id="<%= item_grade[1].id %>">
-		    <td>
-		    	<span class="item_name no_grade">
-			    	<%= link_to item_grade[1].name, [@course, item_grade[1]] %>
-			    </span>
-		    </td>
-		    <td class="align_right"><%= link_to 'Enter Grade', new_course_grade_path(@course, :item_id => item_grade[1].id), :class => 'enter_grade_link', 'data-id' => item_grade[1].id %>
-		    <td class="divide">/</td>
-		    <td><%= item_grade[1].points %></td>
-			<td>--</td>
-		  </tr>
+		<% end %>
+		
+		<% if total_possible != 0 %>
+			<tr id="grade_totals">
+				<td><input id="remove_grades_button" type="submit" value="Remove" /></td>
+				<td class="align_right"><%= format("%.2f", total_pts) %></td>
+				<td class="divide">/</td>
+				<td><%= total_possible %></td>
+			  	<td><%= format("%.2f%", (total_pts*100)/(total_possible)) %></td>
+			</tr>
 		<% end %>
 	<% end %>
-	
-	<% if total_possible != 0 %>
-		<tr id="grade_totals">
-			<td><input id="remove_grades_button" type="submit" value="Remove" /></td>
-			<td class="align_right"><%= format("%.2f", total_pts) %></td>
-			<td class="divide">/</td>
-			<td><%= total_possible %></td>
-		  	<td><%= format("%.2f%", (total_pts*100)/(total_possible)) %></td>
-		</tr>
-	<% end %>
-	
 	</table>
-	<% end %>
+<% end %>
 	<div id="histogram_container"></div>
 	</div>
 </div>
