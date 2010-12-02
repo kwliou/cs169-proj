@@ -257,14 +257,18 @@ we don't have to rely on proprietary attributes but there's no time
 }
 .course_info {
     padding-left: 10px;
-    vertical-align: text-bottom;
+    vertical-align: baseline;
+    position: relative;
+    bottom: 2px;
     font-family: "St Ryde Regular", "edelsans", "Tahoma", sans-serif;
-    font-size: 14pt;
+    font-size: 13pt;
     color: #a5a5a5;
 }
 .course_action_comment {
     padding: 0 0 0 24px;
-    vertical-align: text-bottom;
+    vertical-align: baseline;
+    position: relative;
+    bottom: 1px;
     font-family: "St Ryde Regular", "edelsans", "Tahoma", sans-serif;
     font-size: 14pt;
     color: #a5a5a5;
@@ -362,14 +366,18 @@ we don't have to rely on proprietary attributes but there's no time
     border-left: 0!important;
 }
 #forum_posts {
-    border-collapse: collapse;
+    /*border-collapse: collapse;*/
+    border-spacing: 1px;
     color: #646566;
-    min-width: 90%;
+    width: 90%;
     /*
     margin: 0 20px 0 20px;
     display: inline-block;
     list-style-type: none;
     */
+}
+#forum_posts tbody {
+    /* width: 90%;*/
 }
 .post { /* THIS IS A TR */
     height: 1.5em;
@@ -378,17 +386,16 @@ we don't have to rely on proprietary attributes but there's no time
     width: 100%;
     */
 }
-.noscript {
-    display: block !important;
-}
 .post:hover, .post:hover a {
     color: #000;
 }
 .post td {
     text-align: left;
     font-size: 11pt;
+    margin-top: 0;
+    padding-top: 0;
     border-bottom: 1px dotted black;
-    
+    padding-bottom: 4px;
     /*
     height: 1.5em;
     text-decoration: none;
@@ -403,9 +410,10 @@ we don't have to rely on proprietary attributes but there's no time
 }
 .post_check {
     width: 1.5em;
+        /*border-bottom: 1px dotted black;*/
 }
-.post_expand {
-    width: 5em;
+.post_title {
+ 
 }
 .post_title_min:before {
     content: "▼ ";
@@ -444,14 +452,15 @@ we don't have to rely on proprietary attributes but there's no time
     margin: 10px;
     border-left: 1px solid #ccc;
     padding-left: 0.5em;
-
 }
 .post_reply {
     font-size: 11pt;
     margin: 20px 10px 10px 10px;
     border-left: 1px solid #ccc;
     padding-left: 0.5em;
-
+}
+.post_reply_info {
+    margin-top: 5px;
 }
 .post_header {
     font-size: 10pt;

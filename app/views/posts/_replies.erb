@@ -11,7 +11,7 @@
     <div class="post_body">
       <%= reply.sanitize %>
     </div>
-    <div>
+    <div class="post_reply_info">
       <%= link_to reply.user.name, reply.user %><br />
       <time><%=h reply.created_at_day_s %></time>
       <time><%=h reply.created_at_time_s %></time>

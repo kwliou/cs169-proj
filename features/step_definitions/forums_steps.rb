@@ -20,8 +20,9 @@ end
 
 Given /^I am subscribed to "([^"]*)" with item "([^"]*)"$/ do |course, item|
   department, number = course.split
+  @dept = Department.create!(:name => department, :abbr => department)
   @course = @current_user.courses.create!(
-    :department => department,
+    :department_id => @dept.id,
     :number => number,
     :name => 'Test Class')
   @item = @course.items.create!(
