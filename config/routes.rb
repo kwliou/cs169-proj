@@ -9,6 +9,7 @@ ActionController::Routing::Routes.draw do |map|
     user.resources :ratings
     user.posts 'posts', :controller => :posts, :action => :index_user, :requirements => { :user_id => /([^\/?]+)/ }
   end
+  map.connect '/courses/:course_id/grades/:action', :controller => 'grades'
   map.resources :assignments
   map.resources :blurbs
   map.resources :departments #, :except => :destroy
@@ -29,9 +30,13 @@ ActionController::Routing::Routes.draw do |map|
   # map.connect '/courses/:course_id/items/category/:category', :controller => :items, :action => :index
   
   # map.connect '/courses/:id/items', :controller => :items, :action => :index
+  map.resources :grades
   map.connect '/courses/:id/grades', :controller => :grades, :action => :index
+  map.create_course_grade '/courses/:course_id/grades/create', :controller => :grades, :action => :create
+  
   map.resources :courses, :has_many => :ratings
   map.resources :users, :has_many => :ratings
+  map.remove_course 'courses/:id/remove_course', :controller => :courses, :action => :unsubscribe, :id => :course.id
 
   map.login 'login', :controller => :user_sessions, :action => :new
   map.logout 'logout', :controller => :user_sessions, :action => :destroy

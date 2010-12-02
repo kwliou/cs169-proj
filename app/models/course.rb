@@ -15,7 +15,8 @@ class Course < ActiveRecord::Base
     "Anthropology" => "anthro",
     "Gender and Women's Studies" => "gws",
     "Aerospace Studies (Air Force ROTC)" => "aerospc",
-    "Math" => "math"
+    "Math" => "math",
+    "CS" => "cs"
   }
 
   def department_name
@@ -48,24 +49,23 @@ class Course < ActiveRecord::Base
   def e_rating
     if (raters == 0)
     return "Someone needs to rate this course!"
-  
   end
   rating=(Rating.total_e(self))/raters
   rating_s=rating.to_s
-  if (rating<1.5)
+  case rating
+  when 0..1.5
   return "WTF? (" << rating_s <<"/5)"
-  end
-  if (rating<2.5)
+  when 1.5..2.5
   return "prerequisite: IQ must be over 180 (" << rating_s <<"/5)"
-  end
-  if (rating<3.5)
+  when 2.5..3.5
   return "eh...can't complain (" << rating_s <<"/5)"
-  end
-  if (rating<4.5)
+  when 3.5..4.5
   return "GPA booster (" << rating_s <<"/5)"
+  when 4.5..5
+  return "I swear this is elementary school material (" << rating_s <<"/5)"
   end
-  else return "I swear this is elementary school material (" << rating_s <<"/5)"
   end
+  
   def raters
 	self.ratings.count
   end
@@ -75,19 +75,18 @@ class Course < ActiveRecord::Base
   end
   rating=Rating.total_i(self)/raters
   rating_s=rating.to_s
-  if (rating<1.5)
+  case rating
+  when 0..1.5
   return "World's greatest treatement for Insomnia! (" << rating_s <<"/5)"
-  end
-  if (rating<2.5)
+  when 1.5..2.5
   return "Zzz...Zzz... (" << rating_s <<"/5)"
-  end
-  if (rating<3.5)
+  when 2.5..3.5
   return "eh...can't complain (" << rating_s <<"/5)"
-  end
-  if (rating<4.5)
+  when 3.5..4.5
   return "I took the course 3 times!!! (" << rating_s <<"/5)"
+  when 4.5..5
+  return "I cried each time class was over (" << rating_s <<"/5)"
   end
-  else return "I cried each time class was over (" << rating_s <<"/5)"
   end
   
   def w_rating
@@ -96,19 +95,18 @@ class Course < ActiveRecord::Base
   end
   rating=Rating.total_w(self)/raters
   rating_s=rating.to_s
-  if (rating<1.5)
+  case rating
+  when 0..1.5
   return "my therapist says I'm scarred for life (" << rating_s <<"/5)"
-  end
-  if (rating<2.5)
+  when 1.5..2.5
   return "sleep is for losers (" << rating_s <<"/5)"
-  end
-  if (rating<3.5)
+  when 2.5..3.5
   return "eh...can't complain (" << rating_s <<"/5)"
-  end
-  if (rating<4.5)
+  when 3.5..4.5
   return "for lazy students only!!! (" << rating_s <<"/5)"
+  when 4.5..5
+  return "a semester long vacation (" << rating_s <<"/5)"
   end
-  else return "a semester long vacation (" << rating_s <<"/5)"
   end
   
   def full_name

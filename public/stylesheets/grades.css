@@ -71,8 +71,3 @@ a {
 .enter_grade_link {
 	
 }
-
-a:hover {
-	text-decoration:none;
-	border-bottom: dotted 1px #979899;
-}

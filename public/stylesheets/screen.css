@@ -94,6 +94,11 @@ abbr { /* IE doesn't have this style by default */
 a {
     color: #979899;
 }
+
+a:hover {
+	color: #b6b7b9;
+}
+
 #school {
     float: right;
 }
@@ -221,8 +226,10 @@ we don't have to rely on proprietary attributes but there's no time
 }
 #content {
     clear: left;
+	text-align:left;
     padding: 20px 3% 0 3%;
 }
+
 .section_header {
     display: block;
     margin: 0 0 6px 0;
@@ -255,6 +262,16 @@ we don't have to rely on proprietary attributes but there's no time
     font-weight: bold;
     font-size: 14pt;
 }
+
+.block {
+	display:block;
+}
+
+.small {
+	float:left;
+	font-size:14px;	
+}
+
 .course_info {
     padding-left: 10px;
     vertical-align: baseline;
