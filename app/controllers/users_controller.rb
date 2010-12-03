@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_filter :get_user # :get_user works on Heroku BUT WHY???
   before_filter :get_current_user, :except => [:new, :create]
 
-  layout 'scaffold'
+  layout 'scaffold', :except => [:new]
 
   # GET /users
   # GET /users.xml
