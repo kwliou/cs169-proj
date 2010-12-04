@@ -16,6 +16,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :user_sessions
   map.resources :courses, :collection => {:auto_complete_for_department_name => :get } do |course|
     # :requirements is for items with periods in them ex. Chapter 2.1 Questions
+    course.subscribe 'subscribe', :controller => :courses, :action => :subscribe
+    course.unsubscribe 'unsubscribe', :controller => :courses, :action => :unsubscribe
     course.resources :grades
     course.resources :ratings
     course.resources :items, :requirements => {:id => /[^\?\/]+/} do |item|
@@ -36,8 +38,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :courses, :has_many => :ratings
   map.resources :users, :has_many => :ratings
-  map.remove_course 'courses/:id/remove_course', :controller => :courses, :action => :unsubscribe, :id => :course.id
-
+  
   map.login 'login', :controller => :user_sessions, :action => :new
   map.logout 'logout', :controller => :user_sessions, :action => :destroy
   map.mobile 'mobile', :controller => :mobile, :action => :index
