@@ -14,10 +14,6 @@ class Item < ActiveRecord::Base
     name.gsub(' ', '_')
   end
 
-  def category_s
-    category.pluralize.titleizev2;
-  end
-  
   def histogram
     # Median is easy
     grades = self.grades.sort { |a, b| a.points_received <=> b.points_received }
@@ -65,22 +61,21 @@ class Item < ActiveRecord::Base
     return data
   end
 
+  def category_s
+    category.pluralize.titleizev2;
+  end
+
   def Item.categories_s(categories)
     (categories.split.map { |c| c.pluralize.titleizev2 }).join(', ')
   end
+
   def due_date_s
     date = due_date.getlocal
     time = date.strftime("%I:%M %p")
     "#{date.to_date.to_formatted_s(:long)} #{time.first == '0' ? time[1..-1] : time}"
   end
-#  def time_left
-#    time = ((due_date.getlocal - DateTime.current) / 86400).to_i
-#    if time < 0
-#      "#{-time} days ago"
-#    elsif time > 0
-#      "#{time} days from now"
-#    else
-#      "Today"
-#    end
-#  end
+  
+  def cal_date  # calendar date
+    due_date.getlocal.strftime('%b %d')
+  end
 end

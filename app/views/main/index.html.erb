@@ -44,9 +44,12 @@
 <div id="calendar">
   <a id="calendar_title" href="calendar">Upcoming Events</a>
   <ul>
-    <li class="calendar_entry">Oct 11 <a href="item1">CS 169 Midterm 1</a></li>
-    <li class="calendar_entry">Oct 11 <a href="item1">CS 188 Midterm 2</a></li>
-    <li class="calendar_entry">Oct 12 <a href="item1">CS 188 Project 2</a></li>
+    <% @items.each do |item| %>
+    <li class="calendar_entry">
+      <%=h item.cal_date %>
+      <%= link_to item.name, [item.course, item] %>
+    </li>
+    <% end %>
   </ul>
 </div>
 <% end %>

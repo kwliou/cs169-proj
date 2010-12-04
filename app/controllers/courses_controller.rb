@@ -66,8 +66,8 @@ class CoursesController < ApplicationController
   # GET /courses/1.xml
   def show
     @course = Course.find_by_param(params[:id])
-    @items = @course.items
-    
+    @items = @course.items.find(:all, :limit => 6, :conditions => ['due_date >= ?', Time.zone.now], :order => 'due_date')
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @course }

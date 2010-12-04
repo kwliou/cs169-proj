@@ -345,7 +345,10 @@ we don't have to rely on proprietary attributes but there's no time
     font-family: "Georgia", "Garamond", "Times New Roman", serif;
     /*font-family: 'Segoe UI', 'Lucida Sans Unicode', 'Droid Sans', sans-serif;*/
 }
-
+.item_subheader {
+    font-size: 11pt;
+    margin-top: 2px;
+}
 /************************** Forums CSS **************************/
 .unselected { /* should be li */
     text-decoration: none;
