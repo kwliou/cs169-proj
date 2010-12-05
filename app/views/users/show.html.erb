@@ -1,6 +1,6 @@
 <% content_for :title, @profile ? 'My Profile' : 'Users' %>
 
-<%= render '/layouts/nav', :navigation =>
+<%= render '/layouts/nav', :no_semester => true, :navigation =>
   @profile ? [['My Profile', @user]] : [['Users', users_path]] %>
 
 <div id="content">

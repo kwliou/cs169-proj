@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_filter :get_current_user, :except => [:new, :create]
 
   layout 'scaffold', :except => [:new]
-
+  #layout 'main', :except => [:new]
   # GET /users
   # GET /users.xml
   def index
@@ -41,9 +41,9 @@ class UsersController < ApplicationController
   # GET /users/new.xml
   def new
     @user = User.new
-
+    @user_session = UserSession.new
     respond_to do |format|
-      format.html # new.html.erb
+      format.html { render  :layout => 'main' } # new.html.erb
       format.xml  { render :xml => @user }
     end
   end

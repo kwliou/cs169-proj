@@ -318,12 +318,14 @@ we don't have to rely on proprietary attributes but there's no time
 #add_item {
     display: inline-block;
     background: #26ade4 url("/images/add.png") no-repeat left center;
-    -moz-border-radius: 3px;
     position: relative;
     left: 27.5%;
     bottom: 10px;
     padding: 4px 10px 5px 26px;
     margin-bottom: -20px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
 }
 #add_item a {
     color: #fff;
