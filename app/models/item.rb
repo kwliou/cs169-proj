@@ -39,7 +39,11 @@ class Item < ActiveRecord::Base
     end
     
     std_dev = (sd_sum / scores.length)**0.5
-    segment_size = self.points / 15
+    if self.points <= 15
+      segment_size = 1
+    else
+      segment_size = self.points / 15
+    end
     
     # Segment the scores into frequency buckets
     segments = []
@@ -49,8 +53,9 @@ class Item < ActiveRecord::Base
               
     low = scores.min
     high = low + segment_size
-    while high < scores.max and segment_size > 0 do
-      range = [low.floor, high.ceil]  
+    while high <= scores.max and segment_size > 0 do
+      range = [low.floor, high.ceil] 
+      puts range
       freq = 0
       scores.each do |score|
         if score >= low && score <= high
