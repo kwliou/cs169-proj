@@ -5,14 +5,14 @@ class Post < ActiveRecord::Base
   belongs_to :parent, :class_name => 'Post'
 
   validates_presence_of :title, :body, :tags
-
-  regex = Regexp.new '((https?:\/\/|www\.)([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)'
   
   before_save do |post|
-    post.body.gsub!(regex, '<a href="\1" rel="nofollow">\1</a>')
     post.tags = (post.tags.split(',').map {|t| t.downcase.strip}).sort.join(', ')
   end
 
+  def course
+    item.course
+  end
   def tags_array
     tags.split(', ')
   end

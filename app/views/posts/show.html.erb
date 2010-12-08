@@ -8,23 +8,31 @@
   ["Discussion", course_item_posts_path(@course, @item)]] %>
 
 <div id="content" class="post_page">
+  <% if @post.parent %>
+    <div id="post_parent" style="margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid #ddd">
+      Replying to <%= link_to @post.parent.title, [@course, @item, @post.parent] %>
+      <div id="post_page_body">
+        <%= @post.parent.sanitize %>
+      </div>
+    </div>
+  <% end %>
   <%= link_to @post.user.name, @post.user %> wrote on <%= @post.created_at_day_s %> at <span class="post_page_time"><%= @post.created_at_time_s %></span>
-  
   <p>
     <div class="post_header">
-      <% if @current_user == @post.user %>
+     <span id="post_page_title">
+      <%=h @post.title %>
+    </span>
+    <% if @current_user == @post.user %>
         <%= link_to "Edit", edit_course_item_post_path(@course, @item, @post) %>
       <% else %>
-        <%= link_to "Reply", course_item_post_reply_path(@course, @item, @post) %> |
-        <%= link_to "Private Message", "blah" %>
+        <%= link_to "Reply", course_item_post_reply_path(@course, @item, @post) %>
+        <!--%= link_to "Private Message", "blah" %-->
       <% end %>
       <% if @post.parent %>
         | <%= link_to "Context", course_item_post_path(@course, @item, @post.parent) %>
       <% end %>
     </div>
-    <div id="post_page_title">
-      <%=h @post.title %>
-    </div>
+    
   </p>
   <div id="post_page_content">
       <div id="post_page_body">

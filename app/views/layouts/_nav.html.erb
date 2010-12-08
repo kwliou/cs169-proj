@@ -1,14 +1,16 @@
-  <div>
-    <nav>
-    <ul id ="breadcrumbs">
-      <li class="breadcrumbs_a"><%= link_to "Home", root_path %></li>
-      <% navigation.each do |nav| %>
-        <li class="breadcrumbs_arrow">&#9654;</li>
-        <li class="breadcrumbs_a"><%= link_to nav.first, nav.last %></li>
-      <% end %>
-      <li class="breadcrumbs_semester">Fall '10
-        <img alt="&9662;" src="/images/flat_triangle.gif" />
-      </li>
-    </ul>
-    </nav>
-  </div>
+<div>
+  <nav>
+  <ul id ="breadcrumbs">
+    <li class="breadcrumbs_a"><%= link_to "Home", root_path %></li>
+    <% navigation.each do |nav| %>
+      <li class="breadcrumbs_arrow">&#9654;</li>
+      <li class="breadcrumbs_a"><%= link_to nav.first, nav.last %></li>
+    <% end %>
+    <% unless defined?(no_semester) %>
+    <li class="breadcrumbs_semester">
+      Fall '10 <img alt="&9662;" src="/images/flat_triangle.gif" />
+    </li>
+    <% end %>
+  </ul>
+  </nav>
+</div>

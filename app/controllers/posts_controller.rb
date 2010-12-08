@@ -102,6 +102,8 @@ class PostsController < ApplicationController
     # maybe parent_id should be added after save instead of before ...
     params[:post][:item_id] = @item.id
     params[:post][:body] = ActionController::Base.helpers.sanitize(params[:post][:body], :attributes => 'abbr alt cite datetime height href name src title width rowspan colspan rel')
+    regex = Regexp.new '((https?:\/\/|www\.)([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)'
+    params[:post][:body].gsub!(regex, '<a href="\1" rel="nofollow">\1</a>')
     @post = @current_user.posts.build(params[:post])
     #@post.item = @item
     respond_to do |format|
@@ -120,7 +122,9 @@ class PostsController < ApplicationController
   def update
     @post = @current_user.posts.find(params[:id])
     append = ActionController::Base.helpers.sanitize(params[:append], :attributes => 'abbr alt cite datetime height href name src title width rowspan colspan rel')
-    if !append.blank?
+    regex = Regexp.new '((https?:\/\/|www\.)([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)'
+    append.gsub!(regex, '<a href="\1" rel="nofollow">\1</a>')
+  if !append.blank?
       params[:post][:body] = "#{@post.body}<br /><br /><span class='post_edit'>Edit (#{DateTime.now.strftime("%x")}, #{DateTime.now.strftime("%l:%M %p")}): </span><br />#{append}"
     end
     respond_to do |format|

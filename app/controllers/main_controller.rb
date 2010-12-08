@@ -2,8 +2,12 @@ class MainController < ApplicationController
 
   def index
     @current_user = current_user
-    @courses = @current_user.courses if @current_user
     @user_session = UserSession.new
+    if @current_user
+      @courses = @current_user.courses
+      course_ids = @courses.map {|c| c.id}
+      @items = Item.find(:all, :limit => 10, :conditions => ['course_id IN (?) AND due_date >= ?', course_ids, Time.zone.now], :order => 'due_date')
+    end
     respond_to do |format|
       format.html # index.html.erb
     end

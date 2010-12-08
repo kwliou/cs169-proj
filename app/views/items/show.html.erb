@@ -23,19 +23,21 @@
   
   <div class="item_h2">Description</div>
   <div class="item_p">
-    <%=h @item.description %>
+    <%= sanitize @item.description, :attributes => 'abbr alt cite datetime height href name src title width rowspan colspan rel' %>
   </div>
 
   <div>
     <%=h link_to 'Discussion', course_item_posts_path(@course, @item), :class => "item_h2" %>
   </div>
-  <% if @post %>
-    <strong><%=h @post.user.name %></strong> <%=h time_ago_in_words(@post.created_at) %> ago
-    wrote under <%= link_to @post.title, [@course, @item, @post] %>
-    <div class="item_p">
-      <%= @post.sanitize[0, 100] %>&#133;
-    </div>
-  <% else %>
-    <div class="item_p">No posts found.</div>
-  <% end %>
+  <div class="item_subheader">
+    <% if @post %>
+      <strong><%=h @post.user.name %></strong> <%=h time_ago_in_words(@post.created_at) %> ago
+      wrote under <%= link_to @post.title, [@course, @item, @post] %>
+      <div class="item_p">
+        &ldquo;<%= @post.body.length > 100 ? "#{@post.sanitize[0, 100]}&#133;" : @post.sanitize %>&rdquo;
+      </div>
+    <% else %>
+      <div class="item_p">No posts found.</div>
+    <% end %>
+  </div>
 </div>

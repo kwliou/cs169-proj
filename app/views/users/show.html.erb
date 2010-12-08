@@ -1,19 +1,18 @@
-<p>
-  <b>First name:</b>
-  <%=h @user.first_name %>
-</p>
+<% content_for :title, @profile ? 'My Profile' : 'Users' %>
 
-<p>
-  <b>Last name:</b>
-  <%=h @user.last_name %>
-</p>
+<%= render '/layouts/nav', :no_semester => true, :navigation =>
+  @profile ? [['My Profile', @user]] : [['Users', users_path]] %>
 
-<p>
-  <b>E-mail:</b>
-  <%=h @user.email %>
-</p>
-
-
-<%= link_to 'Posts', user_posts_path(@user) %> |
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div id="content">
+  <h1><%=h @user.first_name %> <%=h @user.last_name %></h1>
+  <strong>Subscribed Courses</strong>
+  <p>
+    <% @user.courses.each do |course| %>
+      <%= link_to course.abbr, course %> (<%=h course.name %>)<br />
+    <% end %>
+  </p>
+  <%= link_to 'Posts', user_posts_path(@user) %>
+  <p>
+    <%= link_to 'Edit my information', edit_user_path(@user) if @profile %>
+  </p>
+</div>

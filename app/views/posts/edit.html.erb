@@ -15,7 +15,7 @@
     Editing: <%=h @post.title %>
   </p>
   <p id="post_page_body">
-    <%= sanitize @post.body.gsub("\n", "<br />") %>
+    <%= @post.sanitize.gsub("\n", "<br />") %>
   </p>
   <p>
     <%= text_area_tag 'append', nil, :rows => 10, :cols => 50 %>

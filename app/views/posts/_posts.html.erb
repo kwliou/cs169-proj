@@ -14,8 +14,8 @@
           <% if @current_user == post.user %>
             <%= link_to "Edit", edit_course_item_post_path(@course, @item, post) %>
           <% else %>
-            <%= link_to "Reply", course_item_post_reply_path(@course, @item, post) %> |
-            <%= link_to "Private Message", "blah" %>
+            <%= link_to "Reply", course_item_post_reply_path(@course, @item, post) %>
+            <!--%= link_to "Private Message", "blah" %> |-->
           <% end %>
           <% if post.parent %>
             | <%= link_to "Context", course_item_post_path(@course, @item, post.parent) %>
@@ -28,7 +28,6 @@
           Tags: <%=h post.tags %>
         </div>
         <%= render 'replies', :post => post %>
-
       </div>
     </td>
   </tr>
@@ -40,8 +39,8 @@
           <% if @current_user == post.user %>
             <%= link_to "Edit", edit_course_item_post_path(@course, @item, post) %>
           <% else %>
-            <%= link_to "Reply", course_item_post_reply_path(@course, @item, post) %> |
-            <%= link_to "Private Message", "blah" %>
+            <%= link_to "Reply", course_item_post_reply_path(@course, @item, post) %>
+            <!--%= link_to "Private Message", "blah" %> |-->
           <% end %>
           <% if post.parent %>
             | <%= link_to "Context", course_item_post_path(@course, @item, post.parent) %>
@@ -54,7 +53,6 @@
           Tags: <%=h post.tags %>
         </div>
         <%= render 'replies', :post => post %>
-
       </div>
     </td>
   </tr>

@@ -1,20 +1,28 @@
-<h1>Editing user</h1>
+<% content_for :title, 'My Profile | Edit' %>
 
-<% form_for(@user) do |f| %>
-  <%= f.error_messages %>
+<%= render '/layouts/nav', :no_semester => true, :navigation =>
+  @profile ? [['My Profile', @user]] : [['Users', users_path]] %>
 
-  <p>
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
-  </p>
-  <p>
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
-<% end %>
+<div id="content">
+  <h1>Editing My Profile</h1>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+  <% form_for(@user) do |f| %>
+    <%= f.error_messages %>
+
+    <p>
+      <%= f.label :first_name %><br />
+      <%= f.text_field :first_name %>
+    </p>
+    <p>
+      <%= f.label :last_name %><br />
+      <%= f.text_field :last_name %>
+    </p>
+    <p>
+      <%= f.label :email %><br />
+      <%= f.text_field :email %>
+    </p>
+    <p>
+      <%= f.submit 'Update' %>
+    </p>
+  <% end %>
+</div>

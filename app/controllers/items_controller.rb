@@ -5,10 +5,10 @@ class ItemsController < ApplicationController
   # GET /courses/:id/items
   # GET /items.xml
   def index
-    category = params[:category]
-    if category
-      @category_s = Item.categories_s(category)
-      @items = @course.items.find(:all, :conditions => ["lower(category) IN (?)", category.downcase.split(' ')])
+    @category = params[:category]
+    if @category
+      @category_s = Item.categories_s(@category)
+      @items = @course.items.find(:all, :conditions => ["lower(category) IN (?)", @category.downcase.split(' ')])
     else
       @category_s = 'All Items'
       @items = @course.items
@@ -60,6 +60,7 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.xml
   def create
+    #params[:item][:description] = ActionController::Base.helpers.sanitize(params[:post][:body], :attributes => 'abbr alt cite datetime height href name src title width rowspan colspan rel')
     @item = @course.items.build(params[:item])
     respond_to do |format|
       if @item.save

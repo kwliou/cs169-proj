@@ -4,7 +4,9 @@
 <%= render '/layouts/nav', :navigation =>
   [["Courses", courses_path],
   ["#{@course.dept} #{@course.number}", @course]] %>
-
+<div id="add_item">
+  <%= link_to 'New Item', new_course_item_path(@course) %>
+</div>
 <div id="content">
   <div id="content_left">
     <div>
@@ -28,10 +30,6 @@
       <span class="stryde course_action_comment">What's this all about?</span>
     </div>
     <div>
-      <a class="course_action" href="<%= url_for(:controller => "grades", :action => "index", :id => @course.id) %>">Semester Wrap-up</a>
-      <span class="stryde course_action_comment">Is school over yet?</span>
-    </div>
-	<div>
       <%= link_to "Ratings", course_ratings_path(@course), :class => "course_action" %>
       <span class="stryde course_action_comment">What did you think?</span>
     </div>
@@ -41,9 +39,12 @@
 <div id="calendar">
   <a id="calendar_title" href="calendar">Course Calendar</a>
   <ul>
-    <li class="calendar_entry">Oct 11 <a href="item1">Midterm 1</a></li>
-    <li class="calendar_entry">Oct 11 <a href="item1">Midterm 2</a></li>
-    <li class="calendar_entry">Oct 12 <a href="item1">Project Milestone 3</a></li>
+    <% @items.each do |item| %>
+    <li class="calendar_entry">
+      <%=h item.cal_date %>
+      <%= link_to item.name, [@course, item] %>
+    </li>
+    <% end %>
   </ul>
   <div class="course-body-container">
     <div class="course-blurbs-container">

@@ -1,5 +1,7 @@
-class CoursesController < ApplicationController
+class CoursesController < ApplicationController  
   before_filter :get_current_user # :get_course doesn't work on Heroku
+
+  layout 'scaffold'
 
   def auto_complete_for_department_name
     @depts = Department.find(:all, :conditions=> ['name LIKE ?', "%#{params[:department][:name]}%"])
@@ -19,19 +21,16 @@ class CoursesController < ApplicationController
   end
 
   def subscribe
-    @course = Course.find(params[:id])
-    if !@current_user.courses.include?(@course)
-      @current_user.courses << @course
-    end
-    
+    @course = Course.find_by_param(params[:course_id])
+    @current_user.courses << @course if !@current_user.courses.include?(@course)
     redirect_to :action => 'show', :id => @course.to_param
   end
-def unsubscribe
-	@current_user.courses.delete(Course.find_by_param(params[:id]))
-	redirect_to :controller=>:main, :action=>:index
+  
+  def unsubscribe
+    @course = Course.find_by_param(params[:course_id])
+    @current_user.courses.delete(@course)
+    redirect_to root_url
 	end
-	
-  layout "scaffold"
   
   # GET /courses
   # GET /courses.xml
@@ -67,8 +66,8 @@ def unsubscribe
   # GET /courses/1.xml
   def show
     @course = Course.find_by_param(params[:id])
-    @items = @course.items
-    
+    @items = @course.items.find(:all, :limit => 6, :conditions => ['due_date >= ?', Time.zone.now], :order => 'due_date')
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @course }
