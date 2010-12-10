@@ -91,8 +91,9 @@ class RatingsController < ApplicationController
    def get_course
     if params[:course_id]
       dept, number = params[:course_id].split('_')
-      department = Course.unabbr(dept)
-      @course = Course.find_by_department_and_number(department, number)
+      department = Department.find_by_abbr(dept)
+      #department = Course.unabbr(dept)
+      @course = Course.find_by_department_id_and_number(department.id, number)
     end
 end
 end

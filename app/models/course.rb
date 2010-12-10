@@ -110,6 +110,6 @@ class Course < ActiveRecord::Base
   end
   
   def full_name
-  return self.department<< "	" << self.number
+  return self.department.name << "	" << self.number
   end
 end
