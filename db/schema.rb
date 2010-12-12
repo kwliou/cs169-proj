@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101211231549) do
+ActiveRecord::Schema.define(:version => 20101212201900) do
 
   create_table "blurbs", :force => true do |t|
     t.string   "text"
@@ -30,8 +30,6 @@ ActiveRecord::Schema.define(:version => 20101211231549) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "title"
-    t.string   "short_title"
     t.decimal  "points_possible"
     t.integer  "department_id"
   end
