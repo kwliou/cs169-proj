@@ -13,6 +13,10 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
   
+  def fb_url
+    return "http://www.facebook.com/profile.php?id=#{self.fb_id}"
+  end
+  
   def to_param
     username
   end

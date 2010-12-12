@@ -51,6 +51,18 @@ abbr { /* IE doesn't have this style by default */
 
 }
 
+.facebook_profile {
+	color: #3031b5;
+	font-size:14px;
+	text-decoration:none;
+	margin-left:12px;
+	font-weight:bold;
+}
+
+.facebook_profile:hover {
+	color: #4e59f9;
+}
+
 #welcome_title {
     font-family: "Museo Slab 500", "Fertigo Pro", "edelsans", "Anivers", "Helvetica", "Verdana", sans-serif;
     margin-top: 0;

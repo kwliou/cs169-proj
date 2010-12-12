@@ -4,7 +4,12 @@
   @profile ? [['My Profile', @user]] : [['Users', users_path]] %>
 
 <div id="content">
-  <h1><%=h @user.first_name %> <%=h @user.last_name %></h1>
+  <h1><%=h @user.first_name %> <%=h @user.last_name %>
+	  <% if @user.fb_id %>
+	  	  <a class="facebook_profile" href="<%= @user.fb_url %>">Facebook profile</a> <br/>
+	  <% end %>
+  </h1>
+
   <strong>Subscribed Courses</strong>
   <p>
     <% @user.courses.each do |course| %>
