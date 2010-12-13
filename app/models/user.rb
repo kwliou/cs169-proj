@@ -81,7 +81,6 @@ class User < ActiveRecord::Base
        result << format("%.2f", total / user_performances.length).to_f
 	  }
 	  
-	  debugger
 	  return result
 	end
 	
