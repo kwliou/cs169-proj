@@ -1,16 +1,18 @@
-<h1>Listing users</h1>
-
-<table>
-  <tr>
-    <th>First name</th>
-    <th>Last name</th>
-  </tr>
-
-<% @users.each do |user| %>
-  <tr>
-    <td><%=h user.first_name %></td>
-    <td><%=h user.last_name %></td>
-    <td><%=h link_to 'Show', user %></td>
-  </tr>
-<% end %>
-</table>
+<div id="content">
+	<h1>Listing users</h1>
+	
+	<table>
+	  <tr>
+	    <th>First name</th>
+	    <th>Last name</th>
+	  </tr>
+	
+	<% @users.each do |user| %>
+	  <tr>
+	    <td><%=h user.first_name %></td>
+	    <td><%=h user.last_name %></td>
+	    <td><%=h link_to 'Show', user %></td>
+	  </tr>
+	<% end %>
+	</table>
+</div>
