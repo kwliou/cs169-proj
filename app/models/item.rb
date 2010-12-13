@@ -18,9 +18,12 @@ class Item < ActiveRecord::Base
   def histogram
     # Median is easy
     grades = self.grades.sort { |a, b| a.points_received <=> b.points_received }
+    if grades.length < 1
+      return {:mean => 0.0, :std_dev => 0.0, :title => '', :points => []}
+    end
+    
     median = grades[grades.length / 2].points_received
     scores = []
-    
     # Calculate the mean
     total = 0.0
     grades.each do |g|
@@ -36,11 +39,7 @@ class Item < ActiveRecord::Base
     end
     
     std_dev = (sd_sum / scores.length)**0.5
-    if self.points <= 15
-      segment_size = 1
-    else
-      segment_size = self.points.to_f / 15.0
-    end
+    segment_size = self.points.to_f / 15.0
     
     # Segment the scores into frequency buckets
     segments = []
