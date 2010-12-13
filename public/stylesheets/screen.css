@@ -28,6 +28,7 @@ h1 {
 abbr { /* IE doesn't have this style by default */
     border-bottom: 1px dotted;
 }
+
 #bg {
     width: 100%;
     position: fixed;
@@ -40,6 +41,21 @@ abbr { /* IE doesn't have this style by default */
     background: url("/images/grad.png") repeat-y;
     */
 }
+
+#users_list {
+	color:#555;
+}
+
+#users_list td {
+	padding-right:80px;
+}
+
+.index_fb_link {
+	color: #3031b5;
+	text-decoration:none;
+	font-weight:bold;
+}
+
 #bg img {
     min-width: 900px;
     width: 100%;
