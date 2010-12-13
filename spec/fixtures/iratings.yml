@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  easiness: 1
+  interest: 1
+  work_load: 1
+  item_id: 1
+
+two:
+  easiness: 1
+  interest: 1
+  work_load: 1
+  item_id: 1

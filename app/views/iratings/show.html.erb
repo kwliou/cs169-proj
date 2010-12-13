@@ -4,66 +4,42 @@
 <%= render '/layouts/nav', :navigation =>
   [["Courses", courses_path],
   ["#{@course.dept} #{@course.number}", @course],
-  ["Ratings", course_ratings_path(@course)]] %>
-
+  [@item.category_s, course_items_path(@course, :category => @item.category.downcase)],
+  [@item.name, [@course, @item]],
+  ["Ratings", course_item_iratings_path(@course, @item)]]  %>
+  
 <div id="content">
-  <div id="content_left">
-    <h1>My ratings</h1>
-<%if @current_user.rated_course(@course)%>
-<table>
-  <tr>
-    <th>Easiness</th>
-    <th>Interest</th>
-    <th>Work load</th>
-    <th>User</th>
-  </tr>
+  <div id="content_left"> 
 
-<% @ratings.each do |rating| %>
-  <tr>
-    <td><%=h rating.easiness %></td>
-    <td><%=h rating.interest %></td>
-    <td><%=h rating.work_load %></td>
-    <td><%=h rating.user.name %></td>
-    <td><%= link_to 'Show', [@course, rating] %></td>
-	<%if @current_user.id==rating.user_id%>
-    <td><%= link_to 'Edit', edit_course_rating_path(@course, rating) %></td>
-    <td><%= link_to 'Remove', [@course,rating], :confirm => 'Are you sure?', :method => :delete %></td>
-	<%end%>
-  </tr>
-<% end %>
-</table>
-
-
-
-<br />
-<%else%>
-<%= link_to 'New rating', new_course_rating_path(@course) %>
-<%end%>
-<h1>Average ratings</h1>
-<p>
-  <b>Course:</b>
-  <%=h @course.full_name %>
+ <b>Item:</b>
+  <%=h @irating.item.name %>
 </p>
 
 <p>
   <b>Easiness: Was it a free "A"? (1 being hard as hell, 5 being a walk in the park,)</b>
   </br>
-  <%=h @course.e_rating %>
+  <%=h Irating.to_s_e(@irating.easiness) %>
 </p>
 
 <p>
-  <b>Interesting?: Do you dream of going to class, or dream while you're in class? (1 being bored to death, 5 being absolutely fascinating)</b>
+  <b>Interesting?: How mind numbing was all the busy work? (1 being bored to death, 5 being absolutely fascinating)</b>
   <br/>
-  <%=h @course.i_rating %>
+  <%=h Irating.to_s_i(@irating.interest)%>
 </p>
 
 <p>
-  <b>Work load: Do you have a life? (1 being no I don't, 5 being a life free of school work)</b>
+  <b>Time and Effort Required: Have you seen sunlight lately? (1 being no I have not, 5 being partied all night)</b>
   </br>
-  <%=h @course.w_rating %>
+  <%=h Irating.to_s_w(@irating.work_load )%>
 </p>
-	
-  </div>
+
+
+
+
+<%= link_to 'Edit', edit_course_item_irating_path(@course, @item, @irating) %> 
+<%= link_to 'Back', course_item_iratings_path(@course, @item) %>
+
+</div>
 </div>
 
 <div id="calendar">

@@ -17,7 +17,7 @@ validates_presence_of :work_load
   course.ratings.inject(0){|sum, rating| sum+rating.work_load}
   end
   
-  def to_s_e(rate)
+  def Rating.to_s_e(rate)
   rating_s=rate.to_s
   case rate
   when 0..1.5
@@ -33,7 +33,7 @@ validates_presence_of :work_load
   end
   end
   
-  def to_s_i(rate)
+  def Rating.to_s_i(rate)
   rating_s=rate.to_s
   case rate
   when 0..1.5
@@ -49,7 +49,7 @@ validates_presence_of :work_load
   end
   end
   
-  def to_s_w(rate)
+  def Rating.to_s_w(rate)
   rating_s=rate.to_s
   case rate
   when 0..1.5
