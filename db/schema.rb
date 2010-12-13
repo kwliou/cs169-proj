@@ -9,17 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101213011659) do
-
-  create_table "blurbs", :force => true do |t|
-    t.string   "text"
-    t.boolean  "as_html"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "course_id"
-    t.text     "title"
-    t.string   "position"
-  end
+ActiveRecord::Schema.define(:version => 20101213203451) do
 
   create_table "courses", :force => true do |t|
     t.string   "number"

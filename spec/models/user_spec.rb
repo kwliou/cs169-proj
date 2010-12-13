@@ -11,15 +11,18 @@ describe User do
       :email => "email@email.com"
     }
 	
-	@course=Course.create!(
-	:department => "value for department",
+    @department = Department.create!(
+      :name => "Computer Science", :abbr => "COMPSCI"
+    )
+    @course=Course.create!(
+      :department => @department,
       :number => "value for number",
       :days => "value for days",
       :term => "value for term",
       :year => 1,
       :description => "value for description",
       :name => "value for name"
-	  )
+    )
 	  
   end
 
@@ -30,7 +33,7 @@ describe User do
    it "should return the correct rating" do
    @user=User.create(@valid_attributes)
    @rating=Rating.create!(
-	  :easiness => 1,
+	    :easiness => 1,
       :interest => 1,
       :work_load => 1,
       :user_id => @user.id,
@@ -39,6 +42,24 @@ describe User do
      @rating2=@user.rated_course(@course)
      @rating.should ==@rating2
    end
+   end
+   
+   describe "when calculating a users grade performance" do
+     it "should calculate the proper class performance for each day" do
+       
+     end
+     
+     it "should return an empty result if the student has no graded items" do
+       
+     end
+     
+     it "should calculate proper average for each day of the performance graph" do
+       
+     end
+     
+     it "should have as many data points as the user has grades" do
+       
+     end
    end
   
 end

@@ -11,11 +11,45 @@ describe Item do
     }
   end
 
-  it "should create a new instance given valid attributes" do
-    Item.create!(@valid_attributes)
+  describe "histograms" do
+    it "should create a new instance given valid attributes" do
+      Item.create!(@valid_attributes)
+    end
+    
+    it "should return an empty result when no histogram data is found" do
+      
+    end
+    
+    it "should return the proper point ranges for a given item" do
+      
+    end
+    
+    it "should return the proper mean for a given item" do
+      
+    end
+    
+    it "should return the proper mean for a given item" do
+      
+    end
+    
+    it "should return the proper std. dev for a given item" do
+      
+    end
+    
+    it "should return the proper std. dev for a given item" do
+      
+    end
+    
+    it "should return the proper frequencies for a given item" do
+      
+    end
+    
+    it "should return the proper frequencies for a given item" do
+      
+    end
+    
+    it "should return the proper frequencies for a given item" do
+      
+    end
   end
-  
-  # Histogram test
-  # Create some validations and validate those
-  
 end
