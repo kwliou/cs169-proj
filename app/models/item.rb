@@ -89,7 +89,7 @@ class Item < ActiveRecord::Base
       return "Someone needs to rate this item!"
     end
     rating=(Irating.total_e(self))/raters
-    else return Irating.to_s_e(rating)
+    return Irating.to_s_e(rating)
   end
   
   def raters
@@ -101,7 +101,7 @@ class Item < ActiveRecord::Base
       return "Someone needs to rate this item!"
     end
     rating=Irating.total_i(self)/raters
-    else return Irating.to_s_i(rating)
+    return Irating.to_s_i(rating)
   end
   
   def w_rating
@@ -110,6 +110,6 @@ class Item < ActiveRecord::Base
     end
     rating=Irating.total_w(self)/raters
     rating_s=rating.to_s
-    else return Irating.to_s_w(rating)
+    return Irating.to_s_w(rating)
 	end
 end

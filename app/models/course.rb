@@ -95,9 +95,9 @@ class Course < ActiveRecord::Base
     if (raters == 0)
       return "Someone needs to rate this course!"
     end
-	rating=Rating.total_i(self)/raters
+	  rating=Rating.total_i(self)/raters
     rating_s=rating.to_s
-    else return Rating.to_s_e(rating)
+    return Rating.to_s_e(rating)
   end
   
   def raters
@@ -110,7 +110,7 @@ class Course < ActiveRecord::Base
     end
     rating=Rating.total_i(self)/raters
     rating_s=rating.to_s
-    else return Rating.to_s_i(rating)
+    return Rating.to_s_i(rating)
   end
   
   def w_rating
@@ -119,7 +119,7 @@ class Course < ActiveRecord::Base
     end
     rating=Rating.total_w(self)/raters
     rating_s=rating.to_s
-    else return Rating.to_s_w(rating)
+    return Rating.to_s_w(rating)
   end
   
   def full_name
