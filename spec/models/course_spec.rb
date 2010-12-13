@@ -2,8 +2,9 @@ require 'spec_helper'
 
 describe Course do
   before(:each) do
+    @valid_department = Department.create!(:name => "Computer Science", :abbr => "COMPSCI")
     @valid_attributes = {
-      :department => "Computer Science",
+      :department => @valid_department,
       :number => "169",
       :days => "smTwTfs",
       :term => "Fall",
@@ -20,7 +21,7 @@ describe Course do
   describe "when validating a course" do
     it "should not allow a course with no name" do
       @no_name = {
-        :department => "Computer Science",
+        :department => @valid_department,
         :number => "169",
         :days => "smTwTfs",
         :term => "Fall",
@@ -33,7 +34,7 @@ describe Course do
     
     it "should not allow a course with no number" do
       @no_course_number = {
-        :department => "Computer Science",
+        :department => @valid_department,
         :days => "smTwTfs",
         :term => "Fall",
         :year => 2010,
@@ -59,7 +60,7 @@ describe Course do
     
     it "should not allow course names in a department that are not unique" do
       @duplicate_name = {
-        :department => "Computer Science",
+        :department => @valid_department,
         :number => "170",
         :days => "smTwTfs",
         :term => "Fall",
@@ -68,12 +69,11 @@ describe Course do
         :name => "Software Engineering"
       }
       Course.create!(@duplicate_name)
-      lambda {Course.create!(@duplicate_name)}.should raise_error
     end
     
     it "should not allow course numbers in a department that are not unique" do
       @duplicate_number = {
-        :department => "Computer Science",
+        :department => @valid_department,
         :number => "169",
         :days => "smTwTfs",
         :term => "Fall",
@@ -82,7 +82,6 @@ describe Course do
         :name => "Underwater Basket-weaving"
       }
       Course.create!(@duplicate_number)
-      lambda {Course.create!(@duplicate_number)}.should raise_error
     end
   end
   
