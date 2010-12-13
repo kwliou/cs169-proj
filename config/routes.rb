@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :iratings
+
   map.about 'about', :controller => :main, :action => :about
   map.feedback 'feedback', :controller => :main, :action => :feedback
   map.help 'help', :controller => :main, :action => :help
@@ -25,6 +27,8 @@ ActionController::Routing::Routes.draw do |map|
       item.resources :posts, :requirements => {:item_id => /[^\?\/]+/} do |post|
         post.reply 'reply', :controller => :posts, :action => :new_post_reply, :requirements => {:item_id => /[^\?\/]+/}
       end
+	  item.resources :iratings, :requirements => {:item_id => /[^\?\/]+/} do |post|
+      end
     end
   end
   # example of how huge nesting is "funny-looking" so instead use a query string
@@ -38,6 +42,8 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :courses, :has_many => :ratings
   map.resources :users, :has_many => :ratings
+  map.resources :items, :has_many => :iratings
+  map.resources :users, :has_many => :iratings
   
   map.login 'login', :controller => :user_sessions, :action => :new
   map.logout 'logout', :controller => :user_sessions, :action => :destroy

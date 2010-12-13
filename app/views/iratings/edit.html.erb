@@ -4,17 +4,20 @@
 <%= render '/layouts/nav', :navigation =>
   [["Courses", courses_path],
   ["#{@course.dept} #{@course.number}", @course],
-  ["Ratings", course_ratings_path(@course)]] %>
-
+  [@item.category_s, course_items_path(@course, :category => @item.category.downcase)],
+  [@item.name, [@course, @item]],
+  ["Ratings", course_item_iratings_path(@course, @item)]]  %>
+  
 <div id="content">
-  <div id="content_left">
+  <div id="content_left"> 
+
 <h1>Editing rating</h1>
 
-<% form_for([@course,@rating]) do |f| %>
+<% form_for([@course, @item, @irating]) do |f| %>
   <%= f.error_messages %>
 
   <p>
-  <b>Easiness: Was it a free "A"? (1 being hard as hell, 5 being a walk in the park,)</b>
+   <b>Easiness: Was it a free "A"? (1 being hard as hell, 5 being a walk in the park,)</b>
     <br />
     <%= f.radio_button(:easiness, 1)%> WTF? (1)</br>
 	<%= f.radio_button(:easiness, 2)%> prerequisite: IQ must be over 180 (2)</br>
@@ -23,22 +26,22 @@
 	<%= f.radio_button(:easiness, 5)%> I swear this is elementary school material (5)</br>
   </p>
   <p>
-    <b>Interesting?: Do you dream of going to class, or dream while you're in class? (1 being bored to death, 5 being absolutely fascinating)</b>
+    <b>Interesting?: How mind numbing was all the busy work? (1 being bored to death, 5 being absolutely fascinating)</b>
     <br />
-    <%= f.radio_button(:interest, 1)%> World's greatest treatement for Insomnia... (1)</br>
-	<%= f.radio_button(:interest, 2)%> Zzz...Zzz... (2)</br>
+    <%= f.radio_button(:interest, 1)%> I felt stupider after finishing (1)</br>
+	<%= f.radio_button(:interest, 2)%> my brain was in sleep mode the whole time (2)</br>
 	<%= f.radio_button(:interest, 3)%> eh...can't complain (3)</br>
-	<%= f.radio_button(:interest, 4)%> I took the course 3 times!!! (4)</br>
-	<%= f.radio_button(:interest, 5)%> I cried each time class was over (5)</br>
+	<%= f.radio_button(:interest, 4)%> After the 10th time of looking over it, I still learned something new (4)</br>
+	<%= f.radio_button(:interest, 5)%> it uncovers the secrets of the universe!!! (5)</br>
   </p>
   <p>
-    <b>Work load: Do you have a life? (1 being no I don't, 5 being a life free of school work)</b>
+    <b>Time and Effort Required: Have you seen sunlight lately? (1 being no I have not, 5 being partied all night)</b>
     <br />
-    <%= f.radio_button(:work_load, 1)%> my therapist says I'm scarred for life (1)</br>
+    <%= f.radio_button(:work_load, 1)%> even a time machine can't save you (1)</br>
 	<%= f.radio_button(:work_load, 2)%> sleep is for losers (2)</br>
 	<%= f.radio_button(:work_load, 3)%> eh...can't complain (3)</br>
-	<%= f.radio_button(:work_load, 4)%> for lazy students only!!! (4)</br>
-	<%= f.radio_button(:work_load, 5)%> a semester long vacation (5)</br>
+	<%= f.radio_button(:work_load, 4)%> definitely not a CS project (4)</br>
+	<%= f.radio_button(:work_load, 5)%> I don't remember doing ANY work (5)</br>
   </p>
   
   <p>
@@ -47,9 +50,10 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', [@course,@rating] %> |
-<%= link_to 'Back', course_ratings_path(@course) %>
-  </div>
+<%= link_to 'Show', [@course,@item, @irating] %> |
+<%= link_to 'Back', course_item_iratings_path(@course, @item) %>
+
+</div>
 </div>
 
 <div id="calendar">

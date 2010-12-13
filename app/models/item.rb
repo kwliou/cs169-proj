@@ -5,6 +5,7 @@ class Item < ActiveRecord::Base
   has_many :blurbs
   has_many :grades
   has_many :posts
+  has_many :iratings
 
   validates_presence_of :category
 
@@ -82,4 +83,33 @@ class Item < ActiveRecord::Base
   def cal_date  # calendar date
     due_date.getlocal.strftime('%b %d')
   end
+  
+   def e_rating
+    if (raters == 0)
+      return "Someone needs to rate this item!"
+    end
+    rating=(Irating.total_e(self))/raters
+    else return Irating.to_s_e(rating)
+  end
+  
+  def raters
+	 self.iratings.count
+  end
+  
+  def i_rating
+    if (raters==0)
+      return "Someone needs to rate this item!"
+    end
+    rating=Irating.total_i(self)/raters
+    else return Irating.to_s_i(rating)
+  end
+  
+  def w_rating
+    if (raters==0)
+      return "Someone needs to rate this item!"
+    end
+    rating=Irating.total_w(self)/raters
+    rating_s=rating.to_s
+    else return Irating.to_s_w(rating)
+	end
 end

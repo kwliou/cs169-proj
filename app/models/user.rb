@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :grades
   has_many :ratings
+  has_many :iratings
   
   def to_s
     username
@@ -23,6 +24,10 @@ class User < ActiveRecord::Base
   
   def rated_course(course)
   	course.ratings.find_by_user_id(self.id)
+	end
+	
+  def rated_item(item)
+  	item.iratings.find_by_user_id(self.id)
 	end
 	
 	def items_with_grades(course)
