@@ -13,7 +13,6 @@ ActionController::Routing::Routes.draw do |map|
   end
   map.connect '/courses/:course_id/grades/:action', :controller => 'grades'
   map.resources :assignments
-  map.resources :blurbs
   map.resources :departments #, :except => :destroy
   map.resources :user_sessions
   map.resources :courses, :collection => {:auto_complete_for_department_name => :get } do |course|

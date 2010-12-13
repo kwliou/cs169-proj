@@ -11,6 +11,10 @@ describe Item do
     }
   end
 
+  it "should return the proper due date for a given assignemtn" do
+    
+  end
+  
   describe "histograms" do
     it "should create a new instance given valid attributes" do
       Item.create!(@valid_attributes)

@@ -66,35 +66,4 @@
     </li>
     <% end %>
   </ul>
-  <div class="course-body-container">
-    <div class="course-blurbs-container">
-      <% for blurb in @course.blurbs do %>
-        <% if blurb.position == "center" %>
-          <div class="blurb">
-            <h2><%= blurb.title %></h2>
-            <% if blurb.as_html %>
-              <%= blurb.text %>
-            <% else %>
-              <%= h blurb.text %>
-            <% end %>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-
-    <div class="course-announcements-container">
-      <% for blurb in @course.blurbs do %>
-        <% if blurb.position == "right" %>
-          <div class="announcement">
-            <a class="announcement-link" href="#"><h2><%= blurb.title %></h2></a>
-            <% if blurb.as_html %>
-              <%= blurb.text %>
-            <% else %>
-              <%=h blurb.text %>
-            <% end %>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
 </div>
