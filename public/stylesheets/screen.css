@@ -598,6 +598,14 @@ we don't have to rely on proprietary attributes but there's no time
     border-right: 1px #ccc solid;
 }
 
+.small {
+	font-size:16px;
+	margin-right:8px;
+}
+
+#select_course_sem {
+	margin-top:1px;
+}
 /* Right now this is for new/edit course form */
 .form_label {
     width: 7.5em;
@@ -617,39 +625,11 @@ we don't have to rely on proprietary attributes but there's no time
     margin-top: 1px;
     margin-left: 20px;
 }
-.awesome, .awesome:visited {
-	background: #222 url(/images/button-overlay.png) repeat-x; 
-	display: inline-block; 
-	padding: 5px 10px 6px; 
-	color: #fff; 
-	text-decoration: none;
-	-moz-border-radius: 5px; 
-	-webkit-border-radius: 5px;
-	-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
-	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
-	text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
-	border-bottom: 1px rgba(0,0,0,0.25) solid;
-	position: relative;
-	cursor: pointer;
-	float:left;
-}
- 
-.awesome:hover { background-color: #111; color: #fff; }
-.awesome:active { top: 1px; }
-.small.awesome, .small.awesome:visited { font-size: 11px; padding: 0; }
-.awesome, .awesome:visited, 
-.medium.awesome, .medium.awesome:visited { font-size: 13px; font-weight: bold; line-height: 1; text-shadow: 0 -1px 1px rgba(0,0,0,0.25); }
-.large.awesome, .large.awesome:visited { font-size: 14px; padding: 8px 14px 9px; }
 
-.green.awesome, .green.awesome:visited { background-color: #91bd09; }
-.green.awesome:hover { background-color: #749a02; }
-.blue.awesome, .blue.awesome:visited { background-color: #26ade4; }
-.blue.awesome:hover	{ background-color: #0085c1; }
-.red.awesome, .red.awesome:visited { background-color: #e33100; }
-.red.awesome:hover { background-color: #872300; }
-.magenta.awesome, .magenta.awesome:visited { background-color: #a9014b; }
-.magenta.awesome:hover { background-color: #630030; }
-.orange.awesome, .orange.awesome:visited { background-color: #ff5c00; }
-.orange.awesome:hover { background-color: #d45500; }
-.yellow.awesome, .yellow.awesome:visited { background-color: #ffb515; }
-.yellow.awesome:hover { background-color: #fc9200; }
+#list_courses {
+	width:300px;
+}
+
+#select_semester {
+	margin-top: 6px;
+}

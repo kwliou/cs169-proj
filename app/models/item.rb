@@ -47,7 +47,7 @@ class Item < ActiveRecord::Base
             :std_dev => format("%.2f", std_dev), 
             :title => self.name, :points => []}
               
-    low = scores.min
+    low = 0
     high = low + segment_size
     while low < self.points do
       range = [format("%.1f", low), format("%.1f", high)] 

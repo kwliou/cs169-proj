@@ -8,18 +8,6 @@ class CoursesController < ApplicationController
     render :partial => 'department'
   end
 
-  def histogram
-    # Generates a histogram for an assignment, total assignments etc.
-  end
-  
-  def deadline
-    # Generates a deadline visualization
-  end
-  
-  def performance
-    # Generates average item performance of a student and all students
-  end
-
   def subscribe
     @course = Course.find_by_param(params[:course_id])
     @current_user.courses << @course if !@current_user.courses.include?(@course)
@@ -35,7 +23,20 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.xml
   def index
-    @courses = Course.all #@current_user.courses
+    # if has param course
+    # redirect to that course
+    if params[:course]
+      course = Course.find(params[:course])
+      redirect_to course_path(course) and return
+    elsif params[:semester]
+      term, year = params[:semester].split(" ")
+      @semester = params[:semester]
+      @courses = Course.find(:all, :conditions => {:term => term, :year => year})
+    else
+      @courses = Course.all  
+    end
+    @semesters = Course.all_semesters
+    
     #@user_session = UserSession.new
     respond_to do |format|
       format.html # index.html.erb

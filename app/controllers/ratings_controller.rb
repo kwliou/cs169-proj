@@ -88,12 +88,7 @@ class RatingsController < ApplicationController
     @current_user = current_user
     redirect_to root_url if @current_user.nil?
   end
-   def get_course
-    if params[:course_id]
-      dept, number = params[:course_id].split('_')
-      department = Department.find_by_abbr(dept)
-      #department = Course.unabbr(dept)
-      @course = Course.find_by_department_id_and_number(department.id, number)
-    end
-end
+  def get_course
+    @course = Course.find_by_param(params[:course_id]) if params[:course_id]
+  end
 end

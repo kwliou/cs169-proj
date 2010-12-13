@@ -25,6 +25,21 @@ class Course < ActiveRecord::Base
     "SU" => "Summer" 
   }
 
+  def pretty_term
+    return "#{self.term} #{self.year}"
+  end
+  
+  def get_all_semesters
+    courses = Department.find(self.department).courses
+    other_sems = []
+    courses.each { |c|
+      if c.number == self.number
+        other_sems << c
+      end
+    }
+    return other_sems
+  end
+  
   def department_name
     self.department.name
   end
@@ -42,6 +57,16 @@ class Course < ActiveRecord::Base
       }
       
       return course
+  end
+  
+  def Course.all_semesters
+    semesters = []
+    Course.year_limits.each { |year|
+      ["Fall", "Summer", "Spring"].each { |sem|
+        semesters << "#{sem} #{year}"
+      }
+    }
+    return semesters
   end
   
   def Course.year_limits

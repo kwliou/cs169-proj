@@ -3,17 +3,29 @@
   <ul id ="breadcrumbs">
     <li class="breadcrumbs_a"><%= link_to "Home", root_path %></li>
     <% navigation.each do |nav| %>
-      <li class="breadcrumbs_arrow">&#9654;</li>
-      <li class="breadcrumbs_a"><%= link_to nav.first, nav.last %></li>
+    	<% if nav.last.respond_to?(:get_all_semesters) %>
+	    	<li class="breadcrumbs_arrow">&#9654;</li>
+    		<li class="breadcrumbs_a">
+    		<form action="<%= courses_path %>" method="GET">
+	    		<%= link_to nav.first, nav.last , :class => "small" %>
+	    		<select id="select_course_sem" name="course" onchange="this.form.submit()">
+	    		<% for p in nav.last.get_all_semesters.collect { |c| [c.pretty_term, c.id] } %>
+	    		  <% if nav.last.pretty_term == p.first %>
+	    		  	<option value="<%= p.last %>" selected><%= p.first %></option>
+	    		  <% else %>
+		    		  <option value="<%= p.last %>"><%= p.first %></option>
+	    		  <% end %>
+	    		<% end %>
+	    		</select>
+    		</form>
+    		</li>
+    	<% else %>
+	      <li class="breadcrumbs_arrow">&#9654;</li>
+	      <li class="breadcrumbs_a"><%= link_to nav.first, nav.last %></li>    	
+    	<% end %>
     <% end %>
-    <% unless defined?(no_semester) %>
-    <li class="breadcrumbs_semester">
-      Fall '10 <img alt="&9662;" src="/images/flat_triangle.gif" />
-      <form action="<%= '/' %>" method="GET">
-      	<!-- dropdown here -->
-      </form>
-    </li>
-    <% end %>
+    
+    
   </ul>
   </nav>
 </div>

@@ -9,10 +9,19 @@
 	text-align:left;
 	padding-top:4px;
 }
-
+ 
 #grades_list {
 	float:left;
 	border-collapse:collapse;
+	table-layout:fixed;
+}
+
+.item_name {
+	width:180px;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	-o-text-overflow: ellipsis; 
 }
 
 #content_container {

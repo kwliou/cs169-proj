@@ -9,15 +9,31 @@
   [["Courses", courses_path]] %>
   
 <div id="content">
-  <h1>Listing courses</h1>
+  <h1 id="list_courses" style="width:300px;">Listing courses
+	<div style="float:right;">
+		<form action="<%= courses_path %>" method="GET">
+			<select id="select_semester" name="semester" onchange="this.form.submit()">
+			<% for sem in @semesters %>
+				<% if sem == @semester %>
+					<option value="<%= sem %>" selected><%= sem %></option>
+				<% else %>
+					<option value="<%= sem %>"><%= sem %></option>
+				<% end %>
+			  
+			<% end %>
+			</select>
+		</form>
+    </div>
+  </h1>
 
+  <% if @courses.length == 0 %>
+  	No courses found for the selected term<br />
+  <% else %>
   <table id="courses_list">
     <tr>
       <th>Department</th>
       <th>Number</th>
       <th>Days</th>
-      <th>Term</th>
-      <th>Year</th>
       <th>Description</th>
       <th>Name</th>
     </tr>
@@ -27,8 +43,6 @@
       <td><%=h course.department.name %></td>
       <td><%=h course.number %></td>
       <td><%=h course.days %></td>
-      <td><%=h course.term %></td>
-      <td><%=h course.year %></td>
       <td><%=h course.description %></td>
       <td><%=h course.name %></td>
       <td><%= link_to 'View', course %></td>
@@ -36,8 +50,7 @@
     </tr>
   <% end %>
   </table>
-
-  <br />
-
+  <% end %>
+<br />
   <%= link_to 'New course', new_course_path %>
 </div>

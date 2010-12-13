@@ -3,7 +3,8 @@
 
 <%= render '/layouts/nav', :navigation =>
   [["Courses", courses_path],
-  ["#{@course.dept} #{@course.number}", @course]] %>
+  ["#{@course.dept} #{@course.number}", @course],
+  ["Ratings", course_ratings_path(@course)]] %>
 
 <div id="content">
   <div id="content_left">
