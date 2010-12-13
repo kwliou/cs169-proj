@@ -43,25 +43,60 @@ class User < ActiveRecord::Base
 
     return result
 	end
-	
-	def performance
+
+	def performance_dates(course)
     grades = self.grades.sort { |a, b| a.item.due_date <=> b.item.due_date }
-    
-    # For each grade, calculate the average grade % up to 
-    # the corresponding due date
-    i = 1
-    data = []
-    grades.each do |grade|
-      total_pct = 0.0
-      grades[0, i].each do |g|
-        total_pct += (g.points_received / g.item.points) * 100
-      end
-      pct = total_pct / i
-      data << {:date => grade.item.due_date, :average => pct}
-      i += 1
-    end
-    
-    return data
+    grades = grades.reject { |g| g.item.course != course }
+      
+	  dates = grades.collect { |g| g.item.due_date.strftime('%m/%d') }
+	  
+    return dates
+	end
+	
+	def User.class_performance(course)
+    user_performances = []
+	  course.users.each { |u|
+      user_performances << u.performance(course)
+	  }
+
+	  # Start with all zeroes for overall averages
+	  class_performance = []
+	  if user_performances.length < 1
+	    return []
+	  end
+	  for n in 0..user_performances[0].length - 1 do
+      class_performance << 0
+	  end
+	  result = []
+    class_performance.each_with_index { |p, i|
+       total = 0.0
+       user_performances.each { |user_perf|
+         total += user_perf[i] || 0.0
+       }
+       result << format("%.2f", total / user_performances.length).to_f
+	  }
+	  
+	  debugger
+	  return result
+	end
+	
+	def performance(course)
+    grades = self.grades.sort { |a, b| a.item.due_date <=> b.item.due_date }
+	  grades = grades.reject { |g| g.item.course != course }
+	  # get all grades
+	  # calculate performance up to each of these grades' due date	  
+	  averages = []
+	  grades.each { |g|
+	      pct = (g.points_received * 100) / g.item.points
+        total_pct = pct
+	      averages.each { |a|
+	        total_pct += a
+	      }
+	      averages << format("%.2f", (total_pct / (averages.length + 1))).to_f
+	  }
+	  
+	  return averages
+	  
 	end
 
 end

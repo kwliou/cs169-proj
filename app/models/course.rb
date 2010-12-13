@@ -44,6 +44,11 @@ class Course < ActiveRecord::Base
     self.department.name
   end
   
+  def class_performance
+    
+  end
+  
+  
   def Course.find_by_param(param)
       dept, number, term_year = param.split('_')
       term = @@terms[term_year[0, 2]]

@@ -39,6 +39,8 @@ $(document).ready(function(e) {
 		  },
 		  dataType: 'json'
 		});
+		
+		return false;
 	});
 	
 	$('#remove_grades_button').hide()
@@ -51,9 +53,13 @@ $(document).ready(function(e) {
 		}
 	});
 	
-	$('.enter_grade_link').click(function(e) {
-		//alert($(this).attr('data-id'));
-	});
+	var performance_opts = {
+		x_axis: <%= ActiveSupport::JSON.encode(@current_user.performance_dates(@course)) || [] %>,
+		my_performance: <%= ActiveSupport::JSON.encode(@current_user.performance(@course)) || []%>,
+		class_performance: <%= ActiveSupport::JSON.encode(User.class_performance(@course)) || [] %>
+	};
+	
+	$.performance('performance_container', performance_opts);
 	
 });
 </script>
@@ -67,6 +73,7 @@ $(document).ready(function(e) {
 	<% if @item_grades.length == 0 %>
 		<span style="float:left;">No items to grade</span>
 	<% else %>
+		<span class="hint">Click on a score to view a histogram</span>
 		<% form_for @course, :url => url_for(:controller => 'grades', :action => 'destroy') do |f| %>
 		<div id="notification" class="success notification"><%= params[:notification] %></div>
 		<div id="errors" class="error notification"><%= params[:errors] %></div>
@@ -81,7 +88,6 @@ $(document).ready(function(e) {
 		<% total_pts = 0
 		 total_possible = 0 
 		%>
-	
 		<% @item_grades.each do |item_grade| %>
 		  	<% total_possible += item_grade[1].points %>
 			<% if item_grade[0] != nil %>
@@ -91,7 +97,7 @@ $(document).ready(function(e) {
 			    	<div class="item_name"><%= check_box_tag "grade_ids[]", item_grade[0].id, false, :class => "destroy_checkbox" %>
 				    <%= link_to item_grade[1].name, [@course, item_grade[1]] %></div>
 			    </td>
-			    <td class="align_right"><%= link_to format("%.2f", item_grade[0].points_received), '#', 'data-id' => item_grade[1].id, :class => 'histogram_link' %></td>
+			    <td class="align_right"><%= link_to format("%.2f", item_grade[0].points_received), '', 'data-id' => item_grade[1].id, :class => 'histogram_link' %></td>
 			    <td><%= item_grade[1].points %></td>
 			    <% if item_grade[1].points != 0 %>
 				  	<td><%= format("%.2f%%", ((item_grade[0].points_received*100)/(item_grade[1].points))) %></td>
@@ -113,7 +119,7 @@ $(document).ready(function(e) {
 		
 		<% if total_possible != 0 %>
 			<tr id="grade_totals">
-				<td><input id="remove_grades_button" type="submit" value="Remove" /></td>
+				<td><input id="remove_grades_button" type="submit" value="Remove" />Totals:</td>
 				<td class="align_right"><%= format("%.2f", total_pts) %></td>
 				<td><%= total_possible %></td>
 			  	<td><%= format("%.2f%", (total_pts*100)/(total_possible)) %></td>
@@ -123,5 +129,6 @@ $(document).ready(function(e) {
 	</table>
 <% end %>
 	<div id="histogram_container"></div>
-	</div>
+	<div id="performance_container"></div>
+</div>
 </div>
