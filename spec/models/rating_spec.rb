@@ -11,7 +11,7 @@ describe Rating do
       :email => "email@email.com"
 	  )
 	@course=Course.create!(
-	:department => "value for department",
+	:department => Department.create!(:name => "Computer Science", :abbr => "COMPSCI"),
       :number => "value for number",
       :days => "value for days",
       :term => "value for term",
@@ -108,7 +108,7 @@ describe Rating do
    describe "when validating a rating" do
    it "the same user should be allowed to make the different ratings for different courses" do
    @temp=Course.create!(
-	:department => "department",
+	:department => Department.create!(:name => "Computer", :abbr => "COCI"),
       :number => "number",
       :days => "days",
       :term => "term",
@@ -192,103 +192,103 @@ describe Rating do
    describe "when easiness==1" do
    it "should generate the string WTF? (1/5)" do
    @rating=Rating.new(@valid_attributes)
-   @rating.to_s_e(@rating.easiness).should =="WTF? (1/5)"
+   Rating.to_s_e(@rating.easiness).should =="WTF? (1/5)"
    end
    end
    describe "when easiness==2" do
    it "should generate the string prerequisite: IQ must be over 180 (2/5)" do
    @rating=Rating.new(@valid_attributes)
    @rating.easiness=2
-   @rating.to_s_e(@rating.easiness).should =="prerequisite: IQ must be over 180 (2/5)"
+   Rating.to_s_e(@rating.easiness).should =="prerequisite: IQ must be over 180 (2/5)"
    end
    end
    describe "when easiness==3" do
    it "should generate the string eh...can't complain (3/5)" do
    @rating=Rating.new(@valid_attributes)
    @rating.easiness=3
-   @rating.to_s_e(@rating.easiness).should =="eh...can't complain (3/5)"
+   Rating.to_s_e(@rating.easiness).should =="eh...can't complain (3/5)"
    end
    end
    describe "when easiness==4" do
    it "should generate the string GPA booster (4/5)" do
    @rating=Rating.new(@valid_attributes)
    @rating.easiness=4
-   @rating.to_s_e(@rating.easiness).should =="GPA booster (4/5)"
+   Rating.to_s_e(@rating.easiness).should =="GPA booster (4/5)"
    end
    end
    describe "when easiness==5" do
    it "should generate the string I swear this is elementary school material (5/5)" do
    @rating=Rating.new(@valid_attributes)
    @rating.easiness=5
-   @rating.to_s_e(@rating.easiness).should =="I swear this is elementary school material (5/5)"
+   Rating.to_s_e(@rating.easiness).should =="I swear this is elementary school material (5/5)"
    end
    end
    describe "when interest==1" do
    it "should generate the string World's greatest treatement for Insomnia! (1/5)" do
    @rating=Rating.new(@valid_attributes)
-   @rating.to_s_i(@rating.interest).should =="World's greatest treatement for Insomnia! (1/5)"
+   Rating.to_s_i(@rating.interest).should =="World's greatest treatement for Insomnia! (1/5)"
    end
    end
    describe "when interest==2" do
    it "should generate the string Zzz...Zzz... (2/5)" do
    @rating=Rating.new(@valid_attributes)
    @rating.interest=2
-   @rating.to_s_i(@rating.interest).should =="Zzz...Zzz... (2/5)"
+   Rating.to_s_i(@rating.interest).should =="Zzz...Zzz... (2/5)"
    end
    end
    describe "when interest==3" do
    it "should generate the string eh...can't complain (3/5)" do
    @rating=Rating.new(@valid_attributes)
    @rating.interest=3
-   @rating.to_s_i(@rating.interest).should =="eh...can't complain (3/5)"
+   Rating.to_s_i(@rating.interest).should =="eh...can't complain (3/5)"
    end
    end
    describe "when interest==4" do
    it "should generate the string I took the course 3 times!!! (4/5)" do
    @rating=Rating.new(@valid_attributes)
    @rating.interest=4
-   @rating.to_s_i(@rating.interest).should =="I took the course 3 times!!! (4/5)"
+   Rating.to_s_i(@rating.interest).should =="I took the course 3 times!!! (4/5)"
    end
    end
    describe "when interest==5" do
    it "should generate the string I cried each time class was over (5/5)" do
    @rating=Rating.new(@valid_attributes)
    @rating.interest=5
-   @rating.to_s_i(@rating.interest).should =="I cried each time class was over (5/5)"
+   Rating.to_s_i(@rating.interest).should =="I cried each time class was over (5/5)"
    end
    end
    describe "when work_load==1" do
    it "should generate the string my therapist says I'm scarred for life (1/5)" do
    @rating=Rating.new(@valid_attributes)
-   @rating.to_s_w(@rating.work_load).should =="my therapist says I'm scarred for life (1/5)"
+   Rating.to_s_w(@rating.work_load).should =="my therapist says I'm scarred for life (1/5)"
    end
    end
    describe "when work_load==2" do
    it "should generate the string sleep is for losers (2/5)" do
    @rating=Rating.new(@valid_attributes)
    @rating.work_load=2
-   @rating.to_s_w(@rating.work_load).should =="sleep is for losers (2/5)"
+   Rating.to_s_w(@rating.work_load).should =="sleep is for losers (2/5)"
    end
    end
    describe "when work_load==3" do
    it "should generate the string eh...can't complain (3/5)" do
    @rating=Rating.new(@valid_attributes)
    @rating.work_load=3
-   @rating.to_s_w(@rating.work_load).should =="eh...can't complain (3/5)"
+   Rating.to_s_w(@rating.work_load).should =="eh...can't complain (3/5)"
    end
    end
    describe "when work_load==4" do
    it "should generate the string for lazy students only!!! (4/5)" do
    @rating=Rating.new(@valid_attributes)
    @rating.work_load=4
-   @rating.to_s_w(@rating.work_load).should =="for lazy students only!!! (4/5)"
+   Rating.to_s_w(@rating.work_load).should =="for lazy students only!!! (4/5)"
    end
    end
    describe "when work_load==5" do
    it "should generate the string a semester long vacation (5/5)" do
    @rating=Rating.new(@valid_attributes)
    @rating.work_load=5
-   @rating.to_s_w(@rating.work_load).should =="a semester long vacation (5/5)"
+   Rating.to_s_w(@rating.work_load).should =="a semester long vacation (5/5)"
    end
    end
    

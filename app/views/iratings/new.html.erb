@@ -1,5 +1,4 @@
-<%= stylesheet_link_tag 'courses' %>
-<% content_for :title, @course.abbr %>
+<% content_for :title, "#{@course.abbr} | #{@item.name} | Ratings | New Rating" %>
 
 <%= render '/layouts/nav', :navigation =>
   [["Courses", courses_path],
