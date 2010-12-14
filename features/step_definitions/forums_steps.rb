@@ -25,6 +25,7 @@ Given /^I am subscribed to "([^"]*)" with item "([^"]*)"$/ do |course, item|
     :department_id => @dept.id,
     :number => number,
     :term => 'Fall',
+    :year => 2010,
     :name => 'Test Class')
   @item = @course.items.create!(
     :name => item,
@@ -86,19 +87,17 @@ When /^I visit my posts page$/ do
 end
 
 
-When /^I post a reply "([^"]*)" with "([^"]*)"$/ do |title, body|
+When /^I post a reply with "([^"]*)"$/ do |body|
   visit course_item_post_path(@course, @item, @post2)
   click_link('Reply')
-  fill_in('post[title]', :with => title)
   fill_in('post[body]', :with => body)
   fill_in('post[tags]', :with => 'Test')
   click_button('Create')
 end
 
-When /^I reply to the reply "([^"]*)" with "([^"]*)"$/ do |title, body|
+When /^I reply to the reply with "([^"]*)"$/ do |body|
   visit course_item_post_path(@course, @item, @post2)
   click_link('Reply')
-  fill_in('post[title]', :with => title)
   fill_in('post[body]', :with => body)
   fill_in('post[tags]', :with => 'Test')
   click_button('Create')

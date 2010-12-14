@@ -28,13 +28,12 @@
   <div>
     <%=h link_to 'Rate this item', course_item_iratings_path(@course, @item), :class => "item_h2" %>
   </div>
-  <br/>
+  <br />
   <div>
     <%=h link_to 'Discussion', course_item_posts_path(@course, @item), :class => "item_h2" %>
   </div>
-  <br/>
+  <br />
   
-
   <div class="item_subheader">
     <% if @post %>
       <strong><%=h @post.user.name %></strong> <%=h time_ago_in_words(@post.created_at) %> ago

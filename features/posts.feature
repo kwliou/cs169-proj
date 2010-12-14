@@ -3,7 +3,7 @@ Feature: user can manipulate own posts
   Scenario: Student views own posts
     Given I am "Guest User" logged in with "username" and "password"
     When I visit my posts page
-    Then I should see "Listing posts from Guest User"
+    Then I should see "My Posts"
 
   Scenario: Student edits own post
     Given I am "Guest User" logged in with "username" and "password"

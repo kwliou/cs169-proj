@@ -11,7 +11,7 @@ module NavigationHelpers
     when /the home\s?page/
       '/'
 	when /the home page/
-		main_path
+		root_path
 	when /^(.*)'s page$/i
 		course_path(Course.find_by_name($1))
 	when /^(.*)'s assignments+projects page$/i

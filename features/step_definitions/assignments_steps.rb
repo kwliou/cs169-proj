@@ -15,9 +15,12 @@ Before do
 end
 
 Given /^I am a student of the "([A-Za-z ]*) (\d+)" course$/ do |course_name, course_number|
+  @dept = Department.create!(:name => course_name, :abbr => course_name)
   @new_course = @current_user.courses.create!(
-		:department => course_name,
-		:number => course_number)
+	 :department_id => @dept.id,
+   	:number => course_number,
+  	:term => 'Fall',
+    :year => 2010)
 end
 
 When /^I click on the assignments\+projects link on the "([^"]*)" course page$/ do |course|
