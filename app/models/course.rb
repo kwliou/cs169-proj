@@ -59,7 +59,7 @@ class Course < ActiveRecord::Base
   def Course.all_semesters
     semesters = []
     Course.year_limits.each { |year|
-      ["Fall", "Summer", "Spring"].each { |sem|
+      ["Fall", "Winter", "Summer", "Spring"].each { |sem|
         semesters << "#{sem} #{year}"
       }
     }
