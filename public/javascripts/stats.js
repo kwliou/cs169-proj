@@ -17,7 +17,7 @@ $.histogram = function(container_id, opts) {
 			rotation: -45,
 			align: 'right',
 			style: {
-				 font: 'normal 13px Verdana, sans-serif'
+				 font: 'normal 10px Verdana, sans-serif'
 			}
 		}
       },
