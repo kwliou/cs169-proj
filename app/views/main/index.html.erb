@@ -26,7 +26,7 @@
           <strong><%=link_to post.user.name, post.user %></strong> <%=h time_ago_in_words(post.created_at) %> ago
           wrote under <%= link_to post.title, [post.course, post.item, post] %>
           <div class="item_p">
-            &ldquo;<%= post.body.length > 100 ? "#{post.sanitize[0, 100]}&#133;" : post.sanitize %>&rdquo;
+            &ldquo;<%= post.sanitize %>&rdquo;
           </div>
         </div>
       <% end %>
