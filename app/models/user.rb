@@ -46,7 +46,7 @@ class User < ActiveRecord::Base
       result << [item_grade, item]
     end
 
-    return result
+    return result.sort { |i, j| i[1].due_date <=> j[1].due_date }
 	end
 
 	def performance_dates(course)
@@ -63,13 +63,17 @@ class User < ActiveRecord::Base
 	  course.users.each { |u|
       user_performances << u.performance(course)
 	  }
-
 	  # Start with all zeroes for overall averages
 	  class_performance = []
 	  if user_performances.length < 1
 	    return []
 	  end
-	  for n in 0..user_performances[0].length - 1 do
+	  
+	  length = course.items.reject { |i| i.due_date > Time.now }.length
+	  if length == 0
+	    return []
+	  end
+	  for n in 0..length do
       class_performance << 0
 	  end
 	  result = []

@@ -5,7 +5,7 @@ class GradesController < ApplicationController
   # GET /grades
   # GET /grades.xml
   def index
-    @item_grades = @current_user.items_with_grades(@course)
+  @item_grades = @current_user.items_with_grades(@course)
     
     respond_to do |format|
       format.html # index.html.erb
