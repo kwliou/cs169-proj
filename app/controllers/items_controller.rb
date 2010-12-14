@@ -60,7 +60,6 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.xml
   def create
-    debugger
     #params[:item][:description] = ActionController::Base.helpers.sanitize(params[:post][:body], :attributes => 'abbr alt cite datetime height href name src title width rowspan colspan rel')
     @item = @course.items.build(params[:item])
     respond_to do |format|

@@ -38,6 +38,10 @@ abbr { /* IE doesn't have this style by default */
 	padding-right:36px;	
 }
 
+.fill_width {
+	width:100%;
+}
+
 #bg {
     width: 100%;
     position: fixed;
