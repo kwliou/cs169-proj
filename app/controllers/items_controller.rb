@@ -109,7 +109,7 @@ private
     redirect_to root_url if @current_user.nil?
   end
   def get_course
-    @course = Course.find_by_param(params[:course_id]) if params[:course_id]
+    @course = Course.find_by_param(params[:course_id])
   end
   def get_item
     @item = @course.items.find(:first, :conditions => ['lower(name) = ?', params[:id].downcase.gsub('_', ' ')]) if params[:id]
