@@ -12,16 +12,16 @@
 ActiveRecord::Schema.define(:version => 20101213203451) do
 
   create_table "courses", :force => true do |t|
-    t.string    "number"
-    t.string    "days"
-    t.string    "term"
-    t.integer   "year"
-    t.text      "description"
-    t.string    "name"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.decimal   "points_possible"
-    t.integer   "department_id"
+    t.string   "number"
+    t.string   "days"
+    t.string   "term"
+    t.integer  "year"
+    t.text     "description"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.decimal  "points_possible"
+    t.integer  "department_id"
   end
 
   create_table "courses_users", :id => false, :force => true do |t|
@@ -30,76 +30,76 @@ ActiveRecord::Schema.define(:version => 20101213203451) do
   end
 
   create_table "departments", :force => true do |t|
-    t.string    "name"
-    t.string    "abbr"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+    t.string   "name"
+    t.string   "abbr"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "grades", :force => true do |t|
-    t.string    "letter"
-    t.decimal   "points_received"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.integer   "user_id"
-    t.integer   "item_id"
+    t.string   "letter"
+    t.decimal  "points_received"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "item_id"
   end
 
   create_table "iratings", :force => true do |t|
-    t.integer   "easiness"
-    t.integer   "interest"
-    t.integer   "work_load"
-    t.integer   "item_id"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.integer   "user_id"
+    t.integer  "easiness"
+    t.integer  "interest"
+    t.integer  "work_load"
+    t.integer  "item_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "items", :force => true do |t|
-    t.string    "category"
-    t.timestamp "due_date"
-    t.integer   "points"
-    t.float     "weight"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.text      "description"
-    t.integer   "course_id"
-    t.string    "name"
+    t.string   "category"
+    t.datetime "due_date"
+    t.integer  "points"
+    t.float    "weight"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "description", :limit => 255
+    t.integer  "course_id"
+    t.string   "name"
   end
 
   create_table "posts", :force => true do |t|
-    t.string    "title"
-    t.text      "body"
-    t.timestamp "commented_at"
-    t.string    "tags"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.integer   "user_id"
-    t.integer   "item_id"
-    t.integer   "parent_id"
+    t.string   "title"
+    t.text     "body"
+    t.datetime "commented_at"
+    t.string   "tags"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "item_id"
+    t.integer  "parent_id"
   end
 
   create_table "ratings", :force => true do |t|
-    t.integer   "easiness"
-    t.integer   "interest"
-    t.integer   "work_load"
-    t.integer   "user_id"
-    t.integer   "course_id"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+    t.integer  "easiness"
+    t.integer  "interest"
+    t.integer  "work_load"
+    t.integer  "user_id"
+    t.integer  "course_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
-    t.string    "first_name"
-    t.string    "last_name"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.string    "username"
-    t.string    "email"
-    t.string    "crypted_password"
-    t.string    "password_salt"
-    t.string    "persistence_token"
-    t.integer   "fb_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "username"
+    t.string   "email"
+    t.string   "crypted_password"
+    t.string   "password_salt"
+    t.string   "persistence_token"
+    t.integer  "fb_id"
   end
 
 end

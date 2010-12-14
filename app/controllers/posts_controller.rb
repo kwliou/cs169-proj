@@ -54,6 +54,7 @@ class PostsController < ApplicationController
   def index_user
     @user = User.find_by_username(params[:user_id])
     @posts = @user.posts
+    @profile = @current_user == @user
     respond_to do |format|
       format.html # index_user.html.erb
       format.xml  { render :xml => @posts }

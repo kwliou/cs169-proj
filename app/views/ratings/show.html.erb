@@ -9,30 +9,29 @@
 
 <div id="content">
   <div id="content_left">
+    <h1>Rating by <%=h @rating.user.name %></h1>
 <p>
   <b>Course:</b>
   <%=h @rating.course.full_name %>
 </p>
 
 <p>
-  <b>Easiness: Was it a free "A"? (1 being hard as hell, 5 being a walk in the park,)</b>
-  </br>
+  <b>Easiness: Was it a free "A"? (1 being hard as hell, 5 being a walk in the park)</b>
+  <br />
   <%=h Rating.to_s_e(@rating.easiness) %>
 </p>
 
 <p>
   <b>Interesting?: Do you dream of going to class, or dream while you're in class? (1 being bored to death, 5 being absolutely fascinating)</b>
-  <br/>
+  <br />
   <%=h Rating.to_s_i(@rating.interest)%>
 </p>
 
 <p>
   <b>Work load: Do you have a life? (1 being no I don't, 5 being a life free of school work)</b>
-  </br>
+  <br />
   <%=h Rating.to_s_w(@rating.work_load )%>
 </p>
-
-
 
 
 <%= link_to 'Edit', edit_course_rating_path(@course, @rating) %> 
@@ -53,7 +52,3 @@
     <% end %>
   </ul>
 </div>
-
-
-
-

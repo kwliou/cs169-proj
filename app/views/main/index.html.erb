@@ -21,6 +21,15 @@
     <br />
     <div id="otherstuff">
       <span class="section_header">Latest Posts</span>
+      <% @posts.each do |post| %>
+        <div class="item_subheader">
+          <strong><%=link_to post.user.name, post.user %></strong> <%=h time_ago_in_words(post.created_at) %> ago
+          wrote under <%= link_to post.title, [post.course, post.item, post] %>
+          <div class="item_p">
+            &ldquo;<%= post.sanitize %>&rdquo;
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
   <% else %>

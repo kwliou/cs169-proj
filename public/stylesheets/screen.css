@@ -29,6 +29,19 @@ abbr { /* IE doesn't have this style by default */
     border-bottom: 1px dotted;
 }
 
+#login_error {
+	float:right;
+	margin-right:185px;
+}
+
+.table_list td {
+	padding-right:36px;	
+}
+
+.fill_width {
+	width:100%;
+}
+
 #bg {
     width: 100%;
     position: fixed;

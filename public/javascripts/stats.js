@@ -100,7 +100,7 @@ $.performance = function(container_id, opts) {
 			data: opts.my_performance
 		}, {
 			name: 'Class Performance',
-			data: opts.class_performance
+			data: opts.class_performance.slice(0, opts.my_performance.length)
 		}]
 	});
 }
