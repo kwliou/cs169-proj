@@ -26,7 +26,7 @@
       <span class="stryde course_action_comment">Cross your fingers!</span>
     </div>
     <div>
-      <a class="course_action" href="<%= url_for(:controller => "grades", :action => "index", :id => @course.id) %>">Course Info</a>
+      <%= link_to "Course Info", edit_course_path(@course), :class => "course_action" %>
       <span class="stryde course_action_comment">What's this all about?</span>
     </div>
     <div>
