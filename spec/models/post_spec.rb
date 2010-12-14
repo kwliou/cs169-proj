@@ -12,10 +12,10 @@ describe Post do
   it "should create a new instance given valid attributes" do
     Post.create!(@valid_attributes)
   end
-  it "should automatically convert links" do
+  it "should allow some html" do
     @post = Post.create!(
       :title => "value for title",
-      :body => "http://refactored.heroku.com",
+      :body => "<a href=http://refactored.heroku.com>blah</a>",
       :tags => "tags")
     @post.body.index('href').should_not == nil
   end
