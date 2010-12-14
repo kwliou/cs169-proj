@@ -1,8 +1,7 @@
 <% content_for :title, "#{@user.name} | Posts" %>
 
-<%= render '/layouts/nav', :navigation => 
-  [["Users", users_path],
-   [@user.username, @user]] %>
+<%= render '/layouts/nav', :no_semester => true, :navigation =>
+  @profile ? [['My Posts', @user]] : [['Users', users_path], [@user.username, @user]] %>
 
 <noscript>
   <style type="text/css">
@@ -28,7 +27,7 @@
   // -->
 </script>
 <div id="content">
-  <h1>Listing posts from <%=h @user.name %></h1>
+  <h1>Listing <%=h @profile ? 'your posts' : "posts from #{@user.name}" %></h1>
 
   <table id="forum_posts">
     <% if @posts.empty? %>
@@ -39,12 +38,11 @@
     <!--td class="post_check"><input type="checkbox"></input></td-->
     <td class="post_title" onclick="togglePost(this, <%=h index %>); return false;"><%= link_to post.title, [post.course, post.item, post], :class => 'post_title_min' %></td>
     <td class="post_replies"><%= link_to post.replies_s, [post.course, post.item, post] %></td>
-    <td class="post_author"><%= link_to post.user.name, post.user %></td>
     <td class="post_date"><time><%=h post.created_at_day_s %></time></td>
     <td class="post_time"><time><%=h post.created_at_time_s %></time></td>
   </tr>
   <tr>
-    <td colspan="5">
+    <td colspan="4">
       <div class="post_content" id="<%= index %>">
         <div class="post_header">
           <% if @current_user == post.user %>
@@ -70,7 +68,7 @@
   </tr>
   <noscript>
     <tr>
-    <td colspan="5">
+    <td colspan="4">
       <div class="post_content noscript">
         <div class="post_header">
           <% if @current_user == post.user %>

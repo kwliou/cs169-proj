@@ -10,19 +10,11 @@ class Course < ActiveRecord::Base
 
   #before_save { |course| course.department = course.department.titleizev2 }
 
-  @@abbr = { # NOTE: department names might have funny capitalizing so hard to automate
-    "Computer Science" => "compsci",
-    "Anthropology" => "anthro",
-    "Gender and Women's Studies" => "gws",
-    "Aerospace Studies (Air Force ROTC)" => "aerospc",
-    "Math" => "math",
-    "CS" => "cs"
-  }
-  
   @@terms = {
     "FA" => "Fall",
+    "WI" => "Winter",
     "SP" => "Spring",
-    "SU" => "Summer" 
+    "SU" => "Summer"
   }
 
   def pretty_term
