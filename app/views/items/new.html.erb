@@ -18,7 +18,7 @@
   </p>
   <p>
     <%= f.label :category %><br />
-    <%= f.text_field :category %>
+    <%= select :item, :category, @categories %>
   </p>
   <p>
     <%= f.label :due_date %><br />

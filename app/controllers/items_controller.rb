@@ -45,7 +45,7 @@ class ItemsController < ApplicationController
   # GET /items/new.xml
   def new
     @item = @course.items.build
-
+    @categories = ['Assignment', 'Exam', 'Project', 'Other']
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @item }

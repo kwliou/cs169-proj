@@ -10,7 +10,8 @@ class UserSessionsController < ApplicationController
       #flash[:notice] = "Successfully logged in."
       redirect_to root_url
     else
-      render :action => :new
+      redirect_to root_url(:errors => "Invalid username or password")
+      #render :action => :new
     end
   end
 
