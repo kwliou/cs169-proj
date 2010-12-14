@@ -10,28 +10,29 @@
   <div id="content_left">
     <h1>All Ratings</h1>
 
-<table>
-  <tr>
-    <th>Easiness</th>
-    <th>Interest</th>
-    <th>Work load</th>
-    <th>User</th>
-  </tr>
-
-<% @ratings.each do |rating| %>
-  <tr>
-    <td><%=h rating.easiness %></td>
-    <td><%=h rating.interest %></td>
-    <td><%=h rating.work_load %></td>
-    <td><%=h rating.user.name %></td>
-    <td><%= link_to 'Show', [@course, rating] %></td>
-	<%if @current_user.id==rating.user_id%>
-    <td><%= link_to 'Edit', edit_course_rating_path(@course, rating) %></td>
-    <td><%= link_to 'Remove', [@course,rating], :confirm => 'Are you sure?', :method => :delete %></td>
-	<%end%>
-  </tr>
+<% unless @ratings.empty? %>
+  <table>
+    <tr>
+      <th>Easiness</th>
+      <th>Interest</th>
+      <th>Workload</th>
+      <th>User</th>
+    </tr>
+  <% @ratings.each do |rating| %>
+    <tr>
+      <td><%=h rating.easiness %></td>
+      <td><%=h rating.interest %></td>
+      <td><%=h rating.work_load %></td>
+      <td><%=h rating.user.name %></td>
+      <td><%= link_to 'Show', [@course, rating] %></td>
+          <%if @current_user.id==rating.user_id%>
+      <td><%= link_to 'Edit', edit_course_rating_path(@course, rating) %></td>
+      <td><%= link_to 'Remove', [@course,rating], :confirm => 'Are you sure?', :method => :delete %></td>
+          <%end%>
+    </tr>
+  <% end %>
+  </table>
 <% end %>
-</table>
 
 
 
@@ -41,13 +42,8 @@
 <%end%>
 <h1>Average ratings</h1>
 <p>
-  <b>Course:</b>
-  <%=h @course.full_name %>
-</p>
-
-<p>
-  <b>Easiness: Was it a free "A"? (1 being hard as hell, 5 being a walk in the park,)</b>
-  </br>
+  <b>Easiness: Was it a free "A"? (1 being hard as hell, 5 being a walk in the park)</b>
+  <br />
   <%=h @course.e_rating %>
 </p>
 
