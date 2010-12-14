@@ -33,7 +33,7 @@ class CoursesController < ApplicationController
       @semester = params[:semester]
       @courses = Course.find(:all, :conditions => {:term => term, :year => year})
     else
-      @courses = Course.all  
+      @courses = Course.find(:all, :conditions => {:term => 'Fall', :year => 2010})
     end
     @semesters = Course.all_semesters
     
