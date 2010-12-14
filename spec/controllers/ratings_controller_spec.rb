@@ -17,19 +17,17 @@ before :each do
   
   describe "GET index" do
     it "assigns all ratings as @ratings" do
-	Course.should_receive(:unabbr).and_return("department")
-	Course.should_receive(:find_by_department_and_number).and_return(mock_course)
+	Course.should_receive(:find_by_param).and_return(mock_course)
 	mock_course.should_receive(:ratings).and_return(Rating)
 	Rating.should_receive(:all).and_return([mock_rating])
      get :index, :course_id=>1
-      #assigns[:ratings].should == [mock_rating]
+      assigns[:ratings].should == [mock_rating]
     end
   end
 
   describe "GET show" do
     it "assigns the requested rating as @rating" do
-	Course.should_receive(:unabbr).and_return("department")
-	Course.should_receive(:find_by_department_and_number).and_return(mock_course)
+	Course.should_receive(:find_by_param).and_return(mock_course)
 	mock_course.should_receive(:ratings).and_return(Rating)
 	Rating.should_receive(:find).with("37").and_return(mock_rating)
       get :show, :id => "37", :course_id=>1
@@ -39,8 +37,7 @@ before :each do
 
   describe "GET new" do
     it "assigns a new rating as @rating" do
-	Course.should_receive(:unabbr).and_return("department")
-	Course.should_receive(:find_by_department_and_number).and_return(mock_course)
+	Course.should_receive(:find_by_param).and_return(mock_course)
 	mock_course.should_receive(:ratings).and_return(Rating)
       Rating.stub(:build).and_return(mock_rating)
       get :new, :course_id=>1
@@ -50,8 +47,7 @@ before :each do
 
   describe "GET edit" do
     it "assigns the requested rating as @rating" do
-      Course.should_receive(:unabbr).and_return("department")
-	Course.should_receive(:find_by_department_and_number).and_return(mock_course)
+      Course.should_receive(:find_by_param).and_return(mock_course)
 	mock_course.should_receive(:ratings).and_return(Rating)
 	Rating.stub(:find).with("37").and_return(mock_rating)
       get :edit, :id => "37", :course_id=>1
@@ -63,8 +59,7 @@ before :each do
 
     describe "with valid params" do
       it "assigns a newly created rating as @rating" do
-	  Course.should_receive(:unabbr).and_return("department")
-	Course.should_receive(:find_by_department_and_number).and_return(mock_course)
+	  Course.should_receive(:find_by_param).and_return(mock_course)
 	mock_course.should_receive(:ratings).and_return(Rating)
 	Rating.stub(:build).and_return(mock_rating)
 		mock_rating.should_receive(:user=).and_return(mock_rating)
@@ -74,8 +69,7 @@ before :each do
       end
 
       it "redirects to the created rating" do
-        Course.should_receive(:unabbr).and_return("department")
-	Course.should_receive(:find_by_department_and_number).and_return(mock_course)
+        Course.should_receive(:find_by_param).and_return(mock_course)
 	mock_course.should_receive(:ratings).and_return(Rating)
 	Rating.stub(:build).and_return(mock_rating)
 	mock_rating.should_receive(:user=).and_return("user")
@@ -88,26 +82,20 @@ before :each do
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved rating as @rating" do
-        Course.should_receive(:unabbr).and_return("department")
-	Course.should_receive(:find_by_department_and_number).and_return(mock_course)
+        Course.should_receive(:find_by_param).and_return(mock_course)
 	mock_course.should_receive(:ratings).and_return(Rating)
-	Rating.stub(:build).and_return(mock_rating)
-		mock_rating.should_receive(:user=).and_return(mock_rating)
-		mock_rating.should_receive(:save).and_return(mock_rating(:save=>false))
+	Rating.stub(:build).and_return(mock_rating(:save=>false))
         post :create, :course_id => 1
         assigns[:rating].should equal(mock_rating)
       end
 
       it "re-renders the 'new' template" do
-        Course.should_receive(:unabbr).and_return("department")
-	Course.should_receive(:find_by_department_and_number).and_return(mock_course)
+        Course.should_receive(:find_by_param).and_return(mock_course)
 	mock_course.should_receive(:ratings).and_return(Rating)
-	Rating.stub(:build).and_return(mock_rating)
-	mock_rating.should_receive(:user=).and_return("user")
-	mock_rating.should_receive(:save).and_return(mock_rating(:save=>false))
+	Rating.stub(:build).and_return(mock_rating(:save=>false))
 		
         post :create, :course_id => 1
-        response.should redirect_to(course_rating_url(mock_course,mock_rating))
+        response.should render_template('new')
       end
     end
 
@@ -117,8 +105,7 @@ before :each do
 
     describe "with valid params" do
       it "updates the requested rating" do
-        Course.should_receive(:unabbr).and_return("department")
-	Course.should_receive(:find_by_department_and_number).and_return(mock_course)
+        Course.should_receive(:find_by_param).and_return(mock_course)
 	mock_course.should_receive(:ratings).and_return(Rating)
 	Rating.stub(:find).with("37").and_return(mock_rating)
 	mock_rating.should_receive(:update_attributes)
@@ -126,8 +113,7 @@ before :each do
       end
 
       it "assigns the requested rating as @rating" do
-	  Course.should_receive(:unabbr).and_return("department")
-	Course.should_receive(:find_by_department_and_number).and_return(mock_course)
+	  Course.should_receive(:find_by_param).and_return(mock_course)
 	mock_course.should_receive(:ratings).and_return(Rating)
         Rating.stub(:find).and_return(mock_rating(:update_attributes => true))
         put :update, :id => "1", :course_id=>1
@@ -135,8 +121,7 @@ before :each do
       end
 
       it "redirects to the rating" do
-	   Course.should_receive(:unabbr).and_return("department")
-	Course.should_receive(:find_by_department_and_number).and_return(mock_course)
+	   Course.should_receive(:find_by_param).and_return(mock_course)
 	mock_course.should_receive(:ratings).and_return(Rating)
         Rating.stub(:find).and_return(mock_rating(:update_attributes => true))
         put :update, :id => "1", :course_id=>1
@@ -146,8 +131,7 @@ before :each do
 
     describe "with invalid params" do
       it "updates the requested rating" do
-	  Course.should_receive(:unabbr).and_return("department")
-	Course.should_receive(:find_by_department_and_number).and_return(mock_course)
+	  Course.should_receive(:find_by_param).and_return(mock_course)
 	mock_course.should_receive(:ratings).and_return(Rating)
         Rating.should_receive(:find).with("37").and_return(mock_rating)
         mock_rating.should_receive(:update_attributes).with({'these' => 'params'})
@@ -155,8 +139,7 @@ before :each do
       end
 
       it "assigns the rating as @rating" do
-	  Course.should_receive(:unabbr).and_return("department")
-	Course.should_receive(:find_by_department_and_number).and_return(mock_course)
+	  Course.should_receive(:find_by_param).and_return(mock_course)
 	mock_course.should_receive(:ratings).and_return(Rating)
         Rating.stub(:find).and_return(mock_rating(:update_attributes => false))
         put :update, :id => "1", :course_id=>1
@@ -164,8 +147,7 @@ before :each do
       end
 
       it "re-renders the 'edit' template" do
-	  Course.should_receive(:unabbr).and_return("department")
-	Course.should_receive(:find_by_department_and_number).and_return(mock_course)
+	  Course.should_receive(:find_by_param).and_return(mock_course)
 	mock_course.should_receive(:ratings).and_return(Rating)
         Rating.stub(:find).and_return(mock_rating(:update_attributes => false))
         put :update, :id => "1", :course_id=>1
@@ -177,8 +159,7 @@ before :each do
 
   describe "DELETE destroy" do
     it "destroys the requested rating" do
-	Course.should_receive(:unabbr).and_return("department")
-	Course.should_receive(:find_by_department_and_number).and_return(mock_course)
+	Course.should_receive(:find_by_param).and_return(mock_course)
 	mock_course.should_receive(:ratings).and_return(Rating)
       Rating.should_receive(:find).with("37").and_return(mock_rating)
       mock_rating.should_receive(:destroy)
@@ -186,8 +167,7 @@ before :each do
     end
 
     it "redirects to the ratings list" do
-	Course.should_receive(:unabbr).and_return("department")
-	Course.should_receive(:find_by_department_and_number).and_return(mock_course)
+	Course.should_receive(:find_by_param).and_return(mock_course)
 	mock_course.should_receive(:ratings).and_return(Rating)
       Rating.stub(:find).and_return(mock_rating(:destroy => true))
       delete :destroy, :id => "1", :course_id=>1

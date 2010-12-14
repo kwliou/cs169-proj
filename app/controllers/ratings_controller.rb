@@ -44,10 +44,10 @@ class RatingsController < ApplicationController
   # POST /ratings.xml
   def create
     @rating = @course.ratings.build(params[:rating])
-	@rating.user=@current_user
 
     respond_to do |format|
       if @rating.save
+	  @rating.user=@current_user
         format.html { redirect_to([@course,@rating], :notice => 'Rating was successfully created.') }
         format.xml  { render :xml => @rating, :status => :created, :location => @rating }
       else

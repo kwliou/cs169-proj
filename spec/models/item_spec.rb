@@ -17,18 +17,83 @@ describe Item do
       :description => "This is a description of software engineering.",
       :name => "Software Engineering"
     }
-    @valid_user_attributes = {
+    @user = User.create!(
       :first_name => "value for first_name",
       :last_name => "value for last_name",
       :username => "value for username",
       :password => "value for password",
       :password_confirmation => "value for password",
       :email => "email@email.com"
-    }
+    )
+	
   end
 
   it "should return the proper due date for a given assignemtn" do
     
+  end
+  describe "When checking ratings" do  
+    it "should print a message if no one has rated it" do
+      @item = Item.create!(@valid_item_attributes)
+      @item.e_rating.should match "Someone needs to rate this item!"
+      @item.i_rating.should match "Someone needs to rate this item!"
+      @item.w_rating.should match "Someone needs to rate this item!"
+    end
+    
+    it "should have 1 rater if 1 person has rated it" do
+      @item = Item.create!(@valid_item_attributes)
+	  @rating=Irating.create!(
+	  :easiness => 1,
+      :interest => 1,
+      :work_load => 1,
+      :user_id => @user.id,
+      :item_id => @item.id
+	  )
+	  @user2 = User.create!(
+      :first_name => "first_name",
+      :last_name => "last_name",
+      :username => "username",
+      :password => "value for password",
+      :password_confirmation => "value for password",
+      :email => "email2@email.com"
+    )
+	  @rating2=Irating.create!(
+	  :easiness => 5,
+      :interest => 5,
+      :work_load => 5,
+      :user_id => @user2.id,
+      :item_id => @item.id
+	  )
+      @item.raters.should be 2
+    end
+    
+    it "should compute the correct average and print the correct message" do
+	@item = Item.create!(@valid_item_attributes)
+	  @rating=Irating.create!(
+	  :easiness => 1,
+      :interest => 1,
+      :work_load => 5,
+      :user_id => @user.id,
+      :item_id => @item.id
+	  )
+	  @user2 = User.create!(
+      :first_name => "first_name",
+      :last_name => "last_name",
+      :username => "username",
+      :password => "value for password",
+      :password_confirmation => "value for password",
+      :email => "email2@email.com"
+    )
+	  @rating2=Irating.create!(
+	  :easiness => 1,
+      :interest => 5,
+      :work_load => 5,
+      :user_id => @user2.id,
+      :item_id => @item.id
+	  )
+	  @item.e_rating.should match "WTF?"
+	  @item.i_rating.should match "eh...can't complain"
+      @item.w_rating.should match "I don't remember doing ANY work"
+    end
   end
   
   describe "histograms" do
@@ -200,4 +265,5 @@ describe Item do
     end
     
   end
+  
 end
