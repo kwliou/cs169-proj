@@ -24,7 +24,6 @@ Given /^I am subscribed to "([^"]*)" with item "([^"]*)"$/ do |course, item|
   @course = @current_user.courses.create!(
     :department_id => @dept.id,
     :number => number,
-    :term => 'Fall',
     :name => 'Test Class')
   @item = @course.items.create!(
     :name => item,
