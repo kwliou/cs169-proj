@@ -95,7 +95,7 @@ class Course < ActiveRecord::Base
     if (raters == 0)
       return "Someone needs to rate this course!"
     end
-	  rating=Rating.total_i(self)/raters
+	  rating=Rating.total_e(self)/raters
     rating_s=rating.to_s
     return Rating.to_s_e(rating)
   end

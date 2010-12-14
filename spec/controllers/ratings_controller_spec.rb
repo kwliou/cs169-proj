@@ -85,6 +85,7 @@ before :each do
         Course.should_receive(:find_by_param).and_return(mock_course)
 	mock_course.should_receive(:ratings).and_return(Rating)
 	Rating.stub(:build).and_return(mock_rating(:save=>false))
+	mock_rating.should_receive(:user=).and_return(mock_rating(:save=>false))
         post :create, :course_id => 1
         assigns[:rating].should equal(mock_rating)
       end
@@ -93,7 +94,7 @@ before :each do
         Course.should_receive(:find_by_param).and_return(mock_course)
 	mock_course.should_receive(:ratings).and_return(Rating)
 	Rating.stub(:build).and_return(mock_rating(:save=>false))
-		
+		mock_rating.should_receive(:user=).and_return(mock_rating(:save=>false))
         post :create, :course_id => 1
         response.should render_template('new')
       end

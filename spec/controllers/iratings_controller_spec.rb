@@ -105,6 +105,7 @@ before :each do
       Item.should_receive(:find).and_return(mock_item)
       mock_item.should_receive(:iratings).and_return(Irating)
       Irating.stub(:build).and_return(mock_irating(:save=>false))
+	  mock_irating.should_receive(:user=).and_return(mock_irating(:save=>false))
 	  post :create, :course_id => 1, :item_id => 1
         assigns[:irating].should equal(mock_irating)
       end
@@ -115,6 +116,7 @@ before :each do
       Item.should_receive(:find).and_return(mock_item)
       mock_item.should_receive(:iratings).and_return(Irating)
       Irating.stub(:build).and_return(mock_irating(:save=>false))
+	  mock_irating.should_receive(:user=).and_return(mock_irating(:save=>false))
         post :create, :course_id => 1, :item_id => 1
         response.should render_template('new')
       end

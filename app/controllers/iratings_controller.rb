@@ -49,10 +49,10 @@ class IratingsController < ApplicationController
   def create
   @item = @course.items.find(:first, :conditions => ['lower(name) = ?', params[:item_id].downcase.gsub('_', ' ')])
     @irating = @item.iratings.build(params[:irating])
-
+	@irating.user=@current_user
     respond_to do |format|
       if @irating.save
-	  @irating.user=@current_user
+	  
         format.html { redirect_to([@course,@item,@irating], :notice => 'ItemRating was successfully created.') }
         format.xml  { render :xml => @irating, :status => :created, :location => @irating }
       else
