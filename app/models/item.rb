@@ -83,6 +83,10 @@ class Item < ActiveRecord::Base
     due_date.getlocal.strftime('%b %d')
   end
   
+  def past_due
+	return Time.now>self.due_date
+	end
+  
    def e_rating
     if (raters == 0)
       return "Someone needs to rate this item!"
