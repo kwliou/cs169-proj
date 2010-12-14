@@ -40,7 +40,7 @@ describe User do
       :course_id => @course.id
 	  )
      @rating2=@user.rated_course(@course)
-     @rating.should ==@rating2
+     @rating.should == @rating2
    end
    end
    
