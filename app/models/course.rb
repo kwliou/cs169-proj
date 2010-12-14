@@ -71,8 +71,7 @@ class Course < ActiveRecord::Base
   end
 
   def dept
-    Department.find(department_id).abbr
-    #(@@abbr[department] || department).upcase
+    Department.find(department_id).abbr.upcase
   end
   
   def abbr

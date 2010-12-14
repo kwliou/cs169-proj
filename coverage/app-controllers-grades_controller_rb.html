@@ -30,10 +30,10 @@
             <td class="left_align"><a href="app-controllers-grades_controller_rb.html">app/controllers/grades_controller.rb</a></td>
             <td class='right_align'><tt>168</tt></td>
             <td class='right_align'><tt>122</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>19.64%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>19.05%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:20px"></div>
-            <div class="uncovered" style="width:80px"></div>
+            <div class="covered" style="width:19px"></div>
+            <div class="uncovered" style="width:81px"></div>
           </div></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>9.02%</tt></div>
           <div class="percent_graph">
@@ -69,259 +69,259 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line3">3</a> </pre></td>
+            <td><pre><a name="line3">3</a>   # GET /grades</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line4">4</a>   # GET /grades</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line5">5</a>   # GET /grades.xml</pre></td>
+            <td><pre><a name="line4">4</a>   # GET /grades.xml</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line6">6</a>   def index</pre></td>
+            <td><pre><a name="line5">5</a>   def index</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line7">7</a>     @course = Course.find_by_param(params[:id])</pre></td>
+            <td><pre><a name="line6">6</a>     @course = Course.find_by_param(params[:id])</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line8">8</a>     @current_user = current_user</pre></td>
+            <td><pre><a name="line7">7</a>     @current_user = current_user</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line9">9</a>     @grades = @current_user.grades</pre></td>
+            <td><pre><a name="line8">8</a>     @grades = @current_user.grades</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line10">10</a>     </pre></td>
+            <td><pre><a name="line9">9</a>     </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line11">11</a>     respond_to do |format|</pre></td>
+            <td><pre><a name="line10">10</a>     respond_to do |format|</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line12">12</a>       format.html # index.html.erb</pre></td>
+            <td><pre><a name="line11">11</a>       format.html # index.html.erb</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line13">13</a>       format.xml  { render :xml =&gt; @grades }</pre></td>
+            <td><pre><a name="line12">12</a>       format.xml  { render :xml =&gt; @grades }</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line14">14</a>     end</pre></td>
+            <td><pre><a name="line13">13</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line15">15</a>   end</pre></td>
+            <td><pre><a name="line14">14</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line16">16</a> </pre></td>
+            <td><pre><a name="line15">15</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line17">17</a>   def histogram</pre></td>
+            <td><pre><a name="line16">16</a>   def histogram</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line18">18</a>     item = Item.find(params[:id])</pre></td>
+            <td><pre><a name="line17">17</a>     item = Item.find(params[:id])</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line19">19</a>     # Median is easy</pre></td>
+            <td><pre><a name="line18">18</a>     # Median is easy</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line20">20</a>     grades = item.grades.sort { |a, b| a.points_received &lt;=&gt; b.points_received }</pre></td>
+            <td><pre><a name="line19">19</a>     grades = item.grades.sort { |a, b| a.points_received &lt;=&gt; b.points_received }</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line21">21</a>     median = grades[grades.length / 2].points_received</pre></td>
+            <td><pre><a name="line20">20</a>     median = grades[grades.length / 2].points_received</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line22">22</a>     scores = []</pre></td>
+            <td><pre><a name="line21">21</a>     scores = []</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line23">23</a>     </pre></td>
+            <td><pre><a name="line22">22</a>     </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line24">24</a>     # Calculate the mean</pre></td>
+            <td><pre><a name="line23">23</a>     # Calculate the mean</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line25">25</a>     total = 0.0</pre></td>
+            <td><pre><a name="line24">24</a>     total = 0.0</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line26">26</a>     grades.each do |g|</pre></td>
+            <td><pre><a name="line25">25</a>     grades.each do |g|</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line27">27</a>       total += g.points_received</pre></td>
+            <td><pre><a name="line26">26</a>       total += g.points_received</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line28">28</a>       scores &lt;&lt; g.points_received</pre></td>
+            <td><pre><a name="line27">27</a>       scores &lt;&lt; g.points_received</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line29">29</a>     end</pre></td>
+            <td><pre><a name="line28">28</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line30">30</a>     mean = total / grades.length</pre></td>
+            <td><pre><a name="line29">29</a>     mean = total / grades.length</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line31">31</a>     </pre></td>
+            <td><pre><a name="line30">30</a>     </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line32">32</a>     # Calculate the std. dev</pre></td>
+            <td><pre><a name="line31">31</a>     # Calculate the std. dev</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line33">33</a>     sd_sum = 0</pre></td>
+            <td><pre><a name="line32">32</a>     sd_sum = 0</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line34">34</a>     scores.each do |s|</pre></td>
+            <td><pre><a name="line33">33</a>     scores.each do |s|</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line35">35</a>       sd_sum += (s - mean)**2</pre></td>
+            <td><pre><a name="line34">34</a>       sd_sum += (s - mean)**2</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line36">36</a>     end</pre></td>
+            <td><pre><a name="line35">35</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line37">37</a>     </pre></td>
+            <td><pre><a name="line36">36</a>     </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line38">38</a>     std_dev = (sd_sum / scores.length)**0.5</pre></td>
+            <td><pre><a name="line37">37</a>     std_dev = (sd_sum / scores.length)**0.5</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line39">39</a>     segment_size = item.points / 15</pre></td>
+            <td><pre><a name="line38">38</a>     segment_size = item.points / 15</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line40">40</a>     </pre></td>
+            <td><pre><a name="line39">39</a>     </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line41">41</a>     # Segment the scores into frequency buckets</pre></td>
+            <td><pre><a name="line40">40</a>     # Segment the scores into frequency buckets</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line42">42</a>     segments = []</pre></td>
+            <td><pre><a name="line41">41</a>     segments = []</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line43">43</a>     data = {:mean =&gt; format(&quot;%.2f&quot;, mean), </pre></td>
+            <td><pre><a name="line42">42</a>     data = {:mean =&gt; format(&quot;%.2f&quot;, mean), </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line44">44</a>             :std_dev =&gt; format(&quot;%.2f&quot;, std_dev), </pre></td>
+            <td><pre><a name="line43">43</a>             :std_dev =&gt; format(&quot;%.2f&quot;, std_dev), </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line45">45</a>             :title =&gt; item.name, :points =&gt; []}</pre></td>
+            <td><pre><a name="line44">44</a>             :title =&gt; item.name, :points =&gt; []}</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line45">45</a>               </pre></td>
           </tr>
         
           
@@ -1035,7 +1035,7 @@
           
           
           <tr class="uncovered">
-            <td><pre><a name="line164">164</a>       format.html { redirect_to(grades_url) }</pre></td>
+            <td><pre><a name="line164">164</a>       format.html { redirect_to(:controller =&gt; 'grades', :action =&gt; 'index', :notice =&gt; 'Grade was successfully destroyed.') }</pre></td>
           </tr>
         
           
@@ -1065,7 +1065,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Tue Nov 23 08:28:54 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Nov 23 13:04:44 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

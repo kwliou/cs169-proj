@@ -21,23 +21,23 @@ end
 Given /^I am subscribed to "([^"]*)" with item "([^"]*)"$/ do |course, item|
   department, number = course.split
   @dept = Department.create!(:name => department, :abbr => department)
-  @course = @current_user.courses.create!(
+  @new_course = @current_user.courses.create!(
     :department_id => @dept.id,
     :number => number,
     :term => 'Fall',
     :year => 2010,
     :name => 'Test Class')
-  @item = @course.items.create!(
+  @item = @new_course.items.create!(
     :name => item,
     :category => 'Assignment')
 end
 
 Given /^I am looking at the posts page$/ do
-  visit course_item_posts_path(@course, @item)
+  visit course_item_posts_path(@new_course, @item)
 end
 
 Given /^I am making a new post$/ do
-  visit new_course_item_post_path(@course, @item)
+  visit new_course_item_post_path(@new_course, @item)
 end
 
 Given /^I posted "([^"]*)" with "([^"]*)"$/ do |title, body|

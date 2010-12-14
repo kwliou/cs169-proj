@@ -45,9 +45,11 @@
   <a id="calendar_title" href="calendar">Course Calendar</a>
   <ul>
     <% @course.items.each do |item| %>
+	<% if (!item.past_due) %>
     <li class="calendar_entry">
       <%=h item.cal_date %>
       <%= link_to item.name, [@course, item] %>
+	  <% end %>
     </li>
     <% end %>
   </ul>
